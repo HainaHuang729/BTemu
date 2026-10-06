@@ -1,0 +1,221 @@
+{
+  "design_version": "shared10d_data_v1",
+  "status": "PARAMETERS_FROZEN_LABELS_NOT_AUTHORIZED",
+  "science_contract_hash": "2effb28af618d47c31dde218a6d3b89aedd59a208dc5814dcc5c69f8c05150d9",
+  "counts": {
+    "train": {
+      "broad": 3072,
+      "fixed": 384,
+      "continuous_ms": 384,
+      "anchors_edges": 256
+    },
+    "validation": {
+      "broad": 256,
+      "fixed": 128,
+      "continuous_ms": 128
+    },
+    "sealed_test": {
+      "broad": 512,
+      "fixed": 256,
+      "continuous_ms": 256
+    },
+    "challenge_development": {
+      "boundary_endpoint_risk": 12,
+      "numerical_and_transition_search": 12
+    },
+    "preflight": {
+      "normal_original": 1,
+      "normal_adapter": 1,
+      "PL1_original": 1,
+      "PL1_adapter": 1,
+      "PL10_adapter": 1,
+      "PL30_adapter": 1,
+      "continuous_original": 1,
+      "continuous_adapter": 1,
+      "strong_original": 1,
+      "strong_adapter": 1,
+      "normal_original_repeat": 1,
+      "known_penalized_adapter": 1
+    }
+  },
+  "manifest_sha256": {
+    "manifests/preflight.jsonl": "9b9a3bb982a60a407983ff19cd94c5a926697a9bacb748be6455a4e64a5a5ead",
+    "manifests/train_initial_448.jsonl": "ced88b5c9f801c34b972076febd7ba2c4a224100eda8a0377b221352ee9966d1",
+    "manifests/train_full_design.jsonl": "ee4721ed4a9d81e742c69b3fbcbaad8ceb7338f797ad5bd12e5ad5b8c6a7131c",
+    "manifests/validation_design.jsonl": "2332688e2ee32ab5c87074ae4ca5b5595ccf75e126db6bb42173b0cc8157a524",
+    "manifests/sealed_test_design.jsonl": "a00db69adc8f2a5f82a60823ab4ae01a529a91702d69e92993d0b13f9a70c686",
+    "manifests/challenge_development.jsonl": "bbf1ddb881926513e8eda92727776c172145c453edefbb41bbe7b106ecf1cbff"
+  },
+  "independent_design_seeds": {
+    "train": 2026092801,
+    "validation": 2026092802,
+    "sealed_test": 2026092803,
+    "challenge_development": 2026092804,
+    "preflight": 2026092805
+  },
+  "batches": [
+    {
+      "split": "train",
+      "stratum": "broad",
+      "count": 2816,
+      "seed": 2026092811,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    },
+    {
+      "split": "train",
+      "stratum": "fixed",
+      "count": 320,
+      "seed": 2026092821,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    },
+    {
+      "split": "train",
+      "stratum": "continuous_ms",
+      "count": 320,
+      "seed": 2026092831,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    },
+    {
+      "split": "train",
+      "stratum": "anchors_edges",
+      "count": 24,
+      "seed": 2026092851,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    },
+    {
+      "split": "train",
+      "stratum": "anchors_edges",
+      "count": 24,
+      "seed": 2026092852,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    },
+    {
+      "split": "train",
+      "stratum": "anchors_edges",
+      "count": 24,
+      "seed": 2026092853,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    },
+    {
+      "split": "train",
+      "stratum": "anchors_edges",
+      "count": 24,
+      "seed": 2026092854,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    },
+    {
+      "split": "validation",
+      "stratum": "broad",
+      "count": 256,
+      "seed": 2026092812,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    },
+    {
+      "split": "validation",
+      "stratum": "fixed",
+      "count": 128,
+      "seed": 2026092822,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    },
+    {
+      "split": "validation",
+      "stratum": "continuous_ms",
+      "count": 128,
+      "seed": 2026092832,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    },
+    {
+      "split": "sealed_test",
+      "stratum": "broad",
+      "count": 512,
+      "seed": 2026092813,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    },
+    {
+      "split": "sealed_test",
+      "stratum": "fixed",
+      "count": 256,
+      "seed": 2026092823,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    },
+    {
+      "split": "sealed_test",
+      "stratum": "continuous_ms",
+      "count": 256,
+      "seed": 2026092833,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    },
+    {
+      "split": "challenge_development",
+      "stratum": "numerical_and_transition_search",
+      "count": 12,
+      "seed": 2026092814,
+      "method": "independent_LHS_batch_on_stored_coordinates"
+    }
+  ],
+  "old_448_sha256": "116628d1c2547d94d3b524c7e87ab9c4f4e3094874dbfc60682fbfe368b9deae",
+  "old_448_allocation": "train_only; exact original IDs and coordinates preserved",
+  "method": "independent LHS batches plus declared anchors; concatenation is NOT one global LHS",
+  "sampling_distribution": "uniform in stored coordinates per LHS batch; original view priors preserved, oversampled mix not prior-unbiased",
+  "prespecified_PL_limit": 0.968,
+  "duplicate_audit": {
+    "cross_split_exact": 0,
+    "cross_split_rounded_12_normalized_decimals": 0,
+    "cross_split_families": 0,
+    "intentional_preflight_repeats": [
+      [
+        "preflight_normal_original",
+        "preflight_normal_adapter"
+      ],
+      [
+        "preflight_PL1_original",
+        "preflight_PL1_adapter"
+      ],
+      [
+        "preflight_continuous_original",
+        "preflight_continuous_adapter"
+      ],
+      [
+        "preflight_strong_original",
+        "preflight_strong_adapter"
+      ],
+      [
+        "preflight_normal_adapter",
+        "preflight_normal_original_repeat"
+      ]
+    ],
+    "old_development_parameter_overlaps": [
+      "preflight_known_penalized_adapter"
+    ]
+  },
+  "geometry": {
+    "validation": {
+      "normalized_L2_to_train": {
+        "min": 0.20354389864354247,
+        "q50": 0.422983491563209,
+        "q95": 0.5341196209392571,
+        "max": 0.6155952509046939
+      },
+      "uses_parameters_only": true
+    },
+    "sealed_test": {
+      "normalized_L2_to_train": {
+        "min": 0.2124686443647822,
+        "q50": 0.4212984613407565,
+        "q95": 0.5316009180223858,
+        "max": 0.6518530280036119
+      },
+      "uses_parameters_only": true
+    }
+  },
+  "seed_target": "fixed_ic; not a grouping key",
+  "no_labels_generated": true,
+  "development_amendment": {
+    "id": "preflight_penalty_v1a",
+    "reason": "Five already-accessible quarantined development records have penalized xHI; replace redundant adapter-repeat with one explicit penalty replay. Original-repeat retained. No old label is transferred.",
+    "source_sample_id": "regression_0",
+    "changed_only": "preflight manifest",
+    "evaluation_count": 12,
+    "train_validation_test_unchanged": true
+  }
+}

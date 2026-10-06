@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "budget_id": "20260928_batch1",
+  "scope": "preflight and quarantined Train concurrently; admission only after native qualification",
+  "preflight_sequential": true,
+  "first_train_wave_size": 2,
+  "first_train_quality_count": 8,
+  "subsequent_wave_size": 8,
+  "concurrency_reason": "First8 QA passed; same Gold6130 CPU class; cn045 probe6 passed identical approved runtime; every worker verifies runtime before full evaluation",
+  "continuation_runs_inside_existing_worker_allocation": true,
+  "no_standalone_controller_allocation": true,
+  "abort_on_adapter_or_PL_mismatch": true,
+  "quarantined_train_parallel": true,
+  "approval_reference": "user_explicit_parallel_preflight_and_quarantined_train_20260928"
+}

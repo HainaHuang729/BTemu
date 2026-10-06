@@ -1,0 +1,23 @@
+{
+  "status": "USER_CONFIRMED_TARGET_CLARIFICATION",
+  "science_contract_file_sha256": "fc5c5d237b9b793fc118c648a4a1f76d5408a5872a9ffa5542b2f50b700eebac",
+  "reference_target_changed": false,
+  "output": "selected exact volume-averaged global_xHI[32]",
+  "required_constraints_only": "frozen reference simulation, valid numerical/provenance/IC/grid and original postprocessing",
+  "endpoint_classification": "SCIENCE_DOMAIN_WARNING",
+  "fully_ionized_requirement": false,
+  "monotonicity_requirement": false,
+  "independent_tau_head": false,
+  "component_validity_fields": [
+    "history_valid",
+    "lf_valid",
+    "tau_valid",
+    "joint_likelihood_valid",
+    "tau_postprocessing_valid",
+    "xhi_likelihood_valid"
+  ],
+  "documentation": "docs/history_fidelity_target.md",
+  "development_training_authorized": true,
+  "sealed_test_authorized": false,
+  "production_MCMC_authorized": false
+}

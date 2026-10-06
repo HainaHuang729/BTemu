@@ -1,0 +1,424 @@
+{
+  "contract_id": "bt_history_fixed_v1",
+  "status": "implementation_frozen_scientific_acceptance_pending",
+  "production_authorized": false,
+  "active_parameters": [
+    "F_STAR10",
+    "ALPHA_STAR",
+    "F_ESC10",
+    "ALPHA_ESC",
+    "M_TURN",
+    "t_STAR",
+    "L_X",
+    "NU_X_THRESH"
+  ],
+  "fixed_parameters": {
+    "KP_h_Mpc": 10.0,
+    "MS": 2.5
+  },
+  "parameter_order": [
+    "F_STAR10",
+    "ALPHA_STAR",
+    "F_ESC10",
+    "ALPHA_ESC",
+    "M_TURN",
+    "t_STAR",
+    "L_X",
+    "NU_X_THRESH"
+  ],
+  "astro_parameter_order": [
+    "F_STAR10",
+    "ALPHA_STAR",
+    "F_ESC10",
+    "ALPHA_ESC",
+    "M_TURN",
+    "t_STAR",
+    "L_X",
+    "NU_X_THRESH"
+  ],
+  "parameter_units": {
+    "F_STAR10": "dimensionless",
+    "ALPHA_STAR": "dimensionless",
+    "F_ESC10": "dimensionless",
+    "ALPHA_ESC": "dimensionless",
+    "M_TURN": "log10(Msun)",
+    "t_STAR": "dimensionless",
+    "L_X": "log10(erg/s per Msun/yr)",
+    "NU_X_THRESH": "eV"
+  },
+  "parameter_transforms": {
+    "F_STAR10": "stored_log10_identity",
+    "ALPHA_STAR": "identity",
+    "F_ESC10": "stored_log10_identity",
+    "ALPHA_ESC": "identity",
+    "M_TURN": "stored_log10_identity",
+    "t_STAR": "identity",
+    "L_X": "stored_log10_identity",
+    "NU_X_THRESH": "identity"
+  },
+  "sampler_order": [
+    "ETA_STAR",
+    "t_STAR",
+    "ALPHA_STAR",
+    "M_TURN",
+    "F_ESC10",
+    "ALPHA_ESC",
+    "L_X",
+    "NU_X_THRESH"
+  ],
+  "sampler_mapping": "F_STAR10 = ETA_STAR + log10(t_STAR); preserve original prior density",
+  "prior_support": {
+    "F_STAR10": [
+      -3.0,
+      0.0
+    ],
+    "ALPHA_STAR": [
+      -0.5,
+      1.0
+    ],
+    "F_ESC10": [
+      -3.0,
+      0.0
+    ],
+    "ALPHA_ESC": [
+      -1.0,
+      0.5
+    ],
+    "M_TURN": [
+      8.0,
+      11.0
+    ],
+    "t_STAR": [
+      0.01,
+      1.0
+    ],
+    "L_X": [
+      38.0,
+      42.0
+    ],
+    "NU_X_THRESH": [
+      100.0,
+      1500.0
+    ]
+  },
+  "cosmology": {
+    "OMm": 0.308,
+    "OMb": 0.0484,
+    "hlittle": 0.678,
+    "SIGMA_8": 0.815,
+    "POWER_INDEX": 0.968,
+    "KP": 6.78,
+    "MS": 2.5
+  },
+  "bt_definition": {
+    "POWER_SPECTRUM": 6,
+    "formula": "P(k) proportional to k^ns T_EH(k)^2 below KP; k^MS KP^(ns-MS) T_EH(k)^2 above KP; native sigma8 normalization",
+    "KP_native_units": "1/Mpc",
+    "PL_limit": "MS=POWER_INDEX algebraically removes the break; POWER_SPECTRUM=0 is explicit local PL branch; no numerical parity claim"
+  },
+  "redshift_grid": [
+    5.0,
+    5.9,
+    6.0,
+    7.0,
+    8.0,
+    9.0,
+    10.0,
+    11.0,
+    12.0,
+    13.0,
+    14.0,
+    15.0,
+    16.0,
+    17.0,
+    18.0,
+    19.0,
+    20.0,
+    21.0,
+    22.0,
+    23.0,
+    24.0,
+    25.0,
+    26.0,
+    27.0,
+    28.0,
+    29.0,
+    30.0,
+    31.0,
+    32.0,
+    33.0,
+    34.0,
+    35.0
+  ],
+  "global_xHI_definition": "float64 volume mean of coeval xH_box; neutral hydrogen, not mass average or electron fraction",
+  "tau_postprocessing_convention": {
+    "function": "original non21_likelihood.tau_from_history -> native compute_tau",
+    "arguments": {
+      "z_min": 5.0,
+      "z_max": 35.0,
+      "interpolation_points": 31
+    },
+    "notes": "original linear spline + original clipping, float32 native input, original helium and low-z convention"
+  },
+  "ic_target": {
+    "type": "fixed_ic",
+    "seed": 725213656658
+  },
+  "simulation_settings": {
+    "user_params": {
+      "HII_DIM": 128,
+      "DIM": 512,
+      "BOX_LEN": 250.0,
+      "POWER_SPECTRUM": 6,
+      "USE_INTERPOLATION_TABLES": true,
+      "N_THREADS": 16
+    },
+    "flag_options": {
+      "INHOMO_RECO": true,
+      "USE_MASS_DEPENDENT_ZETA": true,
+      "USE_TS_FLUCT": true
+    },
+    "global_overrides": {
+      "Z_HEAT_MAX": 35.0,
+      "EVOLVE_DENSITY_LINEARLY": false
+    },
+    "implicit_defaults": "Frozen inputs.py and native/global sources; runtime resolved-default export pending compatible compute host"
+  },
+  "likelihood": {
+    "components": [
+      "LF",
+      "Planck_tau",
+      "McGreer_xHI"
+    ],
+    "luminosity_function": {
+      "mag_brightest": -20.0,
+      "mask_semantics": "retain data Muv strictly greater than mag_brightest",
+      "retained_points": 34,
+      "available_points": 49,
+      "observed_Muv_range": [
+        -19.87,
+        -12.75
+      ],
+      "covariance": null,
+      "errors": "provided per-point sigma; Donnan asymmetric errors use the arithmetic mean of the tabulated lower and upper errors",
+      "files": [
+        {
+          "z": 6.0,
+          "source": "HST-era 21CMMC bundle (Bouwens et al.)",
+          "n": 17,
+          "data": "software/21CMMC/src/py21cmmc/data/LF_lfuncs_z6.npz",
+          "data_sha256": "e1e1a89f45edd709a2cac8184188b1d7ec372e0eb8cdeeab505ffbdfaad679f9",
+          "noise": "software/21CMMC/src/py21cmmc/data/LF_sigmas_z6.npz",
+          "noise_sha256": "a8701ce8987fd5394f48b21dc84ccb054754fe2bff0a549521274304469d1f7f"
+        },
+        {
+          "z": 7.0,
+          "source": "HST-era 21CMMC bundle (Bouwens et al.)",
+          "n": 10,
+          "data": "software/21CMMC/src/py21cmmc/data/LF_lfuncs_z7.npz",
+          "data_sha256": "e6dba953ed3fc207a7c6ba90f0c9fa0399074d120c7ab5c93c6dc88bb2b05c21",
+          "noise": "software/21CMMC/src/py21cmmc/data/LF_sigmas_z7.npz",
+          "noise_sha256": "c067481f2fc7f0d1b8ba5507413bad1e3845d5c4568ee7855088f3638d88ab59"
+        },
+        {
+          "z": 8.0,
+          "source": "HST-era 21CMMC bundle (Bouwens et al.)",
+          "n": 8,
+          "data": "software/21CMMC/src/py21cmmc/data/HSTLF_lfuncs_z8.npz",
+          "data_sha256": "4de916aa89c3643347ecc1af399f2ff86b7f15244a08f093d8c600409355094d",
+          "noise": "software/21CMMC/src/py21cmmc/data/HSTLF_sigmas_z8.npz",
+          "noise_sha256": "7d9ef8ac6120e1b5c500d53a74a569098d38358f0350d02d4145243093e2ad6d"
+        },
+        {
+          "z": 9.0,
+          "source": "Donnan2024",
+          "n": 7,
+          "data": "workflows/MCMC/final_lf/obs_data/LF_lfuncs_z9.0_donnan2024.npz",
+          "data_sha256": "2fb461b874f63fea6798708763bcdc73cdc5e602a74ee8d33fd8f4230ae317a3",
+          "noise": "workflows/MCMC/final_lf/obs_data/LF_sigmas_z9.0_donnan2024.npz",
+          "noise_sha256": "490429764428dcb3aee34f392b1e80ed837591c0f0900af845e67c754c2faf69"
+        },
+        {
+          "z": 10.0,
+          "source": "Donnan2024",
+          "n": 7,
+          "data": "workflows/MCMC/final_lf/obs_data/LF_lfuncs_z10.0_donnan2024.npz",
+          "data_sha256": "2ef47f542312e852a1ed8b64fd60a4a2850246adade91c1f16004c5168bd7977",
+          "noise": "workflows/MCMC/final_lf/obs_data/LF_sigmas_z10.0_donnan2024.npz",
+          "noise_sha256": "75bfc5ddd639ff61725af5f5b2ebde35d21e0df50ecb4163ccd093554c8e219c"
+        }
+      ],
+      "selection_note": "Same HST z6,7,8 and Donnan z9,10 data; strict Muv>-20. Keep Planck tau and McGreer xHI terms unchanged."
+    },
+    "planck_tau": {
+      "mean": 0.0544,
+      "sigma_upper": 0.007,
+      "sigma_lower": 0.0081,
+      "data_combination": "Planck 2018 TT,TE,EE+lowE",
+      "source": "Planck Collaboration VI (2020), Eq. 9",
+      "doi": "10.1051/0004-6361/201833910",
+      "likelihood_kernel": "split_normal",
+      "integration_redshift_min": 5.0,
+      "integration_redshift_max": 30.0,
+      "interpolation_points": 25,
+      "clip_xHI": [
+        0.0,
+        1.0
+      ],
+      "implementation": "repository LikelihoodPlanck and compute_tau semantics"
+    },
+    "neutral_fraction": {
+      "source": "McGreer",
+      "redshift": 5.9,
+      "threshold": 0.06,
+      "sigma_above_threshold": 0.05,
+      "penalty_below_threshold": false
+    }
+  },
+  "original_project_root": "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc",
+  "native_python_root": "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src",
+  "native_sha256": "3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2",
+  "source_and_native_fingerprints": {
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/validation/web_fixed_bt_pilot.py": "29dab825b45ddfab0fc1fa02bc0aad8e527d2b63d2aca4f168788ca94ae22fdb",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/inference/non21_likelihood.py": "e60f43ea70bc1fc5d274c7645b9a0928c41f3785d3be0546e8f1cc18af4145fa",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/inference/exact_lf_provider.py": "648c5384b1c3eadeaad413c40e7b3aa3e7c1961796ced4847123c5accc12c98c",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/inference/configuration.py": "0dd39c990eef5a2fb0297fdddbc6d69c23d0ef215ae6ddd75a0b7279d0a138b2",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/inference/parameterization_v2.py": "55aa081f5223c0a1b75695db53cd5d23115a11b875e48f30d32e081c04721506",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/contracts/joint_grid128_w16t16_20260922_e0.json": "1b5b88492d3f0b34825233d9919f700a50826c8013db163bbf6301bdef4e2034",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/c_21cmfast.cpython-310-x86_64-linux-gnu.so": "3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/__init__.py": "7ea308b827b3dc1938ccb1863fd998007d580175c99b809197319496edcd6c2b",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/_cfg.py": "2df54c471ffaea47d2765839484f63b2d519e02fcfc06ec0932b924a703dd201",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/_logging.py": "35265883cf7d4f83c28b781c60e03eb6719c3e9302cb72c287ae1cd5df169988",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/_utils.py": "c2148fd3a66e786891a316b907452c9d52966e7fedf382554873b119c6e1cd61",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/_version.py": "ddbb173338ccb71fb08993507385a117a4b1e4b1334d20dd1295fd7872767522",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/cache_tools.py": "93c49229e3510d429faa900b9e687bd8a74b71f7c1f3264c90fb16100973a403",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/cli.py": "4f75ebde4ad5d7e9bd5719f9a1db6ab556a7176c819843b2951e2553cdc3cbb2",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/inputs.py": "c31445def393e99767bc3da1377dcd410244f594297991a2ae7ff1a1edd12dfe",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/lightcones.py": "8f03e8f3774d90517fd171ae05c8a0fa10c6af4909c3d309ef6898bea653063b",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/outputs.py": "08c6d01ab37e15284e340d0362e32881fce6e288818bd2a1d16c154c82296682",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/plotting.py": "8436bd7e4c905913e91addc8b66c01908d6e0f82d76b263f72b908cab0127050",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/wrapper.py": "cadf7791af97bfa297ae868e9edb22f4f3bf947a19618c1c5c886e2129ae62eb",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/yaml.py": "74c93467d3b635137dee161388a21a5af78dfce547168ab7dd503360d3f5b7de",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/21cmFAST.h": "ba7b7491ed982dba85d12764b2693352e03a1d635ec31fce544f3a93e304f330",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/BrightnessTemperatureBox.c": "dd20cd97ae376542ce523a97f13e26a242488f0422cd7385244081206b23841d",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/Constants.h": "45ead2f32583baa60f31190bf3482ed5bdc7307eb5c3af150785586f9f7422a6",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/FindHaloes.c": "fae5e4f27425ca9f234b7993c2dcc0fb09ed32543e0df5fe68f2208068d8a260",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/GenerateICs.c": "72a8442f6737e297d5e1f6f8a15d44332b48bbeda5d74a74e068de03fdc0804f",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/Globals.h": "56d6a059dacece5fc7ca1934b6a1e63a3eb84647364e1f2fea3f181fc2b95757",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/IonisationBox.c": "d9e533e4a65d6158144a70431c0dfc0b67e5be94292c51ac65b4708aea93d5ec",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/PerturbField.c": "1dbdd5aeb11888261d1971bd44a8b47a29a989cdf23639464b83f85b7fe55f7e",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/PerturbHaloField.c": "17f25d6a275dc4b180f1233fd62bf463a2bc441ba9cec59787f84216d37f1142",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/SpinTemperatureBox.c": "b24352bf6d1bf979bb8641de9cd3bd04c919184a874cd11dccef389941abbb98",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/UsefulFunctions.c": "98319b4bdb73347c4463267f89465966dcf3d87de00c1739867f0e0c06904d38",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/bubble_helper_progs.c": "1fb1cb1e19dc852f67a72069dfc18c373f4926ea08a70b26b564fdaaa36642f9",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/cexcept.h": "c4619441c43d8e9db674ee8eaefd1f66325584d08f00e40e72261f5f0648ecec",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/dft.c": "b3838ce36460c4d3746acfa7936bda438d0c34a5ac9c779a74f98ae731ae5661",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/elec_interp.c": "2fe7d66eafdc83848a03507596e8e5b00e8fb4240583f4f9af2208263a7503d4",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/exceptions.h": "b187f8ba19b607a2b9bb6f011b23ca2fa2850e6aef2653af95247eb99d33de44",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/heating_helper_progs.c": "de3d21803521d0aeeec790ae68e69c7320146cd55a53d4ee1f068ece7c0cc5e8",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/indexing.c": "11523bbafd34cde8e80de2d9d129302a4dc18ba655ef93488c1ee68c3961895c",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/logger.h": "b0817d8ec7cbf7de02b687c3df6f4a8aa22489a238adf1f07396afa70ee78c2d",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/ps.c": "b5fe8fd5407a56613098ffefdfcc8bf4707520e725b7640bd1fa62b7ed63bfb5",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/recombinations.c": "55693642c478dd71dd32aa53487f0f6959769c43642ecfb6d87f9ef2dcdf124b",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/deployments/ts_stable_strict_20260928/src/py21cmfast/src/subcell_rsds.c": "54da151b31c12363373fe8e43c95131b5e136c6b7e65d65e18183d2dc310e902",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/contracts/fixed_btps_joint_muv20_v1.json": "368f5e30995fdbbd5dfb0b8d237b5a52569469314ec1f6a188f65a5d2f4e747e",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/contracts/fixed_btps_non21_hst_donnan_zlt11_v4.draft.json": "e0bb7691f31845e73d6138d3344f5ad70c992f26571ef7e2bee84f87ba57e38b",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/contracts/fixed_btps_non21_hst_v3.draft.json": "cc488804686beb67341ca43e9ca90e2b49e3c7c4bd45eaf75db0fddf54b8944c",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/contracts/fixed_btps_non21_blind_v2.draft.json": "9e401304d7283988fbf314d10c5318184bf6ff886be8a3a1078a4dfde1d2234e",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/software/21CMMC/src/py21cmmc/data/LF_lfuncs_z6.npz": "e1e1a89f45edd709a2cac8184188b1d7ec372e0eb8cdeeab505ffbdfaad679f9",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/software/21CMMC/src/py21cmmc/data/LF_sigmas_z6.npz": "a8701ce8987fd5394f48b21dc84ccb054754fe2bff0a549521274304469d1f7f",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/software/21CMMC/src/py21cmmc/data/LF_lfuncs_z7.npz": "e6dba953ed3fc207a7c6ba90f0c9fa0399074d120c7ab5c93c6dc88bb2b05c21",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/software/21CMMC/src/py21cmmc/data/LF_sigmas_z7.npz": "c067481f2fc7f0d1b8ba5507413bad1e3845d5c4568ee7855088f3638d88ab59",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/software/21CMMC/src/py21cmmc/data/HSTLF_lfuncs_z8.npz": "4de916aa89c3643347ecc1af399f2ff86b7f15244a08f093d8c600409355094d",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/software/21CMMC/src/py21cmmc/data/HSTLF_sigmas_z8.npz": "7d9ef8ac6120e1b5c500d53a74a569098d38358f0350d02d4145243093e2ad6d",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/final_lf/obs_data/LF_lfuncs_z9.0_donnan2024.npz": "2fb461b874f63fea6798708763bcdc73cdc5e602a74ee8d33fd8f4230ae317a3",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/final_lf/obs_data/LF_sigmas_z9.0_donnan2024.npz": "490429764428dcb3aee34f392b1e80ed837591c0f0900af845e67c754c2faf69",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/final_lf/obs_data/LF_lfuncs_z10.0_donnan2024.npz": "2ef47f542312e852a1ed8b64fd60a4a2850246adade91c1f16004c5168bd7977",
+    "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/final_lf/obs_data/LF_sigmas_z10.0_donnan2024.npz": "75bfc5ddd639ff61725af5f5b2ebde35d21e0df50ecb4163ccd093554c8e219c"
+  },
+  "original_base_contract": "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/contracts/fixed_btps_joint_muv20_v1.json",
+  "original_plan": {
+    "experiment_id": "joint_grid128_w16t16_20260922_e0",
+    "material_passport": {
+      "origin_skill": "academic-research-suite/experiment-agent",
+      "origin_mode": "run",
+      "origin_date": "2026-09-20",
+      "verification_status": "DIRECT_CHAIN_PREPARED",
+      "version_label": "joint_muv20_grid128_v1"
+    },
+    "authorization": "User requested direct 16 workers x16 threads execution on 2026-09-22 following proposal of two independent grid128 ensembles.",
+    "scientific_role": "EXPLORATORY_NOT_CONVERGED",
+    "base_contract": "workflows/MCMC/fixed_btps_posterior/contracts/fixed_btps_joint_muv20_v1.json",
+    "base_contract_sha256": "368f5e30995fdbbd5dfb0b8d237b5a52569469314ec1f6a188f65a5d2f4e747e",
+    "web_index_sha256": "8c9812ba168570bb3f6e455450bbe03cd5a0d507daed2145f4764f8d37805c38",
+    "models": [
+      {
+        "KP_h_Mpc": 10.0,
+        "MS": 2.5
+      }
+    ],
+    "baseline_astro": {
+      "F_STAR10": -1.3,
+      "ALPHA_STAR": 0.5,
+      "F_ESC10": -1.0,
+      "ALPHA_ESC": -0.5,
+      "M_TURN": 9.0,
+      "t_STAR": 0.5,
+      "L_X": 40.5,
+      "NU_X_THRESH": 500.0
+    },
+    "simulation": {
+      "BOX_LEN_Mpc": 250.0,
+      "HII_DIM": 128,
+      "DIM": 512
+    },
+    "web_simulation_reference": {
+      "BOX_LEN_Mpc": 250.0,
+      "HII_DIM": 256,
+      "DIM": 768
+    },
+    "physics": {
+      "INHOMO_RECO": true,
+      "USE_MASS_DEPENDENT_ZETA": true,
+      "USE_TS_FLUCT": true,
+      "Z_HEAT_MAX": 35.0,
+      "EVOLVE_DENSITY_LINEARLY": false
+    },
+    "history": "Full coeval volume means at 31 uniform nodes from z=5 to 35, plus exact z=5.9. tau uses the 31 nodes; completely ionized below z=5 and neutral above z=35, with native helium convention. Redshift and resolution convergence are not established.",
+    "likelihood": "34 HST+Donnan LF points, Muv>-20; unchanged Planck tau and McGreer xHI.",
+    "initial_condition_seed": 725213656658,
+    "sampling_seed": 202609220,
+    "benchmarks": [],
+    "short_chain": {
+      "walkers": 32,
+      "burnin": 10,
+      "steps": 100,
+      "initial_jitter_fraction": 0.01,
+      "maximum_benchmark_seconds": 600,
+      "initialization": "Small full-rank neighborhood of webpage baseline in original astro coordinates. Functional test only; no convergence or posterior claim."
+    },
+    "resources_per_model": {
+      "cpus": 256,
+      "workers": 16,
+      "threads_per_worker": 16,
+      "memory_GiB": 384,
+      "timeout_hours": 168
+    },
+    "success_criteria": [
+      "Finite stored log probabilities and accepted moves; 100x32x8 stored array per ensemble.",
+      "Functional completion only; convergence must be assessed separately."
+    ],
+    "limitations": [
+      "Fresh chain at HII_DIM128 DIM512, matching neighboring joint grid.",
+      "TS remains enabled; this is not otherwise identical to neighboring continuous-MS inference.",
+      "No convergence or posterior claim; do not combine with 256/768 samples."
+    ],
+    "ensemble_index": 0
+  },
+  "native_selection": "repaired",
+  "conflicts": [
+    "Parent base contract describes 84-node ensemble mean; actual TS-on sampler overrides to 32-node fixed IC. Actual sampler wins.",
+    "Old ExactCoevalIonizationHistoryProvider disables TS and linearizes density; deliberately not reused.",
+    "Audit native and repaired native must never be pooled. Repaired release metadata stale; regression_gate passed."
+  ]
+}

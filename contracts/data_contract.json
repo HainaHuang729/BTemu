@@ -1,0 +1,37 @@
+{
+  "label": "volume-mean global_xHI, full 32-node trajectory",
+  "ground_truth": "contract-matched local BT native only",
+  "source_access": "explicit development allowlist, immutable external paths; no sealed-label reads",
+  "required_fields": [
+    "sample_id",
+    "physical_parameters",
+    "fixed_parameters",
+    "ic_seed",
+    "redshifts",
+    "global_xHI",
+    "exact_tau",
+    "exact_xHI_at_observation_redshifts",
+    "simulation_status",
+    "science_contract_hash",
+    "source_native_config_hashes",
+    "provenance"
+  ],
+  "validation": {
+    "finite": true,
+    "strict_grid": true,
+    "physical_range": [
+      0,
+      1
+    ],
+    "imputation": false,
+    "label_clipping": false,
+    "tau_absolute_tolerance": 1e-08,
+    "xHI_obs_absolute_tolerance": 1e-10
+  },
+  "split": "group on complete physical parameter tuple, all IC together; 80/20 train/development-validation",
+  "normalization_and_PCA": "train only",
+  "seed_target": "fixed_ic",
+  "failure_records": "retain parameters, reason and stratum; no implicit -infinity prior",
+  "sealed_test": "not opened; separate authorization required",
+  "legacy_84_node_data": "ineligible: different IC/grid/physics definition"
+}

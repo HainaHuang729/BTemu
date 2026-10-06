@@ -1,0 +1,55 @@
+{
+  "status": "PROPOSED_REQUIRES_SCIENTIFIC_CONFIRMATION",
+  "thresholds": {
+    "trajectory_RMSE_q95_max": 0.01,
+    "trajectory_max_abs_q95_max": 0.03,
+    "tau_abs_q90_max": 0.001,
+    "tau_abs_mean_bias_max": 0.0002,
+    "xHI_obs_abs_q90_max": 0.01,
+    "delta_logL_tau_abs_q90_max": 0.1,
+    "delta_logL_xHI_abs_q90_max": 0.1,
+    "delta_logL_joint_abs_q90_max": 0.1
+  },
+  "provenance": "tau and joint q90, tau bias inherited as proposals from old history validation draft; history/xHI and separate likelihood proposals new; no retrospective relaxation",
+  "representation_budget_fraction": 0.2,
+  "groups": [
+    "each target inference region separately",
+    "low xHI <=0.1",
+    "transition 0.1<xHI<0.9",
+    "high xHI>=0.9",
+    "exact 0 and 1",
+    "prior boundaries",
+    "penalized McGreer region"
+  ],
+  "quantile_and_bootstrap_unit": "physical parameter trajectory, never individual redshift; stratify task region",
+  "bootstrap": {
+    "resamples": 2000,
+    "seed": 20260930,
+    "confidence": 0.95
+  },
+  "ensemble": "five seeds; decode individually then arithmetic mean physical xHI",
+  "likelihood": "original split-normal tau and original neutral fraction; report both components and sum; LF unchanged",
+  "posterior": {
+    "required": [
+      "independent exact location/width/correlation comparison",
+      "support overlap including spurious high probability regions",
+      "training coverage diagnostics"
+    ],
+    "ESS_fraction_min_proposal": 0.5,
+    "production_passed": false
+  },
+  "final_test": {
+    "authorized": false,
+    "must_freeze": [
+      "model",
+      "normalizer",
+      "split",
+      "PCA",
+      "thresholds",
+      "source/native",
+      "analysis code"
+    ],
+    "no_online_updates": true
+  },
+  "end_to_end_timing": "includes exact LF, original tau/xHI postprocessing and likelihood; no speedup claim before measurement"
+}

@@ -1,0 +1,1674 @@
+{
+  "design_version": "dataset_design_v2_100k",
+  "science_contract_hash": "2effb28af618d47c31dde218a6d3b89aedd59a208dc5814dcc5c69f8c05150d9",
+  "preserved_v1_design_sha256": "c854838ee81716a51f54fa571c5a19a991fd63694f2f4eb268fbc3c14cb5d192",
+  "existing_train_design": "manifests/train_full_design.jsonl",
+  "existing_train_count": 4096,
+  "existing_train_labels_counted_only_if_qualified": true,
+  "target_totals": {
+    "train": 100000,
+    "validation": 10000,
+    "sealed_test_design": 5000
+  },
+  "manifest_sha256": {
+    "manifests/v2_100k/train_0000.jsonl": "d0c4d6bc11df1778072ce8d241306bc549c6223c55d8b63de52ef05c3e228f2f",
+    "manifests/v2_100k/train_0001.jsonl": "9eab58eccace0655ad197d9e001259df3ad8afa36b02cfdc66770071d2da1731",
+    "manifests/v2_100k/train_0002.jsonl": "7d36e01b3bea658161821e25d6f063cabcaaffee5ebb5962a5f1dfe9843e6d17",
+    "manifests/v2_100k/train_0003.jsonl": "7bb9b13031e83d4abb7defcc5552b762816bc2ea47a27cff04e6ca986f3f1006",
+    "manifests/v2_100k/train_0004.jsonl": "b7ba8762515fce5db2288f0c3721f9926efb86efcc5c18ddc8322c40c9b3b806",
+    "manifests/v2_100k/train_0005.jsonl": "447ce575d1323fe21d7364c5c839234839b6971140f2063be0394209daca5fea",
+    "manifests/v2_100k/train_0006.jsonl": "ff1b2f7d780dbfe943a09c7bf532dfc8065ffb3cf88cd60ce0bae1d80ea7b274",
+    "manifests/v2_100k/train_0007.jsonl": "4b3276f53111d0d3b8dfc85ea6803cb926b2d2f6c9a03abf8a958e071a56b3c1",
+    "manifests/v2_100k/train_0008.jsonl": "bb1e83fad1a729252e43df2a4730200df23399b4b371fe05f1c1d0a2ff709d83",
+    "manifests/v2_100k/train_0009.jsonl": "601132b5010d5c0161cca9cf499fd38e64241f3ab21214c5e6409fc457d9c64f",
+    "manifests/v2_100k/train_0010.jsonl": "f3de07b09a6ad35930d09e2ff1c1d2012f72f95c698f740ab006266f554ff890",
+    "manifests/v2_100k/train_0011.jsonl": "b95648ef69a0c70cb247bbca0b423a04627f574864e055a95e1dcc15bd3d6b17",
+    "manifests/v2_100k/train_0012.jsonl": "830c54ed6bd1804331b6ef56c3c656a2f7f84d4b8f6eae7645ef3a7b606f18c3",
+    "manifests/v2_100k/train_0013.jsonl": "eaa5b29f3da7bf9df39d2327f83d3a20ce07eea3db2a0d2d3d746cae9490fcaf",
+    "manifests/v2_100k/train_0014.jsonl": "da4e761470c3f651a1dc657e2afb93e6e93accc01f4d1e0de6f84de16e2a754f",
+    "manifests/v2_100k/train_0015.jsonl": "aecb0fadfda6fbd3d9a2ef02d01665dbbf58a252e176db88ca4d70e0429b477f",
+    "manifests/v2_100k/train_0016.jsonl": "aa5c949d147d5f1d32370b07f2d42ea94053b07ee2c838b933c74f7845b3d810",
+    "manifests/v2_100k/train_0017.jsonl": "76cf5f129c6c69f9f8129225cb574b62050e4623390af61967686fef9849142f",
+    "manifests/v2_100k/train_0018.jsonl": "722b564f7bfc662279cd66685318383823fad6dbe75c512fb083f8d8f8cac3ae",
+    "manifests/v2_100k/train_0019.jsonl": "eee2e66bbc6afc4a1c25c3f10549d2789e35a649ea77cf7fd4d49051debd29b3",
+    "manifests/v2_100k/train_0020.jsonl": "b80067daeb0b54d8c7c8c7f8e15fb6e34207b14669da0c6696280149e20823a7",
+    "manifests/v2_100k/train_0021.jsonl": "43f173c1d0c7097f1c6429f112aef21a617a5ac5ef1deed10b3f8197169e29f7",
+    "manifests/v2_100k/train_0022.jsonl": "d56dbb3904a86cf1c19725b76c61cea08aa125e0d8566968d58014dc7594b720",
+    "manifests/v2_100k/train_0023.jsonl": "5bf057085be1d1bcc76c2bd44623bca687cff742102130a9c8bc7346a3f5de51",
+    "manifests/v2_100k/train_0024.jsonl": "007c0ca84336af835745e2561c578fe0097fcd01d822bc89c10f946bf7276f6c",
+    "manifests/v2_100k/train_0025.jsonl": "9e3939efe9bebffc3aa36f56f40fabe35d5871ca23664ac3f2d70d8ed78d1ca9",
+    "manifests/v2_100k/train_0026.jsonl": "8f55e842c98ee570d3b918d415db181f1ca4dbb63d7180c004a1daa52855c554",
+    "manifests/v2_100k/train_0027.jsonl": "2baa5bd06c600063892a11f6d1e32279117f6b43713a4f59358bf633b418c901",
+    "manifests/v2_100k/train_0028.jsonl": "f7be9014af2205678be9206d384cefe2cb0ef987cd12f941e09b594cbf84414f",
+    "manifests/v2_100k/train_0029.jsonl": "4fb3f3ee5dd5c29fbf40853349c44c68d6b6d8c3dd2a4ea87fd19c3dba96a703",
+    "manifests/v2_100k/train_0030.jsonl": "6d53c67c83892d7988d6dfd6f7c2e1442f1a8a23454de067c91cf6cb4faf7b60",
+    "manifests/v2_100k/train_0031.jsonl": "b3f288b0264169403b646ea15bb8de0fd8999b4c47bfaaccfd8a1637f851a2c9",
+    "manifests/v2_100k/train_0032.jsonl": "c8f3b3eb3fd5e6874938ab07f8597ba067116d665eb546620ae64d31d089febc",
+    "manifests/v2_100k/train_0033.jsonl": "7e66ea6d72437262100ecc8847cd42cea135da9692c8f4c4f90a591958e2bd14",
+    "manifests/v2_100k/train_0034.jsonl": "a9e94434f05969ad9a7bdd0efe4f4cefaad5e3a1e7627fca1e4928e339b949c2",
+    "manifests/v2_100k/train_0035.jsonl": "c237dbaa19898bcbd76a5b6eca6fc7475e2f1a24a26eda1d684190b0a0ca90ed",
+    "manifests/v2_100k/train_0036.jsonl": "1f30c58e6d03aebb1739699ce4b4777442d4c2742e638ddfe7400c22ac569d07",
+    "manifests/v2_100k/train_0037.jsonl": "9745696efd216337616917a21e1361bba124e808ded114110c097385837ef434",
+    "manifests/v2_100k/train_0038.jsonl": "32851670591c52c6e368a1594fee87e22284519d3f5e4e00fa744c5b85ea08dd",
+    "manifests/v2_100k/train_0039.jsonl": "296277117a19e98f9fb6be6d99a983eca149715fad8f78ced92ed34e7255cb8d",
+    "manifests/v2_100k/train_0040.jsonl": "21b39f823ce41be7ccc5b8496d1bea8a16ad5b81da54e78ff5f6394a60fbf134",
+    "manifests/v2_100k/train_0041.jsonl": "f986bf3387ca8b60ad446be38fd7337e36ccb6908143ba7824de253991a95023",
+    "manifests/v2_100k/train_0042.jsonl": "d13e3e389d6c8f411e25953fe2ffa972f46bc9082e97bd3f511fc33c84cfd717",
+    "manifests/v2_100k/train_0043.jsonl": "f7774e4a6243adb30c2218570aa49158fa6c600b21535975eda2d1cac6f8b14b",
+    "manifests/v2_100k/train_0044.jsonl": "3e26cc2377d62b9569d1f4ac184378920f95f64223c6a3dd2ab3eb4cef6845a7",
+    "manifests/v2_100k/train_0045.jsonl": "a644f454e1d41fc0e191f12912c02a9dfd2d8d6a5adfad8f37970ba40fd79551",
+    "manifests/v2_100k/train_0046.jsonl": "ae3c71b0c38a2e1e1f27868112fecef8d11c6eb69e03b8f509907c184448fcda",
+    "manifests/v2_100k/train_0047.jsonl": "7481d69d444325ccde5963e15f27c3ccde5b1a79f5180f4490041371fcd34da0",
+    "manifests/v2_100k/train_0048.jsonl": "79fde6355e9a2d4c534300d91f7ca399b3a26355ae2e02fd6f1812f50378f00b",
+    "manifests/v2_100k/train_0049.jsonl": "e9277bbe5e187230b8ed41a4d5efe831dc6a11877e02d128850c81e840ef8cec",
+    "manifests/v2_100k/train_0050.jsonl": "a27297aff6c81f994bba00e159294e63ca1c1f26fea30855aa0ac6e64b9a09f4",
+    "manifests/v2_100k/train_0051.jsonl": "0d92ec864c5fe880571aec3866fd808b6ab102a1141cc2c80d3b119304c69dfd",
+    "manifests/v2_100k/train_0052.jsonl": "9700eda5fdd4db3f0b293b9842202718fee47b09e4de8ac24f9e367862901805",
+    "manifests/v2_100k/train_0053.jsonl": "0bcd1057963625c8076b98c35fc72fcdac3f718022340d30460f371e0c066d89",
+    "manifests/v2_100k/train_0054.jsonl": "1d49cf82a9b0f1e6037caff57847b701ddf87e5e2cacef01278d7b42496e742f",
+    "manifests/v2_100k/train_0055.jsonl": "ff01e79cde533d77248671320c5ce35bccc483438a64b8eb5fb6769df0b9f70b",
+    "manifests/v2_100k/train_0056.jsonl": "55f57aebadea58d055b0a148e5195ab2b5e46bcb8b8dd0a09471afe1d27d5c02",
+    "manifests/v2_100k/train_0057.jsonl": "d8b72e802454457f92de5a24e8cd5369ff9237810bd4bf30d272660ce3efbdc5",
+    "manifests/v2_100k/train_0058.jsonl": "d73c62e321527d12aa0be0a9eb3c1f6b0ed17528f313f35a297e5e0afc0dac8f",
+    "manifests/v2_100k/train_0059.jsonl": "d3dce9b9c3bf00aabd8572bf12ae71d44b023adc846b575d421402e44e410c0f",
+    "manifests/v2_100k/train_0060.jsonl": "59d4beaeeb3c0ae856528b88cfe9e4a83ae9184b918ef7342f6095c00de40bc9",
+    "manifests/v2_100k/train_0061.jsonl": "168d4bfbb2fd8048aa1425c66c70ffd1165ff6d78203f4aac8fd835124af6be0",
+    "manifests/v2_100k/train_0062.jsonl": "5ef11f9264ca0f72977e2158860db299e37cfee37d745270f225360c45ac889c",
+    "manifests/v2_100k/train_0063.jsonl": "3dbc8c3bcbe7c94146789069baf6e2b2acd7f334472c6e519a54041b755d4c71",
+    "manifests/v2_100k/train_0064.jsonl": "fded1dfdca8f45430b0b781b7de98e0c1c144cdac21e7fe38e0b86d19a68edcc",
+    "manifests/v2_100k/train_0065.jsonl": "b3b03708b270271d637ef9cf3e8d60446afb878a004a483a4d9455becb0588de",
+    "manifests/v2_100k/train_0066.jsonl": "c4f39c70b9e4a8acd29b2a045e5824d0d60ac8a5a99a1698e556d92d1b659ed9",
+    "manifests/v2_100k/train_0067.jsonl": "28c8f01c676ba318c65d786ebaee43f10367b1a7bfc4ba5bbe09fe30f49e5647",
+    "manifests/v2_100k/train_0068.jsonl": "9479f0d9a9bd22900d322092e5927040f6a521a66d6ce9218def5416bae74425",
+    "manifests/v2_100k/train_0069.jsonl": "55857c6cd274464562a1e26ba6525bb2ee7009df6f6fc00318828e22b5864398",
+    "manifests/v2_100k/train_0070.jsonl": "f212b67f3d0322c70f8c2fe6cc030cbbcab5d355bb678fce34f290b4389abd79",
+    "manifests/v2_100k/train_0071.jsonl": "dd993c4a933ff6121ab6e6fdc3f1ca8b7765d5498a42422dfb62123d60253b58",
+    "manifests/v2_100k/train_0072.jsonl": "8ce037cccc13acdb44dcfb56d786644d1109dca990f8ceea447107f648ae9543",
+    "manifests/v2_100k/train_0073.jsonl": "3bdcbc749c961ca1062c4b53aa087ee1cbf9de1466988135b510eced4fceda83",
+    "manifests/v2_100k/train_0074.jsonl": "e2c00de686c48858535cf65faab87c56970b4c8380f270811696ff5ddaa203da",
+    "manifests/v2_100k/train_0075.jsonl": "9c1c9228734088e5ef4960199e4933028c7f51addd078e77cbd88c18bacee114",
+    "manifests/v2_100k/train_0076.jsonl": "f2c4fa36ca6764fcb3c9fd67e49f402e2de2672837442b3f8e1ae2e9398cbf67",
+    "manifests/v2_100k/train_0077.jsonl": "1dca517fe3c07bf34618628df5ef1bc0dc5805e8cbd36ffde03fe08fcdae451c",
+    "manifests/v2_100k/train_0078.jsonl": "21e55edd99e474bb68c414b23f4aa646019ef8b2c4a2d2c4ff556bf5729b26b9",
+    "manifests/v2_100k/train_0079.jsonl": "303db0f5eaea751bbfd7c6208393ac9dc35e46a0127c704b7a975a600983d479",
+    "manifests/v2_100k/train_0080.jsonl": "2db686031fc74eae07a3c70cf2f24e5565ff154184e8a373edb0579008095f9f",
+    "manifests/v2_100k/train_0081.jsonl": "0f5e160bd2511a26f710d016c09cfc9deefb8836f2ab8960d01bd9cd06bcb5e7",
+    "manifests/v2_100k/train_0082.jsonl": "a80a93de43887b6eae8efa2de0304d05e478e96fd128e197c390faa7850e5505",
+    "manifests/v2_100k/train_0083.jsonl": "4b6bd192b1d31a945101e011ba7f6eeefd88bbf76d086d5f27c91829feac0b9f",
+    "manifests/v2_100k/train_0084.jsonl": "cb9f45452a2a88235188427558b6396e618f5e1192edd81354ad03b09a5413dc",
+    "manifests/v2_100k/train_0085.jsonl": "8a231bd751150fa03ecb8fb9d91a3632b133ff744d46d36983625f9df81f27e0",
+    "manifests/v2_100k/train_0086.jsonl": "44004ea7e687ba59fbef78876c92268ae349944bf38bea70109bf8b37bf18195",
+    "manifests/v2_100k/train_0087.jsonl": "dd58eb17486cb6b797ad4928f522d054e4502f379056e13fb785086cb56ddaa7",
+    "manifests/v2_100k/train_0088.jsonl": "6120ef8bb2514cf3588d598945c1fb3f21e1f6344b482d0b87ecd9c7c8cc353c",
+    "manifests/v2_100k/train_0089.jsonl": "3bf3a4050f7391d0dc8183782e28f0469b79da9003d368318f0d716b65e8839e",
+    "manifests/v2_100k/train_0090.jsonl": "2b8c727d237f3f92d68625ea66bd45257dc0e05291e4fed9e517f622dd034a70",
+    "manifests/v2_100k/train_0091.jsonl": "520cf5a80dca72fc52a20941aa82140eb449e08271344c3b1a79284e3e574b02",
+    "manifests/v2_100k/train_0092.jsonl": "d6e905262c310f7cb47ce3681969703e0543523169149f2b3399aa9e83c3cd8d",
+    "manifests/v2_100k/train_0093.jsonl": "2acd105c9a3a1a99e51352caf15ac30615a04dacec20a5e1771bc3577567341b",
+    "manifests/v2_100k/train_0094.jsonl": "944b2bbb5679fdf5f060a6c3678b5a544811b849f0b1cdb914d66f972d5271ea",
+    "manifests/v2_100k/train_0095.jsonl": "11c63042f74fc3fcc419fff77ddb446802e51d7051558ffe01749854e7d206eb",
+    "manifests/v2_100k/train_0096.jsonl": "b8a7da419a408442575f26904bdc1c689c86f7a9773941df4581e90e64089554",
+    "manifests/v2_100k/train_0097.jsonl": "40695f517d7b8dcf3c13a7e4591bdf0b8edfb60bb4cc0bb61212b699bdaf558f",
+    "manifests/v2_100k/train_0098.jsonl": "7cc92a378bbc7d791cec88199735e86d604312d0128a16cf130fda52d67dc9f7",
+    "manifests/v2_100k/train_0099.jsonl": "6762c4920213811dd9404c9575c4764748b69a5864e5dec9c260bcd740838651",
+    "manifests/v2_100k/train_0100.jsonl": "36261183a4aa6448dfc26e03bbd9fe6997a6f9e0016fba942372f16babab7735",
+    "manifests/v2_100k/train_0101.jsonl": "f0ca7f9ce9c22073eced44b7f7e886c329b3ece8fbd26ebb59f6f2323876195a",
+    "manifests/v2_100k/train_0102.jsonl": "d6f4b6849eee1be97d26950e8031207519c83bb6f9c726f02c20b5b7a2e5ba5e",
+    "manifests/v2_100k/train_0103.jsonl": "6b31008c961af5e056d5373507e97497ed63458d4eea734ec0b8595fa6e75599",
+    "manifests/v2_100k/train_0104.jsonl": "b5cb7d069ad873c2ba8205a9200b37ce79b45a8ea40e679838ae7367568654a6",
+    "manifests/v2_100k/train_0105.jsonl": "a2713ca3ff2853c1781e85df38ddf1d50997d8992571e58944d6ab2355b3f237",
+    "manifests/v2_100k/train_0106.jsonl": "d7f9b18b9413fc5a64fed5234b1316a734a949602f47a6277155906794fb6997",
+    "manifests/v2_100k/train_0107.jsonl": "2672cbd40ba89b71f8067ba933de6b584f54dfd992f45a5643a9cf8b25c2f3ac",
+    "manifests/v2_100k/train_0108.jsonl": "dac4c533f0e508925f44d498514a4f15fa0bc9067a42b0e893d50e3a09a32f14",
+    "manifests/v2_100k/train_0109.jsonl": "16dd4cd9011558a51799ff6d6620d1ffd59b041e0cb6d80781b89969b9575777",
+    "manifests/v2_100k/train_0110.jsonl": "28899f878f5ebbfb85a06a9fff39e40a8ee0c801607298cd310f9224e1ccaf7a",
+    "manifests/v2_100k/train_0111.jsonl": "69849e545324110b6be5c76fdc32f5cce72f69196cc14025e6ccd7cb775f5aa2",
+    "manifests/v2_100k/train_0112.jsonl": "347f3ccc107d5d8b793176ae9a2bbc99658df68be2a9874eb3c19afc7285623e",
+    "manifests/v2_100k/train_0113.jsonl": "7bfe879200ce39b4d69884e1a013f86708166bb1d64d28f471fa3b6304ca7e4b",
+    "manifests/v2_100k/train_0114.jsonl": "9040a050e67dd21ae0eef74e94793196f9ddaa5cda93cc7f01f304d5e6af6384",
+    "manifests/v2_100k/train_0115.jsonl": "b9f75b0e3b4f4f9c54b59a867bc4ac8564931eac33a26d1a512353f1aced3da7",
+    "manifests/v2_100k/train_0116.jsonl": "f97a8460f1cfb241aa7653cda7b8260b318e46d46408f935566360e07cdea5f6",
+    "manifests/v2_100k/train_0117.jsonl": "cb259fcc35a5713d9e0e49b369055859699967704f81d2ffd833a22ab31fd1dd",
+    "manifests/v2_100k/train_0118.jsonl": "aa852d2e9d136172a91dcb702f8bdf0201abadc944676c45777f189a7c035d27",
+    "manifests/v2_100k/train_0119.jsonl": "9020135798a4f00f392526a53e4fe6b04c6ff3b58396fe966c029e603bedb9e2",
+    "manifests/v2_100k/train_0120.jsonl": "7948124662cfb7218601ff6d189014418d5e3a8bb452b16581bdbdcd0dfb6b7b",
+    "manifests/v2_100k/train_0121.jsonl": "2cf581454f17f549298d2f30c7f69a4a55be8ab4233a01540da1fe90c1832ed1",
+    "manifests/v2_100k/train_0122.jsonl": "d66688be7d5363128a8b369b8f76c174c927ff01c283fbba5e56a879a7925518",
+    "manifests/v2_100k/train_0123.jsonl": "44c5f1a72f8bc3a039de12cb0ccde620ca100804e8e77c927203492ce620ec4d",
+    "manifests/v2_100k/train_0124.jsonl": "57f659888da687c90567fdd74404e44c181f5febd665d976a8905e823d2c53ea",
+    "manifests/v2_100k/train_0125.jsonl": "e1ddcfb233522b402355064828e5f617341f65cc548ceca187ff39c8dd255bec",
+    "manifests/v2_100k/train_0126.jsonl": "21d6316045c4cbaa934ff654265bb7f986fef31ea75acc1b208b266e53dcc0d7",
+    "manifests/v2_100k/train_0127.jsonl": "f6711d8de8224180bdf30d3937bca0a39ce74f0c99377ab0e049352b3b46c85f",
+    "manifests/v2_100k/train_0128.jsonl": "124c557c14c29325679a3448df8fc398b6d5b4156942f25d58112c3460b0152b",
+    "manifests/v2_100k/train_0129.jsonl": "fecbe582f68a85e24a39f801670a081c7ee88e97a22cf182ef94a1fe7fea841f",
+    "manifests/v2_100k/train_0130.jsonl": "e4f805dbc0162fc5dbb66079bd2c68b19e0940e0ad3862ba63c2796aaeb15f76",
+    "manifests/v2_100k/train_0131.jsonl": "314f6555efe16475094a3ea00252d28058b42832c6b5b4326d11ac7d877ecbe5",
+    "manifests/v2_100k/train_0132.jsonl": "eb1678860ad330b0cb8643bdd5dd8de8271b55ae13edcb3603637b27daedb1de",
+    "manifests/v2_100k/train_0133.jsonl": "7247c4c27dea109226bea37829f4fa7b585df40dee92d86ff42ea8d0f1a7c845",
+    "manifests/v2_100k/train_0134.jsonl": "657e300391ca81b4d01db43c02004c6a142b31f486d3465ef1fdb547a3ced7be",
+    "manifests/v2_100k/train_0135.jsonl": "ad6c8e0a17757043ba7f60bc39d15b27197864fedc16db9cdfc01e16e14f5dde",
+    "manifests/v2_100k/train_0136.jsonl": "f78d0ceb19973a075de7b3d1a502594edaab9f068c1b19ef5167233a32519f69",
+    "manifests/v2_100k/train_0137.jsonl": "65979f97bbca19b79983f6ecf3d03715775852c13936cf7d5845b6bb239bbfe0",
+    "manifests/v2_100k/train_0138.jsonl": "e83e4fa2c171ba331b607f009252067bd0ed1e3821bc258aceee474c3a63b67d",
+    "manifests/v2_100k/train_0139.jsonl": "192712b8dbd9e1a51fb68a719c9105ff61585d80687863f40414b046fc1673fb",
+    "manifests/v2_100k/train_0140.jsonl": "ba3ad35c1a27e7f85bb67dcfc88dd5ebf5746afd222373af8bc7c5e0b1772ae7",
+    "manifests/v2_100k/train_0141.jsonl": "3a70b3235f57d7c1ba8a85dce7d106821c057319a769a7652b6b09b54160dda5",
+    "manifests/v2_100k/train_0142.jsonl": "0b892d374c58dc20c32ce33b9a274834e011dc6dee53719e5d5c41e7bb4f215c",
+    "manifests/v2_100k/train_0143.jsonl": "dd83a6315b7c2520082476ec3363361935048912bbaccb35033767f74bbde433",
+    "manifests/v2_100k/train_0144.jsonl": "d4ccc3c1e956d6ec758c87acb1764568194553c7a46a126dbdbdceb53afa6144",
+    "manifests/v2_100k/train_0145.jsonl": "72daf2de7f6ad8ccba4c839ba336f2fb815126f6abd5c30e903b6eb830f47fea",
+    "manifests/v2_100k/train_0146.jsonl": "9956a1ff02c20db22bdedaba62aba82097006564a74cc1311cb08e7a84bae7eb",
+    "manifests/v2_100k/train_0147.jsonl": "bf1861f7580d57d76dc213de2714e311053fdb4acea59ff520345c6b6daa4a21",
+    "manifests/v2_100k/train_0148.jsonl": "fd221a8e4f95ef36cc3e9d61fd459848443861bf9014701aac3a0fa9ad6f24b4",
+    "manifests/v2_100k/train_0149.jsonl": "66cf9abaa8614371ff9d5bc5f945e5cad8045eabc437a95e4954504f863336b0",
+    "manifests/v2_100k/train_0150.jsonl": "cfd136216291fe205d00ce9773df88875c79afd2748270d9f82e0418d85f7cec",
+    "manifests/v2_100k/train_0151.jsonl": "f54d49e41898bd7823528b6a9c33bd0ae93052349b76fe2bf5af5cb94eb29d69",
+    "manifests/v2_100k/train_0152.jsonl": "0d2533755876727e44b4ed9f1dd77199c9fcb3a9dc513dc6f692dc0ce086daf0",
+    "manifests/v2_100k/train_0153.jsonl": "cfd9532fcd2c9d47755d6b7a2a1107be7e8911a988fab54d15011c9ed3240102",
+    "manifests/v2_100k/train_0154.jsonl": "17eecf9dff4708f531a52470b5526d0e27ed0eae61093761d2360296c540ad45",
+    "manifests/v2_100k/train_0155.jsonl": "d696043ad01884765f622fff5bcd7da69119e058b7f20360807232833180d032",
+    "manifests/v2_100k/train_0156.jsonl": "c8810594b059755a3e37de0169b45339220c2312231bc33e8d4ae2bba1923657",
+    "manifests/v2_100k/train_0157.jsonl": "c42e020e74627f9432222a86de5fc3754e5b5aea3e144c274c0b781a97e6aec0",
+    "manifests/v2_100k/train_0158.jsonl": "fae8ff7ebc9291440577cfeaf75d470d753a36404a746d891b6196c9f9c8bf1a",
+    "manifests/v2_100k/train_0159.jsonl": "092f2820fe7caad03728e69a158c513394b87480454e252cd0cb28a3fa5bc629",
+    "manifests/v2_100k/train_0160.jsonl": "b3f6661a01a9ee0d55d49715d58206236507e55189bf40d0ccb05398566439b2",
+    "manifests/v2_100k/train_0161.jsonl": "bba7d020c7eac6f2822bd34029b2a05b3db9454fef82ec495e308e9e994cf06b",
+    "manifests/v2_100k/train_0162.jsonl": "851a734bd0905b495c4393cdaefbd28b4d5926c0efd6f8d6a6a6076d7ab11461",
+    "manifests/v2_100k/train_0163.jsonl": "88e1a0138dbce1989c934d6747af56c569360130ec905b771c0d8a9aeda52d36",
+    "manifests/v2_100k/train_0164.jsonl": "e2a2cf6729ed5fbb036d61076e027a42582618eca4c196994af8aa921c6f176e",
+    "manifests/v2_100k/train_0165.jsonl": "cdaefd051ad274fb46b843cabdff0cdd345a3b2e7398072da03a6f5d62015a5c",
+    "manifests/v2_100k/train_0166.jsonl": "934441a7ec8a89337d64a999e695a56671442029a798c3d4efa11917ac21728c",
+    "manifests/v2_100k/train_0167.jsonl": "dfd8d9bd88b01d532fa826894446d901bc0769d1f2890ec3ceade824cf8126ec",
+    "manifests/v2_100k/train_0168.jsonl": "98a5d5bc6e8d026051d5546fe8be7ec9c1e26931d21a228b9b5f1b2066f2d40b",
+    "manifests/v2_100k/train_0169.jsonl": "059bbfa030f2dc519a96b44127a6ce6113bf7a37a921d2a92fec4e413f0bad55",
+    "manifests/v2_100k/train_0170.jsonl": "62af01ed2d8f47daa9035e76e50bb7586ea1ac278c555303fea3ae771e8e16c4",
+    "manifests/v2_100k/train_0171.jsonl": "ca3d277e999fbb65282e0f4557689613b9a8fff8e0e17c26b6b3b76df4506209",
+    "manifests/v2_100k/train_0172.jsonl": "42c97bd72365b159ae6e0b0bce3b4e473bb0b15de9e7a45965547cf2e5ba5496",
+    "manifests/v2_100k/train_0173.jsonl": "b026aeb026a96019082e7ab0f077940e08d096376368eb200dfd98172ff0f75a",
+    "manifests/v2_100k/train_0174.jsonl": "7f0ba416eead7aa23edd0954bd0f1a88147d67ca79fda25b1e0dff92c309dd44",
+    "manifests/v2_100k/train_0175.jsonl": "6e3ca1eb567f5912f209f4f5e974513656e289cfc7820dc74f7a5012679daa3b",
+    "manifests/v2_100k/train_0176.jsonl": "a0c544db1cd5bf0e97d969eb08b1ac3312e02e6fab318bbdfe6420223e686a47",
+    "manifests/v2_100k/train_0177.jsonl": "aa1124a2e0c2cedd93dfba9b82050b12ab96a93c647224793b3cb28ccf977bd9",
+    "manifests/v2_100k/train_0178.jsonl": "10fb41652883d04818d70fcfea6f0596ff30961c7b8cc77998cacfddc06fee95",
+    "manifests/v2_100k/train_0179.jsonl": "e7cad17c273277012cc6ab1f8143cdb97d43200fdf84b1f6a76e917afcc8fc45",
+    "manifests/v2_100k/train_0180.jsonl": "a89bbcd5397e2aebddc8947a887d0fc93050a9893b65ee42f80c7782e1409f8e",
+    "manifests/v2_100k/train_0181.jsonl": "d4d4eb5a059a807c05f2391de2028b04337d5bbbdaa55c486724dc58ec38e9f2",
+    "manifests/v2_100k/train_0182.jsonl": "d0b304a19c8a3603752a841d7cf0c1c13b6be128f1574ee319b0a2e7f211e446",
+    "manifests/v2_100k/train_0183.jsonl": "2bfe90b603f1e1e1952fa8f5a8e5c3ab38dc558c5fc76196c2ef47cee3aeaecd",
+    "manifests/v2_100k/train_0184.jsonl": "577e3e99db7d4acf1a65abe14d430bf29788bb01f7f6e06a4d881e7684653902",
+    "manifests/v2_100k/train_0185.jsonl": "3ef07dddaf1bc99fe9011a0c77b2d4e39ffaf80a2311675fb4672eb14926192e",
+    "manifests/v2_100k/train_0186.jsonl": "dd8853edc3adbbbea7237d94ad6e1144adf85261265aeee833104d44070f7264",
+    "manifests/v2_100k/train_0187.jsonl": "11c2d49b179af14f1390b72d37bd552d2020af13cf09665cae2631ea75ec2dc6",
+    "manifests/v2_100k/train_0188.jsonl": "5628046610ca6198989a3c48bc5a36bac8c80a7294725cdbeb6a32451cf22ed9",
+    "manifests/v2_100k/train_0189.jsonl": "3cdd02134c4507ed6c95a8a17fc4c5f36bb7e8bb2286ceebfa1aa138c297c00f",
+    "manifests/v2_100k/train_0190.jsonl": "aa689fe4cf093b095fa21dd4135c94fec5a0e68603ad4cbd578e3d157145b294",
+    "manifests/v2_100k/train_0191.jsonl": "97b82150f41b5587ed494d3539a7c7d67b0d6d57c5ffa6cc1af27a7798249bfd",
+    "manifests/v2_100k/train_0192.jsonl": "c34fe0319c9045aa8cf667f4442f1e61665f61ef01d16a8585b52367c1d9b4b0",
+    "manifests/v2_100k/train_0193.jsonl": "7c9d92c409735f33f9683c260b30d36495ca3fae6696bd7dd0f4ecbc35939461",
+    "manifests/v2_100k/train_0194.jsonl": "bef8b304d1f5e82c76bc8780844d0eb5a7fb9801b0d7331c17748efd822c9ef0",
+    "manifests/v2_100k/train_0195.jsonl": "f69df8322064445333805619440227064a73c761e6b19070ccb83ab8d04f3f9b",
+    "manifests/v2_100k/validation_0000.jsonl": "72803404609c030f9b7b1510134f53f9e7c139dc4c13a8fab4188006f5e8a1cc",
+    "manifests/v2_100k/validation_0001.jsonl": "779f21aa0c6bbadcea90f305c65e1c26fc264c1b7085c727ff8bfd1ca925e55e",
+    "manifests/v2_100k/validation_0002.jsonl": "b6091b4499749a11d35d371b4451848bdeb403a1baeead891fd0dd0acb829164",
+    "manifests/v2_100k/validation_0003.jsonl": "6e0ab738b7fdcd60c502e71f4a5c11f3ee3adbecaa66ab7ee66398eb632ea58a",
+    "manifests/v2_100k/validation_0004.jsonl": "aeb9ff096e061904e488f320b84d21255160861a42fd954cfa64c68dbc1da2f3",
+    "manifests/v2_100k/validation_0005.jsonl": "e3efc85c1df9ae2d854ae07d031ea900265017e4fe228510b4c6678ffd09b585",
+    "manifests/v2_100k/validation_0006.jsonl": "53d7e559d3515dc659bf8e1e396aeb6f847dfd32806eae4948ebbb6bafbd44ca",
+    "manifests/v2_100k/validation_0007.jsonl": "3531b41cf1da2caccae76fb3280630829126170e0d91f037f17f997a32a54a8f",
+    "manifests/v2_100k/validation_0008.jsonl": "ef7e2ddf64f12f9c148fea51a3cb418a783efbc5bde19485a1312c5dd4c33171",
+    "manifests/v2_100k/validation_0009.jsonl": "46385f9b67de829b8b152c91aef55df0824069164edbe286dcc2765040e4fe51",
+    "manifests/v2_100k/validation_0010.jsonl": "d74c8dcba56d31c8af3be445343dfa9ec8b4badd95197cc2174d846bbf2d559a",
+    "manifests/v2_100k/validation_0011.jsonl": "68cb04b585da0b0b8e8e998a5682c97d3e99e3018c38a4924f2f4fd7814333d5",
+    "manifests/v2_100k/validation_0012.jsonl": "3764fd4df797b2cc24fb8dc360e0ca2f1cb413905f85b85951674df826f28d9b",
+    "manifests/v2_100k/validation_0013.jsonl": "5c0ab0c1f819ec129cd16751b9573f42b51ebdc1eb0a43b137e28de5a30f5d13",
+    "manifests/v2_100k/validation_0014.jsonl": "3e1e289f6c8fd35fa5a41db57b5cd94a247832a019c13feea405f4cfb096cb8f",
+    "manifests/v2_100k/validation_0015.jsonl": "9b57161c5fbea7711c5b6d2276c0704aba5ba08584a43ba8be8f00fdf2fb8df1",
+    "manifests/v2_100k/validation_0016.jsonl": "f4b259e76139b8011784e796417bdbc3de4d886708501d1686b53a385eb6a6d2",
+    "manifests/v2_100k/validation_0017.jsonl": "c6b213e7d857e8da3f9b36485b36d3c15fa65281d6d2bf6aa1b69e9a8b348953",
+    "manifests/v2_100k/validation_0018.jsonl": "a83831274f245917f349acf0af28a8f70d5d582709459ce6ba4866fe0d170a2c",
+    "manifests/v2_100k/validation_0019.jsonl": "54f7161354c1ecc2ce00fb4d72e6349ab8000a5632b30dff6919beeff0890d25",
+    "manifests/v2_100k/validation_0020.jsonl": "c6aaba64c8d67008d87ef96f795119e4bd10413442fa3c7a4a75c5c773c3ed09",
+    "manifests/v2_100k/validation_0021.jsonl": "bbfe9cde5219cc3d94c19815fc0fb93f808fb66b7113cb0f8c983a5d812b5f3e",
+    "manifests/v2_100k/sealed_test_0000.jsonl": "70a69b7fc3c05c51b0e946458ddd3c12dee7a9b97c2d02ed3c8b2de37f3ed19d",
+    "manifests/v2_100k/sealed_test_0001.jsonl": "434ee5a9bd716f9a54a1862d1236e11d59c17eaca6b8f090a4613ac0204a4a5b",
+    "manifests/v2_100k/sealed_test_0002.jsonl": "734f5b8a5fa89934f4984174efdbf8efd33e071d526de72c2280dfd528c4519c",
+    "manifests/v2_100k/sealed_test_0003.jsonl": "76b3a523136a83d7da7474b22fa54471d6e8cacd2ca90f231ff3c032a0d3ce3c",
+    "manifests/v2_100k/sealed_test_0004.jsonl": "0caee03b1658a20dfbfd450915611a5d443a3701e0e3aa5f24603c8719a7d87a",
+    "manifests/v2_100k/sealed_test_0005.jsonl": "fce5519cb9266c2c81036392e1b3f811e95496f2de94bba15f4b3357743c6be8",
+    "manifests/v2_100k/sealed_test_0006.jsonl": "06a8b0d1722987206720b2c8922bfcedab2378da36ae111a947af9ae4fac8ac2",
+    "manifests/v2_100k/sealed_test_0007.jsonl": "989f5e7d6d832c1185998550b094ee27737f3374f51edd9a585cdceea7ea052f",
+    "manifests/v2_100k/sealed_test_0008.jsonl": "92016840c4ae251a7d2b90d77592813a420b15d5ae508ae5d830ab3f35a97dec",
+    "manifests/v2_100k/sealed_test_0009.jsonl": "fd636ff3f91eee58d224a977163faa4203d13043a12eee12fa7a617eb9f15144"
+  },
+  "stages": {
+    "train": [
+      {
+        "manifest": "manifests/v2_100k/train_0000.jsonl",
+        "count": 512,
+        "first_design_index": 0,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0001.jsonl",
+        "count": 512,
+        "first_design_index": 512,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0002.jsonl",
+        "count": 512,
+        "first_design_index": 1024,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0003.jsonl",
+        "count": 512,
+        "first_design_index": 1536,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0004.jsonl",
+        "count": 512,
+        "first_design_index": 2048,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0005.jsonl",
+        "count": 512,
+        "first_design_index": 2560,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0006.jsonl",
+        "count": 512,
+        "first_design_index": 3072,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0007.jsonl",
+        "count": 512,
+        "first_design_index": 3584,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0008.jsonl",
+        "count": 512,
+        "first_design_index": 4096,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0009.jsonl",
+        "count": 512,
+        "first_design_index": 4608,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0010.jsonl",
+        "count": 512,
+        "first_design_index": 5120,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0011.jsonl",
+        "count": 512,
+        "first_design_index": 5632,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0012.jsonl",
+        "count": 512,
+        "first_design_index": 6144,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0013.jsonl",
+        "count": 512,
+        "first_design_index": 6656,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0014.jsonl",
+        "count": 512,
+        "first_design_index": 7168,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0015.jsonl",
+        "count": 512,
+        "first_design_index": 7680,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0016.jsonl",
+        "count": 512,
+        "first_design_index": 8192,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0017.jsonl",
+        "count": 512,
+        "first_design_index": 8704,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0018.jsonl",
+        "count": 512,
+        "first_design_index": 9216,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0019.jsonl",
+        "count": 512,
+        "first_design_index": 9728,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0020.jsonl",
+        "count": 512,
+        "first_design_index": 10240,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0021.jsonl",
+        "count": 512,
+        "first_design_index": 10752,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0022.jsonl",
+        "count": 512,
+        "first_design_index": 11264,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0023.jsonl",
+        "count": 512,
+        "first_design_index": 11776,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0024.jsonl",
+        "count": 512,
+        "first_design_index": 12288,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0025.jsonl",
+        "count": 512,
+        "first_design_index": 12800,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0026.jsonl",
+        "count": 512,
+        "first_design_index": 13312,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0027.jsonl",
+        "count": 512,
+        "first_design_index": 13824,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0028.jsonl",
+        "count": 512,
+        "first_design_index": 14336,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0029.jsonl",
+        "count": 512,
+        "first_design_index": 14848,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0030.jsonl",
+        "count": 512,
+        "first_design_index": 15360,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0031.jsonl",
+        "count": 512,
+        "first_design_index": 15872,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0032.jsonl",
+        "count": 512,
+        "first_design_index": 16384,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0033.jsonl",
+        "count": 512,
+        "first_design_index": 16896,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0034.jsonl",
+        "count": 512,
+        "first_design_index": 17408,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0035.jsonl",
+        "count": 512,
+        "first_design_index": 17920,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0036.jsonl",
+        "count": 512,
+        "first_design_index": 18432,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0037.jsonl",
+        "count": 512,
+        "first_design_index": 18944,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0038.jsonl",
+        "count": 512,
+        "first_design_index": 19456,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0039.jsonl",
+        "count": 512,
+        "first_design_index": 19968,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0040.jsonl",
+        "count": 512,
+        "first_design_index": 20480,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0041.jsonl",
+        "count": 512,
+        "first_design_index": 20992,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0042.jsonl",
+        "count": 512,
+        "first_design_index": 21504,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0043.jsonl",
+        "count": 512,
+        "first_design_index": 22016,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0044.jsonl",
+        "count": 512,
+        "first_design_index": 22528,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0045.jsonl",
+        "count": 512,
+        "first_design_index": 23040,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0046.jsonl",
+        "count": 512,
+        "first_design_index": 23552,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0047.jsonl",
+        "count": 512,
+        "first_design_index": 24064,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0048.jsonl",
+        "count": 512,
+        "first_design_index": 24576,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0049.jsonl",
+        "count": 512,
+        "first_design_index": 25088,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0050.jsonl",
+        "count": 512,
+        "first_design_index": 25600,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0051.jsonl",
+        "count": 512,
+        "first_design_index": 26112,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0052.jsonl",
+        "count": 512,
+        "first_design_index": 26624,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0053.jsonl",
+        "count": 512,
+        "first_design_index": 27136,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0054.jsonl",
+        "count": 512,
+        "first_design_index": 27648,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0055.jsonl",
+        "count": 512,
+        "first_design_index": 28160,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0056.jsonl",
+        "count": 512,
+        "first_design_index": 28672,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0057.jsonl",
+        "count": 512,
+        "first_design_index": 29184,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0058.jsonl",
+        "count": 512,
+        "first_design_index": 29696,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0059.jsonl",
+        "count": 512,
+        "first_design_index": 30208,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0060.jsonl",
+        "count": 512,
+        "first_design_index": 30720,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0061.jsonl",
+        "count": 512,
+        "first_design_index": 31232,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0062.jsonl",
+        "count": 512,
+        "first_design_index": 31744,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0063.jsonl",
+        "count": 512,
+        "first_design_index": 32256,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0064.jsonl",
+        "count": 512,
+        "first_design_index": 32768,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0065.jsonl",
+        "count": 512,
+        "first_design_index": 33280,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0066.jsonl",
+        "count": 512,
+        "first_design_index": 33792,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0067.jsonl",
+        "count": 512,
+        "first_design_index": 34304,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0068.jsonl",
+        "count": 512,
+        "first_design_index": 34816,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0069.jsonl",
+        "count": 512,
+        "first_design_index": 35328,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0070.jsonl",
+        "count": 512,
+        "first_design_index": 35840,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0071.jsonl",
+        "count": 512,
+        "first_design_index": 36352,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0072.jsonl",
+        "count": 512,
+        "first_design_index": 36864,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0073.jsonl",
+        "count": 512,
+        "first_design_index": 37376,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0074.jsonl",
+        "count": 512,
+        "first_design_index": 37888,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0075.jsonl",
+        "count": 512,
+        "first_design_index": 38400,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0076.jsonl",
+        "count": 512,
+        "first_design_index": 38912,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0077.jsonl",
+        "count": 512,
+        "first_design_index": 39424,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0078.jsonl",
+        "count": 512,
+        "first_design_index": 39936,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0079.jsonl",
+        "count": 512,
+        "first_design_index": 40448,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0080.jsonl",
+        "count": 512,
+        "first_design_index": 40960,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0081.jsonl",
+        "count": 512,
+        "first_design_index": 41472,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0082.jsonl",
+        "count": 512,
+        "first_design_index": 41984,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0083.jsonl",
+        "count": 512,
+        "first_design_index": 42496,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0084.jsonl",
+        "count": 512,
+        "first_design_index": 43008,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0085.jsonl",
+        "count": 512,
+        "first_design_index": 43520,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0086.jsonl",
+        "count": 512,
+        "first_design_index": 44032,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0087.jsonl",
+        "count": 512,
+        "first_design_index": 44544,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0088.jsonl",
+        "count": 512,
+        "first_design_index": 45056,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0089.jsonl",
+        "count": 512,
+        "first_design_index": 45568,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0090.jsonl",
+        "count": 512,
+        "first_design_index": 46080,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0091.jsonl",
+        "count": 512,
+        "first_design_index": 46592,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0092.jsonl",
+        "count": 512,
+        "first_design_index": 47104,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0093.jsonl",
+        "count": 512,
+        "first_design_index": 47616,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0094.jsonl",
+        "count": 512,
+        "first_design_index": 48128,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0095.jsonl",
+        "count": 512,
+        "first_design_index": 48640,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0096.jsonl",
+        "count": 512,
+        "first_design_index": 49152,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0097.jsonl",
+        "count": 512,
+        "first_design_index": 49664,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0098.jsonl",
+        "count": 512,
+        "first_design_index": 50176,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0099.jsonl",
+        "count": 512,
+        "first_design_index": 50688,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0100.jsonl",
+        "count": 512,
+        "first_design_index": 51200,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0101.jsonl",
+        "count": 512,
+        "first_design_index": 51712,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0102.jsonl",
+        "count": 512,
+        "first_design_index": 52224,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0103.jsonl",
+        "count": 512,
+        "first_design_index": 52736,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0104.jsonl",
+        "count": 512,
+        "first_design_index": 53248,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0105.jsonl",
+        "count": 512,
+        "first_design_index": 53760,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0106.jsonl",
+        "count": 512,
+        "first_design_index": 54272,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0107.jsonl",
+        "count": 512,
+        "first_design_index": 54784,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0108.jsonl",
+        "count": 512,
+        "first_design_index": 55296,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0109.jsonl",
+        "count": 512,
+        "first_design_index": 55808,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0110.jsonl",
+        "count": 512,
+        "first_design_index": 56320,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0111.jsonl",
+        "count": 512,
+        "first_design_index": 56832,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0112.jsonl",
+        "count": 512,
+        "first_design_index": 57344,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0113.jsonl",
+        "count": 512,
+        "first_design_index": 57856,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0114.jsonl",
+        "count": 512,
+        "first_design_index": 58368,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0115.jsonl",
+        "count": 512,
+        "first_design_index": 58880,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0116.jsonl",
+        "count": 512,
+        "first_design_index": 59392,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0117.jsonl",
+        "count": 512,
+        "first_design_index": 59904,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0118.jsonl",
+        "count": 512,
+        "first_design_index": 60416,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0119.jsonl",
+        "count": 512,
+        "first_design_index": 60928,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0120.jsonl",
+        "count": 512,
+        "first_design_index": 61440,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0121.jsonl",
+        "count": 512,
+        "first_design_index": 61952,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0122.jsonl",
+        "count": 512,
+        "first_design_index": 62464,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0123.jsonl",
+        "count": 512,
+        "first_design_index": 62976,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0124.jsonl",
+        "count": 512,
+        "first_design_index": 63488,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0125.jsonl",
+        "count": 512,
+        "first_design_index": 64000,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0126.jsonl",
+        "count": 512,
+        "first_design_index": 64512,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0127.jsonl",
+        "count": 512,
+        "first_design_index": 65024,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0128.jsonl",
+        "count": 512,
+        "first_design_index": 65536,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0129.jsonl",
+        "count": 512,
+        "first_design_index": 66048,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0130.jsonl",
+        "count": 512,
+        "first_design_index": 66560,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0131.jsonl",
+        "count": 512,
+        "first_design_index": 67072,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0132.jsonl",
+        "count": 512,
+        "first_design_index": 67584,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0133.jsonl",
+        "count": 512,
+        "first_design_index": 68096,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0134.jsonl",
+        "count": 512,
+        "first_design_index": 68608,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0135.jsonl",
+        "count": 512,
+        "first_design_index": 69120,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0136.jsonl",
+        "count": 512,
+        "first_design_index": 69632,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0137.jsonl",
+        "count": 512,
+        "first_design_index": 70144,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0138.jsonl",
+        "count": 512,
+        "first_design_index": 70656,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0139.jsonl",
+        "count": 512,
+        "first_design_index": 71168,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0140.jsonl",
+        "count": 512,
+        "first_design_index": 71680,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0141.jsonl",
+        "count": 512,
+        "first_design_index": 72192,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0142.jsonl",
+        "count": 512,
+        "first_design_index": 72704,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0143.jsonl",
+        "count": 512,
+        "first_design_index": 73216,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0144.jsonl",
+        "count": 512,
+        "first_design_index": 73728,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0145.jsonl",
+        "count": 512,
+        "first_design_index": 74240,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0146.jsonl",
+        "count": 512,
+        "first_design_index": 74752,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0147.jsonl",
+        "count": 512,
+        "first_design_index": 75264,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0148.jsonl",
+        "count": 512,
+        "first_design_index": 75776,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0149.jsonl",
+        "count": 512,
+        "first_design_index": 76288,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0150.jsonl",
+        "count": 512,
+        "first_design_index": 76800,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0151.jsonl",
+        "count": 512,
+        "first_design_index": 77312,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0152.jsonl",
+        "count": 512,
+        "first_design_index": 77824,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0153.jsonl",
+        "count": 512,
+        "first_design_index": 78336,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0154.jsonl",
+        "count": 512,
+        "first_design_index": 78848,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0155.jsonl",
+        "count": 512,
+        "first_design_index": 79360,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0156.jsonl",
+        "count": 512,
+        "first_design_index": 79872,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0157.jsonl",
+        "count": 512,
+        "first_design_index": 80384,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0158.jsonl",
+        "count": 512,
+        "first_design_index": 80896,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0159.jsonl",
+        "count": 512,
+        "first_design_index": 81408,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0160.jsonl",
+        "count": 512,
+        "first_design_index": 81920,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0161.jsonl",
+        "count": 512,
+        "first_design_index": 82432,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0162.jsonl",
+        "count": 512,
+        "first_design_index": 82944,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0163.jsonl",
+        "count": 512,
+        "first_design_index": 83456,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0164.jsonl",
+        "count": 512,
+        "first_design_index": 83968,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0165.jsonl",
+        "count": 512,
+        "first_design_index": 84480,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0166.jsonl",
+        "count": 512,
+        "first_design_index": 84992,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0167.jsonl",
+        "count": 512,
+        "first_design_index": 85504,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0168.jsonl",
+        "count": 512,
+        "first_design_index": 86016,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0169.jsonl",
+        "count": 512,
+        "first_design_index": 86528,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0170.jsonl",
+        "count": 512,
+        "first_design_index": 87040,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0171.jsonl",
+        "count": 512,
+        "first_design_index": 87552,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0172.jsonl",
+        "count": 512,
+        "first_design_index": 88064,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0173.jsonl",
+        "count": 512,
+        "first_design_index": 88576,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0174.jsonl",
+        "count": 512,
+        "first_design_index": 89088,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0175.jsonl",
+        "count": 512,
+        "first_design_index": 89600,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0176.jsonl",
+        "count": 512,
+        "first_design_index": 90112,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0177.jsonl",
+        "count": 512,
+        "first_design_index": 90624,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0178.jsonl",
+        "count": 512,
+        "first_design_index": 91136,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0179.jsonl",
+        "count": 512,
+        "first_design_index": 91648,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0180.jsonl",
+        "count": 512,
+        "first_design_index": 92160,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0181.jsonl",
+        "count": 512,
+        "first_design_index": 92672,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0182.jsonl",
+        "count": 512,
+        "first_design_index": 93184,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0183.jsonl",
+        "count": 512,
+        "first_design_index": 93696,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0184.jsonl",
+        "count": 512,
+        "first_design_index": 94208,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0185.jsonl",
+        "count": 512,
+        "first_design_index": 94720,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0186.jsonl",
+        "count": 512,
+        "first_design_index": 95232,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0187.jsonl",
+        "count": 512,
+        "first_design_index": 95744,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0188.jsonl",
+        "count": 512,
+        "first_design_index": 96256,
+        "reserve": true
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0189.jsonl",
+        "count": 512,
+        "first_design_index": 96768,
+        "reserve": true
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0190.jsonl",
+        "count": 512,
+        "first_design_index": 97280,
+        "reserve": true
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0191.jsonl",
+        "count": 512,
+        "first_design_index": 97792,
+        "reserve": true
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0192.jsonl",
+        "count": 512,
+        "first_design_index": 98304,
+        "reserve": true
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0193.jsonl",
+        "count": 512,
+        "first_design_index": 98816,
+        "reserve": true
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0194.jsonl",
+        "count": 512,
+        "first_design_index": 99328,
+        "reserve": true
+      },
+      {
+        "manifest": "manifests/v2_100k/train_0195.jsonl",
+        "count": 160,
+        "first_design_index": 99840,
+        "reserve": true
+      }
+    ],
+    "validation": [
+      {
+        "manifest": "manifests/v2_100k/validation_0000.jsonl",
+        "count": 512,
+        "first_design_index": 0,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0001.jsonl",
+        "count": 512,
+        "first_design_index": 512,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0002.jsonl",
+        "count": 512,
+        "first_design_index": 1024,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0003.jsonl",
+        "count": 512,
+        "first_design_index": 1536,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0004.jsonl",
+        "count": 512,
+        "first_design_index": 2048,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0005.jsonl",
+        "count": 512,
+        "first_design_index": 2560,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0006.jsonl",
+        "count": 512,
+        "first_design_index": 3072,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0007.jsonl",
+        "count": 512,
+        "first_design_index": 3584,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0008.jsonl",
+        "count": 512,
+        "first_design_index": 4096,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0009.jsonl",
+        "count": 512,
+        "first_design_index": 4608,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0010.jsonl",
+        "count": 512,
+        "first_design_index": 5120,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0011.jsonl",
+        "count": 512,
+        "first_design_index": 5632,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0012.jsonl",
+        "count": 512,
+        "first_design_index": 6144,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0013.jsonl",
+        "count": 512,
+        "first_design_index": 6656,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0014.jsonl",
+        "count": 512,
+        "first_design_index": 7168,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0015.jsonl",
+        "count": 512,
+        "first_design_index": 7680,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0016.jsonl",
+        "count": 512,
+        "first_design_index": 8192,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0017.jsonl",
+        "count": 512,
+        "first_design_index": 8704,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0018.jsonl",
+        "count": 512,
+        "first_design_index": 9216,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0019.jsonl",
+        "count": 512,
+        "first_design_index": 9728,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0020.jsonl",
+        "count": 512,
+        "first_design_index": 10240,
+        "reserve": true
+      },
+      {
+        "manifest": "manifests/v2_100k/validation_0021.jsonl",
+        "count": 272,
+        "first_design_index": 10752,
+        "reserve": true
+      }
+    ],
+    "sealed_test": [
+      {
+        "manifest": "manifests/v2_100k/sealed_test_0000.jsonl",
+        "count": 512,
+        "first_design_index": 0,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/sealed_test_0001.jsonl",
+        "count": 512,
+        "first_design_index": 512,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/sealed_test_0002.jsonl",
+        "count": 512,
+        "first_design_index": 1024,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/sealed_test_0003.jsonl",
+        "count": 512,
+        "first_design_index": 1536,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/sealed_test_0004.jsonl",
+        "count": 512,
+        "first_design_index": 2048,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/sealed_test_0005.jsonl",
+        "count": 512,
+        "first_design_index": 2560,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/sealed_test_0006.jsonl",
+        "count": 512,
+        "first_design_index": 3072,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/sealed_test_0007.jsonl",
+        "count": 512,
+        "first_design_index": 3584,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/sealed_test_0008.jsonl",
+        "count": 512,
+        "first_design_index": 4096,
+        "reserve": false
+      },
+      {
+        "manifest": "manifests/v2_100k/sealed_test_0009.jsonl",
+        "count": 392,
+        "first_design_index": 4608,
+        "reserve": false
+      }
+    ]
+  },
+  "batches": [
+    {
+      "split": "train",
+      "primary_new": 95904,
+      "finite_reserves": 4096,
+      "counts": {
+        "broad": 76724,
+        "fixed": 4795,
+        "boundary": 9590,
+        "continuous_ms": 4795,
+        "reserve_broad": 4096
+      },
+      "design_seed": 2026100401,
+      "base2_draw_count": 131072,
+      "used_prefix_count": 100000,
+      "method": "scrambled Sobol prefix plus declared train view/boundary mappings; NOT a balanced global Sobol net"
+    },
+    {
+      "split": "validation",
+      "primary_new": 10000,
+      "finite_reserves": 1024,
+      "counts": {
+        "broad": 10000,
+        "reserve_broad": 1024
+      },
+      "design_seed": 2026100402,
+      "base2_draw_count": 16384,
+      "used_prefix_count": 11024,
+      "method": "scrambled Sobol prefix plus declared train view/boundary mappings; NOT a balanced global Sobol net"
+    },
+    {
+      "split": "sealed_test",
+      "primary_new": 5000,
+      "finite_reserves": 0,
+      "counts": {
+        "broad": 5000
+      },
+      "design_seed": 2026100403,
+      "base2_draw_count": 8192,
+      "used_prefix_count": 5000,
+      "method": "scrambled Sobol prefix plus declared train view/boundary mappings; NOT a balanced global Sobol net"
+    }
+  ],
+  "classifier": {
+    "threshold": 0.31,
+    "positive_if": "original interpolated volume-mean xHI(5.9) < threshold",
+    "negative_histories_retained": true
+  },
+  "deduplication": {
+    "exact_cross_split_collisions": 0,
+    "normalized_rounded_12_digit_collisions": 0,
+    "checked_against_all_v1_designs": true
+  },
+  "sealed_labels_generation_authorized": false,
+  "reserves_policy": "Frozen finite independent candidates used only after primary attempts, original denominator/failures retained; stop when target qualified count reached; no infinite replacement."
+}

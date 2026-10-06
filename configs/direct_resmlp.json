@@ -1,0 +1,11 @@
+{
+  "decoder": "direct",
+  "enabled": true,
+  "production_accepted": false,
+  "architecture": {
+    "width": 256,
+    "hidden": 512,
+    "blocks": 4,
+    "residual_scale": 0.5
+  }
+}

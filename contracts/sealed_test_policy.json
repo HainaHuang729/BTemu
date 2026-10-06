@@ -1,0 +1,33 @@
+{
+  "generation_authorized": false,
+  "generation_approval_reference": null,
+  "read_authorized": false,
+  "read_approval_reference": null,
+  "parameter_design_access": true,
+  "design": "manifests/sealed_test_design.jsonl",
+  "original_denominator": 1024,
+  "label_count": 0,
+  "model_freeze_record": "artifacts/scientific_model_freeze.json",
+  "public_key_file": null,
+  "public_key_fingerprint": null,
+  "encryption": "GnuPG public-key encryption; private key must be held outside this project/development runtime",
+  "storage": "sealed_store; ciphertext labels plus encrypted native logs; mode 0700 temporary plaintext removed at worker exit",
+  "public_receipt_fields": [
+    "sample_id",
+    "attempt_id",
+    "split",
+    "simulation_status",
+    "exit_code",
+    "ciphertext_sha256",
+    "ciphertext_bytes",
+    "wall_seconds",
+    "allocation_core_hours"
+  ],
+  "developer_loader": "reject sealed split/path/extensions before label reads; no automatic glob",
+  "early_generation": false,
+  "unseal_event_log": "results/unseal_events.jsonl",
+  "no_unseal_implementation_this_round": true,
+  "known_limit": "filesystem mode alone does not isolate same-UID access; require external key holder and approved runtime isolation before generation",
+  "isolation_approved": false,
+  "isolation_approval_reference": null
+}

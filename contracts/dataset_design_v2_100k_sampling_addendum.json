@@ -1,0 +1,73 @@
+{
+  "dataset_design_sha256": "602db9ed42aa308dc5899273ad6639c15e05d545ab043033ceb9d4760f10b2e5",
+  "parameter_order": [
+    "F_STAR10",
+    "ALPHA_STAR",
+    "F_ESC10",
+    "ALPHA_ESC",
+    "M_TURN",
+    "t_STAR",
+    "L_X",
+    "NU_X_THRESH",
+    "KP_h_Mpc",
+    "MS"
+  ],
+  "parameter_units": {
+    "F_STAR10": "dimensionless",
+    "ALPHA_STAR": "dimensionless",
+    "F_ESC10": "dimensionless",
+    "ALPHA_ESC": "dimensionless",
+    "M_TURN": "log10(Msun)",
+    "t_STAR": "dimensionless",
+    "L_X": "log10(erg/s per Msun/yr)",
+    "NU_X_THRESH": "eV",
+    "KP_h_Mpc": "h/Mpc",
+    "MS": "dimensionless"
+  },
+  "prior_support_reference": {
+    "F_STAR10": [
+      -3.0,
+      0.0
+    ],
+    "ALPHA_STAR": [
+      -0.5,
+      1.0
+    ],
+    "F_ESC10": [
+      -3.0,
+      0.0
+    ],
+    "ALPHA_ESC": [
+      -1.0,
+      0.5
+    ],
+    "M_TURN": [
+      8.0,
+      11.0
+    ],
+    "t_STAR": [
+      0.01,
+      1.0
+    ],
+    "L_X": [
+      38.0,
+      42.0
+    ],
+    "NU_X_THRESH": [
+      100.0,
+      1500.0
+    ],
+    "KP_h_Mpc": [
+      1.0,
+      30.0
+    ],
+    "MS": [
+      0.5,
+      4.0
+    ]
+  },
+  "training_distribution": "Uniform stored-coordinate Sobol prefixes plus declared view/boundary mappings; not a scientific prior; not a balanced full Sobol net. No double log10.",
+  "design_seeds_are_not_IC_or_model_initialization_seeds": true,
+  "classifier_threshold_does_not_modify_prior": true,
+  "original_sampler_mapping": "Existing exact theta_from_astro preserves ETA_STAR transformation/Jacobian semantics; canonical design uses F_STAR10 stored log coordinate."
+}

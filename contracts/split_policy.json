@@ -1,0 +1,27 @@
+{
+  "version": "shared10d_data_v1",
+  "design_sha256": "c854838ee81716a51f54fa571c5a19a991fd63694f2f4eb268fbc3c14cb5d192",
+  "counts": {
+    "train": 4096,
+    "validation": 512,
+    "sealed_test": 1024,
+    "preflight": 12,
+    "challenge_development": 24
+  },
+  "frozen": true,
+  "old_448": "train only, preserved exact IDs/coordinates",
+  "grouping": "physical tuple and explicit PL/perturbation family; NOT shared IC seed",
+  "all_IC_extensions_same_family": true,
+  "future_refinement": "new train-only design version; existing validation/test unchanged",
+  "duplicate_rounding": "12 decimals in prior-normalized coordinates",
+  "same_point_repeats": "preflight only; not independent samples",
+  "resampling_failed_points": false,
+  "test_backups": {
+    "enabled": false,
+    "original_denominator": 1024,
+    "max_infrastructure_retries_proposal": 1,
+    "numerical_retries": 0,
+    "backups_if_later_authorized": "separate prespecified supplementary sample, never replaces original denominator"
+  },
+  "legacy_random_split_allowed_for_v1": false
+}

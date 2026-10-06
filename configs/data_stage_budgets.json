@@ -1,0 +1,141 @@
+{
+  "authorized": false,
+  "approval_reference": "user_explicit_execution_authorization_20260928_batch1",
+  "max_evaluations": 494,
+  "science_contract_hash": "2effb28af618d47c31dde218a6d3b89aedd59a208dc5814dcc5c69f8c05150d9",
+  "dataset_design_sha256": "c854838ee81716a51f54fa571c5a19a991fd63694f2f4eb268fbc3c14cb5d192",
+  "selected_native_contract_sha256": "8ec21d45c06293126cd4a7bc43fe59f9442aa7eb07dcd16b565b0a21b7a4ffb4",
+  "allowed_partition": "chpc",
+  "allowed_account": "tkcastrosim",
+  "max_concurrent_tasks": 8,
+  "stages": {
+    "preflight": {
+      "authorized": true,
+      "max_attempts": 14,
+      "max_retry_attempts": 2,
+      "max_retries_per_sample": 1,
+      "max_reserved_core_hours": 384,
+      "cpus": 16,
+      "memory_MiB": 16384,
+      "wall_seconds": 7200,
+      "max_concurrent": 1,
+      "manifests": [
+        "manifests/preflight.jsonl"
+      ],
+      "proposed_unique_or_evaluation_count": 12,
+      "proposal_not_authorization": false,
+      "allowed_retry_statuses": [
+        "infrastructure_failure"
+      ],
+      "retry_sample_allowlist": [
+        "preflight_normal_original",
+        "preflight_PL1_original"
+      ],
+      "allowed_nodelist": "chpc-cn009",
+      "explicit_retry_exceptions": [
+        {
+          "attempt_id": "preflight_0000003",
+          "sample_id": "preflight_PL1_original",
+          "receipt_digest": "1396ce4a955741d4203b0afafb07bd20f76c0b25befe2bcfa3b3682aebdb973a",
+          "approval_reference": "user_explicit_one_PL1_probe_setup_replay_20260928"
+        }
+      ]
+    },
+    "train": {
+      "authorized": true,
+      "max_attempts": 480,
+      "max_retry_attempts": 32,
+      "max_retries_per_sample": 1,
+      "max_reserved_core_hours": 2000,
+      "cpus": 16,
+      "memory_MiB": 16384,
+      "wall_seconds": 7200,
+      "max_concurrent": 8,
+      "manifests": [
+        "manifests/train_initial_448.jsonl"
+      ],
+      "proposed_unique_or_evaluation_count": 448,
+      "proposal_not_authorization": false,
+      "allowed_retry_statuses": [
+        "infrastructure_failure"
+      ],
+      "quarantined_generation_authorized": true,
+      "allowed_nodelist": "",
+      "allowed_constraint": "",
+      "allowed_reservation": "tkcastrosim1",
+      "allowed_node_scope": "chpc-cn[057-064]"
+    },
+    "validation": {
+      "authorized": false,
+      "max_attempts": 0,
+      "max_retry_attempts": 0,
+      "max_retries_per_sample": 0,
+      "max_reserved_core_hours": 0,
+      "cpus": 16,
+      "memory_MiB": 16384,
+      "wall_seconds": 7200,
+      "max_concurrent": 0,
+      "manifests": [
+        "manifests/validation_design.jsonl"
+      ],
+      "proposed_unique_or_evaluation_count": 512,
+      "proposal_not_authorization": true
+    },
+    "challenge_development": {
+      "authorized": false,
+      "max_attempts": 0,
+      "max_retry_attempts": 0,
+      "max_retries_per_sample": 0,
+      "max_reserved_core_hours": 0,
+      "cpus": 16,
+      "memory_MiB": 16384,
+      "wall_seconds": 7200,
+      "max_concurrent": 0,
+      "manifests": [
+        "manifests/challenge_development.jsonl"
+      ],
+      "proposed_unique_or_evaluation_count": 24,
+      "proposal_not_authorization": true
+    },
+    "sealed_test": {
+      "authorized": false,
+      "max_attempts": 0,
+      "max_retry_attempts": 0,
+      "max_retries_per_sample": 0,
+      "max_reserved_core_hours": 0,
+      "cpus": 16,
+      "memory_MiB": 16384,
+      "wall_seconds": 7200,
+      "max_concurrent": 0,
+      "manifests": [
+        "manifests/sealed_test_design.jsonl"
+      ],
+      "proposed_unique_or_evaluation_count": 1024,
+      "proposal_not_authorization": true
+    }
+  },
+  "budget_id": "20260928_batch1",
+  "preflight_probes_included": "PL evaluations run isolated native power/variance probes; zero extra complete histories; probe costs charged within reserved allocation",
+  "policy_sha256": {
+    "contracts/data_quality_protocol.json": "f00d85183a3ecb7bfd7928ba1e8f563bae2d6951c0ca59ea905add907bc94b3e",
+    "contracts/split_policy.json": "376f6fd3279c6a819c6ffb555548d4be021c4390d57e45964f8ff06b1f78271c",
+    "contracts/sealed_test_policy.json": "ff988743bce605252e0fd959dc9687985d45a1e6585dc1d2eae9ed9c05664a30"
+  },
+  "pipeline_integrity_sha256": "fdf788a4eefc14879d05d05ec7a8e2ac189162a7e15489e78c29ca4d08a1b26e",
+  "allowed_qos": "tkcastrosim",
+  "max_total_core_hours": 2385,
+  "runtime_probes": {
+    "max_jobs": 6,
+    "cpus_per_job": 1,
+    "wall_seconds": 600,
+    "max_core_hours": 1
+  },
+  "allowed_nodelist": "chpc-cn009",
+  "supplemental_approval_reference": "user_confirmation_single_cancelled_preflight_replay_20260928",
+  "parallel_quarantine_approval_reference": "user_explicit_parallel_preflight_and_quarantined_train_20260928",
+  "pl_probe_replay_approval_reference": "user_explicit_one_PL1_probe_setup_replay_20260928",
+  "continue_isolated_failures_approval_reference": "user_continue_all_frozen_points_then_aggregate_errors_20260929",
+  "concurrency_approval_reference": "user_increase_concurrency_20260929_within_preapproved_max8",
+  "node_scope_reference": "user_nodes057_064_20260929",
+  "public_export_note": "Reference template only; deployment authorization remains in the private production workspace."
+}

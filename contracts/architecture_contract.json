@@ -1,0 +1,26 @@
+{
+  "architecture": "PreNorm ResMLP",
+  "architecture_args": {
+    "width": 256,
+    "hidden": 512,
+    "blocks": 4,
+    "residual_scale": 0.5
+  },
+  "activation": "SiLU",
+  "initialization": "Xavier uniform Linear, zero biases",
+  "normalization": "train-only coordinate standardization; stored log10 stays unchanged",
+  "output": "global_xHI only",
+  "direct_decoder": "sigmoid",
+  "tau_heads": false,
+  "candidate_seeds": [
+    11,
+    29,
+    47,
+    71,
+    101
+  ],
+  "residual_gate": "disabled: PL mismatches",
+  "PCA_gate": "disabled pending train-fit physical/likelihood reconstruction",
+  "shape_constraints": null,
+  "selection_budget": "one registered direct configuration, five seeds; residual only after compatibility gate; no unbounded tuning"
+}

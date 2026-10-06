@@ -1,0 +1,33 @@
+{
+  "qualification_sha256": "89649961700ea9a717e2302bfdc284a3953417008d3b947f1ea2914a8654f96f",
+  "from_pipeline_sha256": "bb78c91708317a8da7168e6acfba0e97fdbaa96a16343d04a955df381af8b213",
+  "to_pipeline_sha256": "fdf788a4eefc14879d05d05ec7a8e2ac189162a7e15489e78c29ca4d08a1b26e",
+  "original_pipeline_path": "contracts/authorization_history/20260929_continue_isolated_errors/contracts/pipeline_integrity.json",
+  "changed_files": [
+    "configs/batch1_execution.json",
+    "maintenance/learning_curve_controller.py",
+    "maintenance/recover_history_v1.py",
+    "maintenance/recover_worker_label.py",
+    "maintenance/semantic_audit.py",
+    "maintenance/v2/advance.py",
+    "maintenance/v2/audit.sbatch",
+    "maintenance/v2/learning.py",
+    "maintenance/v2/worker.sbatch",
+    "notifications/completion_email.py",
+    "scripts/advance_batch1.py",
+    "scripts/advance_dataset.py",
+    "scripts/generate_batch2.sbatch",
+    "scripts/submit_data_array.py",
+    "src/bt_history/data_control.py",
+    "src/bt_history/data_runner.py",
+    "src/bt_history/data_status.py",
+    "src/bt_history/quarantine_admission.py",
+    "src/bt_history/submission_accounting.py"
+  ],
+  "authorization_reference": "user_continue_all_frozen_points_then_aggregate_errors_20260929",
+  "scientific_compute_and_QA_unchanged": true,
+  "concurrency_approval_reference": "user_increase_concurrency_20260929_within_preapproved_max8",
+  "batch2_scope": "new budget/indices/controller and history-only revalidation preserving LF errors; scientific worker,exact adapter,postprocessing,QA unchanged",
+  "v2_approval_reference": "user_explicit_100k_10k_v2_20261004",
+  "v2_scope": "Independent designs, existing exact worker/QA/native/postprocessing unchanged; sharded bounded orchestration"
+}

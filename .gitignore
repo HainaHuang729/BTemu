@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.so
+*.npz
+*.pt
+*.pth
+*.h5
+*.hdf5
+*.sqlite*
+*.gpg
+*.pem
+.env*
+/data_runs/
+/artifacts/
+/sealed/
+/results/

@@ -1,0 +1,8 @@
+{
+  "decoder": "PL_logit_residual",
+  "enabled": false,
+  "epsilon": 1e-05,
+  "compatibility_passed": false,
+  "PCA_enabled": false,
+  "reason": "cosmology/PHOTON_CONS/redshift/IC mismatch unresolved"
+}

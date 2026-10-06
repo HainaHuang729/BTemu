@@ -1,0 +1,41 @@
+{
+  "design_sha256": "602db9ed42aa308dc5899273ad6639c15e05d545ab043033ceb9d4760f10b2e5",
+  "sizes": [
+    1024,
+    2048,
+    4096,
+    8192,
+    16384,
+    32768,
+    65536,
+    100000
+  ],
+  "nesting": "first existing v1 train design, then frozen v2 train order; preserve PL families together; unavailable labels explicitly flagged",
+  "validation_v1_benchmark_preserved": true,
+  "validation_v2_independent": true,
+  "PCA_train_only": true,
+  "PCA_K_candidates": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32
+  ],
+  "classifier_hidden": [
+    30,
+    30
+  ],
+  "regressor_hidden": [
+    80,
+    80,
+    80,
+    80,
+    80,
+    80
+  ],
+  "threshold": 0.31,
+  "threshold_is_not_prior": true
+}

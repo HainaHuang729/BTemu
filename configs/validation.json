@@ -1,0 +1,7 @@
+{
+  "protocol": "contracts/acceptance_protocol.json",
+  "sealed_test_enabled": false,
+  "minimum_penalized_xHI_groups_proposal": 25,
+  "report_all_seeds": true,
+  "report_ensemble": true
+}

@@ -1,0 +1,25 @@
+{
+  "authorized": false,
+  "max_evaluations": 0,
+  "science_contract_hash": null,
+  "design_sha256": null,
+  "proposed_pilot_per_target": 128,
+  "resources_per_label": {
+    "cpus": 16,
+    "memory_GiB": 16,
+    "wall_hours": 2
+  },
+  "audit_local_cost_only": {
+    "seconds_per_label": 673.29,
+    "core_hours_per_label": 2.99,
+    "256_labels_core_hours": 766,
+    "448_labels_core_hours": 1341
+  },
+  "note": "Costs from five local old-native points; broad prior and repaired version may differ. No automatic submission.",
+  "proposed_design": "configs/proposed_448_point_design.json",
+  "proposed_labels": 448,
+  "warning": "Expanded KP/MS and high-M_TURN corners have no cost or success-rate measurements. 1341 core-hours is an old local timing extrapolation, not an authorized budget.",
+  "pipeline_integrity_sha256": "fdf788a4eefc14879d05d05ec7a8e2ac189162a7e15489e78c29ca4d08a1b26e",
+  "selected_native_contract_sha256": "8ec21d45c06293126cd4a7bc43fe59f9442aa7eb07dcd16b565b0a21b7a4ffb4",
+  "public_export_note": "Reference template only; deployment authorization remains in the private production workspace."
+}

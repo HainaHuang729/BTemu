@@ -1,0 +1,47 @@
+{
+  "version": "v1",
+  "status": "PREDECLARED_ENGINEERING_QA",
+  "label": "global_xHI only",
+  "grid": "exact array equality, strictly increasing, no resampling",
+  "range": {
+    "qualified_min": 0.0,
+    "qualified_max": 1.0,
+    "tiny_excursion_tolerance": 1e-06,
+    "tiny_excursion_action": "quarantine raw values with flag; never clip",
+    "larger_excursion_action": "numerical failure retaining raw result"
+  },
+  "native_same_path_parity": "bitwise equality for history, tau inputs/output, observed xHI, LF and each likelihood component",
+  "tolerance_relaxation": "none; first assess predeclared original-repeat variation, then investigate",
+  "saved_derived_parity": {
+    "tau_absolute_tolerance": 1e-08,
+    "observed_xHI_absolute_tolerance": 1e-10,
+    "recompute_with_original": true
+  },
+  "endpoint_warnings": {
+    "z35_ionized_fraction_gt": 0.01,
+    "z5_neutral_fraction_gt": 0.01,
+    "classification": "science_domain_warning, retain valid sample",
+    "meaning": "screening flags, not scientific precision gates"
+  },
+  "failure_classes": [
+    "runtime_native_load_failure",
+    "infrastructure_failure",
+    "timeout",
+    "out_of_memory",
+    "numerical_failure",
+    "schema_provenance_failure",
+    "science_domain_warning",
+    "success"
+  ],
+  "seed": {
+    "requested": 725213656658,
+    "native_argument": "unsigned long long",
+    "python_pass_through": true,
+    "manual_modulo_forbidden": true,
+    "returned_effective_seed_required": true,
+    "GSL_rng_note": "GSL mt19937 seeds thread RNGs; preserve implementation and thread count; not an ensemble-IC target"
+  },
+  "cache": "regenerate=True write=False; no cross-parameter reuse",
+  "mechanical_test_QA": "same fixed rules within isolated sealing worker; no scientific numbers in public receipts",
+  "debug_products": "none retained by default; all temporary stdout/stderr private and encrypted for sealed workers"
+}
