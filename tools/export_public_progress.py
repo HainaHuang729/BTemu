@@ -41,6 +41,12 @@ if transition_path.exists():
         partial["complete_families"]=max(partial.get("complete_families",0),live.get("complete_families",0))
         partial["updated_at_hkt"]=live.get("updated_at_hkt",partial.get("updated_at_hkt"))
     work["transition"]={"dataset_version":"fixed_ic_v1","new_target":"random_ic_v2","fixed_waves_stopped":True,"fixed_drained":ts.get("drained_running")==0,"fixed_qualified":ts.get("drained_qualified",ts["qualified"]),"cancelled_unstarted_slots":ts["cancelled_pending_slots"],"audit_status":audit.get("status","MANIFEST_FROZEN"),"audit_max_concurrent":16,"audit_receipt_updated_at_hkt":datetime.fromtimestamp(ap.stat().st_mtime,timezone(timedelta(hours=8))).isoformat() if ap.exists() else None,"audit_theta_count":128,"ICs_per_theta":8,"new_evaluations":896,"qualified_fresh":max(audit.get("qualified_fresh",0),partial.get("qualified_fresh",0)),"qualified_fresh_scope":"Qualified worker receipts, checksum/native/seed checked; completed-wave audit status reported separately","complete_IC_families":max(audit.get("complete_families",0),partial.get("complete_families",0)),"partial_scatter_snapshot_at_hkt":partial.get("updated_at_hkt"),"reused_fixed":128,"audit_array_job":(audit.get("submission") or {}).get("array_job"),"random_bulk_started":False,"classifier_cut":0.31,"decision":"AUDIT_NOT_YET_COMPLETE"}
+recovery_path=root/"results/ic_audit_scheduler_recovery.json"
+if recovery_path.exists() and "transition" in work:
+    recovery=json.loads(recovery_path.read_text())
+    work["transition"]["scheduler_recovery"]={"controller_job":recovery.get("recovery_controller_job"),"remaining_at_recovery":recovery["remaining_evaluations"],"reason":recovery["cause"],"status":"WAITING_FOR_RECOVERY_CONTROLLER" if work["transition"].get("audit_array_job")=="2191736" else "RECOVERY_SUBMITTED"}
+    if work["transition"]["scheduler_recovery"]["status"]=="WAITING_FOR_RECOVERY_CONTROLLER":
+        work["transition"]["audit_status"]="WAITING_FOR_RECOVERY_CONTROLLER"
 acceptance_path=root/"contracts/ic_audit_acceptance.json"
 if acceptance_path.exists() and "transition" in work:
     acceptance=json.loads(acceptance_path.read_text())
@@ -113,4 +119,7 @@ if work.get("transition"):
 if work.get("random_launch"):
     r=work["random_launch"]
     report+="\n## Audit-gated random-IC launch\n\nSubmitted offline design job: "+r["design_job"]+". Submitted scientific gate watcher: "+r["gate_job"]+". Status: "+r["status"]+". Parameter design frozen: "+str(r["design_frozen"])+". Complete 128×8 audit must pass before any random-IC production array is submitted. First eight evaluations, then waves of up to 128, maximum 16 simulations / 256 CPUs. See [launch record](random_ic_production_launch.md).\n"
+if work.get("transition",{}).get("scheduler_recovery"):
+    rec=work["transition"]["scheduler_recovery"]
+    report+="\n## Audit scheduler recovery\n\nFinal-wave Slurm array indices exceeded MaxArraySize=1001. Compact task-to-manifest mapping now preserves the original theta/seed schedule. Recovery controller "+str(rec["controller_job"])+": "+rec["status"]+". See [recovery record](ic_audit_scheduler_recovery.md). No random-IC bulk simulation is released before the full audit passes.\n"
 Path("docs/progress.md").write_text(report)

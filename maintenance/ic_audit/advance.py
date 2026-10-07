@@ -5,10 +5,15 @@ sys.path.insert(0,str(Path(__file__).parent))
 from common import ROOT,RUN,policy,rows
 from bt_history.data_control import read_json,write_json,locked,AttemptLedger
 from bt_history.submission_accounting import submission_charges
+from bt_history.contracts import file_hash
+
+def allocated_charges(charges):
+ return [ch for ch in charges if ch["state"]!="SUBMISSION_REJECTED"]
 
 def submit_wave(indices,b,dependency=None):
- sid=str(time.time_ns());sub={'submission_id':sid,'stage':'ic_audit','indices':indices,'slurm_array_indices':indices}
- cmd=['sbatch','--parsable','--no-requeue','--nodes=1','--ntasks=1','--array='+','.join(map(str,indices))+'%'+str(b['max_concurrent']),'--cpus-per-task=16','--mem=16384M','--time=120','--account=tkcastrosim','--partition=chpc','--qos=tkcastrosim','--reservation=tkcastrosim1','--output='+str(RUN/'scheduler_%A_%a.log')]
+ sid=str(time.time_ns());sub={'submission_id':sid,'stage':'ic_audit','indices':indices,'slurm_array_indices':list(range(len(indices)))}
+ mapping=RUN/'wave_maps'/(sid+'.json');write_json(mapping,{'indices':indices},exclusive=True)
+ cmd=['sbatch','--parsable','--no-requeue','--nodes=1','--ntasks=1','--array=0-'+str(len(indices)-1)+'%'+str(b['max_concurrent']),'--export=ALL,BT_IC_AUDIT_MAP='+str(mapping)+',BT_IC_AUDIT_MAP_SHA='+file_hash(mapping),'--cpus-per-task=16','--mem=16384M','--time=120','--account=tkcastrosim','--partition=chpc','--qos=tkcastrosim','--reservation=tkcastrosim1','--output='+str(RUN/'scheduler_%A_%a.log')]
  if dependency:cmd+=['--dependency=afterany:'+dependency]
  cmd+=[str(ROOT/'maintenance/ic_audit/worker.sbatch')]
  sub['command']=cmd
@@ -27,6 +32,8 @@ def main():
   c,a,b,spec=policy();allrows=rows();ledger=AttemptLedger(RUN);entries=ledger.entries();latest={x['sample_id']:x for x in entries}
   subs=[json.loads(s) for s in (RUN/'submissions.jsonl').read_text().splitlines()] if (RUN/'submissions.jsonl').exists() else []
   charges=submission_charges(RUN,subs,{'stages':{'ic_audit':spec}});write_json(RUN/'submission_accounting.json',{'rows':charges})
+  # Rejected sbatch requests allocated nothing and did not consume evaluation attempts.
+  charges=allocated_charges(charges)
   byindex={}
   for ch in charges:byindex.setdefault(ch['index'],[]).append(ch)
   byid={v['sample_id']:i for i,v in enumerate(allrows)};account=[];failures=[];done=set()
@@ -59,7 +66,9 @@ def main():
    if subs and not pilot.issubset(done):state['status']='AUDIT_PILOT_FAILED_NO_EXPANSION'
    elif remaining or retry:
     pending=(retry+remaining)[:2 if not subs else 128]
-    state['submission']=submit_wave(pending,b,dependency=sys.argv[1] if len(sys.argv)>1 else None);state['status']='AUDIT_ARRAY_SUBMITTED'
+    try:state['submission']=submit_wave(pending,b,dependency=sys.argv[1] if len(sys.argv)>1 else None);state['status']='AUDIT_ARRAY_SUBMITTED'
+    except Exception as error:
+     state['status']='AUDIT_SUBMISSION_FAILED';state['submission_error']=str(error);write_json(ROOT/'results/ic_audit_progress.json',state);raise
    else:state['status']='AUDIT_INCOMPLETE_FAILURES_RETAINED'
   write_json(ROOT/'results/ic_audit_progress.json',state);print(json.dumps(state))
 if __name__=='__main__':main()

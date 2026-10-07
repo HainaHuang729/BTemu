@@ -6,8 +6,16 @@ from common import ROOT,RUN,policy,rows
 from bt_history.data_control import AttemptLedger,write_json,read_json
 from bt_history.contracts import file_hash,digest
 
+def manifest_index():
+ task=int(os.environ['SLURM_ARRAY_TASK_ID']);mapping=os.environ.get('BT_IC_AUDIT_MAP')
+ if not mapping:return task
+ if file_hash(Path(mapping))!=os.environ['BT_IC_AUDIT_MAP_SHA']:raise ValueError('Audit wave map checksum mismatch')
+ indices=read_json(Path(mapping))['indices']
+ if not 0<=task<len(indices):raise ValueError('Array task outside submitted audit wave')
+ return indices[task]
+
 def main():
- ix=int(os.environ['SLURM_ARRAY_TASK_ID']);os.environ['BT_MANIFEST_INDEX']=str(ix)
+ ix=manifest_index();os.environ['BT_MANIFEST_INDEX']=str(ix)
  c,a,b,spec=policy(require_runtime=True);row=rows()[ix]
  if row['reuse_fixed_reference']:raise PermissionError('Fixed realization reused by checksum, not resimulated')
  ledger=AttemptLedger(RUN);attempt=ledger.reserve(row,'ic_audit',spec,budget_hash=file_hash(ROOT/'configs/ic_audit_budget.json'),contract_hash=digest(a))
