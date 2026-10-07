@@ -15,7 +15,7 @@ Qualified data snapshot: 2026-10-07T12:11:29.263444+08:00 (Hong Kong time). Comp
 
 Fixed-IC production waves have stopped. Existing data retain their original labels and splits under the catalog alias fixed_ic_v1. Random-IC training is separate.
 
-IC_AUDIT_V1: 128 theta families × 8 ICs; reuse 128 qualified fixed references and run 896 fresh realizations. Audit status: AUDIT_ARRAY_SUBMITTED. Fresh qualified: 17. Classifier cut is derived from the original likelihood: 0.06 + 5×0.05 = 0.31. No classifier hard gate is enabled.
+IC_AUDIT_V1: 128 theta families × 8 ICs; reuse 128 qualified fixed references and run 896 fresh realizations. Audit status: AUDIT_ARRAY_SUBMITTED. Fresh qualified: 73. Classifier cut is derived from the original likelihood: 0.06 + 5×0.05 = 0.31. No classifier hard gate is enabled.
 
 ## Retained fixed-IC data
 

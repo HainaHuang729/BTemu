@@ -35,6 +35,11 @@ if transition_path.exists():
     partial_path=root/"results/ic_audit_partial_scatter.json"
     partial=json.loads(partial_path.read_text()) if partial_path.exists() else {}
     work["transition"]={"dataset_version":"fixed_ic_v1","new_target":"random_ic_v2","fixed_waves_stopped":True,"fixed_drained":ts.get("drained_running")==0,"fixed_qualified":ts.get("drained_qualified",ts["qualified"]),"cancelled_unstarted_slots":ts["cancelled_pending_slots"],"audit_status":audit.get("status","MANIFEST_FROZEN"),"audit_max_concurrent":16,"audit_receipt_updated_at_hkt":datetime.fromtimestamp(ap.stat().st_mtime,timezone(timedelta(hours=8))).isoformat() if ap.exists() else None,"audit_theta_count":128,"ICs_per_theta":8,"new_evaluations":896,"qualified_fresh":max(audit.get("qualified_fresh",0),partial.get("qualified_fresh",0)),"qualified_fresh_scope":"Qualified worker receipts, checksum/native/seed checked; completed-wave audit status reported separately","complete_IC_families":max(audit.get("complete_families",0),partial.get("complete_families",0)),"partial_scatter_snapshot_at_hkt":partial.get("updated_at_hkt"),"reused_fixed":128,"audit_array_job":(audit.get("submission") or {}).get("array_job"),"random_bulk_started":False,"classifier_cut":0.31,"decision":"AUDIT_NOT_YET_COMPLETE"}
+acceptance_path=root/"contracts/ic_audit_acceptance.json"
+if acceptance_path.exists() and "transition" in work:
+    acceptance=json.loads(acceptance_path.read_text())
+    work["transition"]["development_gate_status"]=acceptance["status"]
+    work["transition"]["posterior_accepted"]=False
 Path(a.output).with_name("work_status.json").write_text(json.dumps(work,ensure_ascii=False,indent=2)+"\n")
 completed=", ".join(f'{x["N"]:,}' for x in items if x["status"]=="COMPLETED")
 active=", ".join(f'{x["N"]:,}: {x["status"]}' for x in items if x["status"]!="COMPLETED")

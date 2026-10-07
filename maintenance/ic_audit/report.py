@@ -54,10 +54,16 @@ def summarize():
   summary['classifier_unstable_far_from_cut']=sum(not s['classification_stable'] and s['far_from_cut'] for s in stats)
   summary['all_realizations_positive_fraction']=sum(s['positive_IC_count'] for s in stats)/(8*len(stats))
   proposal=read_json(ROOT/'contracts/ic_audit_acceptance.json');q=summary['family_quantiles']
-  passed=all(q[k]['q90']<=lim for k,lim in proposal['q90_std_threshold_proposals'].items()) and summary['classifier_unstable_far_from_cut']==0
-  passed=passed and float(np.quantile([abs(s['delta_logL_mean_history_vs_IC_marginal']) for s in stats],.9))<=proposal['q90_abs_Jensen_logL_difference_proposal']
+  confirmed_fields=proposal.get('confirmed_gate_fields',[])
+  core_pass=all(q[k]['q90']<=lim for k,lim in proposal['q90_std_threshold_proposals'].items() if k in confirmed_fields) and summary['classifier_unstable_far_from_cut']==0
+  diagnostics_pass=q['trajectory_IC_scatter_RMS']['q90']<=proposal['q90_std_threshold_proposals']['trajectory_IC_scatter_RMS'] and float(np.quantile([abs(s['delta_logL_mean_history_vs_IC_marginal']) for s in stats],.9))<=proposal['q90_abs_Jensen_logL_difference_proposal']
+  passed=core_pass and diagnostics_pass
+  summary['confirmed_core_screen_pass']=core_pass
+  summary['additional_proposed_diagnostic_screen_pass']=diagnostics_pass
   summary['proposal_screen_pass']=passed
-  if len(stats)==128 and proposal['status']=='CONFIRMED':summary['single_IC_production_decision']='RANDOM_IC_SINGLE_REALIZATION_SUPPORTED' if passed else 'MULTI_IC_AVERAGING_REQUIRED'
+  summary['acceptance_contract_sha256']=file_hash(ROOT/'contracts/ic_audit_acceptance.json')
+  if len(stats)==128 and proposal['status']=='CONFIRMED':
+   summary['single_IC_production_decision']='MULTI_IC_AVERAGING_REQUIRED' if not core_pass else ('RANDOM_IC_SINGLE_REALIZATION_SUPPORTED' if diagnostics_pass else 'SCIENTIFIC_DIAGNOSTIC_REVIEW_REQUIRED')
   elif len(stats)==128:summary['unconfirmed_proposal_diagnostic']='SINGLE_IC_PROPOSAL_SCREEN_PASS' if passed else 'MULTI_IC_PROPOSAL_SCREEN_FAIL'
  write_json(ROOT/'results/ic_sensitivity_report.json',summary)
  (ROOT/'reports/ic_sensitivity_report.md').write_text('# IC sensitivity audit\n\n```json\n'+json.dumps(summary,indent=2)+'\n```\n\nEach statistic uses the theta family as the sampling unit. Multi-IC means are arithmetic means in physical xHI. LogL(mean history) is compared to log(mean likelihood), because these are not generally equal. LF is unchanged at fixed theta; joint_history refers to tau+xHI, not an independently requalified LF pipeline. Convergence is to the finite eight-IC reference and cannot establish the infinite-IC mean. No sealed labels are used.\n')

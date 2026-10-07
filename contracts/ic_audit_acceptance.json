@@ -1,5 +1,5 @@
 {
-  "status": "PROPOSED_REQUIRES_SCIENTIFIC_CONFIRMATION",
+  "status": "CONFIRMED",
   "sampling_unit": "theta family",
   "q90_std_threshold_proposals": {
     "std_tau": 0.0002,
@@ -16,5 +16,20 @@
   "finite_mean_uncertainty_required": true,
   "posterior_acceptance": false,
   "production_decision_before_complete_audit": false,
-  "thresholds_not_relaxed_after_outcomes": true
+  "thresholds_not_relaxed_after_outcomes": true,
+  "confirmation_reference": "user_async_explicit_accept_conservative_development_thresholds_20261007",
+  "confirmation_at_hkt": "2026-10-07T12:50:38.135096+08:00",
+  "confirmed_gate_fields": [
+    "std_tau",
+    "std_xHI_5p9",
+    "std_logL_tau",
+    "std_logL_xHI",
+    "std_logL_joint_history",
+    "classifier_stability"
+  ],
+  "additional_conservative_screens": {
+    "trajectory_IC_scatter_RMS": 0.002,
+    "abs_Jensen_logL_difference": 0.02
+  },
+  "additional_screen_scope": "Previously preregistered diagnostic proposals; explicitly distinguish from the numerical fields shown in the user confirmation question. No production pass can ignore a significant unresolved mean-history versus IC-marginalized-likelihood discrepancy."
 }
