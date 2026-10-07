@@ -52,10 +52,10 @@
     "audit_theta_count": 128,
     "ICs_per_theta": 8,
     "new_evaluations": 896,
-    "qualified_fresh": 73,
+    "qualified_fresh": 110,
     "qualified_fresh_scope": "Qualified worker receipts, checksum/native/seed checked; completed-wave audit status reported separately",
-    "complete_IC_families": 10,
-    "partial_scatter_snapshot_at_hkt": "2026-10-07T12:54:42.515537+08:00",
+    "complete_IC_families": 15,
+    "partial_scatter_snapshot_at_hkt": "2026-10-07T13:12:51.053875+08:00",
     "reused_fixed": 128,
     "audit_array_job": "2190645",
     "random_bulk_started": false,
@@ -63,5 +63,19 @@
     "decision": "AUDIT_NOT_YET_COMPLETE",
     "development_gate_status": "CONFIRMED",
     "posterior_accepted": false
+  },
+  "random_launch": {
+    "design_job": "2190856",
+    "gate_job": "2190857",
+    "status": "WAITING_FOR_COMPLETE_AUDIT",
+    "design_frozen": false,
+    "targets": {
+      "train": 100000,
+      "validation": 10000,
+      "sealed_design": 5000
+    },
+    "production": {},
+    "sealed_labels_generated": false,
+    "sealed_labels_read": false
   }
 }

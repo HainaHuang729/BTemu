@@ -15,7 +15,7 @@ Qualified data snapshot: 2026-10-07T12:11:29.263444+08:00 (Hong Kong time). Comp
 
 Fixed-IC production waves have stopped. Existing data retain their original labels and splits under the catalog alias fixed_ic_v1. Random-IC training is separate.
 
-IC_AUDIT_V1: 128 theta families × 8 ICs; reuse 128 qualified fixed references and run 896 fresh realizations. Audit status: AUDIT_ARRAY_SUBMITTED. Fresh qualified: 73. Classifier cut is derived from the original likelihood: 0.06 + 5×0.05 = 0.31. No classifier hard gate is enabled.
+IC_AUDIT_V1: 128 theta families × 8 ICs; reuse 128 qualified fixed references and run 896 fresh realizations. Audit status: AUDIT_ARRAY_SUBMITTED. Fresh qualified: 110. Classifier cut is derived from the original likelihood: 0.06 + 5×0.05 = 0.31. No classifier hard gate is enabled.
 
 ## Retained fixed-IC data
 
@@ -46,3 +46,7 @@ The emulator predicts only the simulator-defined 32-node volume-averaged global_
 Selected native SHA256: `3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2`.
 
 Code exports are cluster-oriented templates with submission disabled by default. Production authorization is managed separately in the independent scientific workspace.
+
+## Audit-gated random-IC launch
+
+Submitted offline design job: 2190856. Submitted scientific gate watcher: 2190857. Status: WAITING_FOR_COMPLETE_AUDIT. Parameter design frozen: False. Complete 128×8 audit must pass before any random-IC production array is submitted. First eight evaluations, then waves of up to 128, maximum 16 simulations / 256 CPUs. See [launch record](random_ic_production_launch.md).
