@@ -47,7 +47,7 @@
     },
     "cancelled_unstarted_slots": 290,
     "audit_status": "WAITING_FOR_RECOVERY_CONTROLLER",
-    "audit_max_concurrent": 16,
+    "audit_max_concurrent": 8,
     "audit_receipt_updated_at_hkt": "2026-10-07T17:56:38.380755+08:00",
     "audit_theta_count": 128,
     "ICs_per_theta": 8,

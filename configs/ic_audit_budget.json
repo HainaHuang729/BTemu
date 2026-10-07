@@ -12,7 +12,7 @@
   "cpus": 16,
   "memory_MiB": 16384,
   "wall_seconds": 7200,
-  "max_concurrent": 16,
+  "max_concurrent": 8,
   "max_core_hours": 0,
   "resource_cap_not_cost_prediction": true,
   "estimated_fresh_core_hours_at_current_median": 1654.6133333333332,
