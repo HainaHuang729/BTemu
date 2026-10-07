@@ -45,7 +45,7 @@
       "train": 18654,
       "validation": 5120
     },
-    "cancelled_unstarted_slots": 291,
+    "cancelled_unstarted_slots": 290,
     "audit_status": "AUDIT_ARRAY_SUBMITTED",
     "audit_max_concurrent": 16,
     "audit_receipt_updated_at_hkt": "2026-10-07T12:17:34.600779+08:00",
