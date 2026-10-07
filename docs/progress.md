@@ -49,4 +49,4 @@ Code exports are cluster-oriented templates with submission disabled by default.
 
 ## Audit-gated random-IC launch
 
-Submitted offline design job: 2190856. Submitted scientific gate watcher: 2191896. Status: WAITING_FOR_COMPLETE_AUDIT. Parameter design frozen: True. Complete 128×8 audit must pass before any random-IC production array is submitted. First eight evaluations, then waves of up to 128, maximum 16 simulations / 256 CPUs. See [launch record](random_ic_production_launch.md).
+Submitted offline design job: 2190856. Submitted scientific gate watcher: 2191948. Status: WAITING_FOR_COMPLETE_AUDIT. Parameter design frozen: True. Complete 128×8 audit must pass before any random-IC production array is submitted. First eight evaluations, then waves of up to 128, maximum 16 simulations / 256 CPUs. See [launch record](random_ic_production_launch.md).
