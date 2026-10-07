@@ -19,7 +19,7 @@ def qualification():
  if not ok:raise PermissionError(reason)
  if s.get('acceptance_contract_sha256')!=file_hash(ROOT/'contracts/ic_audit_acceptance.json'):raise ValueError('Audit accepted different criteria')
  q=read_json(ROOT/'results/random_ic_production_qualification.json')
- for name,key in [('results/ic_sensitivity_report.json','audit_report_sha256'),('data_runs/ic_audit_v1/family_statistics.json','family_statistics_sha256'),('contracts/ic_audit_acceptance.json','acceptance_sha256')]:
+ for name,key in [('results/ic_sensitivity_report.json','audit_report_sha256'),('data_runs/ic_audit_v1/family_statistics.json','family_statistics_sha256'),('contracts/ic_audit_acceptance.json','acceptance_sha256'),('contracts/random_ic_v2_target.json','target_contract_sha256')]:
   if file_hash(ROOT/name)!=q[key]:raise ValueError('Approved audit evidence changed: '+name)
  return q
 

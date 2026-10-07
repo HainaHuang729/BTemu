@@ -16,7 +16,7 @@ def main():
   return
  dest=RUN/'labels'/sample['sample_id']/attempt['attempt_id'];dest.mkdir(parents=True,exist_ok=False)
  scratch=Path(os.environ.get('SLURM_TMPDIR',os.environ.get('TMPDIR','/tmp')))/('bt_random_ic_'+attempt['attempt_id']+'_'+os.environ['SLURM_JOB_ID']);scratch.mkdir(exist_ok=False)
- started=time.perf_counter();r=dict(sample);r.update(attempt_id=attempt['attempt_id'],base_science_contract_hash=digest(c),random_design_sha256=file_hash(ROOT/'contracts/dataset_design_random_ic_v2.json'),dataset_version='random_ic_v2',target_protocol='one independent random realization per theta; conditional expectation requires multi-IC validation',native_sha256=c['native_sha256'],source_fingerprint=c['source_and_native_fingerprints'].get('source_fingerprint'),cpu_allocation=spec['cpus'],slurm_job_id=os.environ['SLURM_JOB_ID'])
+ started=time.perf_counter();r=dict(sample);r.update(attempt_id=attempt['attempt_id'],base_science_contract_hash=digest(c),random_design_sha256=file_hash(ROOT/'contracts/dataset_design_random_ic_v2.json'),target_contract_sha256=file_hash(ROOT/'contracts/random_ic_v2_target.json'),dataset_version='random_ic_v2',target_protocol='one independent random realization per theta; conditional expectation requires multi-IC validation',native_sha256=c['native_sha256'],source_fingerprint=c['source_and_native_fingerprints'].get('source_fingerprint'),cpu_allocation=spec['cpus'],slurm_job_id=os.environ['SLURM_JOB_ID'])
  try:
   from bt_history.runtime_qualification import inspect_runtime
   from bt_history.exact_history_adapter import ExactHistoryAdapter

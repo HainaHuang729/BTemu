@@ -1,6 +1,6 @@
 {
   "version": "random_ic_v2",
-  "status": "DRAFT_PENDING_IC_AUDIT",
+  "status": "DESIGN_FROZEN_PENDING_COMPLETE_IC_AUDIT",
   "base_physics_contract_sha256": "fc5c5d237b9b793fc118c648a4a1f76d5408a5872a9ffa5542b2f50b700eebac",
   "parameter_order": [
     "F_STAR10",
@@ -76,5 +76,7 @@
   "production_MCMC": false,
   "tau_output_head": false,
   "tau_definition": "Original tau_from_history + selected native compute_tau",
-  "mean_likelihood_caveat": "E_IC[likelihood(history)] is generally not likelihood(E_IC[history]); audit both before IC-marginalized inference claims."
+  "mean_likelihood_caveat": "E_IC[likelihood(history)] is generally not likelihood(E_IC[history]); audit both before IC-marginalized inference claims.",
+  "frozen_parameter_design": "contracts/dataset_design_random_ic_v2.json",
+  "conditional_release_watcher_job": "2190857"
 }
