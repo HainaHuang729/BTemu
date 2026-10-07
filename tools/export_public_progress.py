@@ -54,7 +54,7 @@ if launch_path.exists():
     random_progress_path=root/"results/random_ic_dataset_progress.json"
     rp=json.loads(random_progress_path.read_text()) if random_progress_path.exists() else {}
     design_status_path=root/"results/random_ic_design_status.json"
-    work["random_launch"]={"design_job":launch["design_job"]["job_id"],"gate_job":launch["audit_gate_job"]["job_id"],"status":activation.get("status","WAITING_FOR_COMPLETE_AUDIT"),"design_frozen":design_status_path.exists(),"targets":{"train":100000,"validation":10000,"sealed_design":5000},"production":rp,"sealed_labels_generated":False,"sealed_labels_read":False}
+    work["random_launch"]={"design_job":launch["design_job"]["job_id"],"gate_job":activation.get("next_watch",{}).get("job_id",launch["audit_gate_job"]["job_id"]),"initial_gate_job":launch["audit_gate_job"]["job_id"],"status":activation.get("status","WAITING_FOR_COMPLETE_AUDIT"),"design_frozen":design_status_path.exists(),"targets":{"train":100000,"validation":10000,"sealed_design":5000},"production":rp,"sealed_labels_generated":False,"sealed_labels_read":False}
     if "transition" in work:
         work["transition"]["random_bulk_started"]=activation.get("random_IC_production_started",False)
         work["transition"]["decision"]=activation.get("audit_decision",work["transition"]["decision"])

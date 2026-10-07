@@ -60,13 +60,14 @@
     "audit_array_job": "2190870",
     "random_bulk_started": false,
     "classifier_cut": 0.31,
-    "decision": "AUDIT_NOT_YET_COMPLETE",
+    "decision": "AUDIT_INCOMPLETE",
     "development_gate_status": "CONFIRMED",
     "posterior_accepted": false
   },
   "random_launch": {
     "design_job": "2190856",
-    "gate_job": "2190857",
+    "gate_job": "2190886",
+    "initial_gate_job": "2190857",
     "status": "WAITING_FOR_COMPLETE_AUDIT",
     "design_frozen": true,
     "targets": {
