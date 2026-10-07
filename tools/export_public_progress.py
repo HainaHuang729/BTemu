@@ -47,6 +47,9 @@ if recovery_path.exists() and "transition" in work:
     work["transition"]["scheduler_recovery"]={"controller_job":recovery.get("recovery_controller_job"),"remaining_at_recovery":recovery["remaining_evaluations"],"reason":recovery["cause"],"status":"WAITING_FOR_RECOVERY_CONTROLLER" if work["transition"].get("audit_array_job")=="2191736" else "RECOVERY_SUBMITTED"}
     if work["transition"]["scheduler_recovery"]["status"]=="WAITING_FOR_RECOVERY_CONTROLLER":
         work["transition"]["audit_status"]="WAITING_FOR_RECOVERY_CONTROLLER"
+queue_path=root/"results/ic_audit_queue_status.json"
+if queue_path.exists() and work.get("transition",{}).get("audit_status")=="WAITING_FOR_RECOVERY_CONTROLLER":
+    work["transition"]["queue_snapshot"]=json.loads(queue_path.read_text())
 acceptance_path=root/"contracts/ic_audit_acceptance.json"
 if acceptance_path.exists() and "transition" in work:
     acceptance=json.loads(acceptance_path.read_text())
@@ -122,4 +125,7 @@ if work.get("random_launch"):
 if work.get("transition",{}).get("scheduler_recovery"):
     rec=work["transition"]["scheduler_recovery"]
     report+="\n## Audit scheduler recovery\n\nFinal-wave Slurm array indices exceeded MaxArraySize=1001. Compact task-to-manifest mapping now preserves the original theta/seed schedule. Recovery controller "+str(rec["controller_job"])+": "+rec["status"]+". See [recovery record](ic_audit_scheduler_recovery.md). No random-IC bulk simulation is released before the full audit passes.\n"
+if work.get("transition",{}).get("queue_snapshot"):
+    q=work["transition"]["queue_snapshot"]
+    report+="\n## Queue snapshot\n\nChecked "+q["checked_at_hkt"]+". Audit uses zero CPUs; all 2048 reservation CPUs are allocated to existing jobs. Recovery job "+q["recovery_controller_job"]+" is PENDING. Slurm estimated start "+q["scheduler_estimated_start_hkt"]+" is provisional. See [queue status](ic_audit_queue_status.md).\n"
 Path("docs/progress.md").write_text(report)

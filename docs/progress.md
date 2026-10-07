@@ -54,3 +54,7 @@ Submitted offline design job: 2190856. Submitted scientific gate watcher: 219204
 ## Audit scheduler recovery
 
 Final-wave Slurm array indices exceeded MaxArraySize=1001. Compact task-to-manifest mapping now preserves the original theta/seed schedule. Recovery controller 2192051: WAITING_FOR_RECOVERY_CONTROLLER. See [recovery record](ic_audit_scheduler_recovery.md). No random-IC bulk simulation is released before the full audit passes.
+
+## Queue snapshot
+
+Checked 2026-10-08T00:17:41.918999+08:00. Audit uses zero CPUs; all 2048 reservation CPUs are allocated to existing jobs. Recovery job 2192051 is PENDING. Slurm estimated start 2026-10-10T11:20:00+08:00 is provisional. See [queue status](ic_audit_queue_status.md).
