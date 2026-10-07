@@ -1,29 +1,42 @@
-# BTemu project progress
+# BTemu progress
 
-Snapshot: 2026-10-06T09:25:28.900094+08:00 (Hong Kong). This records qualified labels at the last completed wave; it is not a live queue display.
+Qualified data snapshot: 2026-10-07T09:16:30.346034+08:00 (Hong Kong time). Completed-wave receipts, not live Slurm occupancy.
 
-| Dataset | Qualified | Target |
-|---|---:|---:|
-| Train including retained v1 Train | 13824 | 100000 |
-| Validation v2 | 3072 | 10000 |
-| Validation v1 benchmark | 512 | 512 |
+## Completed
 
-V1 Train 4096/4096 is complete. V2 receipted attempts: 12800; numerical failures: 0; infrastructure failures: 0. Current configured production concurrency limit: 32 simulations ×16 allocated CPUs. V2 accounted worker cost: 24160.04 core-hours; this excludes v1/preflight/metadata/ML allocations.
+- Scientific contract, repaired-native qualification, exact adapter parity and PL-limit checks.
+- Dataset v1: 4,096 qualified Train histories and 512 Validation benchmark histories. V1 Train is retained in the v2 total.
+- Recoverable isolated data-generation pipeline, per-sample provenance and failure records.
+- Development comparison: Direct ResMLP, classifier and PCA + 6×80 MLP; all five initialization seeds; 9,080 Train / 2,048 Validation. This is development evidence, not production acceptance.
+- Frozen learning-curve runs completed: 2,048, 4,096, 8,192 Train points, on the same 144-point v1 Validation benchmark.
+- PCA representation audit: only logit K=32 passed the current reconstruction screen. No compression benefit has been established.
 
-The frozen 9080 Train/2048 independent Validation development comparison completed all five seeds in approximately 40 minutes. Classifier accuracy 97.41%, false-negative rate 3.60%. Direct ensemble all-Validation history RMSE q95=0.02466, absolute tau error q90=0.001472. On identical exact-positive Validation IDs, Direct RMSE q95=0.04477 versus NNERO-style PCA+MLP 0.34278. These positive-subset results must not be compared with all-Validation results as though they used the same sample distribution.
+## In progress
 
-Only logit PCA K=32 passed the preregistered development reconstruction screens. No compression benefit is established. Likelihood error tails remain too large to claim scientific inference readiness. Classifier is diagnostic and is not a hard prior gate. All negative histories are retained.
+| Dataset | Qualified | Target | Remaining |
+|---|---:|---:|---:|
+| Train v2 | 18,432 | 100,000 | 81,568 |
+| Validation v2 | 4,608 | 10,000 | 5,392 |
 
-Sealed v1/v2 parameter designs remain frozen. No sealed labels were generated or accessed, and no production emulator MCMC was launched. Endpoint ionization flags are warnings; original histories are not clipped, smoothed, or forced to complete reionization. Tau is computed only through the original history postprocessing and selected native compute_tau. LF remains the original exact forward.
+- Learning curves: 16,384: DEVELOPMENT_TRAINING_RUNNING
+- Configured simulation concurrency cap: 32 × 16 CPUs. This is a cap, not a live occupancy measurement.
+- Accounted v2 worker allocation cost: 35,794.48 core-hours; median / q90 wall time: 415.5 / 496.6 seconds.
+- Receipted numerical / infrastructure failures: 0 / 0.
 
-This is a public code/report export. Simulator binaries, native tables, raw labels, encrypted payloads, checkpoints, production attempt logs and credentials remain outside Git. Historical reports under docs/archive reflect their original stage; use this progress report and site JSON for current status. Public budget templates are disabled and do not grant cluster execution authorization.
+## Pending
 
-## Reproduction and deployment
+- Complete 100,000 qualified Train and 10,000 independent Validation histories.
+- Complete 32k, 64k and 100k learning curves and final model selection. Different Validation scopes are reported separately.
+- Reduce and qualify derived tau and each likelihood error, including tails. Current development models are not accepted for scientific deployment.
+- Freeze model and analysis before separately authorized sealed-label generation and evaluation. Sealed labels generated/read: False/False.
+- Independent posterior fidelity validation and production MCMC integration; no production emulator MCMC has been started.
 
-Install Python >=3.10 package dependencies with `pip install -e .`. Run cheap software checks with `PYTHONPATH=src python -m unittest discover -s tests -p test_compact_array.py`. The original native/postprocessing environment and approved data contracts are required for science-facing tests and training. The selected native hash is recorded in contracts/science_contract.json; a version string alone is not sufficient.
+## Publication and scope
 
-V1 parameter-only manifests are included. Large v2 manifests and data receipts must be restored from the frozen private workspace or recreated and hash-verified with maintenance/v2/generate_design.py; the registry records the expected manifest identities. Cluster-specific absolute paths in the exported implementation identify the audited deployment and need explicit environment adaptation for another deployment. Never update a source/native identity silently.
+Public aggregate snapshots are checked hourly. Queue and GitHub Pages deployment delays apply. Only qualified data counts and completed-training receipts enter the completed list; submitted jobs are not counted as completed. Source history labels, checkpoints, native libraries and sealed payloads are excluded. Email notifications remain disabled.
 
-## Web progress
+The emulator predicts only the simulator-defined 32-node volume-averaged global_xHI history. Tau uses original history postprocessing; LF keeps its exact provider. Endpoint warnings do not remove valid histories, and classifier-negative histories are retained. The reported PCA result is a completed audit, not evidence that compressed PCA is accepted.
 
-The static dashboard is in site/. GitHub Actions deploys only that directory after GitHub Pages is configured to use GitHub Actions. Refresh the public snapshot with tools/export_public_progress.py using the private project root, review the diff, and commit/push the aggregate JSON. The page displays the snapshot timestamp explicitly and does not automatically access the cluster.
+Selected native SHA256: `3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2`.
+
+Code exports are cluster-oriented templates with submission disabled by default. Production authorization is managed separately in the independent scientific workspace.

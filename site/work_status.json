@@ -1,0 +1,39 @@
+{
+  "learning_curves": [
+    {
+      "N": 2048,
+      "status": "COMPLETED",
+      "job_id": "2167134",
+      "receipt_updated_at_hkt": "2026-10-04T12:00:07.305404+08:00"
+    },
+    {
+      "N": 4096,
+      "status": "COMPLETED",
+      "job_id": "2182641",
+      "receipt_updated_at_hkt": "2026-10-06T07:27:18.281749+08:00"
+    },
+    {
+      "N": 8192,
+      "status": "COMPLETED",
+      "job_id": "2183417",
+      "receipt_updated_at_hkt": "2026-10-06T10:35:13.548597+08:00"
+    },
+    {
+      "N": 16384,
+      "status": "DEVELOPMENT_TRAINING_RUNNING",
+      "job_id": "2190125",
+      "receipt_updated_at_hkt": "2026-10-07T10:23:47.807779+08:00"
+    }
+  ],
+  "validation_scope": "Frozen v1 144-point benchmark; separate from the 9k comparison on 2048 v2 Validation points.",
+  "next_milestone": {
+    "N": 32768,
+    "status": "WAITING_FOR_FROZEN_LABELS",
+    "missing_count": 14336
+  },
+  "comparison_completed": true,
+  "production_accepted": false,
+  "sealed_labels_generated": false,
+  "sealed_labels_read": false,
+  "publication_policy": "Hourly aggregate checks; only qualified counts and completed training receipts are published. Queue and deployment delays apply."
+}

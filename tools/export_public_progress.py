@@ -1,10 +1,76 @@
-"""Export whitelisted aggregate progress only; no labels or sealed paths."""
-import argparse,json
+"""Export aggregate receipts only. No history arrays or sealed paths are read."""
+import argparse, json
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
-p=argparse.ArgumentParser();p.add_argument("--project",required=True);p.add_argument("--output",default="site/progress.json");a=p.parse_args()
-d=json.loads((Path(a.project)/"results/dataset_progress.json").read_text())
-keys=['updated_at_hkt', 'version', 'datasets', 'numerical_failed', 'infrastructure_failed', 'retry_success', 'v2_attempts_reserved', 'v2_actual_core_hours_as_accounted', 'median_wall_seconds', 'q90_wall_seconds', 'current_ramp_concurrency', 'native_sha256', 'science_contract_hash', 'sealed_labels_generated', 'sealed_labels_read', 'stop_reasons']
+p=argparse.ArgumentParser()
+p.add_argument("--project", required=True)
+p.add_argument("--output", default="site/progress.json")
+a=p.parse_args()
+root=Path(a.project)
+d=json.loads((root/"results/dataset_progress.json").read_text())
+keys=["updated_at_hkt","version","datasets","numerical_failed","infrastructure_failed","retry_success","v2_attempts_reserved","v2_actual_core_hours_as_accounted","median_wall_seconds","q90_wall_seconds","current_ramp_concurrency","native_sha256","science_contract_hash","sealed_labels_generated","sealed_labels_read","stop_reasons"]
 out={k:d.get(k) for k in keys}
-for split in out["datasets"].values():split.pop("xHI_5p9_histogram_20_equal_bins_0_1",None)
+for split in out["datasets"].values():
+    split.pop("xHI_5p9_histogram_20_equal_bins_0_1",None)
 out.update(snapshot_notice="Validated wave summary, not live Slurm state.",production_accepted=False,email_notifications_enabled=False)
 Path(a.output).write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n")
+curve=json.loads((root/"artifacts/learning_curve_v2_100k/status.json").read_text())
+items=[]
+for n, item in sorted(curve["milestones"].items(),key=lambda pair:int(pair[0])):
+    run=root/item["run"]
+    state=item["status"]
+    if (run/"complete.json").exists():
+        state="COMPLETED"
+    elif (run/"status.json").exists():
+        state=json.loads((run/"status.json").read_text()).get("status",state)
+    receipt=run/("complete.json" if state=="COMPLETED" else "status.json")
+    receipt_time=datetime.fromtimestamp(receipt.stat().st_mtime,timezone(timedelta(hours=8))).isoformat() if receipt.exists() else None
+    items.append({"N":int(n),"status":state,"job_id":item.get("job_id"),"receipt_updated_at_hkt":receipt_time})
+work={"learning_curves":items,"validation_scope":"Frozen v1 144-point benchmark; separate from the 9k comparison on 2048 v2 Validation points.","next_milestone":curve.get("next_milestone"),"comparison_completed":json.loads((root/"artifacts/development_comparison_20261005/status.json").read_text())["status"]=="DEVELOPMENT_COMPARISON_COMPLETED","production_accepted":False,"sealed_labels_generated":d["sealed_labels_generated"],"sealed_labels_read":d["sealed_labels_read"],"publication_policy":"Hourly aggregate checks; only qualified counts and completed training receipts are published. Queue and deployment delays apply."}
+Path(a.output).with_name("work_status.json").write_text(json.dumps(work,ensure_ascii=False,indent=2)+"\n")
+completed=", ".join(f'{x["N"]:,}' for x in items if x["status"]=="COMPLETED")
+active=", ".join(f'{x["N"]:,}: {x["status"]}' for x in items if x["status"]!="COMPLETED")
+report=f"""# BTemu progress
+
+Qualified data snapshot: {d['updated_at_hkt']} (Hong Kong time). Completed-wave receipts, not live Slurm occupancy.
+
+## Completed
+
+- Scientific contract, repaired-native qualification, exact adapter parity and PL-limit checks.
+- Dataset v1: 4,096 qualified Train histories and 512 Validation benchmark histories. V1 Train is retained in the v2 total.
+- Recoverable isolated data-generation pipeline, per-sample provenance and failure records.
+- Development comparison: Direct ResMLP, classifier and PCA + 6×80 MLP; all five initialization seeds; 9,080 Train / 2,048 Validation. This is development evidence, not production acceptance.
+- Frozen learning-curve runs completed: {completed} Train points, on the same 144-point v1 Validation benchmark.
+- PCA representation audit: only logit K=32 passed the current reconstruction screen. No compression benefit has been established.
+
+## In progress
+
+| Dataset | Qualified | Target | Remaining |
+|---|---:|---:|---:|
+| Train v2 | {d['datasets']['train']['qualified']:,} | 100,000 | {100000-d['datasets']['train']['qualified']:,} |
+| Validation v2 | {d['datasets']['validation']['qualified']:,} | 10,000 | {10000-d['datasets']['validation']['qualified']:,} |
+
+- Learning curves: {active or 'No incomplete submitted milestones in the latest receipt.'}
+- Configured simulation concurrency cap: {d['current_ramp_concurrency']} × 16 CPUs. This is a cap, not a live occupancy measurement.
+- Accounted v2 worker allocation cost: {d['v2_actual_core_hours_as_accounted']:,.2f} core-hours; median / q90 wall time: {d['median_wall_seconds']:.1f} / {d['q90_wall_seconds']:.1f} seconds.
+- Receipted numerical / infrastructure failures: {d['numerical_failed']} / {d['infrastructure_failed']}.
+
+## Pending
+
+- Complete 100,000 qualified Train and 10,000 independent Validation histories.
+- Complete 32k, 64k and 100k learning curves and final model selection. Different Validation scopes are reported separately.
+- Reduce and qualify derived tau and each likelihood error, including tails. Current development models are not accepted for scientific deployment.
+- Freeze model and analysis before separately authorized sealed-label generation and evaluation. Sealed labels generated/read: {d['sealed_labels_generated']}/{d['sealed_labels_read']}.
+- Independent posterior fidelity validation and production MCMC integration; no production emulator MCMC has been started.
+
+## Publication and scope
+
+Public aggregate snapshots are checked hourly. Queue and GitHub Pages deployment delays apply. Only qualified data counts and completed-training receipts enter the completed list; submitted jobs are not counted as completed. Source history labels, checkpoints, native libraries and sealed payloads are excluded. Email notifications remain disabled.
+
+The emulator predicts only the simulator-defined 32-node volume-averaged global_xHI history. Tau uses original history postprocessing; LF keeps its exact provider. Endpoint warnings do not remove valid histories, and classifier-negative histories are retained. The reported PCA result is a completed audit, not evidence that compressed PCA is accepted.
+
+Selected native SHA256: `{d['native_sha256']}`.
+
+Code exports are cluster-oriented templates with submission disabled by default. Production authorization is managed separately in the independent scientific workspace.
+"""
+Path("docs/progress.md").write_text(report)
