@@ -1,0 +1,36 @@
+{
+  "authorized": false,
+  "approval_reference": "DISABLED_PUBLIC_EXPORT_TEMPLATE",
+  "audit_contract_sha256": "9f3814de43a8a866c6efd2ddb9e8c21155a28e421e785e49089f6823df05315a",
+  "max_new_evaluations": 0,
+  "max_attempts": 0,
+  "max_infrastructure_retries": 0,
+  "max_retries_per_sample": 1,
+  "allowed_retry_statuses": [
+    "infrastructure_failure"
+  ],
+  "cpus": 16,
+  "memory_MiB": 16384,
+  "wall_seconds": 7200,
+  "max_concurrent": 16,
+  "max_core_hours": 0,
+  "resource_cap_not_cost_prediction": true,
+  "estimated_fresh_core_hours_at_current_median": 1654.6133333333332,
+  "storage_limit_bytes": 21474836480,
+  "implementation_sha256": {
+    "maintenance/ic_audit/design.py": "9bbad961c16c5cfcf862d545e98218a96aefc37ab4606fc2b586d92655ae2edf",
+    "maintenance/ic_audit/common.py": "b280381a6fd84e0888effac07d1a361a2b955ff47ceaeb94496db32824a282f7",
+    "maintenance/ic_audit/worker.py": "0d25ed9709d5a0f8d83dae0f56ef3fbc32644bcc35a46dd328ca38ac9f4b2e52",
+    "maintenance/ic_audit/report.py": "c1c5f795f435b227e0fc3cbc3e65432c61296816c3460c4575a84e86424be813",
+    "maintenance/ic_audit/advance.py": "78b385f342950df583159025dc076f2b5f9f6af0e5c947aaacb422cd09066a66",
+    "maintenance/ic_audit/finalize_fixed.py": "82fed30f61dc4250d19eac099edf929ea93bdf58eb181705859c8b83e37e481a",
+    "maintenance/ic_audit/worker.sbatch": "165a7af1e3eaa044cf9bf91fab3645dfc8fe8d7e68a298cc0399716c9aa16a12",
+    "maintenance/ic_audit/collect.sbatch": "68498b27acdf90fc75340dcd023b1b205460970d7159a81d23415d86996de06a",
+    "maintenance/ic_audit/finalize_fixed.sbatch": "834bad880e84355ef3bbf4fd48601504fdbf719e5e9bd8ef2478efeb6696e961"
+  },
+  "native_unchanged": true,
+  "sealed_generation_authorized": false,
+  "random_IC_bulk_production_authorized_before_audit": false,
+  "budget_revision": "v1.1_ordinal_charge_matching_and_explicit_history_scatter_screen",
+  "previous_budget_sha256": "9e96b6fe235fe505b4a6b7036efc204ff45b4e76555638789e5229183cad67f2"
+}

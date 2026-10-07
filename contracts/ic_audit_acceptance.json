@@ -1,0 +1,20 @@
+{
+  "status": "PROPOSED_REQUIRES_SCIENTIFIC_CONFIRMATION",
+  "sampling_unit": "theta family",
+  "q90_std_threshold_proposals": {
+    "std_tau": 0.0002,
+    "std_xHI_5p9": 0.002,
+    "std_logL_tau": 0.02,
+    "std_logL_xHI": 0.02,
+    "std_logL_joint_history": 0.02,
+    "trajectory_IC_scatter_RMS": 0.002
+  },
+  "q90_abs_Jensen_logL_difference_proposal": 0.02,
+  "classifier_stability": "No unstable family with |mean xHI(5.9)-cut|>0.01; report all near-boundary flips separately",
+  "history_scatter": "Report absolute scatter by z and fixed-versus-mean errors; physical trajectory IC scatter q90 budget proposed 0.002",
+  "observational_uncertainty_comparison": "tau min split-normal sigma 0.007; xHI penalty sigma 0.05",
+  "finite_mean_uncertainty_required": true,
+  "posterior_acceptance": false,
+  "production_decision_before_complete_audit": false,
+  "thresholds_not_relaxed_after_outcomes": true
+}

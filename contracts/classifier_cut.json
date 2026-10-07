@@ -1,0 +1,19 @@
+{
+  "status": "DERIVED_FROM_FROZEN_ORIGINAL_LIKELIHOOD",
+  "quantity": "volume_mean_global_xHI",
+  "redshift": 5.9,
+  "observational_bound": 0.06,
+  "sigma_above_bound": 0.05,
+  "n_sigma": 5,
+  "cut": 0.31,
+  "allowed_comparison": "xHI_5p9 < cut",
+  "boundary_equality": "negative at exact cut",
+  "delta_logL_at_cut": -12.5,
+  "kernel": "one-sided penalty -0.5*((xHI-bound)/sigma)^2 above bound; zero below",
+  "model_error": 0.0,
+  "original_likelihood_source": "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/inference/non21_likelihood.py",
+  "original_likelihood_source_sha256": "e60f43ea70bc1fc5d274c7645b9a0928c41f3785d3be0546e8f1cc18af4145fa",
+  "classifier_probability_gate": null,
+  "hard_gate_enabled": false,
+  "reject_semantics": "No production reject implementation until independently validated; the exact likelihood remains finite at the cut."
+}

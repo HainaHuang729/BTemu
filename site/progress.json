@@ -1,29 +1,29 @@
 {
-  "updated_at_hkt": "2026-10-07T09:16:30.346034+08:00",
+  "updated_at_hkt": "2026-10-07T12:11:29.263444+08:00",
   "version": "dataset_design_v2_100k",
   "datasets": {
     "train": {
       "target": 100000,
-      "qualified": 18432,
-      "positive_fraction": 0.3649088541666667,
-      "negative_fraction": 0.6350911458333333,
+      "qualified": 18654,
+      "positive_fraction": 0.3648011150423502,
+      "negative_fraction": 0.6351988849576498,
       "failed_current_v2": 0
     },
     "validation": {
       "target": 10000,
-      "qualified": 4608,
-      "positive_fraction": 0.365234375,
-      "negative_fraction": 0.634765625,
+      "qualified": 5120,
+      "positive_fraction": 0.3642578125,
+      "negative_fraction": 0.6357421875,
       "failed_current_v2": 0
     }
   },
   "numerical_failed": 0,
   "infrastructure_failed": 0,
   "retry_success": 0,
-  "v2_attempts_reserved": 18944,
-  "v2_actual_core_hours_as_accounted": 35794.4800000002,
-  "median_wall_seconds": 415.48027238529176,
-  "q90_wall_seconds": 496.6015743184835,
+  "v2_attempts_reserved": 19678,
+  "v2_actual_core_hours_as_accounted": 37183.946666666794,
+  "median_wall_seconds": 415.52154922811314,
+  "q90_wall_seconds": 496.59936352912337,
   "current_ramp_concurrency": 32,
   "native_sha256": "3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2",
   "science_contract_hash": "2effb28af618d47c31dde218a6d3b89aedd59a208dc5814dcc5c69f8c05150d9",

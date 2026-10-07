@@ -1,6 +1,6 @@
 # BTemu progress
 
-Qualified data snapshot: 2026-10-07T09:16:30.346034+08:00 (Hong Kong time). Completed-wave receipts, not live Slurm occupancy.
+Qualified data snapshot: 2026-10-07T12:11:29.263444+08:00 (Hong Kong time). Completed-wave receipts, not live Slurm occupancy.
 
 ## Completed
 
@@ -8,24 +8,30 @@ Qualified data snapshot: 2026-10-07T09:16:30.346034+08:00 (Hong Kong time). Comp
 - Dataset v1: 4,096 qualified Train histories and 512 Validation benchmark histories. V1 Train is retained in the v2 total.
 - Recoverable isolated data-generation pipeline, per-sample provenance and failure records.
 - Development comparison: Direct ResMLP, classifier and PCA + 6×80 MLP; all five initialization seeds; 9,080 Train / 2,048 Validation. This is development evidence, not production acceptance.
-- Frozen learning-curve runs completed: 2,048, 4,096, 8,192 Train points, on the same 144-point v1 Validation benchmark.
+- Frozen learning-curve runs completed: 2,048, 4,096, 8,192, 16,384 Train points, on the same 144-point v1 Validation benchmark.
 - PCA representation audit: only logit K=32 passed the current reconstruction screen. No compression benefit has been established.
 
-## In progress
+## Scientific-target transition
 
-| Dataset | Qualified | Target | Remaining |
-|---|---:|---:|---:|
-| Train v2 | 18,432 | 100,000 | 81,568 |
-| Validation v2 | 4,608 | 10,000 | 5,392 |
+Fixed-IC production waves have stopped. Existing data retain their original labels and splits under the catalog alias fixed_ic_v1. Random-IC training is separate.
 
-- Learning curves: 16,384: DEVELOPMENT_TRAINING_RUNNING
-- Configured simulation concurrency cap: 32 × 16 CPUs. This is a cap, not a live occupancy measurement.
-- Accounted v2 worker allocation cost: 35,794.48 core-hours; median / q90 wall time: 415.5 / 496.6 seconds.
+IC_AUDIT_V1: 128 theta families × 8 ICs; reuse 128 qualified fixed references and run 896 fresh realizations. Audit status: AUDIT_ARRAY_SUBMITTED. Fresh qualified: 2. Classifier cut is derived from the original likelihood: 0.06 + 5×0.05 = 0.31. No classifier hard gate is enabled.
+
+## Retained fixed-IC data
+
+| Retained baseline | Qualified | Role |
+|---|---:|---|
+| Fixed-IC Train | 18,654 | Baseline / diagnostics |
+| Fixed-IC Validation | 5,120 | Development reference |
+
+- Learning curves: No incomplete submitted milestones in the latest receipt.
+- Historical fixed-IC simulation concurrency cap (production stopped): 32 × 16 CPUs. This is a cap, not a live occupancy measurement.
+- Accounted v2 worker allocation cost: 37,183.95 core-hours; median / q90 wall time: 415.5 / 496.6 seconds.
 - Receipted numerical / infrastructure failures: 0 / 0.
 
 ## Pending
 
-- Complete 100,000 qualified Train and 10,000 independent Validation histories.
+- Complete IC sensitivity audit and qualify one-random-IC versus multi-IC averaging before formal random_ic_v2 production (100k Train / 10k Validation). Fixed-IC totals are retained baselines, not random-IC training data.
 - Complete 32k, 64k and 100k learning curves and final model selection. Different Validation scopes are reported separately.
 - Reduce and qualify derived tau and each likelihood error, including tails. Current development models are not accepted for scientific deployment.
 - Freeze model and analysis before separately authorized sealed-label generation and evaluation. Sealed labels generated/read: False/False.

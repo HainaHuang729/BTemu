@@ -1,5 +1,5 @@
 """Export aggregate receipts only. No history arrays or sealed paths are read."""
-import argparse, json
+import argparse, json, re
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 p=argparse.ArgumentParser()
@@ -27,6 +27,12 @@ for n, item in sorted(curve["milestones"].items(),key=lambda pair:int(pair[0])):
     receipt_time=datetime.fromtimestamp(receipt.stat().st_mtime,timezone(timedelta(hours=8))).isoformat() if receipt.exists() else None
     items.append({"N":int(n),"status":state,"job_id":item.get("job_id"),"receipt_updated_at_hkt":receipt_time})
 work={"learning_curves":items,"validation_scope":"Frozen v1 144-point benchmark; separate from the 9k comparison on 2048 v2 Validation points.","next_milestone":curve.get("next_milestone"),"comparison_completed":json.loads((root/"artifacts/development_comparison_20261005/status.json").read_text())["status"]=="DEVELOPMENT_COMPARISON_COMPLETED","production_accepted":False,"sealed_labels_generated":d["sealed_labels_generated"],"sealed_labels_read":d["sealed_labels_read"],"publication_policy":"Hourly aggregate checks; only qualified counts and completed training receipts are published. Queue and deployment delays apply."}
+transition_path=root/"results/fixed_ic_transition_snapshot.json"
+if transition_path.exists():
+    ts=json.loads(transition_path.read_text())
+    ap=root/"results/ic_audit_progress.json"
+    audit=json.loads(ap.read_text()) if ap.exists() else {}
+    work["transition"]={"dataset_version":"fixed_ic_v1","new_target":"random_ic_v2","fixed_waves_stopped":True,"fixed_drained":ts.get("drained_running")==0,"fixed_qualified":ts.get("drained_qualified",ts["qualified"]),"cancelled_unstarted_slots":ts["cancelled_pending_slots"],"audit_status":audit.get("status","MANIFEST_FROZEN"),"audit_max_concurrent":16,"audit_receipt_updated_at_hkt":datetime.fromtimestamp(ap.stat().st_mtime,timezone(timedelta(hours=8))).isoformat() if ap.exists() else None,"audit_theta_count":128,"ICs_per_theta":8,"new_evaluations":896,"qualified_fresh":audit.get("qualified_fresh",0),"reused_fixed":128,"audit_array_job":(audit.get("submission") or {}).get("array_job"),"random_bulk_started":False,"classifier_cut":0.31,"decision":"AUDIT_NOT_YET_COMPLETE"}
 Path(a.output).with_name("work_status.json").write_text(json.dumps(work,ensure_ascii=False,indent=2)+"\n")
 completed=", ".join(f'{x["N"]:,}' for x in items if x["status"]=="COMPLETED")
 active=", ".join(f'{x["N"]:,}: {x["status"]}' for x in items if x["status"]!="COMPLETED")
@@ -73,4 +79,10 @@ Selected native SHA256: `{d['native_sha256']}`.
 
 Code exports are cluster-oriented templates with submission disabled by default. Production authorization is managed separately in the independent scientific workspace.
 """
+if work.get("transition"):
+    t=work["transition"]
+    report=report.replace("## In progress", "## Scientific-target transition\n\nFixed-IC production waves have stopped. Existing data retain their original labels and splits under the catalog alias fixed_ic_v1. Random-IC training is separate.\n\nIC_AUDIT_V1: 128 theta families × 8 ICs; reuse 128 qualified fixed references and run 896 fresh realizations. Audit status: "+t["audit_status"]+". Fresh qualified: "+str(t["qualified_fresh"])+". Classifier cut is derived from the original likelihood: 0.06 + 5×0.05 = 0.31. No classifier hard gate is enabled.\n\n## Retained fixed-IC data")
+    report=report.replace("- Configured simulation concurrency cap:","- Historical fixed-IC simulation concurrency cap (production stopped):")
+    report=report.replace("- Complete 100,000 qualified Train and 10,000 independent Validation histories.","- Complete IC sensitivity audit and qualify one-random-IC versus multi-IC averaging before formal random_ic_v2 production (100k Train / 10k Validation). Fixed-IC totals are retained baselines, not random-IC training data.")
+    report=re.sub(r"\| Dataset \| Qualified \| Target \| Remaining \|.*?\n\n- Learning curves:", "| Retained baseline | Qualified | Role |\n|---|---:|---|\n| Fixed-IC Train | "+format(d["datasets"]["train"]["qualified"],",")+" | Baseline / diagnostics |\n| Fixed-IC Validation | "+format(d["datasets"]["validation"]["qualified"],",")+" | Development reference |\n\n- Learning curves:", report, flags=re.S)
 Path("docs/progress.md").write_text(report)

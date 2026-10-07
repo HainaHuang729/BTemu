@@ -1,0 +1,80 @@
+{
+  "version": "random_ic_v2",
+  "status": "DRAFT_PENDING_IC_AUDIT",
+  "base_physics_contract_sha256": "fc5c5d237b9b793fc118c648a4a1f76d5408a5872a9ffa5542b2f50b700eebac",
+  "parameter_order": [
+    "F_STAR10",
+    "ALPHA_STAR",
+    "F_ESC10",
+    "ALPHA_ESC",
+    "M_TURN",
+    "t_STAR",
+    "L_X",
+    "NU_X_THRESH",
+    "KP_h_Mpc",
+    "MS"
+  ],
+  "prior_support": {
+    "F_STAR10": [
+      -3.0,
+      0.0
+    ],
+    "ALPHA_STAR": [
+      -0.5,
+      1.0
+    ],
+    "F_ESC10": [
+      -3.0,
+      0.0
+    ],
+    "ALPHA_ESC": [
+      -1.0,
+      0.5
+    ],
+    "M_TURN": [
+      8.0,
+      11.0
+    ],
+    "t_STAR": [
+      0.01,
+      1.0
+    ],
+    "L_X": [
+      38.0,
+      42.0
+    ],
+    "NU_X_THRESH": [
+      100.0,
+      1500.0
+    ],
+    "KP_h_Mpc": [
+      1.0,
+      30.0
+    ],
+    "MS": [
+      0.5,
+      4.0
+    ]
+  },
+  "native_sha256": "3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2",
+  "output": "32-node simulator-defined volume-mean global_xHI",
+  "target": "Conditional expectation or representative history over random IC, to be demonstrated by multi-IC validation",
+  "IC_input": false,
+  "one_or_multi_IC_per_theta": "UNDECIDED_PENDING_AUDIT",
+  "unique_theta_targets": {
+    "train": 100000,
+    "validation": 10000,
+    "sealed_test": 5000
+  },
+  "fixed_IC_training_mixture_allowed": false,
+  "protocol_candidates": [
+    "from scratch on random_ic_v2",
+    "fixed-IC pretraining then random-IC fine-tuning, separately evaluated"
+  ],
+  "random_IC_simulations_generated": 0,
+  "sealed_labels_generation_or_access": false,
+  "production_MCMC": false,
+  "tau_output_head": false,
+  "tau_definition": "Original tau_from_history + selected native compute_tau",
+  "mean_likelihood_caveat": "E_IC[likelihood(history)] is generally not likelihood(E_IC[history]); audit both before IC-marginalized inference claims."
+}

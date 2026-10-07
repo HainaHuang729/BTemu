@@ -1,0 +1,22 @@
+{
+  "version": "fixed_ic_v1",
+  "catalog_alias_only": true,
+  "original_dataset_versions_and_splits_preserved": true,
+  "roles": [
+    "deterministic baseline",
+    "architecture development",
+    "PCA diagnostics",
+    "classifier development",
+    "IC-sensitivity reference"
+  ],
+  "registry": "data_runs/dataset_v2_100k/dataset_manifest.sqlite",
+  "transition_snapshot": "results/fixed_ic_transition_snapshot.json",
+  "fixed_ic_seed": 725213656658,
+  "qualified_at_drain": {
+    "train": 18654,
+    "validation": 5120
+  },
+  "v1_validation_benchmark_separate": 512,
+  "new_production_waves_enabled": false,
+  "not_random_IC_training_data": true
+}

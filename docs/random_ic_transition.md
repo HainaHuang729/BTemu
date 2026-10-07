@@ -1,0 +1,19 @@
+# Random-IC methodological transition
+
+The project aims to constrain KP, MS and astrophysical parameters with the unchanged LF, tau and xHI likelihoods. Fixed-IC labels are retained under the catalog alias fixed_ic_v1, preserving their actual design versions and original splits. They are baseline/pretraining/diagnostic data, and cannot silently enter formal random_ic_v2 training with equal weight.
+
+IC_AUDIT_V1 uses 128 development theta families × 8 ICs, including a checksum-bound existing fixed reference and seven new unique seeds. Seed schedule is deterministic with independent ic_design_seed=202610072; fresh integers are selected uniformly in [1,2**31-1], without modulo or resampling by outcomes. Requested and returned seeds must agree. Physical settings and 16 threads stay frozen. Separate isolated processes regenerate fields; no unqualified cache is used.
+
+Before bulk random-IC production, report theta-family history scatter, tau scatter, xHI(5.9) scatter, classifier flips, both likelihood components and their sum. Report the difference between likelihood evaluated at mean history and IC-marginalized likelihood, not merely average log-likelihood. Eight realizations estimate a finite-box conditional mean; they do not prove infinite-IC convergence or posterior fidelity. Compare 2/4/8-IC mean histories to the finite eight-IC reference and retain incomplete families and numerical failures.
+
+The existing scientific acceptance thresholds are still proposals. The IC production screen is separately preregistered in contracts/ic_audit_acceptance.json, requiring scientific confirmation before it can grant a formal production pass. Full posterior validation remains required even if a one-IC development screen passes.
+
+Classifier cut is derived from the actual original kernel: 0.06+5*0.05=0.31 at z=5.9. Its log-likelihood penalty is finite (-12.5), so this is not a new prior. Hard gating stays disabled until false negatives, calibration, cut neighborhoods, IC families, and KP/MS posterior sensitivity have been independently qualified.
+
+The source review confirms the previous PCA already fitted only positive Train histories. Its K=32 result cannot be explained by an assertion that negatives were included. Reaudit independently on random-IC positives, testing K=4,8,12,16,20,24,28,32 against physical history, original tau, xHI and likelihood errors.
+
+NNERO methodology references: [paper](https://arxiv.org/html/2503.11261v1), [official source](https://github.com/gaetanfacchinetti/NNERO/tree/torch). Paper classifier is 2×30 ReLU with binary cross entropy; regressor is 6×80. The current public generic constructors add an initial Linear before their hidden-layer loop, lack a ReLU immediately after that input Linear, and have different generic defaults. Optimizer is supplied by callers. These are documented implementation differences: follow the user-specified explicit activated 2×30 and 6×80 topology; BCEWithLogitsLoss is the stable equivalent of sigmoid+BCE. Existing AdamW development settings remain a local choice, not an asserted NNERO optimizer reproduction.
+
+NNERO models log free-electron histories and uses relative history/tau loss. Our volume-mean neutral fraction includes exact zeros; do not transfer its Xe log/relative loss blindly. The first BT baseline retains physical history MSE and original deterministic tau postprocessing. Any differentiable derived-tau layer requires exact parity and a separate history-only comparison. No tau head, WDM transfer function, sharp-k HMF or pretrained weights are adopted.
+
+Positive-only regression with noisy IC-dependent labels can condition on the cut as well as theta. Classifier stability and near-cut diagnostics are therefore essential before claiming the regressor learns the unconditional IC mean. Final random-IC sealed design must be independent; old fixed-IC sealed data remain unopened. No production MCMC is authorized by these development results.
