@@ -1,6 +1,6 @@
 # IC audit queue snapshot
 
-Checked 2026-10-08T11:32:23.844063+08:00. No new labels since the previous check: 770/896 fresh realizations qualified, 110/128 complete eight-IC families, zero failed simulation receipts.
+Checked 2026-10-08T13:23:53.726590+08:00. No new labels since the previous check: 770/896 fresh realizations qualified, 110/128 complete eight-IC families, zero failed simulation receipts.
 
 Recovery controller 2192051 and full software check 2192053 are PENDING. All eight allowed reservation nodes (chpc-cn057–064) have their 2048 CPUs allocated; the audit currently runs zero simulations and uses zero CPUs. No other running jobs were cancelled or modified.
 

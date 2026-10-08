@@ -68,7 +68,7 @@
       "status": "WAITING_FOR_RECOVERY_CONTROLLER"
     },
     "queue_snapshot": {
-      "checked_at_hkt": "2026-10-08T11:32:23.844063+08:00",
+      "checked_at_hkt": "2026-10-08T13:23:53.726590+08:00",
       "qualified_fresh": 770,
       "planned_fresh": 896,
       "complete_families": 110,
