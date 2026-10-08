@@ -57,4 +57,4 @@ Final-wave Slurm array indices exceeded MaxArraySize=1001. Compact task-to-manif
 
 ## Queue snapshot
 
-Checked 2026-10-08T00:17:41.918999+08:00. Audit uses zero CPUs; all 2048 reservation CPUs are allocated to existing jobs. Recovery job 2192051 is PENDING. Slurm estimated start 2026-10-10T11:20:00+08:00 is provisional. See [queue status](ic_audit_queue_status.md).
+Checked 2026-10-08T11:32:23.844063+08:00. Audit uses zero CPUs; all 2048 reservation CPUs are allocated to existing jobs. Recovery job 2192051 is PENDING. Slurm estimated start 2026-10-10T11:20:00+08:00 is provisional. See [queue status](ic_audit_queue_status.md).
