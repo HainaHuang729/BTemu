@@ -35,6 +35,13 @@ function renderWork(zh){
  lists['active-work']=zh?['当前没有运行中的数据生产模拟。','现有 2/4/8 IC 均值收敛结果已整理；8 IC 还不能视为已验收的均值。']:['No data-production simulation is currently running.','Finite 2/4/8-IC convergence results are summarized; eight ICs are not yet a qualified ensemble mean.'];
  lists['pending-work'][0]=zh?'确定多 IC target、likelihood 验收与相应预算。':'Qualify a multi-IC target, likelihood fidelity and corresponding budget.';
  }
+ if(t.explicit_random_start){
+ const e=t.explicit_random_start;const p=work.random_launch.production;
+ document.getElementById('transition-title').textContent=zh?'RANDOM IC 随机实现数据生产已启动':'RANDOM IC REALIZATION PRODUCTION STARTED';
+ document.getElementById('transition-text').textContent=zh?`按最新授权，每个 theta 使用一个独立随机 IC。启动快照：数组 ${e.array_job}，${e.running} 个模拟运行于 ${e.node}，${e.allocated_CPUs} CPU；验收续波 ${e.collector_job}。Train 合格 ${p.datasets.train.qualified} / 100000，Validation ${p.datasets.validation.qualified} / 10000。快照非实时队列。IC audit 未通过散布门槛的结论保留，不阻止开发数据生成；均值和 posterior 尚未验收。`:`Latest authorization: one independent random IC per theta. Launch snapshot: array ${e.array_job}, ${e.running} simulations on ${e.node}, ${e.allocated_CPUs} CPUs; collector ${e.collector_job}. Qualified Train ${p.datasets.train.qualified}/100000, Validation ${p.datasets.validation.qualified}/10000. Snapshot, not live queue. Failed audit scatter gates remain recorded; random-realization data generation is authorized, mean/posterior fidelity is not qualified.`;
+ lists['active-work']=zh?['随机 IC 正式数据设计已开始执行；原有验收器自动分波推进。','并发上限 16 × 16 CPU，fixed-IC 数据独立保留。']:['Frozen random-IC data design launched; validated waves continue automatically.','Concurrency cap 16 x 16 CPUs; fixed-IC dataset retained separately.'];
+ lists['pending-work'][0]=zh?'验证随机 IC 模型的均值、likelihood 与 posterior fidelity。':'Validate learned conditional mean, likelihood and posterior fidelity.';
+ }
  for(const id of ['completed-work','active-work','pending-work']){const node=document.getElementById(id);node.replaceChildren();for(const text of lists[id]){const li=document.createElement('li');li.textContent=text;node.appendChild(li)}}
 }
  document.getElementById('learning-status').textContent=zh?'学习曲线使用冻结的 v1 144 条 Validation；9k 模型比较使用另一组 v2 2,048 条 Validation，指标不能直接混合。':'Learning curves use the frozen v1 144-point Validation benchmark. The 9k model comparison uses 2,048 v2 Validation points; metrics are reported separately.';

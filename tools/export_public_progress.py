@@ -70,6 +70,9 @@ if launch_path.exists():
 final_audit_path=root/"results/ic_audit_completion_summary.json"
 if final_audit_path.exists() and "transition" in work:
     work["transition"]["completed_audit"]=json.loads(final_audit_path.read_text())
+explicit_start=root/"results/random_ic_explicit_start.json"
+if explicit_start.exists() and "transition" in work:
+    work["transition"]["explicit_random_start"]=json.loads(explicit_start.read_text())
 Path(a.output).with_name("work_status.json").write_text(json.dumps(work,ensure_ascii=False,indent=2)+"\n")
 completed=", ".join(f'{x["N"]:,}' for x in items if x["status"]=="COMPLETED")
 active=", ".join(f'{x["N"]:,}: {x["status"]}' for x in items if x["status"]!="COMPLETED")
@@ -136,4 +139,10 @@ if work.get("transition",{}).get("completed_audit"):
     report=report.replace("- Complete IC sensitivity audit and qualify one-random-IC versus multi-IC averaging before formal random_ic_v2 production (100k Train / 10k Validation).", "- IC audit completed and failed the single-realization gate. Qualify a multi-IC target and inference protocol before formal random_ic_v2 production (100k Train / 10k Validation).")
     report=report.replace("Submitted scientific gate watcher:", "Last submitted scientific gate watcher (completed; no successor after gate failure):")
     report+="\n## Complete IC audit decision\n\n896/896 new realizations qualified; all 128 families have eight ICs. Zero simulation failures. Cost: 1,694.12 allocated core-hours. **MULTI_IC_AVERAGING_REQUIRED** under the confirmed conservative development gates. Single-realization random-IC production was not submitted. Thirteen families change classifier label across ICs, including two outside the near-cut band. The 2/4/8-IC finite-reference comparison does not establish that eight ICs are sufficient. See [complete audit report](ic_audit_completion.md).\n"
+if work.get("transition",{}).get("explicit_random_start"):
+    report=report.replace("- IC audit completed and failed the single-realization gate. Qualify a multi-IC target and inference protocol before formal random_ic_v2 production (100k Train / 10k Validation).", "- Continue explicitly authorized random-realization production: 100k Train / 10k Validation. Audit scatter failures remain documented for model/inference validation.")
+    report=report.replace("Complete 128×8 audit must pass before any random-IC production array is submitted.", "The original wait-for-pass rule was superseded by explicit user authorization on 2026-10-10; see the launch update below.")
+    report=report.replace("No random-IC bulk simulation is released before the full audit passes.", "This historical audit gate was superseded for random-realization data production on 2026-10-10.")
+    report=report.replace("Single-realization random-IC production was not submitted.", "At audit completion, random-IC production was withheld. It has since been explicitly authorized and launched, without changing the failed audit decision.")
+    report+="\n## Random-realization production launch\n\nLatest user authorization selects one independent random IC per theta. Controller 2194516 completed; array 2194518 started eight Train simulations on cn061 (128 CPUs at launch). Dependent validation/continuation job 2194519 is submitted. Maximum simulation allocation remains 256 CPUs. Mean-history and posterior fidelity remain unqualified. See [launch record](random_ic_explicit_start.md).\n"
 Path("docs/progress.md").write_text(report)

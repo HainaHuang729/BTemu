@@ -31,7 +31,7 @@ IC_AUDIT_V1: 128 theta families × 8 ICs; reuse 128 qualified fixed references a
 
 ## Pending
 
-- IC audit completed and failed the single-realization gate. Qualify a multi-IC target and inference protocol before formal random_ic_v2 production (100k Train / 10k Validation). Fixed-IC totals are retained baselines, not random-IC training data.
+- Continue explicitly authorized random-realization production: 100k Train / 10k Validation. Audit scatter failures remain documented for model/inference validation. Fixed-IC totals are retained baselines, not random-IC training data.
 - Complete 32k, 64k and 100k learning curves and final model selection. Different Validation scopes are reported separately.
 - Reduce and qualify derived tau and each likelihood error, including tails. Current development models are not accepted for scientific deployment.
 - Freeze model and analysis before separately authorized sealed-label generation and evaluation. Sealed labels generated/read: False/False.
@@ -49,12 +49,16 @@ Code exports are cluster-oriented templates with submission disabled by default.
 
 ## Audit-gated random-IC launch
 
-Submitted offline design job: 2190856. Last submitted scientific gate watcher (completed; no successor after gate failure): 2194403. Status: AUDIT_NOT_PASSED_PRODUCTION_NOT_SUBMITTED. Parameter design frozen: True. Complete 128×8 audit must pass before any random-IC production array is submitted. First eight evaluations, then waves of up to 128, maximum 16 simulations / 256 CPUs. See [launch record](random_ic_production_launch.md).
+Submitted offline design job: 2190856. Last submitted scientific gate watcher (completed; no successor after gate failure): 2190857. Status: RANDOM_REALIZATION_DEVELOPMENT_PRODUCTION_STARTED. Parameter design frozen: True. The original wait-for-pass rule was superseded by explicit user authorization on 2026-10-10; see the launch update below. First eight evaluations, then waves of up to 128, maximum 16 simulations / 256 CPUs. See [launch record](random_ic_production_launch.md).
 
 ## Audit scheduler recovery
 
-Final-wave Slurm array indices exceeded MaxArraySize=1001. Compact task-to-manifest mapping now preserves the original theta/seed schedule. Recovery controller 2192051: RESOLVED_COMPLETED. See [recovery record](ic_audit_scheduler_recovery.md). No random-IC bulk simulation is released before the full audit passes.
+Final-wave Slurm array indices exceeded MaxArraySize=1001. Compact task-to-manifest mapping now preserves the original theta/seed schedule. Recovery controller 2192051: RESOLVED_COMPLETED. See [recovery record](ic_audit_scheduler_recovery.md). This historical audit gate was superseded for random-realization data production on 2026-10-10.
 
 ## Complete IC audit decision
 
-896/896 new realizations qualified; all 128 families have eight ICs. Zero simulation failures. Cost: 1,694.12 allocated core-hours. **MULTI_IC_AVERAGING_REQUIRED** under the confirmed conservative development gates. Single-realization random-IC production was not submitted. Thirteen families change classifier label across ICs, including two outside the near-cut band. The 2/4/8-IC finite-reference comparison does not establish that eight ICs are sufficient. See [complete audit report](ic_audit_completion.md).
+896/896 new realizations qualified; all 128 families have eight ICs. Zero simulation failures. Cost: 1,694.12 allocated core-hours. **MULTI_IC_AVERAGING_REQUIRED** under the confirmed conservative development gates. At audit completion, random-IC production was withheld. It has since been explicitly authorized and launched, without changing the failed audit decision. Thirteen families change classifier label across ICs, including two outside the near-cut band. The 2/4/8-IC finite-reference comparison does not establish that eight ICs are sufficient. See [complete audit report](ic_audit_completion.md).
+
+## Random-realization production launch
+
+Latest user authorization selects one independent random IC per theta. Controller 2194516 completed; array 2194518 started eight Train simulations on cn061 (128 CPUs at launch). Dependent validation/continuation job 2194519 is submitted. Maximum simulation allocation remains 256 CPUs. Mean-history and posterior fidelity remain unqualified. See [launch record](random_ic_explicit_start.md).

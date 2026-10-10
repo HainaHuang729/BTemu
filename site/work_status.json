@@ -58,7 +58,7 @@
     "partial_scatter_snapshot_at_hkt": "2026-10-07T21:54:50.934462+08:00",
     "reused_fixed": 128,
     "audit_array_job": null,
-    "random_bulk_started": false,
+    "random_bulk_started": true,
     "classifier_cut": 0.31,
     "decision": "MULTI_IC_AVERAGING_REQUIRED",
     "scheduler_recovery": {
@@ -99,20 +99,75 @@
       "parameter_selection_caveat": "Representative/challenge-enriched development families, not an unbiased prior sample",
       "sealed_access": false,
       "updated_at_hkt": "2026-10-10T21:24:17.439404+08:00"
+    },
+    "explicit_random_start": {
+      "authorization": "explicit_random_realization_development",
+      "snapshot_unix": 1791639083.6806922,
+      "array_job": "2194518",
+      "collector_job": "2194519",
+      "running": 8,
+      "pending_simulations": 0,
+      "allocated_CPUs": 128,
+      "node": "chpc-cn061",
+      "max_simulation_CPUs": 256,
+      "qualified": 0,
+      "audit_pass": false,
+      "scientific_mean_target_qualified": false,
+      "sealed_labels_read": false
     }
   },
   "random_launch": {
     "design_job": "2190856",
-    "gate_job": "2194403",
+    "gate_job": "2190857",
     "initial_gate_job": "2190857",
-    "status": "AUDIT_NOT_PASSED_PRODUCTION_NOT_SUBMITTED",
+    "status": "RANDOM_REALIZATION_DEVELOPMENT_PRODUCTION_STARTED",
     "design_frozen": true,
     "targets": {
       "train": 100000,
       "validation": 10000,
       "sealed_design": 5000
     },
-    "production": {},
+    "production": {
+      "version": "random_ic_v2",
+      "updated_at_unix": 1791639036.8176072,
+      "datasets": {
+        "train": {
+          "target": 100000,
+          "qualified": 0,
+          "positive_fraction": null,
+          "failed": 0
+        },
+        "validation": {
+          "target": 10000,
+          "qualified": 0,
+          "positive_fraction": null,
+          "failed": 0
+        }
+      },
+      "attempts": 0,
+      "failed_numerical": 0,
+      "failed_infrastructure": 0,
+      "retry_attempts": 0,
+      "allocated_core_hours": 0,
+      "reserved_core_hours": 0,
+      "running_pending_or_unresolved": 0,
+      "median_wall_seconds": null,
+      "q90_wall_seconds": null,
+      "disk_bytes": 273245714,
+      "max_array_concurrency": 16,
+      "native_sha256": "3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2",
+      "base_science_contract_hash": "2effb28af618d47c31dde218a6d3b89aedd59a208dc5814dcc5c69f8c05150d9",
+      "stop_reasons": [],
+      "sealed_labels_generated": false,
+      "sealed_labels_read": false,
+      "submission": {
+        "array_job": "2194518",
+        "collector_job": "2194519",
+        "unique_indices": 8,
+        "split": "train"
+      },
+      "status": "ARRAY_SUBMITTED"
+    },
     "sealed_labels_generated": false,
     "sealed_labels_read": false
   }
