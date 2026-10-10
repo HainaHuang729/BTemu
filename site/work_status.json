@@ -46,58 +46,66 @@
       "validation": 5120
     },
     "cancelled_unstarted_slots": 290,
-    "audit_status": "WAITING_FOR_RECOVERY_CONTROLLER",
+    "audit_status": "AUDIT_COMPLETED",
     "audit_max_concurrent": 16,
-    "audit_receipt_updated_at_hkt": "2026-10-07T17:56:38.380755+08:00",
+    "audit_receipt_updated_at_hkt": "2026-10-10T16:31:31.154123+08:00",
     "audit_theta_count": 128,
     "ICs_per_theta": 8,
     "new_evaluations": 896,
-    "qualified_fresh": 770,
+    "qualified_fresh": 896,
     "qualified_fresh_scope": "Qualified worker receipts, checksum/native/seed checked; completed-wave audit status reported separately",
-    "complete_IC_families": 110,
+    "complete_IC_families": 128,
     "partial_scatter_snapshot_at_hkt": "2026-10-07T21:54:50.934462+08:00",
     "reused_fixed": 128,
-    "audit_array_job": "2191736",
+    "audit_array_job": null,
     "random_bulk_started": false,
     "classifier_cut": 0.31,
-    "decision": "AUDIT_INCOMPLETE",
+    "decision": "MULTI_IC_AVERAGING_REQUIRED",
     "scheduler_recovery": {
       "controller_job": "2192051",
       "remaining_at_recovery": 126,
       "reason": "MaxArraySize=1001; final manifest indices up to 1023 were invalid as Slurm task IDs",
-      "status": "WAITING_FOR_RECOVERY_CONTROLLER"
-    },
-    "queue_snapshot": {
-      "checked_at_hkt": "2026-10-08T14:50:11.922325+08:00",
-      "qualified_fresh": 770,
-      "planned_fresh": 896,
-      "complete_families": 110,
-      "planned_families": 128,
-      "simulation_failures": 0,
-      "remaining_evaluations": 126,
-      "audit_running_tasks": 0,
-      "audit_allocated_CPUs": 0,
-      "recovery_controller_job": "2192051",
-      "recovery_controller_state": "PENDING",
-      "pending_reason": "Priority; all eight approved reservation nodes allocated",
-      "allowed_nodes": "chpc-cn[057-064]",
-      "reservation_allocated_CPUs": 2048,
-      "reservation_idle_CPUs": 0,
-      "scheduler_estimated_start_hkt": "2026-10-10T11:20:00+08:00",
-      "estimate_is_not_guaranteed": true,
-      "software_test_job": "2192053",
-      "software_test_state": "PENDING",
-      "random_IC_production_labels": 0,
-      "sealed_labels_generated_or_read": false
+      "status": "RESOLVED_COMPLETED"
     },
     "development_gate_status": "CONFIRMED",
-    "posterior_accepted": false
+    "posterior_accepted": false,
+    "completed_audit": {
+      "completed_audit": true,
+      "families": 128,
+      "fresh_qualified": 896,
+      "reused_fixed": 128,
+      "simulation_failures": 0,
+      "allocated_core_hours": 1694.1244444444462,
+      "decision": "MULTI_IC_AVERAGING_REQUIRED",
+      "finite_reference_convergence": {
+        "2": {
+          "history_RMSE_to_8_IC_q90": 0.0027529500456588887,
+          "tau_abs_to_8_IC_q90": 0.0001298275589942932
+        },
+        "4": {
+          "history_RMSE_to_8_IC_q90": 0.0017234073972425944,
+          "tau_abs_to_8_IC_q90": 7.89639353752136e-05
+        },
+        "8": {
+          "history_RMSE_to_8_IC_q90": 0.0,
+          "tau_abs_to_8_IC_q90": 0.0
+        }
+      },
+      "statistic": "Across theta q90 of within-theta q90 over all n-of-8 combinations",
+      "reference_caveat": "Subsets share realizations with the 8-IC mean; zero for n=8 is tautological, not evidence of infinite-IC accuracy. No number of ICs per production theta is yet qualified.",
+      "absolute_mean_history_vs_marginal_logL_q90": 0.3082458375383993,
+      "classifier_unstable_families": 13,
+      "classifier_unstable_far_from_cut": 2,
+      "parameter_selection_caveat": "Representative/challenge-enriched development families, not an unbiased prior sample",
+      "sealed_access": false,
+      "updated_at_hkt": "2026-10-10T21:24:17.439404+08:00"
+    }
   },
   "random_launch": {
     "design_job": "2190856",
-    "gate_job": "2192048",
+    "gate_job": "2194403",
     "initial_gate_job": "2190857",
-    "status": "WAITING_FOR_COMPLETE_AUDIT",
+    "status": "AUDIT_NOT_PASSED_PRODUCTION_NOT_SUBMITTED",
     "design_frozen": true,
     "targets": {
       "train": 100000,

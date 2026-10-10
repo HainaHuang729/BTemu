@@ -44,7 +44,7 @@ if transition_path.exists():
 recovery_path=root/"results/ic_audit_scheduler_recovery.json"
 if recovery_path.exists() and "transition" in work:
     recovery=json.loads(recovery_path.read_text())
-    work["transition"]["scheduler_recovery"]={"controller_job":recovery.get("recovery_controller_job"),"remaining_at_recovery":recovery["remaining_evaluations"],"reason":recovery["cause"],"status":"WAITING_FOR_RECOVERY_CONTROLLER" if work["transition"].get("audit_array_job")=="2191736" else "RECOVERY_SUBMITTED"}
+    work["transition"]["scheduler_recovery"]={"controller_job":recovery.get("recovery_controller_job"),"remaining_at_recovery":recovery["remaining_evaluations"],"reason":recovery["cause"],"status":"RESOLVED_COMPLETED" if work["transition"].get("audit_status")=="AUDIT_COMPLETED" else ("WAITING_FOR_RECOVERY_CONTROLLER" if work["transition"].get("audit_array_job")=="2191736" else "RECOVERY_SUBMITTED")}
     if work["transition"]["scheduler_recovery"]["status"]=="WAITING_FOR_RECOVERY_CONTROLLER":
         work["transition"]["audit_status"]="WAITING_FOR_RECOVERY_CONTROLLER"
 queue_path=root/"results/ic_audit_queue_status.json"
@@ -67,6 +67,9 @@ if launch_path.exists():
     if "transition" in work:
         work["transition"]["random_bulk_started"]=activation.get("random_IC_production_started",False)
         work["transition"]["decision"]=activation.get("audit_decision",work["transition"]["decision"])
+final_audit_path=root/"results/ic_audit_completion_summary.json"
+if final_audit_path.exists() and "transition" in work:
+    work["transition"]["completed_audit"]=json.loads(final_audit_path.read_text())
 Path(a.output).with_name("work_status.json").write_text(json.dumps(work,ensure_ascii=False,indent=2)+"\n")
 completed=", ".join(f'{x["N"]:,}' for x in items if x["status"]=="COMPLETED")
 active=", ".join(f'{x["N"]:,}: {x["status"]}' for x in items if x["status"]!="COMPLETED")
@@ -128,4 +131,9 @@ if work.get("transition",{}).get("scheduler_recovery"):
 if work.get("transition",{}).get("queue_snapshot"):
     q=work["transition"]["queue_snapshot"]
     report+="\n## Queue snapshot\n\nChecked "+q["checked_at_hkt"]+". Audit uses zero CPUs; all 2048 reservation CPUs are allocated to existing jobs. Recovery job "+q["recovery_controller_job"]+" is PENDING. Slurm estimated start "+q["scheduler_estimated_start_hkt"]+" is provisional. See [queue status](ic_audit_queue_status.md).\n"
+if work.get("transition",{}).get("completed_audit"):
+    final=work["transition"]["completed_audit"]
+    report=report.replace("- Complete IC sensitivity audit and qualify one-random-IC versus multi-IC averaging before formal random_ic_v2 production (100k Train / 10k Validation).", "- IC audit completed and failed the single-realization gate. Qualify a multi-IC target and inference protocol before formal random_ic_v2 production (100k Train / 10k Validation).")
+    report=report.replace("Submitted scientific gate watcher:", "Last submitted scientific gate watcher (completed; no successor after gate failure):")
+    report+="\n## Complete IC audit decision\n\n896/896 new realizations qualified; all 128 families have eight ICs. Zero simulation failures. Cost: 1,694.12 allocated core-hours. **MULTI_IC_AVERAGING_REQUIRED** under the confirmed conservative development gates. Single-realization random-IC production was not submitted. Thirteen families change classifier label across ICs, including two outside the near-cut band. The 2/4/8-IC finite-reference comparison does not establish that eight ICs are sufficient. See [complete audit report](ic_audit_completion.md).\n"
 Path("docs/progress.md").write_text(report)
