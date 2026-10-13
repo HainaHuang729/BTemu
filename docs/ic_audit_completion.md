@@ -29,3 +29,5 @@ Each value is the across-theta q90 of the within-theta q90 across all n-of-8 sub
 The q90 absolute difference between logL(mean history) and log(mean likelihood over IC) is 0.308246. Mean-history inference and IC-marginalized likelihood therefore require separate validation. Joint_history refers to tau+xHI with LF fixed at the same theta, not a newly qualified LF pipeline.
 
 Next: assess mean-history uncertainty, near-cut classification and inference-relevant likelihood behavior before freezing a multi-IC target and revised production budget. Do not relax the confirmed gates after seeing results. Existing fixed-IC labels remain useful and retain their splits. Sealed labels remain ungenerated and unread; no production MCMC.
+
+Update 2026-10-10: the user subsequently authorized one-random-realization development production despite these scatter findings. The failed scientific screen is unchanged; see [production authorization and launch](random_ic_explicit_start.md).

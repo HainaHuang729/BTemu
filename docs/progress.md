@@ -62,3 +62,7 @@ Final-wave Slurm array indices exceeded MaxArraySize=1001. Compact task-to-manif
 ## Random-realization production launch
 
 Latest user authorization selects one independent random IC per theta. Controller 2194516 completed; array 2194518 started eight Train simulations on cn061 (128 CPUs at launch). Dependent validation/continuation job 2194519 is submitted. Maximum simulation allocation remains 256 CPUs. Mean-history and posterior fidelity remain unqualified. See [launch record](random_ic_explicit_start.md).
+
+## Frozen random-IC data analysis
+
+9,094 qualified Train histories analyzed (separate from live production counts): 3,372 classifier-positive, 5,722 negative; 24 within 0.01 of the cut. Positive-only logit PCA K=28 achieved in-sample trajectory RMSE q95 0.00134; independent Validation and K qualification remain pending. [Analysis report and plots](random_ic_data_analysis_20261013.md).

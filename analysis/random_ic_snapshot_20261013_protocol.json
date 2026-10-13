@@ -1,0 +1,54 @@
+{
+  "status": "EXPLORATORY_FROZEN_BEFORE_CALCULATION",
+  "unit": "one unique theta/history; redshift nodes are not independent samples",
+  "quantiles": [
+    0,
+    0.05,
+    0.25,
+    0.5,
+    0.68,
+    0.9,
+    0.95,
+    1
+  ],
+  "histogram_bins": 20,
+  "coverage_bins_per_parameter": 10,
+  "KP_MS_grid": [
+    10,
+    10
+  ],
+  "classifier_cut_source": "contracts/classifier_cut.json",
+  "near_cut_half_widths": [
+    0.01,
+    0.02,
+    0.05
+  ],
+  "correlations": "Spearman effect sizes, no p-values or causal claims; full/broad/positive scopes reported",
+  "PCA": {
+    "fit_split": "train",
+    "fit_scope": "classifier-positive only",
+    "K": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+    ],
+    "spaces": [
+      "physical",
+      "logit"
+    ],
+    "epsilon": 1e-06,
+    "derived_max_sample": 256,
+    "derived_sample_seed": 2026101301,
+    "scope": "in-sample representation diagnostics only, no independent K qualification",
+    "raw_out_of_range": "report, never clip; derived metrics only where original adapter accepts"
+  },
+  "no_new_exact_simulations": true,
+  "no_training": true,
+  "no_split_change": true,
+  "sealed_access": false
+}
