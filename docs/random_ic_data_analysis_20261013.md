@@ -107,3 +107,23 @@ K=28 的 history 重构明显优于 K≤16，也低于现有 *proposed* 表示�
 11/11 统计误用检查：分层报告避免混合趋势误读；不从分组比例推断个体/宇宙；positive 筛选可能诱导选择关联；未做 collider 控制或因果调整；明确 classifier 基率；不声称极值再测改善；保留失败分母；报告全部10参数关联且无p值挑选；固定分析快照/epsilon/K清单并标记探索性；关联不作因果解释；不作反向因果断言。
 
 复现入口：`maintenance/random_ic/analyze_snapshot.py`，输入 allowlist 为 `results/random_ic_analysis_20261013/input_manifest.json`，协议与所有图表、CSV、JSON 保存在同目录。完整标签路径和逐样本记录保留在独立项目，不上传公开仓库；公开只发布本报告、聚合统计和图表。sealed labels 未读取，未运行生产 MCMC。
+
+## 补充分析图（2026-10-14）
+
+[完整图集网页](https://hainahuang729.github.io/BTemu/random-ic-analysis.html#gallery) · [四页 PDF](https://hainahuang729.github.io/BTemu/analysis_figures/gallery/BT_random_IC_analysis_9094.pdf) · [全部 PNG/PDF 下载](https://hainahuang729.github.io/BTemu/analysis_figures/gallery/BT_random_IC_figures_9094.zip)
+
+**再电离 history 的多样性**：按 xHI(5.9) 的三个区间展示真实曲线。阴影是不同参数 history 的分布，不是同一参数下的 IC 误差带。
+
+![再电离 history 的多样性](../site/analysis_figures/gallery/01_history_atlas.png)
+
+**分类比例与边界放大**：Positive 37.1%；距离 cut±0.01 仅24条。Negative histories 全部保留。
+
+![分类比例与边界放大](../site/analysis_figures/gallery/02_classifier_boundary.png)
+
+**KP/MS 与 history 派生量**：仅 broad 7,277条；每个网格62–84条，避免 view 加密造成计数偏差。图示关联不等于 posterior。
+
+![KP/MS 与 history 派生量](../site/analysis_figures/gallery/03_bt_parameter_map.png)
+
+**PCA 压缩与误差**：K=28 训练内重构 RMSE q95 为0.00134；这里只减少12.5%的维度，仍需独立 Validation。
+
+![PCA 压缩与误差](../site/analysis_figures/gallery/04_pca_tradeoff.png)

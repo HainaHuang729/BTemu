@@ -1,0 +1,40 @@
+{
+  "snapshot": "2026-10-13T23:54:32.738790+08:00",
+  "input_manifest_sha256": "384ff60d8cf62af2219e7f40220774eb095fd372b35c212b9a21ff9537827c88",
+  "script_sha256": "761cf9eb8fd571400830e56e02b7f27cbc5d2a8f5232bcc24965ed726365dcc6",
+  "N": 9094,
+  "split": "train",
+  "source_analysis_sha256": "4b6724bf5f326a4ee80db572e0f441384b093d743278d9de5ee689ff57c0d674",
+  "exact_evaluations": 0,
+  "sealed_access": false,
+  "figures": [
+    {
+      "name": "01_history_atlas",
+      "caption": "Thin lines: 18 reproducibly sampled exact histories/panel. Bands describe different theta, not IC scatter at fixed theta.",
+      "png_sha256": "b99f5d1baff6331a0458a7252720fd9ca8e05d92766371096d3746d43211b374"
+    },
+    {
+      "name": "02_classifier_boundary",
+      "caption": "Counts are from the mixed training design, not the scientific prior. Cut remains unchanged; no classifier hard gate enabled.",
+      "png_sha256": "0c484c9ff66815d6fbd848ef6ee1eebac20760c238c14f6c7c6bfbd524dd36c4"
+    },
+    {
+      "name": "03_bt_parameter_map",
+      "caption": "Descriptive associations in the broad design. These maps are neither BT-only causal effects nor KP/MS posterior constraints.",
+      "png_sha256": "728055e5abbc15e24734ef6b894a50f75398c712c82a08545826620bb4eb480e"
+    },
+    {
+      "name": "04_pca_tradeoff",
+      "caption": "History errors: all 3,372 positives. Likelihood errors: the same fixed 256-point subset, using original postprocessing; epsilon=1e\u22126.",
+      "png_sha256": "50081972e6cfd3dd88773f53b71ceb66d3994fc2525d8d306891c694906a354f"
+    }
+  ],
+  "IC_variance_claim": false,
+  "posterior_claim": false,
+  "broad_bin_count_range": [
+    62,
+    84
+  ],
+  "selection_record_private": "gallery_selection.json",
+  "job_id": "2206773"
+}
