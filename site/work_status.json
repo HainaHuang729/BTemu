@@ -129,7 +129,7 @@
     },
     "production": {
       "version": "random_ic_v2",
-      "updated_at_unix": 1791952486.2422523,
+      "updated_at_unix": 1791966435.2379022,
       "datasets": {
         "train": {
           "target": 100000,
@@ -139,28 +139,34 @@
         },
         "validation": {
           "target": 10000,
-          "qualified": 0,
-          "positive_fraction": null,
+          "qualified": 512,
+          "positive_fraction": 0.357421875,
           "failed": 0
         }
       },
-      "attempts": 10760,
+      "attempts": 11272,
       "failed_numerical": 2,
       "failed_infrastructure": 0,
       "retry_attempts": 114,
-      "allocated_core_hours": 20307.204444444433,
-      "reserved_core_hours": 16384.0,
-      "running_pending_or_unresolved": 512,
-      "median_wall_seconds": 418.87422411935404,
-      "q90_wall_seconds": 497.50819031801075,
-      "disk_bytes": 3241209442,
+      "allocated_core_hours": 21282.311111111092,
+      "reserved_core_hours": 0,
+      "running_pending_or_unresolved": 0,
+      "median_wall_seconds": 418.8084912830964,
+      "q90_wall_seconds": 497.5383027084172,
+      "disk_bytes": 3379297367,
       "max_array_concurrency": 16,
       "native_sha256": "3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2",
       "base_science_contract_hash": "2effb28af618d47c31dde218a6d3b89aedd59a208dc5814dcc5c69f8c05150d9",
       "stop_reasons": [],
       "sealed_labels_generated": false,
       "sealed_labels_read": false,
-      "status": "RUNNING_OR_PENDING"
+      "submission": {
+        "array_job": "2210801",
+        "collector_job": "2210802",
+        "unique_indices": 128,
+        "split": "train"
+      },
+      "status": "ARRAY_SUBMITTED"
     },
     "sealed_labels_generated": false,
     "sealed_labels_read": false
@@ -169,7 +175,7 @@
     "dataset_version": "random_ic_v2",
     "train_count": 10000,
     "validation_planned": 512,
-    "validation_qualified": 0,
+    "validation_qualified": 512,
     "seeds": [
       11,
       29,
@@ -206,6 +212,7 @@
     "classifier_completed_seeds": 0,
     "regressor_completed_seeds": 0,
     "validation_array_job": "2208787",
-    "training_job": "2208789"
+    "training_job": "2208789",
+    "validation_unqualified": 0
   }
 }
