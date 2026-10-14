@@ -69,6 +69,6 @@ Latest user authorization selects one independent random IC per theta. Controlle
 
 ## Random-IC first development training
 
-Status: WAITING_FOR_INDEPENDENT_VALIDATION. Frozen 10,000 qualified random-IC Train histories; first 512 independent frozen Validation points brought forward, admitted 512. Five initialization seeds: 11, 29, 47, 71, 101. Direct ResMLP, 2×30 classifier, and positive-only PCA audit / 6×80 MLP reuse the existing training protocol. Seed is not a feature; fixed-IC labels are not mixed.
+Status: DEVELOPMENT_COMPARISON_COMPLETED. Frozen 10,000 qualified random-IC Train histories; first 512 independent frozen Validation points brought forward, admitted 512. Five initialization seeds: 11, 29, 47, 71, 101. Direct ResMLP, 2×30 classifier, and positive-only PCA audit / 6×80 MLP reuse the existing training protocol. Seed is not a feature; fixed-IC labels are not mixed.
 
-Validation array: 2208787; dependent training job: 2208789. Completed seeds (Direct / classifier / regressor): 0 / 0 / 0. Errors against independent single-IC labels include IC scatter. This is development validation, not conditional-mean or posterior acceptance. [Run protocol](random_ic_development_20261014.md).
+Validation array: 2208787; dependent training job: 2208789. Completed seeds (Direct / classifier / regressor): 5 / 5 / 5. Errors against independent single-IC labels include IC scatter. This is development validation, not conditional-mean or posterior acceptance. [Run protocol](random_ic_development_20261014.md).
