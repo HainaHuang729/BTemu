@@ -73,6 +73,29 @@ if final_audit_path.exists() and "transition" in work:
 explicit_start=root/"results/random_ic_explicit_start.json"
 if explicit_start.exists() and "transition" in work:
     work["transition"]["explicit_random_start"]=json.loads(explicit_start.read_text())
+random_dev=root/"artifacts/random_ic_development_20261014"
+if (random_dev/"intent.json").exists():
+    intent=json.loads((random_dev/"intent.json").read_text())
+    state=json.loads((random_dev/"status.json").read_text()) if (random_dev/"status.json").exists() else {"status":"SETUP_IN_PROGRESS"}
+    rp=json.loads((root/"results/random_ic_dataset_progress.json").read_text())
+    trial={"dataset_version":"random_ic_v2","train_count":10000,"validation_planned":512,
+        "validation_qualified":min(512,rp["datasets"]["validation"]["qualified"]),
+        "seeds":intent["seeds"],"status":state["status"],"state":state,
+        "mean_target_qualified":False,"posterior_accepted":False,"sealed_access":False,
+        "direct_completed_seeds":sum((random_dev/"direct_resmlp"/("seed_%d_metrics.json"%seed)).exists() for seed in intent["seeds"]),
+        "classifier_completed_seeds":sum((random_dev/"nnero_style"/("classifier_seed_%d.json"%seed)).exists() for seed in intent["seeds"]),
+        "regressor_completed_seeds":sum((random_dev/"nnero_style"/("regressor_seed_%d.json"%seed)).exists() for seed in intent["seeds"])}
+    if (random_dev/"submission.json").exists():
+        sub=json.loads((random_dev/"submission.json").read_text())
+        trial["validation_array_job"]=sub["validation"]["array_job"]
+        trial["training_job"]=sub["training"]["job_id"]
+    if (random_dev/"comparison_metrics.json").exists():
+        trial["metrics"]=json.loads((random_dev/"comparison_metrics.json").read_text())
+    if (random_dev/"validation_admission.json").exists():
+        adm=json.loads((random_dev/"validation_admission.json").read_text())
+        trial["validation_qualified"]=adm["qualified"]
+        trial["validation_unqualified"]=len(adm["unqualified_indices"])
+    work["random_development"]=trial
 Path(a.output).with_name("work_status.json").write_text(json.dumps(work,ensure_ascii=False,indent=2)+"\n")
 completed=", ".join(f'{x["N"]:,}' for x in items if x["status"]=="COMPLETED")
 active=", ".join(f'{x["N"]:,}: {x["status"]}' for x in items if x["status"]!="COMPLETED")
@@ -147,4 +170,7 @@ if work.get("transition",{}).get("explicit_random_start"):
     report+="\n## Random-realization production launch\n\nLatest user authorization selects one independent random IC per theta. Controller 2194516 completed; array 2194518 started eight Train simulations on cn061 (128 CPUs at launch). Dependent validation/continuation job 2194519 is submitted. Maximum simulation allocation remains 256 CPUs. Mean-history and posterior fidelity remain unqualified. See [launch record](random_ic_explicit_start.md).\n"
 if (root/"results/random_ic_analysis_20261013/analysis.json").exists():
     report+="\n## Frozen random-IC data analysis\n\n9,094 qualified Train histories analyzed (separate from live production counts): 3,372 classifier-positive, 5,722 negative; 24 within 0.01 of the cut. Positive-only logit PCA K=28 achieved in-sample trajectory RMSE q95 0.00134; independent Validation and K qualification remain pending. [Analysis report and plots](random_ic_data_analysis_20261013.md).\n"
+if work.get("random_development"):
+    trial=work["random_development"]
+    report+="\n## Random-IC first development training\n\nStatus: "+trial["status"]+". Frozen 10,000 qualified random-IC Train histories; first 512 independent frozen Validation points brought forward, admitted "+str(trial["validation_qualified"])+". Five initialization seeds: 11, 29, 47, 71, 101. Direct ResMLP, 2×30 classifier, and positive-only PCA audit / 6×80 MLP reuse the existing training protocol. Seed is not a feature; fixed-IC labels are not mixed.\n\nValidation array: "+str(trial.get("validation_array_job","not yet submitted"))+"; dependent training job: "+str(trial.get("training_job","not yet submitted"))+". Completed seeds (Direct / classifier / regressor): "+str(trial["direct_completed_seeds"])+" / "+str(trial["classifier_completed_seeds"])+" / "+str(trial["regressor_completed_seeds"])+". Errors against independent single-IC labels include IC scatter. This is development validation, not conditional-mean or posterior acceptance. [Run protocol](random_ic_development_20261014.md).\n"
 Path("docs/progress.md").write_text(report)

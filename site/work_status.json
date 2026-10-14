@@ -129,13 +129,13 @@
     },
     "production": {
       "version": "random_ic_v2",
-      "updated_at_unix": 1791944288.105393,
+      "updated_at_unix": 1791948835.473169,
       "datasets": {
         "train": {
           "target": 100000,
-          "qualified": 10374,
-          "positive_fraction": 0.37015615962984383,
-          "failed": 2
+          "qualified": 10516,
+          "positive_fraction": 0.3701977938379612,
+          "failed": 116
         },
         "validation": {
           "target": 10000,
@@ -144,16 +144,16 @@
           "failed": 0
         }
       },
-      "attempts": 10376,
+      "attempts": 10632,
       "failed_numerical": 2,
-      "failed_infrastructure": 0,
+      "failed_infrastructure": 114,
       "retry_attempts": 0,
-      "allocated_core_hours": 19792.319999999967,
+      "allocated_core_hours": 20063.54222222223,
       "reserved_core_hours": 0,
       "running_pending_or_unresolved": 0,
-      "median_wall_seconds": 419.0249825413339,
-      "q90_wall_seconds": 497.50819031801075,
-      "disk_bytes": 3161015434,
+      "median_wall_seconds": 418.9388852757402,
+      "q90_wall_seconds": 497.5039066793397,
+      "disk_bytes": 3201203427,
       "max_array_concurrency": 16,
       "native_sha256": "3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2",
       "base_science_contract_hash": "2effb28af618d47c31dde218a6d3b89aedd59a208dc5814dcc5c69f8c05150d9",
@@ -161,8 +161,8 @@
       "sealed_labels_generated": false,
       "sealed_labels_read": false,
       "submission": {
-        "array_job": "2208345",
-        "collector_job": "2208346",
+        "array_job": "2208769",
+        "collector_job": "2208770",
         "unique_indices": 128,
         "split": "train"
       },
@@ -170,5 +170,48 @@
     },
     "sealed_labels_generated": false,
     "sealed_labels_read": false
+  },
+  "random_development": {
+    "dataset_version": "random_ic_v2",
+    "train_count": 10000,
+    "validation_planned": 512,
+    "validation_qualified": 0,
+    "seeds": [
+      11,
+      29,
+      47,
+      71,
+      101
+    ],
+    "status": "WAITING_FOR_INDEPENDENT_VALIDATION",
+    "state": {
+      "status": "WAITING_FOR_INDEPENDENT_VALIDATION",
+      "dataset_version": "random_ic_v2",
+      "counts": {
+        "train": 10000,
+        "validation_planned": 512,
+        "validation_qualified": 0
+      },
+      "validation_array_job": "2208787",
+      "validation_collector_job": "2208788",
+      "training_job": "2208789",
+      "five_seeds": [
+        11,
+        29,
+        47,
+        71,
+        101
+      ],
+      "sealed_access": false,
+      "production_accepted": false
+    },
+    "mean_target_qualified": false,
+    "posterior_accepted": false,
+    "sealed_access": false,
+    "direct_completed_seeds": 0,
+    "classifier_completed_seeds": 0,
+    "regressor_completed_seeds": 0,
+    "validation_array_job": "2208787",
+    "training_job": "2208789"
   }
 }

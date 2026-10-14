@@ -66,3 +66,9 @@ Latest user authorization selects one independent random IC per theta. Controlle
 ## Frozen random-IC data analysis
 
 9,094 qualified Train histories analyzed (separate from live production counts): 3,372 classifier-positive, 5,722 negative; 24 within 0.01 of the cut. Positive-only logit PCA K=28 achieved in-sample trajectory RMSE q95 0.00134; independent Validation and K qualification remain pending. [Analysis report and plots](random_ic_data_analysis_20261013.md).
+
+## Random-IC first development training
+
+Status: WAITING_FOR_INDEPENDENT_VALIDATION. Frozen 10,000 qualified random-IC Train histories; first 512 independent frozen Validation points brought forward, admitted 0. Five initialization seeds: 11, 29, 47, 71, 101. Direct ResMLP, 2×30 classifier, and positive-only PCA audit / 6×80 MLP reuse the existing training protocol. Seed is not a feature; fixed-IC labels are not mixed.
+
+Validation array: 2208787; dependent training job: 2208789. Completed seeds (Direct / classifier / regressor): 0 / 0 / 0. Errors against independent single-IC labels include IC scatter. This is development validation, not conditional-mean or posterior acceptance. [Run protocol](random_ic_development_20261014.md).
