@@ -8653,11 +8653,57 @@
     "original_priors_preserved": true,
     "classifier_hard_gate": false,
     "validation_planned": 512,
-    "chain_reports": [],
-    "view": "fixed",
-    "completed_steps": 20,
+    "chain_reports": [
+      {
+        "status": "FUNCTIONAL_SHORT_CHAIN_COMPLETED",
+        "view": "fixed",
+        "parameter_order": [
+          "ETA_STAR",
+          "t_STAR",
+          "ALPHA_STAR",
+          "M_TURN",
+          "F_ESC10",
+          "ALPHA_ESC",
+          "L_X",
+          "NU_X_THRESH"
+        ],
+        "fixed_parameters": {
+          "KP_h_Mpc": 10.0,
+          "MS": 2.5
+        },
+        "chain_shape": [
+          32,
+          100,
+          8
+        ],
+        "finite_stored_log_probabilities": true,
+        "acceptance_fraction_mean": 0.38625,
+        "acceptance_fraction_min": 0.22,
+        "calls": 3584,
+        "outside_original_prior": 730,
+        "LF_domain_rejections": 1,
+        "nearest_neighbor_screen": {
+          "type": "TRAIN_ONLY_NEAREST_NEIGHBOR_DEVELOPMENT_SCREEN",
+          "normalized_L2_radius": 0.6061742903580709,
+          "fit_split": "train",
+          "calls": 3272,
+          "exceeded": 0,
+          "max_seen_distance": 0.5934744004619074,
+          "scientifically_validated_domain": false
+        },
+        "classifier_hard_gate": false,
+        "original_prior_unchanged": true,
+        "convergence_established": false,
+        "exact_posterior_comparison_completed": false,
+        "IC_marginalization_validated": false,
+        "posterior_accepted": false,
+        "sealed_access": false
+      }
+    ],
+    "view": "continuous_ms",
+    "completed_steps": 0,
     "total_steps": 100,
-    "elapsed_seconds": 500.35071942955256,
+    "elapsed_seconds": 1150.7843406340107,
     "interface_parity_pass": true,
     "LF_A_B_A_pass": true,
     "validation": {
