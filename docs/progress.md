@@ -72,3 +72,9 @@ Latest user authorization selects one independent random IC per theta. Controlle
 Status: DEVELOPMENT_COMPARISON_COMPLETED. Frozen 10,000 qualified random-IC Train histories; first 512 independent frozen Validation points brought forward, admitted 512. Five initialization seeds: 11, 29, 47, 71, 101. Direct ResMLP, 2×30 classifier, and positive-only PCA audit / 6×80 MLP reuse the existing training protocol. Seed is not a feature; fixed-IC labels are not mixed.
 
 Validation array: 2208787; dependent training job: 2208789. Completed seeds (Direct / classifier / regressor): 5 / 5 / 5. Errors against independent single-IC labels include IC scatter. This is development validation, not conditional-mean or posterior acceptance. [Run protocol](random_ic_development_20261014.md).
+
+## Direct random-IC MCMC interface development
+
+Status: DEVELOPMENT_SHORT_CHAIN_RUNNING. Development job: 2216430; 16 CPUs, four-hour hard limit. Reuses 512 existing independent Validation histories, adding original exact LF and downstream comparisons; no new full-history simulations. Two functional short chains preserve the original fixed-view and continuous-MS priors. Classifier hard gate disabled; no posterior acceptance or production MCMC. Completed functional chains: 0/2. [Protocol and interpretation](random_ic_mcmc_development_20261015.md).
+
+512 Validation LF checks completed: 412 LF-valid, 100 LF-domain failures with history retained. Original exact references reproduce and LF is unchanged. On the LF-valid subset, absolute total log-likelihood error q90 = 4.55574. These are development errors against random realizations, not posterior acceptance.

@@ -96,6 +96,27 @@ if (random_dev/"intent.json").exists():
         trial["validation_qualified"]=adm["qualified"]
         trial["validation_unqualified"]=len(adm["unqualified_indices"])
     work["random_development"]=trial
+mcmc_run=root/"artifacts/random_ic_mcmc_development_20261015"
+if (mcmc_run/"plan.json").exists():
+    st=json.loads((mcmc_run/"status.json").read_text())
+    sub=json.loads((mcmc_run/"submission.json").read_text()) if (mcmc_run/"submission.json").exists() else {}
+    trial={"status":st["status"],"job_id":sub.get("job_id"),"views":["fixed","continuous_ms"],
+        "allocation_CPUs":16,"maximum_wall_hours":4,"new_full_history_evaluations":0,
+        "posterior_accepted":False,"sealed_access":False,"original_priors_preserved":True,
+        "classifier_hard_gate":False,"validation_planned":512,"chain_reports":[]}
+    for key in ["view","completed_steps","total_steps","processed","planned","elapsed_seconds"]:
+        if key in st:trial[key]=st[key]
+    if (mcmc_run/"interface_parity.json").exists():
+        parity=json.loads((mcmc_run/"interface_parity.json").read_text())
+        trial["interface_parity_pass"]=parity["status"]=="PASSED"
+        trial["LF_A_B_A_pass"]=parity["LF_A_B_A_pass"]
+    if (mcmc_run/"validation_likelihood_report.json").exists():
+        v=json.loads((mcmc_run/"validation_likelihood_report.json").read_text())
+        trial["validation"]={k:v[k] for k in ["planned","processed","LF_valid","LF_invalid_history_retained","original_reference_replay_pass","LF_unchanged_pass","all_LF_valid","reference_likelihood_bands","bands_are_not_posterior_regions","IC_scatter_included","timing_medians"]}
+    for name in trial["views"]:
+        file=mcmc_run/(name+"_chain_report.json")
+        if file.exists():trial["chain_reports"].append(json.loads(file.read_text()))
+    work["random_mcmc_development"]=trial
 Path(a.output).with_name("work_status.json").write_text(json.dumps(work,ensure_ascii=False,indent=2)+"\n")
 completed=", ".join(f'{x["N"]:,}' for x in items if x["status"]=="COMPLETED")
 active=", ".join(f'{x["N"]:,}: {x["status"]}' for x in items if x["status"]!="COMPLETED")
@@ -173,4 +194,10 @@ if (root/"results/random_ic_analysis_20261013/analysis.json").exists():
 if work.get("random_development"):
     trial=work["random_development"]
     report+="\n## Random-IC first development training\n\nStatus: "+trial["status"]+". Frozen 10,000 qualified random-IC Train histories; first 512 independent frozen Validation points brought forward, admitted "+str(trial["validation_qualified"])+". Five initialization seeds: 11, 29, 47, 71, 101. Direct ResMLP, 2×30 classifier, and positive-only PCA audit / 6×80 MLP reuse the existing training protocol. Seed is not a feature; fixed-IC labels are not mixed.\n\nValidation array: "+str(trial.get("validation_array_job","not yet submitted"))+"; dependent training job: "+str(trial.get("training_job","not yet submitted"))+". Completed seeds (Direct / classifier / regressor): "+str(trial["direct_completed_seeds"])+" / "+str(trial["classifier_completed_seeds"])+" / "+str(trial["regressor_completed_seeds"])+". Errors against independent single-IC labels include IC scatter. This is development validation, not conditional-mean or posterior acceptance. [Run protocol](random_ic_development_20261014.md).\n"
+if work.get("random_mcmc_development"):
+    trial=work["random_mcmc_development"]
+    report+="\n## Direct random-IC MCMC interface development\n\nStatus: "+trial["status"]+". Development job: "+str(trial.get("job_id"))+"; 16 CPUs, four-hour hard limit. Reuses 512 existing independent Validation histories, adding original exact LF and downstream comparisons; no new full-history simulations. Two functional short chains preserve the original fixed-view and continuous-MS priors. Classifier hard gate disabled; no posterior acceptance or production MCMC. Completed functional chains: "+str(len(trial["chain_reports"]))+"/2. [Protocol and interpretation](random_ic_mcmc_development_20261015.md).\n"
+if work.get("random_mcmc_development",{}).get("validation"):
+    v=work["random_mcmc_development"]["validation"]
+    report+="\n512 Validation LF checks completed: "+str(v["LF_valid"])+" LF-valid, "+str(v["LF_invalid_history_retained"])+" LF-domain failures with history retained. Original exact references reproduce and LF is unchanged. On the LF-valid subset, absolute total log-likelihood error q90 = "+format(v["all_LF_valid"]["absolute_total_logL_q50_q90_q95"][1],".5f")+". These are development errors against random realizations, not posterior acceptance.\n"
 Path("docs/progress.md").write_text(report)
