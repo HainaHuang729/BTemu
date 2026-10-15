@@ -75,6 +75,6 @@ Validation array: 2208787; dependent training job: 2208789. Completed seeds (Dir
 
 ## Direct random-IC MCMC interface development
 
-Status: DEVELOPMENT_SHORT_CHAIN_RUNNING. Development job: 2216430; 16 CPUs, four-hour hard limit. Reuses 512 existing independent Validation histories, adding original exact LF and downstream comparisons; no new full-history simulations. Two functional short chains preserve the original fixed-view and continuous-MS priors. Classifier hard gate disabled; no posterior acceptance or production MCMC. Completed functional chains: 1/2. [Protocol and interpretation](random_ic_mcmc_development_20261015.md).
+Status: DEVELOPMENT_INTERFACE_VALIDATION_AND_SHORT_CHAINS_COMPLETED. Development job: 2216430; 16 CPUs, four-hour hard limit. Reuses 512 existing independent Validation histories, adding original exact LF and downstream comparisons; no new full-history simulations. Two functional short chains preserve the original fixed-view and continuous-MS priors. Classifier hard gate disabled; no posterior acceptance or production MCMC. Completed functional chains: 2/2. [Protocol and interpretation](random_ic_mcmc_development_20261015.md).
 
 512 Validation LF checks completed: 412 LF-valid, 100 LF-domain failures with history retained. Original exact references reproduce and LF is unchanged. On the LF-valid subset, absolute total log-likelihood error q90 = 4.55574. These are development errors against random realizations, not posterior acceptance.

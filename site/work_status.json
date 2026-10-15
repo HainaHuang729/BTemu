@@ -8639,7 +8639,7 @@
     "validation_unqualified": 0
   },
   "random_mcmc_development": {
-    "status": "DEVELOPMENT_SHORT_CHAIN_RUNNING",
+    "status": "DEVELOPMENT_INTERFACE_VALIDATION_AND_SHORT_CHAINS_COMPLETED",
     "job_id": "2216430",
     "views": [
       "fixed",
@@ -8698,12 +8698,54 @@
         "IC_marginalization_validated": false,
         "posterior_accepted": false,
         "sealed_access": false
+      },
+      {
+        "status": "FUNCTIONAL_SHORT_CHAIN_COMPLETED",
+        "view": "continuous_ms",
+        "parameter_order": [
+          "ETA_STAR",
+          "t_STAR",
+          "ALPHA_STAR",
+          "M_TURN",
+          "F_ESC10",
+          "ALPHA_ESC",
+          "L_X",
+          "NU_X_THRESH",
+          "MS"
+        ],
+        "fixed_parameters": {
+          "KP_h_Mpc": 1.0
+        },
+        "chain_shape": [
+          32,
+          100,
+          9
+        ],
+        "finite_stored_log_probabilities": true,
+        "acceptance_fraction_mean": 0.4015625,
+        "acceptance_fraction_min": 0.31,
+        "calls": 3584,
+        "outside_original_prior": 581,
+        "LF_domain_rejections": 0,
+        "nearest_neighbor_screen": {
+          "type": "TRAIN_ONLY_NEAREST_NEIGHBOR_DEVELOPMENT_SCREEN",
+          "normalized_L2_radius": 0.6061742903580709,
+          "fit_split": "train",
+          "calls": 6275,
+          "exceeded": 0,
+          "max_seen_distance": 0.5934744004619074,
+          "scientifically_validated_domain": false
+        },
+        "classifier_hard_gate": false,
+        "original_prior_unchanged": true,
+        "convergence_established": false,
+        "exact_posterior_comparison_completed": false,
+        "IC_marginalization_validated": false,
+        "posterior_accepted": false,
+        "sealed_access": false
       }
     ],
-    "view": "continuous_ms",
-    "completed_steps": 0,
-    "total_steps": 100,
-    "elapsed_seconds": 1150.7843406340107,
+    "elapsed_seconds": 1888.313123812899,
     "interface_parity_pass": true,
     "LF_A_B_A_pass": true,
     "validation": {
