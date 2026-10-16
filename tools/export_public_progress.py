@@ -117,6 +117,39 @@ if (mcmc_run/"plan.json").exists():
         file=mcmc_run/(name+"_chain_report.json")
         if file.exists():trial["chain_reports"].append(json.loads(file.read_text()))
     work["random_mcmc_development"]=trial
+followup={"production_accepted":False,"sealed_access":False}
+diagnostic=root/"artifacts/random_ic_mlp_diagnosis_20261016"
+if (diagnostic/"status.json").exists():
+    ds=json.loads((diagnostic/"status.json").read_text())
+    followup["diagnostic"]={k:ds[k] for k in ["status","job_id","seconds","counts"] if k in ds}
+    if (diagnostic/"checkpoint_diagnosis.json").exists():
+        dd=json.loads((diagnostic/"checkpoint_diagnosis.json").read_text())
+        followup["diagnostic"].update(physical_ensemble=dd["physical_ensemble"],exact_projection_max_abs_error=dd["exact_projection_max_abs_error"],
+            per_seed_saturation={seed:{split:{k:v[k] for k in ["wrong_saturated_cells","trajectories_with_wrong_saturation","fraction_squared_error_in_wrong_saturated_cells"]} for split,v in by_split.items()} for seed,by_split in dd["per_seed"].items()})
+curve16=root/"artifacts/random_ic_development_16k_20261016"
+if (curve16/"status.json").exists():
+    cs=json.loads((curve16/"status.json").read_text())
+    ci=json.loads((curve16/"intent.json").read_text())
+    sub=json.loads((curve16/"submission.json").read_text())
+    trial={"N":ci["N"],"validation_n":ci["validation_n"],"status":cs["status"],"job_id":sub["job_id"],"seeds":ci["seeds"],"allocated_CPUs":1,
+           "direct_completed_seeds":sum((curve16/"direct_resmlp"/("seed_%d_metrics.json"%s)).exists() for s in ci["seeds"]),
+           "classifier_completed_seeds":sum((curve16/"nnero_style"/("classifier_seed_%d.json"%s)).exists() for s in ci["seeds"]),
+           "regressor_completed_seeds":sum((curve16/"nnero_style"/("regressor_seed_%d.json"%s)).exists() for s in ci["seeds"])}
+    if (curve16/"comparison_metrics.json").exists():
+        cm=json.loads((curve16/"comparison_metrics.json").read_text())
+        trial["metrics"]={"classifier_ensemble":cm["classifier_ensemble"],"exact_positive_validation_count":cm["exact_positive_validation_count"]}
+        for key in ["direct_ensemble_all_validation","direct_ensemble_positive_validation","nnero_ensemble_positive_validation"]:
+            value=cm.get(key,{})
+            trial["metrics"][key]={k:value[k] for k in ["status","n_trajectories","trajectory_RMSE_quantiles","derived_absolute_quantiles"] if k in value}
+    followup["learning_curve_16k"]=trial
+initialization=root/"artifacts/random_ic_mlp_initialization_20261016"
+if (initialization/"status.json").exists():
+    it=json.loads((initialization/"status.json").read_text())
+    followup["initialization_trial"]={k:it[k] for k in ["status","job_id","completed_seeds","seconds"] if k in it}
+    if (initialization/"comparison_metrics.json").exists():
+        im=json.loads((initialization/"comparison_metrics.json").read_text())
+        followup["initialization_trial"]["metrics"]={key:{k:im[key][k] for k in ["n_trajectories","trajectory_RMSE_quantiles","derived_absolute_quantiles"]} for key in ["initialization_trial","original_MLP","direct_reference"]}
+work["random_model_followup"]=followup
 Path(a.output).with_name("work_status.json").write_text(json.dumps(work,ensure_ascii=False,indent=2)+"\n")
 completed=", ".join(f'{x["N"]:,}' for x in items if x["status"]=="COMPLETED")
 active=", ".join(f'{x["N"]:,}: {x["status"]}' for x in items if x["status"]!="COMPLETED")
@@ -209,4 +242,12 @@ if concurrency_revision.exists():
     change=json.loads(concurrency_revision.read_text())
     if change.get("status")=="APPLIED_TO_CURRENT_ARRAY_AND_FUTURE_WAVES":
         report+="\n## Concurrency update (2026-10-16)\n\nUser authorized 32 simultaneous data simulations, each with 16 CPUs: maximum 512 simulation CPUs. Applied to array 2221086 and future waves; live scheduler verification observed 32 running tasks. Physics, seeds, samples, per-simulation resources, and other jobs are unchanged. [Resource change record](concurrency_32_20261016.md).\n"
+if work.get("random_model_followup"):
+    f=work["random_model_followup"]
+    diag=f.get("diagnostic",{})
+    lc=f.get("learning_curve_16k",{})
+    report+="\n## Model diagnosis and 16k learning curve (2026-10-16)\n\nCheckpoint diagnosis: "+str(diag.get("status","not started"))+"; job "+str(diag.get("job_id","not submitted"))+". Nested 16k comparison: "+str(lc.get("status","not started"))+"; job "+str(lc.get("job_id","not submitted"))+". Same 512 Validation and five seeds, unchanged training protocol. Completed Direct / classifier / regressor seeds: "+str(lc.get("direct_completed_seeds",0))+" / "+str(lc.get("classifier_completed_seeds",0))+" / "+str(lc.get("regressor_completed_seeds",0))+". No new MCMC. [Development follow-up](model_followup_20261016.md).\n"
+if work.get("random_model_followup",{}).get("initialization_trial"):
+    it=work["random_model_followup"]["initialization_trial"]
+    report+="\nInitialization-only MLP ablation: "+it["status"]+"; job "+str(it["job_id"])+"; completed seeds "+str(it.get("completed_seeds",0))+"/5. Same frozen 10k data, PCA, six hidden layers and physical history loss. Old results retained; this is one registered diagnostic experiment, not production model replacement.\n"
 Path("docs/progress.md").write_text(report)

@@ -8967,5 +8967,123 @@
         "two_postprocessing_seconds": 0.003752209711819887
       }
     }
+  },
+  "random_model_followup": {
+    "production_accepted": false,
+    "sealed_access": false,
+    "diagnostic": {
+      "status": "CHECKPOINT_DIAGNOSIS_COMPLETED",
+      "job_id": "2221212",
+      "seconds": 205.22996520996094,
+      "counts": {
+        "train": 3701,
+        "validation": 183
+      },
+      "physical_ensemble": {
+        "train": {
+          "physical_MSE": 0.010308443031334989,
+          "trajectory_RMSE": {
+            "q50": 0.023146830028328562,
+            "q90": 0.13277389185618427,
+            "q95": 0.3217487866557287,
+            "max": 0.37259233834548167
+          }
+        },
+        "validation": {
+          "physical_MSE": 0.012589185829531321,
+          "trajectory_RMSE": {
+            "q50": 0.029960412516914482,
+            "q90": 0.13644359179991528,
+            "q95": 0.3662635476531347,
+            "max": 0.4170256588637693
+          }
+        }
+      },
+      "exact_projection_max_abs_error": 1.0000000000000343e-06,
+      "per_seed_saturation": {
+        "11": {
+          "train": {
+            "wrong_saturated_cells": 3253,
+            "trajectories_with_wrong_saturation": 1006,
+            "fraction_squared_error_in_wrong_saturated_cells": 0.9811112116129718
+          },
+          "validation": {
+            "wrong_saturated_cells": 185,
+            "trajectories_with_wrong_saturation": 54,
+            "fraction_squared_error_in_wrong_saturated_cells": 0.8414810961007326
+          }
+        },
+        "29": {
+          "train": {
+            "wrong_saturated_cells": 4308,
+            "trajectories_with_wrong_saturation": 1703,
+            "fraction_squared_error_in_wrong_saturated_cells": 0.9587005831067581
+          },
+          "validation": {
+            "wrong_saturated_cells": 235,
+            "trajectories_with_wrong_saturation": 91,
+            "fraction_squared_error_in_wrong_saturated_cells": 0.8761654104646042
+          }
+        },
+        "47": {
+          "train": {
+            "wrong_saturated_cells": 4066,
+            "trajectories_with_wrong_saturation": 1705,
+            "fraction_squared_error_in_wrong_saturated_cells": 0.9325649265362099
+          },
+          "validation": {
+            "wrong_saturated_cells": 215,
+            "trajectories_with_wrong_saturation": 91,
+            "fraction_squared_error_in_wrong_saturated_cells": 0.8163590681131953
+          }
+        },
+        "71": {
+          "train": {
+            "wrong_saturated_cells": 2718,
+            "trajectories_with_wrong_saturation": 1150,
+            "fraction_squared_error_in_wrong_saturated_cells": 0.9407450909303414
+          },
+          "validation": {
+            "wrong_saturated_cells": 151,
+            "trajectories_with_wrong_saturation": 60,
+            "fraction_squared_error_in_wrong_saturated_cells": 0.7946160042464989
+          }
+        },
+        "101": {
+          "train": {
+            "wrong_saturated_cells": 2984,
+            "trajectories_with_wrong_saturation": 1150,
+            "fraction_squared_error_in_wrong_saturated_cells": 0.9265415774573234
+          },
+          "validation": {
+            "wrong_saturated_cells": 160,
+            "trajectories_with_wrong_saturation": 60,
+            "fraction_squared_error_in_wrong_saturated_cells": 0.7593949171037884
+          }
+        }
+      }
+    },
+    "learning_curve_16k": {
+      "N": 16000,
+      "validation_n": 512,
+      "status": "WAITING_FOR_16000_ADMITTED",
+      "job_id": "2221216",
+      "seeds": [
+        11,
+        29,
+        47,
+        71,
+        101
+      ],
+      "allocated_CPUs": 1,
+      "direct_completed_seeds": 0,
+      "classifier_completed_seeds": 0,
+      "regressor_completed_seeds": 0
+    },
+    "initialization_trial": {
+      "status": "INITIALIZATION_TRIAL_RUNNING",
+      "job_id": "2221253",
+      "completed_seeds": 0
+    }
   }
 }

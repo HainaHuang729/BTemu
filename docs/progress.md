@@ -86,3 +86,9 @@ A worker stopped before native evaluation because its Slurm allocation metadata 
 ## Concurrency update (2026-10-16)
 
 User authorized 32 simultaneous data simulations, each with 16 CPUs: maximum 512 simulation CPUs. Applied to array 2221086 and future waves; live scheduler verification observed 32 running tasks. Physics, seeds, samples, per-simulation resources, and other jobs are unchanged. [Resource change record](concurrency_32_20261016.md).
+
+## Model diagnosis and 16k learning curve (2026-10-16)
+
+Checkpoint diagnosis: CHECKPOINT_DIAGNOSIS_COMPLETED; job 2221212. Nested 16k comparison: WAITING_FOR_16000_ADMITTED; job 2221216. Same 512 Validation and five seeds, unchanged training protocol. Completed Direct / classifier / regressor seeds: 0 / 0 / 0. No new MCMC. [Development follow-up](model_followup_20261016.md).
+
+Initialization-only MLP ablation: INITIALIZATION_TRIAL_RUNNING; job 2221253; completed seeds 0/5. Same frozen 10k data, PCA, six hidden layers and physical history loss. Old results retained; this is one registered diagnostic experiment, not production model replacement.
