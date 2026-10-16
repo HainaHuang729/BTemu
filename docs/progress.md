@@ -91,4 +91,4 @@ User authorized 32 simultaneous data simulations, each with 16 CPUs: maximum 512
 
 Checkpoint diagnosis: CHECKPOINT_DIAGNOSIS_COMPLETED; job 2221212. Nested 16k comparison: WAITING_FOR_16000_ADMITTED; job 2221216. Same 512 Validation and five seeds, unchanged training protocol. Completed Direct / classifier / regressor seeds: 0 / 0 / 0. No new MCMC. [Development follow-up](model_followup_20261016.md).
 
-Initialization-only MLP ablation: INITIALIZATION_TRIAL_RUNNING; job 2221253; completed seeds 0/5. Same frozen 10k data, PCA, six hidden layers and physical history loss. Old results retained; this is one registered diagnostic experiment, not production model replacement.
+Initialization-only MLP ablation: INITIALIZATION_TRIAL_COMPLETED; job 2221253; completed seeds 5/5. Same frozen 10k data, PCA, six hidden layers and physical history loss. Old results retained; this is one registered diagnostic experiment, not production model replacement.
