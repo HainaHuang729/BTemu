@@ -129,13 +129,13 @@
     },
     "production": {
       "version": "random_ic_v2",
-      "updated_at_unix": 1792118737.4144952,
+      "updated_at_unix": 1792131284.664208,
       "datasets": {
         "train": {
           "target": 100000,
           "qualified": 15890,
           "positive_fraction": 0.37054751415984893,
-          "failed": 3
+          "failed": 4
         },
         "validation": {
           "target": 10000,
@@ -144,25 +144,29 @@
           "failed": 0
         }
       },
-      "attempts": 16519,
+      "attempts": 16520,
       "failed_numerical": 3,
-      "failed_infrastructure": 0,
+      "failed_infrastructure": 1,
       "retry_attempts": 114,
       "allocated_core_hours": 31232.19999999998,
       "reserved_core_hours": 0,
       "running_pending_or_unresolved": 0,
       "median_wall_seconds": 417.83476643124595,
       "q90_wall_seconds": 497.10029895883054,
-      "disk_bytes": 4840216304,
+      "disk_bytes": 4840222127,
       "max_array_concurrency": 16,
       "native_sha256": "3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2",
       "base_science_contract_hash": "2effb28af618d47c31dde218a6d3b89aedd59a208dc5814dcc5c69f8c05150d9",
-      "stop_reasons": [
-        "SYSTEMIC_IDENTITY_RUNTIME_SCHEMA_FAILURE"
-      ],
+      "stop_reasons": [],
       "sealed_labels_generated": false,
       "sealed_labels_read": false,
-      "status": "STOPPED_REQUIRES_REVIEW"
+      "submission": {
+        "array_job": "2221086",
+        "collector_job": "2221087",
+        "unique_indices": 128,
+        "split": "train"
+      },
+      "status": "ARRAY_SUBMITTED"
     },
     "sealed_labels_generated": false,
     "sealed_labels_read": false

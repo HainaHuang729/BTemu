@@ -200,4 +200,8 @@ if work.get("random_mcmc_development"):
 if work.get("random_mcmc_development",{}).get("validation"):
     v=work["random_mcmc_development"]["validation"]
     report+="\n512 Validation LF checks completed: "+str(v["LF_valid"])+" LF-valid, "+str(v["LF_invalid_history_retained"])+" LF-domain failures with history retained. Original exact references reproduce and LF is unchanged. On the LF-valid subset, absolute total log-likelihood error q90 = "+format(v["all_LF_valid"]["absolute_total_logL_q50_q90_q95"][1],".5f")+". These are development errors against random realizations, not posterior acceptance.\n"
+metadata_recovery=root/"results/runtime_metadata_recovery_20261016/execution.json"
+if metadata_recovery.exists():
+    recovery=json.loads(metadata_recovery.read_text())
+    report+="\n## Slurm metadata timeout recovery (2026-10-16)\n\nA worker stopped before native evaluation because its Slurm allocation metadata query exceeded 20 seconds. The allocation was preserved and classified as infrastructure failure; native/scientific contracts were rechecked. Seven software regression tests passed. Recovery job: "+str(recovery["recovery_job_id"])+"; resumed data array: "+str(recovery.get("array_job_id","not yet submitted"))+"; dependent collector: "+str(recovery.get("collector_job_id","not yet submitted"))+". Existing numerical failures are retained. No new model training or MCMC was submitted. [Incident and recovery scope](runtime_metadata_recovery_20261016.md).\n"
 Path("docs/progress.md").write_text(report)
