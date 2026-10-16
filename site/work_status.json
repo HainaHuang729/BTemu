@@ -129,13 +129,13 @@
     },
     "production": {
       "version": "random_ic_v2",
-      "updated_at_unix": 1792131284.664208,
+      "updated_at_unix": 1792135698.8629806,
       "datasets": {
         "train": {
           "target": 100000,
-          "qualified": 15890,
-          "positive_fraction": 0.37054751415984893,
-          "failed": 4
+          "qualified": 16146,
+          "positive_fraction": 0.37049424005945747,
+          "failed": 3
         },
         "validation": {
           "target": 10000,
@@ -144,16 +144,16 @@
           "failed": 0
         }
       },
-      "attempts": 16520,
+      "attempts": 16776,
       "failed_numerical": 3,
-      "failed_infrastructure": 1,
-      "retry_attempts": 114,
-      "allocated_core_hours": 31232.19999999998,
+      "failed_infrastructure": 0,
+      "retry_attempts": 115,
+      "allocated_core_hours": 31730.044444444437,
       "reserved_core_hours": 0,
       "running_pending_or_unresolved": 0,
-      "median_wall_seconds": 417.83476643124595,
-      "q90_wall_seconds": 497.10029895883054,
-      "disk_bytes": 4840222127,
+      "median_wall_seconds": 417.8349107843824,
+      "q90_wall_seconds": 497.11442268360406,
+      "disk_bytes": 4911500128,
       "max_array_concurrency": 32,
       "native_sha256": "3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2",
       "base_science_contract_hash": "2effb28af618d47c31dde218a6d3b89aedd59a208dc5814dcc5c69f8c05150d9",
@@ -161,14 +161,12 @@
       "sealed_labels_generated": false,
       "sealed_labels_read": false,
       "submission": {
-        "array_job": "2221086",
-        "collector_job": "2221087",
+        "array_job": "2221440",
+        "collector_job": "2221441",
         "unique_indices": 128,
         "split": "train"
       },
-      "status": "ARRAY_SUBMITTED",
-      "resource_configuration_updated_at_unix": 1792132167.6290612,
-      "resource_configuration_reference": "contracts/random_ic_concurrency_authorization_20261016.json"
+      "status": "ARRAY_SUBMITTED"
     },
     "sealed_labels_generated": false,
     "sealed_labels_read": false
@@ -9066,7 +9064,7 @@
     "learning_curve_16k": {
       "N": 16000,
       "validation_n": 512,
-      "status": "WAITING_FOR_16000_ADMITTED",
+      "status": "DEVELOPMENT_COMPARISON_COMPLETED",
       "job_id": "2221216",
       "seeds": [
         11,
@@ -9076,9 +9074,123 @@
         101
       ],
       "allocated_CPUs": 1,
-      "direct_completed_seeds": 0,
-      "classifier_completed_seeds": 0,
-      "regressor_completed_seeds": 0
+      "direct_completed_seeds": 5,
+      "classifier_completed_seeds": 5,
+      "regressor_completed_seeds": 5,
+      "metrics": {
+        "classifier_ensemble": {
+          "false_negative": 3,
+          "false_positive": 3,
+          "false_negative_rate": 0.01639344262295082,
+          "accuracy": 0.98828125
+        },
+        "exact_positive_validation_count": 183,
+        "direct_ensemble_all_validation": {
+          "n_trajectories": 512,
+          "trajectory_RMSE_quantiles": {
+            "q50": 0.002709260116815584,
+            "q90": 0.013297209721511079,
+            "q95": 0.019571900584285356
+          },
+          "derived_absolute_quantiles": {
+            "tau": {
+              "q50": 0.000138220377266407,
+              "q90": 0.0012068234384059906,
+              "q95": 0.0022410202771425245
+            },
+            "xHI_obs": {
+              "q50": 0.0016622653952026445,
+              "q90": 0.01363249924804593,
+              "q95": 0.023240417995898155
+            },
+            "logL_tau": {
+              "q50": 0.03507797998301809,
+              "q90": 1.3330286556124544,
+              "q95": 3.8060558353250835
+            },
+            "logL_xHI": {
+              "q50": 0.4310409431961375,
+              "q90": 2.594868132036042,
+              "q95": 3.8766486244663048
+            },
+            "logL_joint_history": {
+              "q50": 0.7702765117360713,
+              "q90": 3.9159081067599772,
+              "q95": 8.909217753947999
+            }
+          }
+        },
+        "direct_ensemble_positive_validation": {
+          "n_trajectories": 183,
+          "trajectory_RMSE_quantiles": {
+            "q50": 0.0064251712432226,
+            "q90": 0.018744126589469706,
+            "q95": 0.02372197783507221
+          },
+          "derived_absolute_quantiles": {
+            "tau": {
+              "q50": 0.0004719272255897522,
+              "q90": 0.002568377554416659,
+              "q95": 0.006502324342727663
+            },
+            "xHI_obs": {
+              "q50": 0.00010736572767200414,
+              "q90": 0.012701833337206337,
+              "q95": 0.020338612064028056
+            },
+            "logL_tau": {
+              "q50": 0.1866946603794375,
+              "q90": 6.690354757484943,
+              "q95": 30.00325392280604
+            },
+            "logL_xHI": {
+              "q50": 0.0,
+              "q90": 0.10234371280786209,
+              "q95": 0.5752391708595974
+            },
+            "logL_joint_history": {
+              "q50": 0.3294311039718012,
+              "q90": 6.690354757484943,
+              "q95": 30.00325392280604
+            }
+          }
+        },
+        "nnero_ensemble_positive_validation": {
+          "n_trajectories": 183,
+          "trajectory_RMSE_quantiles": {
+            "q50": 0.025760703856174925,
+            "q90": 0.09906210559739008,
+            "q95": 0.3142261994737298
+          },
+          "derived_absolute_quantiles": {
+            "tau": {
+              "q50": 0.002794060856103897,
+              "q90": 0.029141440987586986,
+              "q95": 0.09146828353404998
+            },
+            "xHI_obs": {
+              "q50": 0.00040373008743301855,
+              "q90": 0.056221531060905446,
+              "q95": 0.1418749082502936
+            },
+            "logL_tau": {
+              "q50": 0.7265669579228622,
+              "q90": 125.2368099019845,
+              "q95": 698.9514995333412
+            },
+            "logL_xHI": {
+              "q50": 0.0,
+              "q90": 0.24522261708662668,
+              "q95": 3.6729856457085353
+            },
+            "logL_joint_history": {
+              "q50": 1.0708744271669026,
+              "q90": 125.2368099019845,
+              "q95": 698.9514995333412
+            }
+          }
+        }
+      }
     },
     "initialization_trial": {
       "status": "INITIALIZATION_TRIAL_COMPLETED",
