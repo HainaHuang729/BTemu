@@ -13,3 +13,5 @@ worker 现在只对同一 allocation 的只读 Slurm metadata 查询超时重试
 本次没有提交新的神经网络训练或 MCMC，没有读取 sealed labels。首轮 PCA+MLP 的精度问题仍未解决；此前开发短链完成仅代表接口功能检查完成。
 
 实时合格数量和波次状态见[项目网页](https://hainahuang729.github.io/BTemu/)。
+
+同日后续用户授权将数据并发从 16 提高到 32；当前限制以[32 并发记录](concurrency_32_20261016.md)为准。上述 16 并发是故障恢复时的设置。

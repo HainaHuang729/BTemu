@@ -154,7 +154,7 @@
       "median_wall_seconds": 417.83476643124595,
       "q90_wall_seconds": 497.10029895883054,
       "disk_bytes": 4840222127,
-      "max_array_concurrency": 16,
+      "max_array_concurrency": 32,
       "native_sha256": "3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2",
       "base_science_contract_hash": "2effb28af618d47c31dde218a6d3b89aedd59a208dc5814dcc5c69f8c05150d9",
       "stop_reasons": [],
@@ -166,7 +166,9 @@
         "unique_indices": 128,
         "split": "train"
       },
-      "status": "ARRAY_SUBMITTED"
+      "status": "ARRAY_SUBMITTED",
+      "resource_configuration_updated_at_unix": 1792132167.6290612,
+      "resource_configuration_reference": "contracts/random_ic_concurrency_authorization_20261016.json"
     },
     "sealed_labels_generated": false,
     "sealed_labels_read": false

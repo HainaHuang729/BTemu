@@ -61,7 +61,7 @@ Final-wave Slurm array indices exceeded MaxArraySize=1001. Compact task-to-manif
 
 ## Random-realization production launch
 
-Latest user authorization selects one independent random IC per theta. Controller 2194516 completed; array 2194518 started eight Train simulations on cn061 (128 CPUs at launch). Dependent validation/continuation job 2194519 is submitted. Maximum simulation allocation remains 256 CPUs. Mean-history and posterior fidelity remain unqualified. See [launch record](random_ic_explicit_start.md).
+Latest user authorization selects one independent random IC per theta. Controller 2194516 completed; array 2194518 started eight Train simulations on cn061 (128 CPUs at launch). Dependent validation/continuation job 2194519 is submitted. At that launch the simulation cap was 256 CPUs; subsequent resource changes are recorded below. Mean-history and posterior fidelity remain unqualified. See [launch record](random_ic_explicit_start.md).
 
 ## Frozen random-IC data analysis
 
@@ -82,3 +82,7 @@ Status: DEVELOPMENT_INTERFACE_VALIDATION_AND_SHORT_CHAINS_COMPLETED. Development
 ## Slurm metadata timeout recovery (2026-10-16)
 
 A worker stopped before native evaluation because its Slurm allocation metadata query exceeded 20 seconds. The allocation was preserved and classified as infrastructure failure; native/scientific contracts were rechecked. Seven software regression tests passed. Recovery job: 2221082; resumed data array: 2221086; dependent collector: 2221087. Existing numerical failures are retained. No new model training or MCMC was submitted. [Incident and recovery scope](runtime_metadata_recovery_20261016.md).
+
+## Concurrency update (2026-10-16)
+
+User authorized 32 simultaneous data simulations, each with 16 CPUs: maximum 512 simulation CPUs. Applied to array 2221086 and future waves; live scheduler verification observed 32 running tasks. Physics, seeds, samples, per-simulation resources, and other jobs are unchanged. [Resource change record](concurrency_32_20261016.md).
