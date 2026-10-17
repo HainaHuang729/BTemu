@@ -34,3 +34,5 @@ Classifier仍有3/183个false negatives（1.64%），false positives为3。PCA�
 - 100k Train / 10k Validation继续生产。下一档32k模型训练尚未提交。
 - MLP拟合、IC均值/边际化解释、likelihood及posterior验收仍未解决。
 - 本次未新增MCMC；classifier硬拒绝未启用；sealed labels保持未生成、未读取。
+
+详细解释与优先级：[结果分析与下一步](analysis_and_next_steps_20261017.md)。
