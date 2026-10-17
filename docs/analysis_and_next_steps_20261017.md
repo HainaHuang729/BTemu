@@ -54,3 +54,12 @@ mean-history likelihood不等于IC-marginalized likelihood。既有审计中，l
 5. **最后做面向推断的开发验收。** 在独立、有足够覆盖的高likelihood开发点检验原LF+tau+xHI及分类false negatives；明确选择mean-history还是IC-marginalized likelihood的近似和误差预算，再进入posterior验证。生产MCMC与sealed test保持独立授权及冻结门槛。
 
 优先资源投入建议：继续Direct learning curve与补充验证；NNERO-style保持有限诊断路线。所选BT native、原tau积分、LF、priors、随机IC设计和全部有效history标签保持原定义。
+
+
+## 验收门槛与论文比较（2026-10-17补充）
+
+最终模型精度协议仍为 PROPOSED_REQUIRES_SCIENTIFIC_CONFIRMATION；用户确认的是IC审计的保守开发门槛。PCA表示筛查另行预注册。当前Direct16k只有τ平均偏差满足最终提案的对应单项，模型、IC均值和posterior仍未验收。
+
+NNERO论文对log10(Xe)做PCA，使用history与派生τ相对误差项；当前实现为logit(xHI) PCA加物理xHI MSE。量定义、训练方法和误差统计口径均有差异，不能直接比较“通过率”或把当前实验称为完整复现。
+
+[完整门槛、确认状态、论文数据及比较](acceptance_and_nnero_comparison_20261017.md)。

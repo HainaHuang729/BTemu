@@ -92,3 +92,7 @@ User authorized 32 simultaneous data simulations, each with 16 CPUs: maximum 512
 Checkpoint diagnosis: CHECKPOINT_DIAGNOSIS_COMPLETED; job 2221212. Nested 16k comparison: DEVELOPMENT_COMPARISON_COMPLETED; job 2221216. Same 512 Validation and five seeds, unchanged training protocol. Completed Direct / classifier / regressor seeds: 5 / 5 / 5. No new MCMC. [Development follow-up](model_followup_20261016.md).
 
 Initialization-only MLP ablation: INITIALIZATION_TRIAL_COMPLETED; job 2221253; completed seeds 5/5. Same frozen 10k data, PCA, six hidden layers and physical history loss. Old results retained; this is one registered diagnostic experiment, not production model replacement.
+
+## Acceptance criteria and NNERO comparison
+
+Final model accuracy thresholds remain proposals requiring scientific confirmation. Confirmed IC audit gates and preregistered PCA representation screens are separate. Current logit(xHI) PCA / physical-history MSE differs from the paper log10(Xe) / relative history plus derived-tau training. [Threshold status and paper comparison](acceptance_and_nnero_comparison_20261017.md).

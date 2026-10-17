@@ -250,4 +250,6 @@ if work.get("random_model_followup"):
 if work.get("random_model_followup",{}).get("initialization_trial"):
     it=work["random_model_followup"]["initialization_trial"]
     report+="\nInitialization-only MLP ablation: "+it["status"]+"; job "+str(it["job_id"])+"; completed seeds "+str(it.get("completed_seeds",0))+"/5. Same frozen 10k data, PCA, six hidden layers and physical history loss. Old results retained; this is one registered diagnostic experiment, not production model replacement.\n"
+if (root/"docs/acceptance_and_nnero_comparison_20261017.md").exists():
+    report+="\n## Acceptance criteria and NNERO comparison\n\nFinal model accuracy thresholds remain proposals requiring scientific confirmation. Confirmed IC audit gates and preregistered PCA representation screens are separate. Current logit(xHI) PCA / physical-history MSE differs from the paper log10(Xe) / relative history plus derived-tau training. [Threshold status and paper comparison](acceptance_and_nnero_comparison_20261017.md).\n"
 Path("docs/progress.md").write_text(report)

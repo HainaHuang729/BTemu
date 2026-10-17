@@ -36,3 +36,12 @@ Classifier仍有3/183个false negatives（1.64%），false positives为3。PCA�
 - 本次未新增MCMC；classifier硬拒绝未启用；sealed labels保持未生成、未读取。
 
 详细解释与优先级：[结果分析与下一步](analysis_and_next_steps_20261017.md)。
+
+
+## 验收门槛与论文比较（2026-10-17补充）
+
+最终模型精度协议仍为 PROPOSED_REQUIRES_SCIENTIFIC_CONFIRMATION；用户确认的是IC审计的保守开发门槛。PCA表示筛查另行预注册。当前Direct16k只有τ平均偏差满足最终提案的对应单项，模型、IC均值和posterior仍未验收。
+
+NNERO论文对log10(Xe)做PCA，使用history与派生τ相对误差项；当前实现为logit(xHI) PCA加物理xHI MSE。量定义、训练方法和误差统计口径均有差异，不能直接比较“通过率”或把当前实验称为完整复现。
+
+[完整门槛、确认状态、论文数据及比较](acceptance_and_nnero_comparison_20261017.md)。
