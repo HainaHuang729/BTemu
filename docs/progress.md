@@ -99,4 +99,4 @@ Final model accuracy thresholds remain proposals requiring scientific confirmati
 
 ## Latest training update: 26,000 Train
 
-Status: DEVELOPMENT_TRAINING_RUNNING; job 2234346. Same 512 Validation, unchanged configurations and five seeds. Completed Direct / classifier / regressor seeds: 3 / 0 / 0. This intermediate update retains the original 32k milestone. [26k protocol](training_update_26k_20261018.md).
+Status: DEVELOPMENT_COMPARISON_COMPLETED; job 2234346. Same 512 Validation, unchanged configurations and five seeds. Completed Direct / classifier / regressor seeds: 5 / 5 / 5. This intermediate update retains the original 32k milestone. [26k protocol](training_update_26k_20261018.md).

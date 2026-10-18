@@ -129,12 +129,12 @@
     },
     "production": {
       "version": "random_ic_v2",
-      "updated_at_unix": 1792296196.3688965,
+      "updated_at_unix": 1792300205.4449508,
       "datasets": {
         "train": {
           "target": 100000,
-          "qualified": 26512,
-          "positive_fraction": 0.36945534097767047,
+          "qualified": 26768,
+          "positive_fraction": 0.3693215780035864,
           "failed": 5
         },
         "validation": {
@@ -144,16 +144,16 @@
           "failed": 0
         }
       },
-      "attempts": 27144,
+      "attempts": 27400,
       "failed_numerical": 5,
       "failed_infrastructure": 0,
       "retry_attempts": 115,
-      "allocated_core_hours": 51621.80444444403,
+      "allocated_core_hours": 52114.3511111107,
       "reserved_core_hours": 0,
       "running_pending_or_unresolved": 0,
-      "median_wall_seconds": 418.0775424586609,
-      "q90_wall_seconds": 496.8886631280184,
-      "disk_bytes": 7798289529,
+      "median_wall_seconds": 418.08755444921553,
+      "q90_wall_seconds": 496.89465791825205,
+      "disk_bytes": 7869568602,
       "max_array_concurrency": 32,
       "native_sha256": "3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2",
       "base_science_contract_hash": "2effb28af618d47c31dde218a6d3b89aedd59a208dc5814dcc5c69f8c05150d9",
@@ -161,8 +161,8 @@
       "sealed_labels_generated": false,
       "sealed_labels_read": false,
       "submission": {
-        "array_job": "2234578",
-        "collector_job": "2234579",
+        "array_job": "2234960",
+        "collector_job": "2234961",
         "unique_indices": 128,
         "split": "train"
       },
@@ -9195,7 +9195,7 @@
     "latest_training": {
       "N": 26000,
       "validation_n": 512,
-      "status": "DEVELOPMENT_TRAINING_RUNNING",
+      "status": "DEVELOPMENT_COMPARISON_COMPLETED",
       "job_id": "2234346",
       "seeds": [
         11,
@@ -9205,9 +9205,123 @@
         101
       ],
       "allocated_CPUs": 1,
-      "direct_completed_seeds": 3,
-      "classifier_completed_seeds": 0,
-      "regressor_completed_seeds": 0
+      "direct_completed_seeds": 5,
+      "classifier_completed_seeds": 5,
+      "regressor_completed_seeds": 5,
+      "metrics": {
+        "classifier_ensemble": {
+          "false_negative": 3,
+          "false_positive": 1,
+          "false_negative_rate": 0.01639344262295082,
+          "accuracy": 0.9921875
+        },
+        "exact_positive_validation_count": 183,
+        "direct_ensemble_all_validation": {
+          "n_trajectories": 512,
+          "trajectory_RMSE_quantiles": {
+            "q50": 0.001266589700854667,
+            "q90": 0.007067820278241006,
+            "q95": 0.011607959190087313
+          },
+          "derived_absolute_quantiles": {
+            "tau": {
+              "q50": 7.570348680019379e-05,
+              "q90": 0.0007945045828819282,
+              "q95": 0.0013341210782527918
+            },
+            "xHI_obs": {
+              "q50": 0.0007425185421396918,
+              "q90": 0.007786161022964738,
+              "q95": 0.013618876740682738
+            },
+            "logL_tau": {
+              "q50": 0.023340931231064066,
+              "q90": 0.6146859550615168,
+              "q95": 3.34922933993642
+            },
+            "logL_xHI": {
+              "q50": 0.18067950469145444,
+              "q90": 1.3663720294820692,
+              "q95": 2.0662111286224785
+            },
+            "logL_joint_history": {
+              "q50": 0.3453700693622981,
+              "q90": 2.2381659812186654,
+              "q95": 5.647802949014449
+            }
+          }
+        },
+        "direct_ensemble_positive_validation": {
+          "n_trajectories": 183,
+          "trajectory_RMSE_quantiles": {
+            "q50": 0.003724160845633306,
+            "q90": 0.011393703205411014,
+            "q95": 0.016295740950394585
+          },
+          "derived_absolute_quantiles": {
+            "tau": {
+              "q50": 0.0002545788884162903,
+              "q90": 0.0019108235836029078,
+              "q95": 0.004817487299442296
+            },
+            "xHI_obs": {
+              "q50": 5.3740574685434694e-05,
+              "q90": 0.009379803862445793,
+              "q95": 0.014450618903168741
+            },
+            "logL_tau": {
+              "q50": 0.10517826338493941,
+              "q90": 5.55609806238287,
+              "q95": 15.54572753150413
+            },
+            "logL_xHI": {
+              "q50": 0.0,
+              "q90": 0.1022448411133147,
+              "q95": 0.5716667584125011
+            },
+            "logL_joint_history": {
+              "q50": 0.22866635586396455,
+              "q90": 5.55609806238287,
+              "q95": 15.54572753150413
+            }
+          }
+        },
+        "nnero_ensemble_positive_validation": {
+          "n_trajectories": 183,
+          "trajectory_RMSE_quantiles": {
+            "q50": 0.015265690205368915,
+            "q90": 0.10118177216432259,
+            "q95": 0.30756328630764995
+          },
+          "derived_absolute_quantiles": {
+            "tau": {
+              "q50": 0.0013334974646568298,
+              "q90": 0.031530722975730965,
+              "q95": 0.09867076873779301
+            },
+            "xHI_obs": {
+              "q50": 0.0005850302477483638,
+              "q90": 0.030214660206670525,
+              "q95": 0.04763232424207216
+            },
+            "logL_tau": {
+              "q50": 0.44833803630840147,
+              "q90": 108.77412430441896,
+              "q95": 686.3492907233057
+            },
+            "logL_xHI": {
+              "q50": 0.0,
+              "q90": 0.13964549889610064,
+              "q95": 1.2030692951643323
+            },
+            "logL_joint_history": {
+              "q50": 0.6161375461955401,
+              "q90": 108.77412430441896,
+              "q95": 686.3492907233057
+            }
+          }
+        }
+      }
     },
     "initialization_trial": {
       "status": "INITIALIZATION_TRIAL_COMPLETED",
