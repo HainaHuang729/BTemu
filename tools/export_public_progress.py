@@ -272,4 +272,9 @@ if (root/"docs/acceptance_and_nnero_comparison_20261017.md").exists():
 if work.get("random_model_followup",{}).get("latest_training"):
     latest=work["random_model_followup"]["latest_training"]
     report+="\n## Latest training update: "+format(latest["N"],",")+" Train\n\nStatus: "+latest["status"]+"; job "+str(latest["job_id"])+". Same 512 Validation, unchanged configurations and five seeds. Completed Direct / classifier / regressor seeds: "+str(latest["direct_completed_seeds"])+" / "+str(latest["classifier_completed_seeds"])+" / "+str(latest["regressor_completed_seeds"])+". This intermediate update retains the original 32k milestone. [26k protocol](training_update_26k_20261018.md).\n"
+resource64=root/"results/concurrency_revision_20261018_64/execution.json"
+if resource64.exists():
+    change=json.loads(resource64.read_text())
+    if change.get("status")=="APPLIED_TO_CURRENT_ARRAY_AND_FUTURE_WAVES":
+        report+="\n## Concurrency increased to 64 (2026-10-18)\n\nUser authorized another 32 simulations: maximum 64 concurrent, 16 CPUs each, 1024 simulation CPUs. Applied to array "+str(change["array_job"])+" and future waves. Initial verification observed 58 running tasks / 928 CPUs as the wave had fewer than64 tasks remaining. All science settings and other jobs are unchanged. [Resource authorization and verification](concurrency_64_20261018.md).\n"
 Path("docs/progress.md").write_text(report)

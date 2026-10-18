@@ -100,3 +100,7 @@ Final model accuracy thresholds remain proposals requiring scientific confirmati
 ## Latest training update: 26,000 Train
 
 Status: DEVELOPMENT_COMPARISON_COMPLETED; job 2234346. Same 512 Validation, unchanged configurations and five seeds. Completed Direct / classifier / regressor seeds: 5 / 5 / 5. This intermediate update retains the original 32k milestone. [26k protocol](training_update_26k_20261018.md).
+
+## Concurrency increased to 64 (2026-10-18)
+
+User authorized another 32 simulations: maximum 64 concurrent, 16 CPUs each, 1024 simulation CPUs. Applied to array 2236501 and future waves. Initial verification observed 58 running tasks / 928 CPUs as the wave had fewer than64 tasks remaining. All science settings and other jobs are unchanged. [Resource authorization and verification](concurrency_64_20261018.md).
