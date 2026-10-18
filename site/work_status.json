@@ -9192,6 +9192,23 @@
         }
       }
     },
+    "latest_training": {
+      "N": 26000,
+      "validation_n": 512,
+      "status": "DATA_VALIDATION_RUNNING",
+      "job_id": "2234346",
+      "seeds": [
+        11,
+        29,
+        47,
+        71,
+        101
+      ],
+      "allocated_CPUs": 1,
+      "direct_completed_seeds": 0,
+      "classifier_completed_seeds": 0,
+      "regressor_completed_seeds": 0
+    },
     "initialization_trial": {
       "status": "INITIALIZATION_TRIAL_COMPLETED",
       "job_id": "2221253",

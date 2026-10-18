@@ -23,3 +23,5 @@ Train相比昨日检查20,624条，新增5,632条。Validation仍512条，尚未
 [验收门槛与NNERO论文比较](acceptance_and_nnero_comparison_20261017.md)：模型最终精度仍为待确认提案；IC确认门槛和PCA开发筛查分别记录。
 [结果分析与下一步](analysis_and_next_steps_20261017.md)。
 Selected repaired native身份与冻结random-IC target继续沿用。当前无生产停止标记；sealed labels未生成、未读取，本次未新增MCMC。
+
+> 训练更新：用户随后要求更新训练，26k开发作业2234346已提交并运行；[查看26k协议与状态](training_update_26k_20261018.md)。原32k milestone保留，旧模型不覆盖。

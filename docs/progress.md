@@ -96,3 +96,7 @@ Initialization-only MLP ablation: INITIALIZATION_TRIAL_COMPLETED; job 2221253; c
 ## Acceptance criteria and NNERO comparison
 
 Final model accuracy thresholds remain proposals requiring scientific confirmation. Confirmed IC audit gates and preregistered PCA representation screens are separate. Current logit(xHI) PCA / physical-history MSE differs from the paper log10(Xe) / relative history plus derived-tau training. [Threshold status and paper comparison](acceptance_and_nnero_comparison_20261017.md).
+
+## Latest training update: 26,000 Train
+
+Status: DATA_VALIDATION_RUNNING; job 2234346. Same 512 Validation, unchanged configurations and five seeds. Completed Direct / classifier / regressor seeds: 0 / 0 / 0. This intermediate update retains the original 32k milestone. [26k protocol](training_update_26k_20261018.md).

@@ -92,10 +92,10 @@ function renderMcmcDevelopment(zh){
 }
 
 function renderModelFollowup(zh){
- const f=work?.random_model_followup;if(!f?.learning_curve_16k)return;
+ const f=work?.random_model_followup;if(!f?.latest_training&&!f?.learning_curve_16k)return;
  document.getElementById('model-followup').hidden=false;
- const d=f.learning_curve_16k,diag=f.diagnostic||{};
- const names={WAITING_FOR_16000_ADMITTED:'已提交，等待 16k 数据验收入库',DEVELOPMENT_TRAINING_RUNNING:'16k 开发训练进行中',DEVELOPMENT_COMPARISON_COMPLETED:'16k 开发比较已完成',DEVELOPMENT_COMPARISON_FAILED:'16k 开发检查或训练失败，查看运行报告'};
+ const d=f.latest_training||f.learning_curve_16k,diag=f.diagnostic||{};
+ const names={WAITING_FOR_16000_ADMITTED:'等待数据验收入库',TRAINING_UPDATE_SUBMITTED:number(d.N)+' Train 开发更新已提交',DATA_VALIDATION_RUNNING:number(d.N)+' Train 数据复核中',DEVELOPMENT_TRAINING_RUNNING:number(d.N)+' Train 开发训练进行中',DEVELOPMENT_COMPARISON_COMPLETED:number(d.N)+' Train 开发比较已完成',DEVELOPMENT_COMPARISON_FAILED:'开发检查或训练失败，查看运行报告'};
  document.getElementById('model-followup-status').textContent=(zh?(names[d.status]||d.status):d.status)+` · Job ${d.job_id} · ${d.allocated_CPUs} CPU`;
  document.getElementById('model-followup-counts').textContent=zh?`同一批 512 条 Validation；已完成 seeds：Direct ${d.direct_completed_seeds}/5，classifier ${d.classifier_completed_seeds}/5，PCA+MLP ${d.regressor_completed_seeds}/5。`:`Same 512 Validation samples; completed seeds: Direct ${d.direct_completed_seeds}/5, classifier ${d.classifier_completed_seeds}/5, PCA+MLP ${d.regressor_completed_seeds}/5.`;
  document.getElementById('model-followup-diagnosis').textContent=(zh?'10k MLP 权重诊断：':'10k MLP checkpoint diagnosis: ')+(diag.status||'Pending')+` · Job ${diag.job_id||'—'}`;
@@ -108,5 +108,5 @@ function renderModelFollowup(zh){
  const metrics=d.metrics;
  if(metrics){for(const [key,name] of [['direct_ensemble_all_validation','Direct / all'],['direct_ensemble_positive_validation','Direct / allowed'],['nnero_ensemble_positive_validation','PCA + 6×80 MLP']]){const v=metrics[key];if(v?.trajectory_RMSE_quantiles)row(table,[name,number(v.n_trajectories),fmt(v.trajectory_RMSE_quantiles.q95),fmt(v.derived_absolute_quantiles.tau.q90)]);else row(table,[name,'—',v?.status||'Pending','—']);}}
  else row(table,[zh?'结果尚未生成':'Results pending','—','—','—']);
- document.getElementById('model-followup-note').textContent=zh?'16k 与 10k 使用嵌套 Train、相同 Validation、相同训练配置和全部五个 seeds。权重诊断检查训练误差与输出饱和；它不改变模型或标签。本轮没有新增 MCMC，结果仍需原 τ/xHI/likelihood 验证。':'16k and 10k use nested Train, identical Validation, configuration and all five seeds. Checkpoint diagnosis measures training error and output saturation without changing models or labels. No new MCMC; original tau/xHI/likelihood validation remains required.';
+ document.getElementById('model-followup-note').textContent=zh?'最新训练沿用嵌套 Train、相同 Validation、相同训练配置和全部五个 seeds，保留旧模型。26k 是本次中间更新，32k 档仍保留。当前 PCA+MLP 与论文的量定义、表示和 loss 有区别；本轮是开发比较。':'Latest training uses nested Train, identical Validation, configuration and all five seeds; previous models are retained. The 26k update supplements the original 32k milestone. Target, representation and loss differ from the paper; this remains a development comparison.';
 }

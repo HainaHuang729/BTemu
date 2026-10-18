@@ -142,6 +142,23 @@ if (curve16/"status.json").exists():
             value=cm.get(key,{})
             trial["metrics"][key]={k:value[k] for k in ["status","n_trajectories","trajectory_RMSE_quantiles","derived_absolute_quantiles"] if k in value}
     followup["learning_curve_16k"]=trial
+curve_latest=root/"artifacts/random_ic_development_26k_20261018"
+if (curve_latest/"status.json").exists():
+    cs=json.loads((curve_latest/"status.json").read_text())
+    ci=json.loads((curve_latest/"intent.json").read_text())
+    sub=json.loads((curve_latest/"submission.json").read_text())
+    trial={"N":ci["N"],"validation_n":ci["validation_n"],"status":cs["status"],"job_id":sub["job_id"],"seeds":ci["seeds"],"allocated_CPUs":1,
+           "direct_completed_seeds":sum((curve_latest/"direct_resmlp"/("seed_%d_metrics.json"%s)).exists() for s in ci["seeds"]),
+           "classifier_completed_seeds":sum((curve_latest/"nnero_style"/("classifier_seed_%d.json"%s)).exists() for s in ci["seeds"]),
+           "regressor_completed_seeds":sum((curve_latest/"nnero_style"/("regressor_seed_%d.json"%s)).exists() for s in ci["seeds"])}
+    if (curve_latest/"comparison_metrics.json").exists():
+        cm=json.loads((curve_latest/"comparison_metrics.json").read_text())
+        trial["metrics"]={"classifier_ensemble":cm["classifier_ensemble"],"exact_positive_validation_count":cm["exact_positive_validation_count"]}
+        for key in ["direct_ensemble_all_validation","direct_ensemble_positive_validation","nnero_ensemble_positive_validation"]:
+            value=cm.get(key,{})
+            trial["metrics"][key]={k:value[k] for k in ["status","n_trajectories","trajectory_RMSE_quantiles","derived_absolute_quantiles"] if k in value}
+    if trial["status"]=="TRAINING_UPDATE_SUBMITTED" and (curve_latest/"snapshot.json").exists():trial["status"]="DATA_VALIDATION_RUNNING"
+    followup["latest_training"]=trial
 initialization=root/"artifacts/random_ic_mlp_initialization_20261016"
 if (initialization/"status.json").exists():
     it=json.loads((initialization/"status.json").read_text())
@@ -252,4 +269,7 @@ if work.get("random_model_followup",{}).get("initialization_trial"):
     report+="\nInitialization-only MLP ablation: "+it["status"]+"; job "+str(it["job_id"])+"; completed seeds "+str(it.get("completed_seeds",0))+"/5. Same frozen 10k data, PCA, six hidden layers and physical history loss. Old results retained; this is one registered diagnostic experiment, not production model replacement.\n"
 if (root/"docs/acceptance_and_nnero_comparison_20261017.md").exists():
     report+="\n## Acceptance criteria and NNERO comparison\n\nFinal model accuracy thresholds remain proposals requiring scientific confirmation. Confirmed IC audit gates and preregistered PCA representation screens are separate. Current logit(xHI) PCA / physical-history MSE differs from the paper log10(Xe) / relative history plus derived-tau training. [Threshold status and paper comparison](acceptance_and_nnero_comparison_20261017.md).\n"
+if work.get("random_model_followup",{}).get("latest_training"):
+    latest=work["random_model_followup"]["latest_training"]
+    report+="\n## Latest training update: "+format(latest["N"],",")+" Train\n\nStatus: "+latest["status"]+"; job "+str(latest["job_id"])+". Same 512 Validation, unchanged configurations and five seeds. Completed Direct / classifier / regressor seeds: "+str(latest["direct_completed_seeds"])+" / "+str(latest["classifier_completed_seeds"])+" / "+str(latest["regressor_completed_seeds"])+". This intermediate update retains the original 32k milestone. [26k protocol](training_update_26k_20261018.md).\n"
 Path("docs/progress.md").write_text(report)
