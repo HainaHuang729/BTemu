@@ -277,4 +277,8 @@ if resource64.exists():
     change=json.loads(resource64.read_text())
     if change.get("status")=="APPLIED_TO_CURRENT_ARRAY_AND_FUTURE_WAVES":
         report+="\n## Concurrency increased to 64 (2026-10-18)\n\nUser authorized another 32 simulations: maximum 64 concurrent, 16 CPUs each, 1024 simulation CPUs. Applied to array "+str(change["array_job"])+" and future waves. Initial verification observed 58 running tasks / 928 CPUs as the wave had fewer than64 tasks remaining. All science settings and other jobs are unchanged. [Resource authorization and verification](concurrency_64_20261018.md).\n"
+reservation_recovery=root/"results/reservation_recovery_20261018/execution.json"
+if reservation_recovery.exists():
+    rec=json.loads(reservation_recovery.read_text())
+    report+="\n## Pre-simulation reservation recovery (2026-10-18)\n\nStatus: "+rec["status"]+". A worker exited at the concurrency reservation gate before native evaluation. Original allocation charged and failure retained; bounded wait preserves the64 limit. Recovery job "+str(rec["recovery_job_id"])+" resumed array "+str(rec.get("array_job","not yet submitted"))+" with dependent collector "+str(rec.get("collector_job","not yet submitted"))+". Fourteen software checks passed. No scientific target change. [Incident and recovery](reservation_recovery_20261018.md).\n"
 Path("docs/progress.md").write_text(report)

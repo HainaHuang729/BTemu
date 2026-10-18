@@ -104,3 +104,7 @@ Status: DEVELOPMENT_COMPARISON_COMPLETED; job 2234346. Same 512 Validation, unch
 ## Concurrency increased to 64 (2026-10-18)
 
 User authorized another 32 simulations: maximum 64 concurrent, 16 CPUs each, 1024 simulation CPUs. Applied to array 2236501 and future waves. Initial verification observed 58 running tasks / 928 CPUs as the wave had fewer than64 tasks remaining. All science settings and other jobs are unchanged. [Resource authorization and verification](concurrency_64_20261018.md).
+
+## Pre-simulation reservation recovery (2026-10-18)
+
+Status: RECOVERED_AND_ARRAY_RESUMED. A worker exited at the concurrency reservation gate before native evaluation. Original allocation charged and failure retained; bounded wait preserves the64 limit. Recovery job 2237980 resumed array 2237981 with dependent collector 2237982. Fourteen software checks passed. No scientific target change. [Incident and recovery](reservation_recovery_20261018.md).
