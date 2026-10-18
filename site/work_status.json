@@ -9195,7 +9195,7 @@
     "latest_training": {
       "N": 26000,
       "validation_n": 512,
-      "status": "DATA_VALIDATION_RUNNING",
+      "status": "DEVELOPMENT_TRAINING_RUNNING",
       "job_id": "2234346",
       "seeds": [
         11,

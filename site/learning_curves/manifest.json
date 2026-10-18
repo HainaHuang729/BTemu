@@ -1,0 +1,53 @@
+{
+  "status": "COMPLETED",
+  "job_id": "2234416",
+  "completed_N": [
+    10000,
+    16000
+  ],
+  "validation_n": 512,
+  "comparison_positive_validation_n": 183,
+  "seeds": [
+    11,
+    29,
+    47,
+    71,
+    101
+  ],
+  "input_sha256": {
+    "artifacts/random_ic_development_20261014/status.json": "3e07040356f44b74efdb0042e4f85097abc94b43641ff2734bcfaea5a394b7e6",
+    "artifacts/random_ic_development_20261014/comparison_metrics.json": "806036c77e87dbf45fa678f505eb1ee280257bce4db316ae79b10eb7cbc67db6",
+    "artifacts/random_ic_development_16k_20261016/status.json": "aeb476433c1bdc26fcd438fdf38951db74a154453b92cd3fbf275d87a7f53b6b",
+    "artifacts/random_ic_development_16k_20261016/comparison_metrics.json": "cc0e7ce0362d3896f18932347f7cd704b08af1f99a13d87fd03ca2af0bdb129b",
+    "artifacts/random_ic_development_20261014/direct_resmlp/seed_11_curves.json": "f7e71a77d599df1724a18d85a3d7d764a582f7bb1e8d4f7b379f7f29b6d817cd",
+    "artifacts/random_ic_development_20261014/nnero_style/regressor_seed_11.json": "f04291e87e8fae9a4eb5907f65e810dbc72c70557552ed25acda94af9f5ca26b",
+    "artifacts/random_ic_development_20261014/direct_resmlp/seed_29_curves.json": "bfd68ceb3ce15a34b4fb4272954e7ba6a663ff38cc5cee042291c234ae0b0bb1",
+    "artifacts/random_ic_development_20261014/nnero_style/regressor_seed_29.json": "6e440eeba21179bd5f1dd56e6be71d9c43bc47be87ffe2e680909b867c4e7569",
+    "artifacts/random_ic_development_20261014/direct_resmlp/seed_47_curves.json": "cc4b15795090dcb5a3037d0b0aeecb8dafc4c87e56ac9fe42be2cd83b91d7549",
+    "artifacts/random_ic_development_20261014/nnero_style/regressor_seed_47.json": "4ede8643a01dd88328ac9e2129987dde7f3aa8b9dc68b1fa7167b01b61d69d1e",
+    "artifacts/random_ic_development_20261014/direct_resmlp/seed_71_curves.json": "a0a1a7f3d112e9dcbb5467fc261cddeab8868c07ab5b02fe5c46186f6af65bec",
+    "artifacts/random_ic_development_20261014/nnero_style/regressor_seed_71.json": "82eb376413330112042121043ae48cecff290b8d20ffb460950fec1d10f28cde",
+    "artifacts/random_ic_development_20261014/direct_resmlp/seed_101_curves.json": "6f7221ea9adf174feef35f46a4bd79c3505706f4a97b5733d3e37e745b5837ab",
+    "artifacts/random_ic_development_20261014/nnero_style/regressor_seed_101.json": "bce2eb937e7ffd84ec16bc1a91cdab2821ccd122ecdc6be8c3458331134570b5",
+    "artifacts/random_ic_development_16k_20261016/direct_resmlp/seed_11_curves.json": "065104e193617a59acfff153de38a25a888d83b86613c4b5b99d9c2886517787",
+    "artifacts/random_ic_development_16k_20261016/nnero_style/regressor_seed_11.json": "894984d713afdb9d39e8e8dca5a15ab67b63d4f5599de3f255d9fc08a899456a",
+    "artifacts/random_ic_development_16k_20261016/direct_resmlp/seed_29_curves.json": "dce4b413bd6b16467eeb0351fc0b50c92e4365d44a9a61807ada7acb1d6982da",
+    "artifacts/random_ic_development_16k_20261016/nnero_style/regressor_seed_29.json": "29b2bde6e7d5ce5c6cf2cb0f21a5c4bbb35da554c7975b2897acf3fc21b8f3e9",
+    "artifacts/random_ic_development_16k_20261016/direct_resmlp/seed_47_curves.json": "c19f6f6d75e31a9795f53f726de947be39fa59ad360b3eb7e0a4407e3359eeeb",
+    "artifacts/random_ic_development_16k_20261016/nnero_style/regressor_seed_47.json": "114bfc514b2356cf3d25d3513af66815ee3f04ffc584429bb641f76525aa07ec",
+    "artifacts/random_ic_development_16k_20261016/direct_resmlp/seed_71_curves.json": "db878f01d061b8cea54a72c1c133e4ae012901f6321b0964773929c12ec88ecc",
+    "artifacts/random_ic_development_16k_20261016/nnero_style/regressor_seed_71.json": "c1632193cdbd5339fbafaf72e305a873476205dd29aa4f220ddba70a244f2b13",
+    "artifacts/random_ic_development_16k_20261016/direct_resmlp/seed_101_curves.json": "55b7784994c8e3d455cbd475a3f2fe012cf7388384a03731335d19e0cb52b81a",
+    "artifacts/random_ic_development_16k_20261016/nnero_style/regressor_seed_101.json": "09c9c3a606b17a61e1f15e5b022c27eecefc5d22f270f08580105e2f530399cc"
+  },
+  "figures": [
+    "error_vs_training_size.png",
+    "error_vs_training_size.pdf",
+    "training_validation_epochs.png",
+    "training_validation_epochs.pdf"
+  ],
+  "running_N_not_plotted": 26000,
+  "notes": "No interpolation/extrapolation claim from two N values. Physical ensemble mean; exact original downstream metrics reused.",
+  "sealed_access": false,
+  "production_accepted": false
+}
