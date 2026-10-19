@@ -143,6 +143,8 @@ if (curve16/"status.json").exists():
             trial["metrics"][key]={k:value[k] for k in ["status","n_trajectories","trajectory_RMSE_quantiles","derived_absolute_quantiles"] if k in value}
     followup["learning_curve_16k"]=trial
 curve_latest=root/"artifacts/random_ic_development_26k_20261018"
+if (root/"artifacts/random_ic_development_32k_20261019/status.json").exists():
+    curve_latest=root/"artifacts/random_ic_development_32k_20261019"
 if (curve_latest/"status.json").exists():
     cs=json.loads((curve_latest/"status.json").read_text())
     ci=json.loads((curve_latest/"intent.json").read_text())
@@ -158,6 +160,7 @@ if (curve_latest/"status.json").exists():
             value=cm.get(key,{})
             trial["metrics"][key]={k:value[k] for k in ["status","n_trajectories","trajectory_RMSE_quantiles","derived_absolute_quantiles"] if k in value}
     if trial["status"]=="TRAINING_UPDATE_SUBMITTED" and (curve_latest/"snapshot.json").exists():trial["status"]="DATA_VALIDATION_RUNNING"
+    trial["protocol_doc"]=ci.get("protocol_doc","training_update_26k_20261018.md")
     followup["latest_training"]=trial
 initialization=root/"artifacts/random_ic_mlp_initialization_20261016"
 if (initialization/"status.json").exists():
@@ -271,7 +274,7 @@ if (root/"docs/acceptance_and_nnero_comparison_20261017.md").exists():
     report+="\n## Acceptance criteria and NNERO comparison\n\nFinal model accuracy thresholds remain proposals requiring scientific confirmation. Confirmed IC audit gates and preregistered PCA representation screens are separate. Current logit(xHI) PCA / physical-history MSE differs from the paper log10(Xe) / relative history plus derived-tau training. [Threshold status and paper comparison](acceptance_and_nnero_comparison_20261017.md).\n"
 if work.get("random_model_followup",{}).get("latest_training"):
     latest=work["random_model_followup"]["latest_training"]
-    report+="\n## Latest training update: "+format(latest["N"],",")+" Train\n\nStatus: "+latest["status"]+"; job "+str(latest["job_id"])+". Same 512 Validation, unchanged configurations and five seeds. Completed Direct / classifier / regressor seeds: "+str(latest["direct_completed_seeds"])+" / "+str(latest["classifier_completed_seeds"])+" / "+str(latest["regressor_completed_seeds"])+". This intermediate update retains the original 32k milestone. [26k protocol](training_update_26k_20261018.md).\n"
+    report+="\n## Latest training update: "+format(latest["N"],",")+" Train\n\nStatus: "+latest["status"]+"; job "+str(latest["job_id"])+". Same 512 Validation, unchanged configurations and five seeds. Completed Direct / classifier / regressor seeds: "+str(latest["direct_completed_seeds"])+" / "+str(latest["classifier_completed_seeds"])+" / "+str(latest["regressor_completed_seeds"])+". Previous nested checkpoints remain retained. [Latest protocol]("+latest.get("protocol_doc","training_update_26k_20261018.md")+").\n"
 resource64=root/"results/concurrency_revision_20261018_64/execution.json"
 if resource64.exists():
     change=json.loads(resource64.read_text())
