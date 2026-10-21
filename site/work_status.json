@@ -129,12 +129,12 @@
     },
     "production": {
       "version": "random_ic_v2",
-      "updated_at_unix": 1792382188.7789142,
+      "updated_at_unix": 1792568987.7615788,
       "datasets": {
         "train": {
           "target": 100000,
-          "qualified": 34574,
-          "positive_fraction": 0.36932376930641525,
+          "qualified": 41230,
+          "positive_fraction": 0.3692942032500606,
           "failed": 6
         },
         "validation": {
@@ -144,16 +144,16 @@
           "failed": 0
         }
       },
-      "attempts": 35208,
+      "attempts": 41864,
       "failed_numerical": 6,
       "failed_infrastructure": 0,
       "retry_attempts": 116,
-      "allocated_core_hours": 67544.06222222168,
+      "allocated_core_hours": 80332.40000000004,
       "reserved_core_hours": 0,
       "running_pending_or_unresolved": 0,
-      "median_wall_seconds": 417.81358957942575,
-      "q90_wall_seconds": 496.7452627206221,
-      "disk_bytes": 10043430421,
+      "median_wall_seconds": 417.15023236954585,
+      "q90_wall_seconds": 496.25973635260016,
+      "disk_bytes": 11896680215,
       "max_array_concurrency": 64,
       "native_sha256": "3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2",
       "base_science_contract_hash": "2effb28af618d47c31dde218a6d3b89aedd59a208dc5814dcc5c69f8c05150d9",
@@ -161,8 +161,8 @@
       "sealed_labels_generated": false,
       "sealed_labels_read": false,
       "submission": {
-        "array_job": "2243474",
-        "collector_job": "2243475",
+        "array_job": "2252458",
+        "collector_job": "2252459",
         "unique_indices": 128,
         "split": "train"
       },
@@ -9195,7 +9195,7 @@
     "latest_training": {
       "N": 32000,
       "validation_n": 512,
-      "status": "TRAINING_UPDATE_SUBMITTED",
+      "status": "DEVELOPMENT_COMPARISON_COMPLETED",
       "job_id": "2243610",
       "seeds": [
         11,
@@ -9205,9 +9205,123 @@
         101
       ],
       "allocated_CPUs": 1,
-      "direct_completed_seeds": 0,
-      "classifier_completed_seeds": 0,
-      "regressor_completed_seeds": 0,
+      "direct_completed_seeds": 5,
+      "classifier_completed_seeds": 5,
+      "regressor_completed_seeds": 5,
+      "metrics": {
+        "classifier_ensemble": {
+          "false_negative": 2,
+          "false_positive": 1,
+          "false_negative_rate": 0.01092896174863388,
+          "accuracy": 0.994140625
+        },
+        "exact_positive_validation_count": 183,
+        "direct_ensemble_all_validation": {
+          "n_trajectories": 512,
+          "trajectory_RMSE_quantiles": {
+            "q50": 0.0012278098674610661,
+            "q90": 0.006277671154251743,
+            "q95": 0.009168018620314008
+          },
+          "derived_absolute_quantiles": {
+            "tau": {
+              "q50": 8.530262857675552e-05,
+              "q90": 0.0006046019494533549,
+              "q95": 0.0011608824133872982
+            },
+            "xHI_obs": {
+              "q50": 0.0007357049340994404,
+              "q90": 0.006579995722985464,
+              "q95": 0.01155204909347757
+            },
+            "logL_tau": {
+              "q50": 0.024338910738796127,
+              "q90": 0.5958717930708658,
+              "q95": 2.4748636365334287
+            },
+            "logL_xHI": {
+              "q50": 0.18102531331157934,
+              "q90": 1.202429127581434,
+              "q95": 1.9937439484156803
+            },
+            "logL_joint_history": {
+              "q50": 0.33109778999423956,
+              "q90": 2.0619073170491875,
+              "q95": 4.159161142561149
+            }
+          }
+        },
+        "direct_ensemble_positive_validation": {
+          "n_trajectories": 183,
+          "trajectory_RMSE_quantiles": {
+            "q50": 0.0034155234382775563,
+            "q90": 0.008903966731780052,
+            "q95": 0.013477247850376458
+          },
+          "derived_absolute_quantiles": {
+            "tau": {
+              "q50": 0.0002566725015640259,
+              "q90": 0.0013821303844451921,
+              "q95": 0.0022386416792869587
+            },
+            "xHI_obs": {
+              "q50": 4.3105856445890825e-05,
+              "q90": 0.007639233947106629,
+              "q95": 0.01159441194516384
+            },
+            "logL_tau": {
+              "q50": 0.11951223443235204,
+              "q90": 3.9070250150690837,
+              "q95": 9.29304022333985
+            },
+            "logL_xHI": {
+              "q50": 0.0,
+              "q90": 0.05975596006448822,
+              "q95": 0.440164613623554
+            },
+            "logL_joint_history": {
+              "q50": 0.2091375645107476,
+              "q90": 3.9070250150690837,
+              "q95": 9.29304022333985
+            }
+          }
+        },
+        "nnero_ensemble_positive_validation": {
+          "n_trajectories": 183,
+          "trajectory_RMSE_quantiles": {
+            "q50": 0.02001263258015792,
+            "q90": 0.10143183911786546,
+            "q95": 0.29843438694069313
+          },
+          "derived_absolute_quantiles": {
+            "tau": {
+              "q50": 0.001757945865392685,
+              "q90": 0.024665099382400527,
+              "q95": 0.08801707327365882
+            },
+            "xHI_obs": {
+              "q50": 3.483100991275023e-06,
+              "q90": 0.0950156216398932,
+              "q95": 0.19713664721147783
+            },
+            "logL_tau": {
+              "q50": 0.4527991994658329,
+              "q90": 81.82873867696354,
+              "q95": 621.7421349500937
+            },
+            "logL_xHI": {
+              "q50": 0.0,
+              "q90": 0.24522261708662668,
+              "q95": 3.7613399745090543
+            },
+            "logL_joint_history": {
+              "q50": 0.622874719161461,
+              "q90": 81.83265042354368,
+              "q95": 621.7421349500937
+            }
+          }
+        }
+      },
       "protocol_doc": "training_update_32k_20261019.md"
     },
     "initialization_trial": {

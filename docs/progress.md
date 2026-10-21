@@ -99,7 +99,7 @@ Final model accuracy thresholds remain proposals requiring scientific confirmati
 
 ## Latest training update: 32,000 Train
 
-Status: TRAINING_UPDATE_SUBMITTED; job 2243610. Same 512 Validation, unchanged configurations and five seeds. Completed Direct / classifier / regressor seeds: 0 / 0 / 0. Previous nested checkpoints remain retained. [Latest protocol](training_update_32k_20261019.md).
+Status: DEVELOPMENT_COMPARISON_COMPLETED; job 2243610. Same 512 Validation, unchanged configurations and five seeds. Completed Direct / classifier / regressor seeds: 5 / 5 / 5. Previous nested checkpoints remain retained. [Latest protocol](training_update_32k_20261019.md).
 
 ## Concurrency increased to 64 (2026-10-18)
 
