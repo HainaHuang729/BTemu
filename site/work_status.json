@@ -129,12 +129,12 @@
     },
     "production": {
       "version": "random_ic_v2",
-      "updated_at_unix": 1792995517.4135787,
+      "updated_at_unix": 1792999447.4746614,
       "datasets": {
         "train": {
           "target": 100000,
-          "qualified": 66993,
-          "positive_fraction": 0.36900870240174344,
+          "qualified": 67377,
+          "positive_fraction": 0.3690576903097496,
           "failed": 8
         },
         "validation": {
@@ -144,16 +144,16 @@
           "failed": 0
         }
       },
-      "attempts": 67720,
+      "attempts": 68104,
       "failed_numerical": 8,
       "failed_infrastructure": 0,
       "retry_attempts": 207,
-      "allocated_core_hours": 131680.85333333345,
+      "allocated_core_hours": 132503.68444444434,
       "reserved_core_hours": 0,
       "running_pending_or_unresolved": 0,
-      "median_wall_seconds": 416.4924761103466,
-      "q90_wall_seconds": 494.9888481255621,
-      "disk_bytes": 19074856401,
+      "median_wall_seconds": 416.4825180992484,
+      "q90_wall_seconds": 494.98487650509924,
+      "disk_bytes": 19181782961,
       "max_array_concurrency": 64,
       "native_sha256": "3211a6629109da7379694a9fefeb685b93b71d225f7fdf54120818a94e5702b2",
       "base_science_contract_hash": "2effb28af618d47c31dde218a6d3b89aedd59a208dc5814dcc5c69f8c05150d9",
@@ -161,8 +161,8 @@
       "sealed_labels_generated": false,
       "sealed_labels_read": false,
       "submission": {
-        "array_job": "2289252",
-        "collector_job": "2289253",
+        "array_job": "2289729",
+        "collector_job": "2289730",
         "unique_indices": 128,
         "split": "train"
       },
