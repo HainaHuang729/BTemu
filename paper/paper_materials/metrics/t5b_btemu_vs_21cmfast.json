@@ -1,0 +1,18 @@
+{
+  "n_samples": 512,
+  "trajectory_RMSE_median": 0.0010076164530363834,
+  "trajectory_RMSE_mean": 0.0021317643887264377,
+  "trajectory_RMSE_q95": 0.006814576402167939,
+  "trajectory_RMSE_max": 0.04052291201646746,
+  "max_abs_error_per_sample_q95": 0.02846516257043592,
+  "per_z_median_abs_error_max": 0.0007198754006679797,
+  "per_z_median_abs_error_at_z": 5.0,
+  "ensemble_vs_single_seed_median_rmse": {
+    "ensemble": 0.0010076164530363834,
+    "seed_11": 0.00152412201824959,
+    "seed_29": 0.0014620288591011734,
+    "seed_47": 0.0013223924730135508,
+    "seed_71": 0.0012759833611070497,
+    "seed_101": 0.0013222551856735443
+  }
+}
