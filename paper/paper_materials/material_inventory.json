@@ -1,0 +1,97 @@
+{
+  "created_at_unix": 1793264421.8322182,
+  "base": "/oss06/data/project/tkcastrosim/HNHuang",
+  "items": {
+    "checkpoint_65536": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_bt_history_emulator/artifacts/random_ic_development_65536_20261026",
+      "exists": true,
+      "bytes": 49956498
+    },
+    "labels_v2": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_bt_history_emulator/data_runs/random_ic_v2/labels.sqlite",
+      "exists": true,
+      "bytes": 21016576,
+      "sha256": "71186b599b1dd914a09d1cd90199ab07e8661f29160ca86a6aef647e2d791a2f"
+    },
+    "chain_exact_6d_200": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/handoffs/fixed_joint6_lx500_20261022/output/chain.h5",
+      "exists": true,
+      "bytes": 721816,
+      "sha256": "1c0492ee414d48ced59ac7ece6918aba9a4a858373f1141bf48e024fe39d1198"
+    },
+    "chain_emu_6d_1000": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_bt_history_emulator/artifacts/posterior_check_emulator_chain_20261027/chain.h5",
+      "exists": true,
+      "bytes": 1855224,
+      "sha256": "0947166e31fa99a38c5b5ae078fcd611f64bafae4a9d8f85c88f8841e6fab984"
+    },
+    "chain_emu_6d_ext_2000": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_bt_history_emulator/artifacts/posterior_check_emulator_chain_ext_20261028/chain.h5",
+      "exists": true,
+      "bytes": 3696504,
+      "sha256": "12340b843b25c296f46ea647ada2c9e853563c645fab9ac3ba5c864d791c64af"
+    },
+    "chain_emu_6d_ext2_2000": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_bt_history_emulator/artifacts/posterior_check_emulator_chain_ext2_20261029/chain.h5",
+      "exists": true,
+      "bytes": 3696504,
+      "sha256": "d018dfef73bf878c8e333906c1f97b60e55b4b0f4bccf92a52e092937bbb7ccd"
+    },
+    "chain_emu_8d_2000": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_bt_history_emulator/artifacts/joint_kpms8_emulator_chain_20261028/chain.h5",
+      "exists": true,
+      "bytes": 4744120,
+      "sha256": "07ca1dd9c995f924b6f219440db9b50b66f8223f8cc477aebef546da04bbd77b"
+    },
+    "chain_emu_8d_ext": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_bt_history_emulator/artifacts/joint_kpms8_emulator_chain_ext_20261029/chain.h5",
+      "exists": true,
+      "bytes": 10076064,
+      "sha256": "dec488890938697714a92a59318362c7a71f732de6b2a76cd14c2e6e825a5e54"
+    },
+    "bt_mock_pl_bias": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/experiments/bt_mock_pl_bias/results/final_summary",
+      "exists": true,
+      "bytes": 311367
+    },
+    "posterior_result": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_bt_history_emulator/results/multi_ic_plan_20261027/POSTERIOR_RESULT_20261028.md",
+      "exists": true,
+      "bytes": 2598,
+      "sha256": "4b7dce8bef7923e07d835ac76e63c21576960dceab47814edf005c006d900ecb"
+    },
+    "ic_sensitivity": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_bt_history_emulator/results/ic_sensitivity_report.json",
+      "exists": true,
+      "bytes": 3220,
+      "sha256": "608e25bea36a05d06f24fab34ac959a6f2410ebbd29c7a1bc8cd4ee2961cf73a"
+    },
+    "learning_curve_16k": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_bt_history_emulator/artifacts/random_ic_development_16k_20261025",
+      "exists": false
+    },
+    "ps25_kp10_z0": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/article_figure_check_2026-07-08",
+      "exists": true,
+      "bytes": 754827932
+    },
+    "contract_kpms8": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_mcmc/workflows/MCMC/fixed_btps_posterior/contracts/fixed_btps_joint_kpms8_v1.json",
+      "exists": true,
+      "bytes": 3062,
+      "sha256": "2d3ef1bf36e79cb2c2bda70f74710db0e5e224e4ff98fdfaf0a22aa2af584bc3"
+    },
+    "budget_v2": {
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_bt_history_emulator/configs/random_ic_v2_budget.json",
+      "exists": true,
+      "bytes": 4462,
+      "sha256": "ea8f3dc260e5d6a39ccfd62c55d8ce78571b6204d6e0f2c5ec30aaef9a28f11d"
+    }
+  },
+  "missing": [
+    {
+      "key": "learning_curve_16k",
+      "path": "/oss06/data/project/tkcastrosim/HNHuang/project_bt_history_emulator/artifacts/random_ic_development_16k_20261025"
+    }
+  ]
+}

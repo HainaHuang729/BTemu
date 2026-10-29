@@ -1,0 +1,6 @@
+run,sampled,fixed,kp_ms,box,hii_dim,dim,forward,native
+exact_6d_200,6 astro,L_X=40.5,NU_X_THRESH=500,KP=10.0,MS=2.5,250.0,128,512,py21cmFAST,/oss06/.../deployments/ts_stable_strict_20260928/src
+joint_kpms8_emu,6 astro + KP + MS,L_X=40.5,NU_X_THRESH=500,priors KP=[1.0, 30.0],MS=[0.5, 4.0],250.0,128,512,BTemu ResMLP (5 seeds),n/a (emulator)
+emu_6d_1000,6 astro,L_X=40.5,NU_X_THRESH=500,KP=10,MS=2.5,250,128,512,BTemu ResMLP (5 seeds),posterior_check_emulator_chain_20261027
+emu_6d_ext,6 astro,L_X=40.5,NU_X_THRESH=500,KP=10,MS=2.5,250,128,512,BTemu ResMLP (5 seeds),posterior_check_emulator_chain_ext_20261028
+emu_6d_ext2,6 astro,L_X=40.5,NU_X_THRESH=500,KP=10,MS=2.5,250,128,512,BTemu ResMLP (5 seeds),posterior_check_emulator_chain_ext2_20261029
