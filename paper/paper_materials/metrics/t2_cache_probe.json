@@ -1,0 +1,242 @@
+{
+  "dirs": [
+    {
+      "name": "KP_0.0_MS_0.0_0",
+      "n_h5": 17,
+      "example": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5"
+    },
+    {
+      "name": "KP_1.0_MS_1.0_0",
+      "n_h5": 1,
+      "example": "HIGH_REDSHIFTKP_1.0_MS_1.0_0.h5"
+    },
+    {
+      "name": "KP_1.0_MS_1.0_6",
+      "n_h5": 2,
+      "example": "Fvlightcone_8boxKP_1.0_MS_1.0_6.h5"
+    },
+    {
+      "name": "KP_1.0_MS_1.5_6",
+      "n_h5": 9,
+      "example": "0.03BT7LFPMlightcone_KP_1.0_MS_1.5_6_8box.h5"
+    },
+    {
+      "name": "KP_1.0_MS_2.0_6",
+      "n_h5": 1,
+      "example": "Fvlightcone_8boxKP_1.0_MS_2.0_6.h5"
+    },
+    {
+      "name": "KP_1_MS_1.5_DIM_256",
+      "n_h5": 1,
+      "example": "lightcone_KP_1_MS_1.5_DIM_256.h5"
+    },
+    {
+      "name": "KP_99_MS_99_DIM_128",
+      "n_h5": 1,
+      "example": "lightcone_KP_99_MS_99_DIM_128.h5"
+    },
+    {
+      "name": "sbt",
+      "n_h5": 0,
+      "example": null
+    }
+  ],
+  "datasets": [
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "_globals",
+      "shape": [],
+      "dtype": ""
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "astro_params",
+      "shape": [],
+      "dtype": ""
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "cosmo_params",
+      "shape": [],
+      "dtype": ""
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "distances",
+      "shape": [
+        4495
+      ],
+      "dtype": "float64"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "flag_options",
+      "shape": [],
+      "dtype": ""
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "global_quantities",
+      "shape": [],
+      "dtype": ""
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "global_quantities/Gamma12_box",
+      "shape": [
+        87
+      ],
+      "dtype": "float64"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "global_quantities/J_21_LW_box",
+      "shape": [
+        87
+      ],
+      "dtype": "float64"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "global_quantities/Tk_box",
+      "shape": [
+        87
+      ],
+      "dtype": "float64"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "global_quantities/Ts_box",
+      "shape": [
+        87
+      ],
+      "dtype": "float64"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "global_quantities/brightness_temp",
+      "shape": [
+        87
+      ],
+      "dtype": "float64"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "global_quantities/density",
+      "shape": [
+        87
+      ],
+      "dtype": "float64"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "global_quantities/xH_box",
+      "shape": [
+        87
+      ],
+      "dtype": "float64"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "global_quantities/x_e_box",
+      "shape": [
+        87
+      ],
+      "dtype": "float64"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "lightcones",
+      "shape": [],
+      "dtype": ""
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "lightcones/Gamma12_box",
+      "shape": [
+        256,
+        256,
+        4495
+      ],
+      "dtype": "float32"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "lightcones/J_21_LW_box",
+      "shape": [
+        256,
+        256,
+        4495
+      ],
+      "dtype": "float32"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "lightcones/Tk_box",
+      "shape": [
+        256,
+        256,
+        4495
+      ],
+      "dtype": "float32"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "lightcones/Ts_box",
+      "shape": [
+        256,
+        256,
+        4495
+      ],
+      "dtype": "float32"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "lightcones/brightness_temp",
+      "shape": [
+        256,
+        256,
+        4495
+      ],
+      "dtype": "float32"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "lightcones/density",
+      "shape": [
+        256,
+        256,
+        4495
+      ],
+      "dtype": "float32"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "lightcones/xH_box",
+      "shape": [
+        256,
+        256,
+        4495
+      ],
+      "dtype": "float32"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "lightcones/x_e_box",
+      "shape": [
+        256,
+        256,
+        4495
+      ],
+      "dtype": "float32"
+    },
+    {
+      "file": "0.03Fvlightcone_8boxKP_0.0_MS_0.0_0.h5",
+      "path": "node_redshifts",
+      "shape": [
+        87
+      ],
+      "dtype": "float64"
+    }
+  ]
+}

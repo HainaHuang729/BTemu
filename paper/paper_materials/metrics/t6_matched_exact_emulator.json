@@ -1,0 +1,83 @@
+{
+  "exact_steps": 200,
+  "emulator_steps": 5000,
+  "exact_Rhat": [
+    1.9051601995121215,
+    2.060386380015437,
+    1.7977620836659267,
+    1.9536682222707753,
+    1.9059919781238235,
+    1.8702641298257543
+  ],
+  "emulator_Rhat": [
+    1.0358334833721403,
+    1.0541289726136749,
+    1.0345619182479044,
+    1.0500035906077947,
+    1.0477013742501842,
+    1.0446874633145775
+  ],
+  "parameters": [
+    {
+      "parameter": "ETA_STAR",
+      "exact_mean": -0.9362901740325775,
+      "exact_std": 0.04783857927085293,
+      "emulator_mean": -0.9410591586467933,
+      "emulator_std": 0.0434954774795878,
+      "shift_sigma": -0.0996890937587159,
+      "width_ratio": 0.9092134035445468
+    },
+    {
+      "parameter": "t_STAR",
+      "exact_mean": 0.52384098507684,
+      "exact_std": 0.25859910708161715,
+      "emulator_mean": 0.5163265580383768,
+      "emulator_std": 0.27031390375326925,
+      "shift_sigma": -0.029058209532376766,
+      "width_ratio": 1.0453009942836142
+    },
+    {
+      "parameter": "ALPHA_STAR",
+      "exact_mean": 0.5600498711087593,
+      "exact_std": 0.09189430869100647,
+      "emulator_mean": 0.572138832304074,
+      "emulator_std": 0.08228699114209394,
+      "shift_sigma": 0.13155288251815206,
+      "width_ratio": 0.8954525292614472
+    },
+    {
+      "parameter": "M_TURN",
+      "exact_mean": 9.008426486999271,
+      "exact_std": 0.40841722866010366,
+      "emulator_mean": 8.967624341661049,
+      "emulator_std": 0.4146690020627909,
+      "shift_sigma": -0.099903095351982,
+      "width_ratio": 1.0153073204653913
+    },
+    {
+      "parameter": "F_ESC10",
+      "exact_mean": -1.0748595765174263,
+      "exact_std": 0.37084566720235623,
+      "emulator_mean": -1.083749597443125,
+      "emulator_std": 0.39592427078642844,
+      "shift_sigma": -0.023972292821336512,
+      "width_ratio": 1.0676254458445318
+    },
+    {
+      "parameter": "ALPHA_ESC",
+      "exact_mean": -0.024175809890059474,
+      "exact_std": 0.39544740829988595,
+      "emulator_mean": 0.06261658984345117,
+      "emulator_std": 0.36171593492166615,
+      "shift_sigma": 0.21947899496079634,
+      "width_ratio": 0.9147004818586656
+    }
+  ],
+  "max_abs_shift_sigma": 0.21947899496079634,
+  "width_ratio_range": [
+    0.8954525292614472,
+    1.0676254458445318
+  ],
+  "corr_matrix_frobenius_diff": 0.6685675059546493,
+  "note": "exact chain 200 steps; emulator 5000 steps (pooled segments, last half used)"
+}
