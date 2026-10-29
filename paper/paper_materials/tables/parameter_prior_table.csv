@@ -1,0 +1,11 @@
+parameter,prior_low,prior_high,transform,note
+F_STAR10,-3.0,0.0,uniform in native coordinate,BT-modified 21cmFAST input
+ALPHA_STAR,-0.5,1.0,uniform in native coordinate,BT-modified 21cmFAST input
+F_ESC10,-3.0,0.0,uniform in native coordinate,BT-modified 21cmFAST input
+ALPHA_ESC,-1.0,0.5,uniform in native coordinate,BT-modified 21cmFAST input
+M_TURN,8.0,11.0,uniform in native coordinate,BT-modified 21cmFAST input
+t_STAR,0.01,1.0,uniform in native coordinate,BT-modified 21cmFAST input
+L_X,38.0,42.0,uniform in native coordinate,BT-modified 21cmFAST input
+NU_X_THRESH,100.0,1500.0,uniform in native coordinate,BT-modified 21cmFAST input
+KP_h_Mpc,1.0,30.0,uniform in native coordinate,BT-modified 21cmFAST input
+MS,0.5,4.0,uniform in native coordinate,BT-modified 21cmFAST input
