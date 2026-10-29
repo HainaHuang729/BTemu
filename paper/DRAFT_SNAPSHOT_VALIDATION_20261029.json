@@ -1,0 +1,192 @@
+{
+  "cases": {
+    "6d": {
+      "source_files": [
+        {
+          "file": "chains/chain6_1000.h5",
+          "shape": [
+            1000,
+            32,
+            6
+          ],
+          "sha256": "0947166e31fa99a38c5b5ae078fcd611f64bafae4a9d8f85c88f8841e6fab984",
+          "attributes": {
+            "emulator": "random_ic_development_65536_20261026 direct_resmlp 5 seeds"
+          }
+        },
+        {
+          "file": "chains/chain6_ext_2000.h5",
+          "shape": [
+            2000,
+            32,
+            6
+          ],
+          "sha256": "12340b843b25c296f46ea647ada2c9e853563c645fab9ac3ba5c864d791c64af",
+          "attributes": {
+            "emulator": "random_ic_development_65536_20261026 direct_resmlp 5 seeds"
+          }
+        },
+        {
+          "file": "chains/chain6_ext2_2000.h5",
+          "shape": [
+            2000,
+            32,
+            6
+          ],
+          "sha256": "d018dfef73bf878c8e333906c1f97b60e55b4b0f4bccf92a52e092937bbb7ccd",
+          "attributes": {
+            "emulator": "random_ic_development_65536_20261026 direct_resmlp 5 seeds"
+          }
+        }
+      ],
+      "parameter_order": [
+        "ETA_STAR",
+        "t_STAR",
+        "ALPHA_STAR",
+        "M_TURN",
+        "F_ESC10",
+        "ALPHA_ESC"
+      ],
+      "total_stored_steps": 5000,
+      "walkers": 32,
+      "summary_selection": "last chronological half; all walkers; no thinning",
+      "retained_steps": 2500,
+      "retained_correlated_rows": 80000,
+      "ordinary_split_statistic_range": [
+        1.0340356132652029,
+        1.0534691574624517
+      ],
+      "parameters": {
+        "ETA_STAR": {
+          "mean": -0.9410591586467933,
+          "sample_sd_ddof1": 0.04349574932887063,
+          "ordinary_split_statistic": 1.0357325683058924
+        },
+        "t_STAR": {
+          "mean": 0.5163265580383768,
+          "sample_sd_ddof1": 0.27031559323100657,
+          "ordinary_split_statistic": 1.0534691574624517
+        },
+        "ALPHA_STAR": {
+          "mean": 0.572138832304074,
+          "sample_sd_ddof1": 0.08228750544061013,
+          "ordinary_split_statistic": 1.0340356132652029
+        },
+        "M_TURN": {
+          "mean": 8.967624341661049,
+          "sample_sd_ddof1": 0.41467159376835105,
+          "ordinary_split_statistic": 1.0497607478670417
+        },
+        "F_ESC10": {
+          "mean": -1.083749597443125,
+          "sample_sd_ddof1": 0.39592674533631983,
+          "ordinary_split_statistic": 1.0469740387426034
+        },
+        "ALPHA_ESC": {
+          "mean": 0.06261658984345117,
+          "sample_sd_ddof1": 0.36171819566745395,
+          "ordinary_split_statistic": 1.0440237505941554
+        }
+      }
+    },
+    "8d": {
+      "source_files": [
+        {
+          "file": "chains/chain8_2000.h5",
+          "shape": [
+            2000,
+            32,
+            8
+          ],
+          "sha256": "07ca1dd9c995f924b6f219440db9b50b66f8223f8cc477aebef546da04bbd77b",
+          "attributes": {}
+        },
+        {
+          "file": "chains/chain8_ext_3399.h5",
+          "shape": [
+            3568,
+            32,
+            8
+          ],
+          "sha256": "80c117c70eca2ccbadc2238158e0042d4fca9adad871e966081580907d318432",
+          "attributes": {}
+        }
+      ],
+      "parameter_order": [
+        "ETA_STAR",
+        "t_STAR",
+        "ALPHA_STAR",
+        "M_TURN",
+        "F_ESC10",
+        "ALPHA_ESC",
+        "KP_h_Mpc",
+        "MS"
+      ],
+      "total_stored_steps": 5568,
+      "walkers": 32,
+      "summary_selection": "last chronological half; all walkers; no thinning",
+      "retained_steps": 2784,
+      "retained_correlated_rows": 89088,
+      "ordinary_split_statistic_range": [
+        1.1135829013417173,
+        1.5125408061162653
+      ],
+      "parameters": {
+        "ETA_STAR": {
+          "mean": -0.9420046912013936,
+          "sample_sd_ddof1": 0.07388727937070798,
+          "ordinary_split_statistic": 1.5125408061162653
+        },
+        "t_STAR": {
+          "mean": 0.531381555898056,
+          "sample_sd_ddof1": 0.276073238590672,
+          "ordinary_split_statistic": 1.123342509255428
+        },
+        "ALPHA_STAR": {
+          "mean": 0.5708317814356844,
+          "sample_sd_ddof1": 0.1052742799349876,
+          "ordinary_split_statistic": 1.3603589286536077
+        },
+        "M_TURN": {
+          "mean": 8.830504793330213,
+          "sample_sd_ddof1": 0.4582995261036223,
+          "ordinary_split_statistic": 1.1606248147074174
+        },
+        "F_ESC10": {
+          "mean": -1.0698509158530285,
+          "sample_sd_ddof1": 0.4177961326222167,
+          "ordinary_split_statistic": 1.1135829013417173
+        },
+        "ALPHA_ESC": {
+          "mean": -0.012754583525228643,
+          "sample_sd_ddof1": 0.4133219553262395,
+          "ordinary_split_statistic": 1.1211143981313605
+        },
+        "KP_h_Mpc": {
+          "mean": 16.65785941784652,
+          "sample_sd_ddof1": 7.9287584445323755,
+          "ordinary_split_statistic": 1.1582961232954787
+        },
+        "MS": {
+          "mean": 2.154375929860211,
+          "sample_sd_ddof1": 0.9894827297570737,
+          "ordinary_split_statistic": 1.1147109173169165
+        }
+      }
+    }
+  },
+  "statistic_definition": "Ordinary split variance ratio over interacting ensemble walkers; descriptive, not independent-chain rank-normalized/folded R-hat or ESS.",
+  "continuation_order": "Order follows the published snapshot and filenames. HDF5 files lack iteration offsets, RNG state and complete target settings; continuity and target identity remain to be checked against run receipts.",
+  "data_counts": {
+    "source": "RESULTS_20261029.md, original 15:45 production snapshot",
+    "train_admitted": 83756,
+    "validation_admitted": 2752
+  },
+  "ic_scatter": {
+    "source": "../docs/ic_audit_completion.md",
+    "statistic": "Across-parameter q90 of within-parameter IC sample standard deviation in history log likelihood",
+    "value": 0.9480653,
+    "parameter_families": 128,
+    "realizations_per_family": 8
+  }
+}
