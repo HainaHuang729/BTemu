@@ -1,0 +1,73 @@
+{
+  "source": "/oss06/data/project/tkcastrosim/HNHuang/project_21cmFast/experiments/bt_matched_recovery/data/paired_pl_bt_mock0_recovery_v1/initialization.npz",
+  "dimension": 8,
+  "parameters": [
+    {
+      "parameter": "F_STAR10",
+      "truth": -1.7386591492693766,
+      "bt_best": -1.6717835008338613,
+      "pl_best": -1.9208324144676734,
+      "bt_offset_prior_span": 0.022292824953475614,
+      "pl_offset_prior_span": -0.06072698818292106
+    },
+    {
+      "parameter": "ALPHA_STAR",
+      "truth": -0.11091669594630216,
+      "bt_best": 0.9562872096652387,
+      "pl_best": -0.021949044317945476,
+      "bt_offset_prior_span": 0.7116965368242378,
+      "pl_offset_prior_span": 0.05933071385922594
+    },
+    {
+      "parameter": "F_ESC10",
+      "truth": -1.4257454528526616,
+      "bt_best": -1.5974780036084757,
+      "pl_best": -1.8178974575069438,
+      "bt_offset_prior_span": -0.05725672337388847,
+      "pl_offset_prior_span": -0.1307459695450071
+    },
+    {
+      "parameter": "ALPHA_ESC",
+      "truth": 0.03118684554329043,
+      "bt_best": -0.7697752932710975,
+      "pl_best": 0.011683199269838518,
+      "bt_offset_prior_span": -0.534062298908887,
+      "pl_offset_prior_span": -0.01300456246449282
+    },
+    {
+      "parameter": "M_TURN",
+      "truth": 9.58919806889851,
+      "bt_best": 8.677713393683725,
+      "pl_best": 9.5316466996581,
+      "bt_offset_prior_span": -0.45585041895207024,
+      "pl_offset_prior_span": -0.028782508903206404
+    },
+    {
+      "parameter": "t_STAR",
+      "truth": 0.4544763526098073,
+      "bt_best": 0.5952000431018524,
+      "pl_best": 0.4546760223187227,
+      "bt_offset_prior_span": 0.14218904727073234,
+      "pl_offset_prior_span": 0.00020174887099843247
+    },
+    {
+      "parameter": "L_X",
+      "truth": 39.51383986149304,
+      "bt_best": 39.54102754349324,
+      "pl_best": 39.613133844611724,
+      "bt_offset_prior_span": 0.006797774139308858,
+      "pl_offset_prior_span": 0.02482661341368168
+    },
+    {
+      "parameter": "NU_X_THRESH",
+      "truth": 710.5898047098864,
+      "bt_best": 1144.1468771887576,
+      "pl_best": 615.4259648178473,
+      "bt_offset_prior_span": 0.30975958497686584,
+      "pl_offset_prior_span": -0.06799084462219097
+    }
+  ],
+  "max_abs_offset_bt_prior_span": 0.7116965368242378,
+  "max_abs_offset_pl_prior_span": 0.1307459695450071,
+  "note": "Offsets are expressed as a fraction of the prior span; the npz does not carry a posterior width or sigma, so binomial significance cannot be quoted from this file alone. The stored chains (chains/{bt,pl}/ensemble_1/checkpoint.npz) would be needed for sigma."
+}
