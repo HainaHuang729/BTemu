@@ -1,0 +1,139 @@
+{
+  "source": {
+    "repository": "https://github.com/HainaHuang729/BTemu",
+    "revision": "dcd013159f913db0e4e37800f084bca3a9730a5c",
+    "files": [
+      "paper/paper_materials/t2b_matched.py",
+      "paper/paper_materials/t2b_fig.py",
+      "paper/paper_materials/t4_lite.py",
+      "paper/paper_materials/t4b_sigma.py",
+      "paper/paper_materials/tables/t2b_matched_kpms_histories.json",
+      "paper/paper_materials/tables/t2b_matched_kpms.md",
+      "paper/paper_materials/metrics/t4_paired_recovery.json",
+      "paper/paper_materials/metrics/t4b_paired_recovery_sigma.json",
+      "paper/paper_materials/tables/t4_paired_recovery.md",
+      "paper/paper_materials/tables/t4b_paired_recovery_sigma.md",
+      "site/work_status.json"
+    ],
+    "external_access": {
+      "ssh_alias": "cuhk",
+      "result": "connection to chpc-login01.itsc.cuhk.edu.hk port 22 timed out; no remote file read or computation",
+      "searched_repository_trees": {
+        "21cm": "9dcb9d3a2d7872ef08892fd59dea01a9ca660d76",
+        "SmallScalePPS-21cm": "7ee330b4b6cc521beb3f3fd66ae1bbd9cd9ccf1d",
+        "code": "25334722cebc9f1d8e40c8caf89c4de76eed21b0"
+      },
+      "tree_result": "No exact_lf_provider, fixed_joint6 handoff or paired_pl_bt_mock0 source paths found. This does not certify the absence of files with other names."
+    }
+  },
+  "input_sha256": {
+    "paired_recovery_table.tex": "992adcbacedaa9c900f05ca6d732946e79e4e33ecea88196642c100940faa871",
+    "source_manifest.json": "65c3811177ab8748c38ec26cc05f6c3ee5284019441905cbeb728d46c2ed8891",
+    "t2b_fig.py": "6129ce044fed709ba1e5f00fa9b08c5d7bb7148e3c63a936d504e4def28073d3",
+    "t2b_matched.py": "370ff154560607fa6a02b9a7c85dffb694f67ab0364aa6753d8a31f71f5bed92",
+    "t2b_matched_kpms.md": "480aa2dce65c9a8f4fa0c9b8f4f1ff4663a60bb901ed05ffecaa0e6aa3b9317d",
+    "t2b_matched_kpms_histories.json": "f7e12e7b4799051abdc0f81532bef23aa13353e67192645f076ed744c82c6988",
+    "t4_lite.py": "3c23070efaf3a6d787772b4e7f54af7414d44916092b52b1d4d5d627201e3f4f",
+    "t4_paired_recovery.json": "361ec0805432a63b44795f520dae2a22bf30a6191f0898e29dd7a3c39cdf4be3",
+    "t4_paired_recovery.md": "6c799b879dffc7e2d513bad96d375d5e22efbe0295bbb3746c29c5f959ada40a",
+    "t4b_paired_recovery_sigma.json": "8a8d7c556ef1dd36f42c652d219a41015c5de00f14881a0d7e416c68fe7d0037",
+    "t4b_paired_recovery_sigma.md": "801d506bb543e1ec6e29b6eb67cee143c53b9fe3a4900d091f8cfa0e4811551c",
+    "t4b_sigma.py": "1103c349cfd868d8e3757f7545d1416e51be24755ed9114fe765ee70b3cf01a1",
+    "work_status.json": "19f0489ad36fc536ee0af33fecd1d6cc192da131acae8cdabfbac170d81d6648"
+  },
+  "history_numeric_checks": {
+    "PL reference": {
+      "n_nodes": 32,
+      "xHI_at_z8": 0.7204968433864993,
+      "xHI_at_z6_5": 0.15698778761009247,
+      "xHI_at_z5_9": 0.0,
+      "xHI_at_z35": 0.999794602394104
+    },
+    "BT kp1 ms1.5": {
+      "n_nodes": 32,
+      "xHI_at_z8": 0.0,
+      "xHI_at_z6_5": 0.0,
+      "xHI_at_z5_9": 0.0,
+      "xHI_at_z35": 0.999794602394104
+    },
+    "BT kp1 ms2.0": {
+      "n_nodes": 32,
+      "xHI_at_z8": 0.0,
+      "xHI_at_z6_5": 0.0,
+      "xHI_at_z5_9": 0.0,
+      "xHI_at_z35": 0.9979961482829651
+    },
+    "BT kp10 ms1.5": {
+      "n_nodes": 32,
+      "xHI_at_z8": 0.7861440606684593,
+      "xHI_at_z6_5": 0.2027807948628706,
+      "xHI_at_z5_9": 0.0,
+      "xHI_at_z35": 0.999794602394104
+    },
+    "BT kp10 ms2.0": {
+      "n_nodes": 32,
+      "xHI_at_z8": 0.7610166650285769,
+      "xHI_at_z6_5": 0.18426532953764785,
+      "xHI_at_z5_9": 0.0,
+      "xHI_at_z35": 0.999794602394104
+    },
+    "BT kp10 ms3.0": {
+      "n_nodes": 32,
+      "xHI_at_z8": 0.6519729558008769,
+      "xHI_at_z6_5": 0.1152887560914142,
+      "xHI_at_z5_9": 0.0,
+      "xHI_at_z35": 0.999794602394104
+    }
+  },
+  "fixed_astro": {
+    "F_STAR10": -1.240010582290023,
+    "ALPHA_STAR": 0.5595109740885131,
+    "F_ESC10": -1.1112134960475275,
+    "ALPHA_ESC": 0.0815570225556807,
+    "M_TURN": 9.055067266381696,
+    "t_STAR": 0.49933275296333307,
+    "L_X": 40.5,
+    "NU_X_THRESH": 500.0
+  },
+  "history_use": "BT-only fixed-astrophysics sensitivity. Source-labelled PL excluded: configuration_for, plan and cosmo_params_for(None) are external; missing explicit PL settings alone does not prove incorrect output.",
+  "recovery_use": "Table arithmetic verified against exported JSON. Raw checkpoints and initialization not supplied. Full-chain descriptive summaries only, no new burn-in selection, convergence diagnosis, ESS, uncertainty calibration or significance.",
+  "descriptive_shift_checks": {
+    "bt": {
+      "max_abs_descriptive_shift": 2.752786825592391,
+      "n_abs_shift_above_2": 4
+    },
+    "pl": {
+      "max_abs_descriptive_shift": 3.997110430795515,
+      "n_abs_shift_above_2": 5
+    }
+  },
+  "checkpoint_shape_each": [
+    8000,
+    32,
+    8
+  ],
+  "rows_each": 256000,
+  "production_snapshot": {
+    "updated_at_unix": 1793320406.798785,
+    "datasets": {
+      "train": {
+        "target": 100000,
+        "qualified": 85020,
+        "positive_fraction": 0.36908962597035994,
+        "failed": 29
+      },
+      "validation": {
+        "target": 10000,
+        "qualified": 3888,
+        "positive_fraction": 0.360082304526749,
+        "failed": 16
+      }
+    },
+    "production_accepted": false,
+    "sealed_labels_read": false
+  },
+  "outputs_sha256": {
+    "figures/fig16_fixed_astro_bt_histories.png": "22c706d37f15c2c1088ddc9b1211c04b763f52708b021cf8285b4a638a8b40a4",
+    "figures/fig16_fixed_astro_bt_histories.pdf": "012405d4009b0b17e41abdb65d10ad80efdcc58b2236914796230b13c1fd34f0"
+  }
+}
