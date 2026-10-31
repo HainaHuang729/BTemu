@@ -19,14 +19,15 @@ Source: `results/ic_sensitivity_report.json` (status COMPLETE; 128 families, 896
 |---|---:|---:|---:|---:|
 | max abs difference (fixed IC vs 8-IC mean) | 0.00075 | 0.0134 | 0.0172 | 0.0278 |
 | trajectory RMSE (fixed IC vs mean) | 0.00019 | 0.00288 | 0.00364 | 0.00700 |
-| Δ logL(mean history) − logL(IC marginal) | −0.0025 | 1.2e-7 | 6.0e-7 | 1.908 |
+| Δ logL(mean history) − logL(IC marginal) | −0.0025 | 1.1e-7 | 6.0e-7 | 1.908 |
 
-## Reading
+## Reading (definition audit, 2026-10-31)
 
-- The single-IC label noise floor is **0.948** in ΔlogL_joint (q90), which is why the 0.1 acceptance threshold used earlier is unreachable with one IC per parameter point.
-- The 8-IC mean differs from a single realization by 0.013 in xHI (q90 max-abs) and by 0.0029 in trajectory RMSE — consistent with the IC scatter above, i.e. the mean is a distinct, smoother target.
-- `ΔlogL(mean history) − logL(IC marginal)` is essentially zero in the bulk (q90 ≈ 1e-7) but reaches 1.9 in the tail: for those families the mean-history likelihood and the IC-marginal likelihood differ measurably, so the two targets are not interchangeable everywhere.
-- Consequence for the paper: report the emulator target explicitly as the **finite-IC mean** (or per-realization), and quote accuracy against that target; do not compare emulator errors to single-realization scatter.
+- The 0.948 value is the across-family q90 of within-family sample standard deviations of history log likelihood (ddof=1). It is not a universal lower bound on emulator prediction error relative to a conditional mean. The corresponding confirmed IC-scatter gate is 0.02; no emulator-error impossibility at 0.1 follows from this statistic.
+- Fixed-realization versus eight-IC-mean differences describe a finite, overlapping reference comparison. They are not errors of the deployed emulator.
+- The delta-logL q50/q90/q95 entries are SIGNED quantiles. Their small upper values do not establish that most absolute differences are small. The maximum absolute difference is 1.907966527. The earlier completion note separately reports q90(abs(delta))=0.308246; raw family rows are required to reproduce that number, and it cannot be recovered from these signed quantiles.
+- The production records use one random realization per parameter point. Retain per-realization development validation and the representative-history inference target. The audit's eight-IC mean is a separate finite reference; conditional-mean prediction accuracy and IC-marginalized likelihood fidelity remain to be tested with matched predictions.
+- Summary availability and definition checks are complete. Scientific target validation remains partial. See [the audit and required raw inputs](../../T7_AUDIT_20261031.md).
 
 ## Caveat
 

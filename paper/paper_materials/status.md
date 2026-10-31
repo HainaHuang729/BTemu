@@ -7,7 +7,7 @@ T3 (obs combos)     : partial — joint chains exist; LF-only reference uses dif
 T4 (mock recovery)  : partial — BT-mock-to-PL results exist (gates false); BT-to-BT recovery pending
 T5 (independent test): partial — development validation error figure+metrics produced (`figures/fig_t5_dev_validation_errors.png`, `metrics/t5_*.json`); sealed test still missing
 T6 (exact-emu)      : partial — 6-D matched comparison done (200 vs 5000 steps), 8-D not converged
-T7 (IC conditional) : complete — `tables/t7_ic_conditional_mean.md` (single-IC scatter, mean-vs-single, logL target difference)
+T7 (IC conditional) : partial — summary and source definitions checked; raw-family absolute quantiles and deployed conditional-mean / likelihood-target validation pending (see ../T7_AUDIT_20261031.md)
 T8 (cost)           : partial — `metrics/t8_cost_table.json` produced (emulator 8e-5 s/sample, exact 416 s/sim)
 
 Missing inputs: 1

@@ -1,0 +1,60 @@
+{
+  "source": {
+    "repository": "https://github.com/HainaHuang729/BTemu",
+    "revision": "da2ec97fcfec2ba4224a71c9be040f23450747b6",
+    "files": [
+      "paper/paper_materials/metrics/t7_ic_sensitivity_report.json",
+      "paper/paper_materials/tables/t7_ic_conditional_mean.md",
+      "maintenance/ic_audit/report.py",
+      "maintenance/ic_audit/common.py",
+      "docs/ic_audit_completion.md",
+      "docs/random_ic_explicit_start.md",
+      "docs/random_ic_development_20261014.md",
+      "contracts/ic_audit_v1.json",
+      "contracts/ic_audit_acceptance.json",
+      "contracts/history_target_semantics.json",
+      "src/bt_history/training.py"
+    ],
+    "external_family_statistics": "not supplied in Git tree; attempted read via existing cuhk alias timed out during banner exchange; no remote computation launched",
+    "validation_scope": "summary values and generating-source definitions, not independent recomputation from the 128 family arrays"
+  },
+  "source_sha256": {
+    "common.py": "b280381a6fd84e0888effac07d1a361a2b955ff47ceaeb94496db32824a282f7",
+    "history_target_semantics.json": "ae3d03326db596acf3dac3ae11377068e9349d9e6b2f2dc2f87c5e199e56d15f",
+    "ic_audit_acceptance.json": "090c4f6fdfb08ceedff5b3830137586a33ab50fb9a3adb9a17a1d2853c109738",
+    "ic_audit_completion.md": "6557c28ce1619798e4690cea69b9c8a3882a20840943f72e549eb4e6786418e1",
+    "ic_audit_v1.json": "9f3814de43a8a866c6efd2ddb9e8c21155a28e421e785e49089f6823df05315a",
+    "random_ic_development_20261014.md": "4a7b2b68c3f767517263f5cd5c41de251f724b75ae81bc6d0ac2fc3893304410",
+    "random_ic_explicit_start.md": "f111525a2e8ca710a50bebb2c0db651e9fd153c89b1d5d405a166199f3d1d5c2",
+    "report.py": "5d39c195a11596115648b811508a0a5ea1e209642c11750de742f567b58bc703",
+    "source_manifest.json": "26f9fa0e817fc84eb54c5e0c0934d37d12f0bc94af7a3f8b9fad62262dd2635b",
+    "t7_ic_conditional_mean.md": "227ee7c65a1c59863c1de39dc63adb9feee3e7651a3c63868a25387a1699a016",
+    "t7_ic_sensitivity_report.json": "608e25bea36a05d06f24fab34ac959a6f2410ebbd29c7a1bc8cd4ee2961cf73a",
+    "t7_table.tex": "38512548ee396d809c35e74d69915f4918b0221616d2e0b75f494a03ebdf03da",
+    "training.py": "6d48a82f3072ec62366934283c2662cd338398e3e37833b588ec3b6ce2356dbc"
+  },
+  "summary_table_rounding_issues": [
+    {
+      "statistic": "delta_logL_mean_history_vs_IC_marginal",
+      "quantile": "q90",
+      "markdown": "1.2e-7",
+      "json": 1.1225902198930246e-07
+    }
+  ],
+  "family_count": 128,
+  "ICs_per_family": 8,
+  "IC_standard_deviation_ddof": 1,
+  "scatter_interpretation": "Across-family quantile of within-family IC spread, not a universal emulator-error lower bound.",
+  "signed_quantiles": {
+    "q50": -0.002491321739185537,
+    "q90": 1.1225902198930246e-07,
+    "q95": 6.029897008374961e-07,
+    "max_abs": 1.907966527160525
+  },
+  "absolute_q90": "0.308246 reported in completion note; absent from new aggregate JSON and not independently recomputed here.",
+  "absolute_q90_identifiable_from_signed_quantiles": false,
+  "target": "One random realization per training point; reported eight-IC means are a separate finite-reference audit, not a renamed deployed model target.",
+  "confirmed_scatter_threshold": 0.02,
+  "raw_family_arrays_available": false,
+  "new_simulations_training_or_inference_run": false
+}
