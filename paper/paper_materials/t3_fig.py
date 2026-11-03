@@ -1,5 +1,6 @@
-"""T3 figure: how each observation tightens the posterior (LF -> +tau -> +xHI)."""
+"""T3 descriptive sample comparison (LF -> +tau -> +xHI), not convergence certification."""
 import json
+import hashlib
 from pathlib import Path
 
 import h5py
@@ -16,11 +17,20 @@ runs = [("LF only", f"{E}/obs_combo_lf_20261101/chain.h5", "tab:red"),
         ("LF + tau + xHI", f"{E}/posterior_check_emulator_chain_ext2_20261029/chain.h5", "tab:blue")]
 
 data = []
+selections = []
 for name, path, colour in runs:
     with h5py.File(path, "r", locking=False) as f:
         ch = np.asarray(f["chain"][:], float)
-        names = [x.decode() for x in f["parameter_names"][:]]
+        names = [x.decode() if isinstance(x, bytes) else str(x) for x in f["parameter_names"][:]]
+    if ch.ndim != 3 or ch.shape[2] != len(names):
+        raise ValueError(f"Unexpected chain shape for {name}: {ch.shape}")
+    if data and names != data[0][4]:
+        raise ValueError(f"Parameter order differs in {name}; do not relabel moments")
     b = ch[len(ch) // 2:].reshape(-1, ch.shape[2])
+    selections.append({"source_file": str(path), "sha256": hashlib.sha256(Path(path).read_bytes()).hexdigest(),
+                       "shape": list(ch.shape), "parameter_names": names,
+                       "retained_steps_half_open": [len(ch) // 2, len(ch)],
+                       "retained_rows": len(b), "std_ddof": 0})
     data.append((name, colour, b.mean(0), b.std(0), names))
 
 fig, axes = plt.subplots(1, len(names), figsize=(3.0 * len(names), 3.4), sharey=False)
@@ -31,7 +41,7 @@ for ax, i, k in zip(axes, range(len(names)), names):
     ax.set_xticklabels([d[0] for d in data], rotation=35, ha="right", fontsize=7)
     ax.set_title(k, fontsize=9)
     ax.grid(alpha=0.25)
-fig.suptitle("Posterior tightening as observations are added (fixed KP=10, MS=2.5)", fontsize=10)
+fig.suptitle("Descriptive sample means and standard deviations (reported KP=10, MS=2.5)", fontsize=10)
 fig.tight_layout()
 fig.savefig(OUT / "figures/fig_t3_obs_combinations.png", dpi=180)
 plt.close(fig)
@@ -42,8 +52,8 @@ for i, k in enumerate(names):
                 f"| {data[2][2][i]:+.3f} ± {data[2][3][i]:.3f} |")
 (OUT / "tables/t3_obs_combinations.md").write_text("\n".join(rows) + "\n")
 (OUT / "metrics/t3_obs_combinations.json").write_text(json.dumps({
-    "runs": [{"name": d[0], "mean": dict(zip(names, d[2].tolist())), "std": dict(zip(names, d[3].tolist()))}
-             for d in data],
-    "note": "emulator chains, 1500-2000 steps, fixed KP=10 MS=2.5, random prior starts, last half used",
+    "runs": [{"name": d[0], "mean": dict(zip(names, d[2].tolist())), "std": dict(zip(names, d[3].tolist())), "selection": selection}
+             for d, selection in zip(data, selections)],
+    "note": "Descriptive emulator samples, reported fixed KP=10 MS=2.5 and random-prior starts; last half of each file, population std. Full matching priors/configurations and independent diagnostics require separate verification.",
 }, indent=2) + "\n")
 print("\n".join(rows))

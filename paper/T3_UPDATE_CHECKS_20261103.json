@@ -1,0 +1,85 @@
+{
+  "source": {
+    "repository": "https://github.com/HainaHuang729/BTemu",
+    "revision": "8ff5394602d9279b1d48f1eea5fe6d11b8f7221a",
+    "files": [
+      "paper/paper_materials/metrics/t3_obs_combinations.json",
+      "paper/paper_materials/tables/t3_obs_combinations.md",
+      "paper/paper_materials/t3_fig.py",
+      "paper/paper_materials/figures/fig_t3_obs_combinations.png",
+      "paper/paper_materials/BACKLOG_20261101.md",
+      "paper/paper_materials/PS_PLAN_20261102.md"
+    ],
+    "joint_reference_chain": "chains/chain6_ext2_2000.h5",
+    "joint_reference_sha256": "d018dfef73bf878c8e333906c1f97b60e55b4b0f4bccf92a52e092937bbb7ccd",
+    "joint_selection": "stored steps [1000,2000), 32 walkers, 32000 correlated rows; population std ddof=0",
+    "other_raw_chains_exported": false
+  },
+  "source_sha256": {
+    "BACKLOG_20261101.md": "772efe7ee9c5ec159fb080246f210e037e67056b1d7fed67de5b87a102462f27",
+    "PS_PLAN_20261102.md": "ebec0eba86e063dc3457534d15ca221be26663ff7e74fa84c5506ecf67cd6e34",
+    "fig_t3_obs_combinations.png": "dec3742ffad39f215d75245c9d4880cb678ddd661eb2da64a42f32d1ee9c41e3",
+    "source_manifest.json": "2d7a34456fbd199f9564a756783f7daccc4b159025a44675dbebb534579abca3",
+    "t3_fig.py": "d47bb57334a34f46649a14f996179da0f970021204cc73bcf6297f62d5689c38",
+    "t3_obs_combinations.json": "f950efc22fd15c582aff9544bdf1147ebfd1a55a57a8d97cde0ac18b94c620fd",
+    "t3_obs_combinations.md": "4854ce5a84005a2cdbea8c2e0e252b8693f85968e53d492f4c86dad2bba71e52",
+    "t3_table.tex": "3b4b09df27ca5c53c05d3941196c6f3eadfbf6ccce6d585547caa0896e51a3de"
+  },
+  "summary_table_consistent": true,
+  "joint_reference_check": {
+    "available": true,
+    "sha256": "d018dfef73bf878c8e333906c1f97b60e55b4b0f4bccf92a52e092937bbb7ccd",
+    "shape": [
+      2000,
+      32,
+      6
+    ],
+    "steps_half_open": [
+      1000,
+      2000
+    ],
+    "rows": 32000,
+    "ddof": 0,
+    "summary_exactly_reproduced": true
+  },
+  "other_raw_chains_verified": false,
+  "all_run_priors_fixed_values_native_weights_diagnostics_verified": false,
+  "source_parameter_order_caveat": "Original exporter labels vectors using the final file order without comparing all three orders; first two orders need raw verification.",
+  "population_sd_ratios_to_lf_only": {
+    "LF only": {
+      "ETA_STAR": 1.0,
+      "t_STAR": 1.0,
+      "ALPHA_STAR": 1.0,
+      "M_TURN": 1.0,
+      "F_ESC10": 1.0,
+      "ALPHA_ESC": 1.0
+    },
+    "LF + tau": {
+      "ETA_STAR": 1.013228514629452,
+      "t_STAR": 0.9624589781039588,
+      "ALPHA_STAR": 1.0097739371134324,
+      "M_TURN": 0.9394503450150277,
+      "F_ESC10": 0.6481331710466012,
+      "ALPHA_ESC": 1.006073448956692
+    },
+    "LF + tau + xHI": {
+      "ETA_STAR": 1.0788466329216253,
+      "t_STAR": 0.9544007459156764,
+      "ALPHA_STAR": 1.0543824103750854,
+      "M_TURN": 0.9155202620136427,
+      "F_ESC10": 0.44590326163356453,
+      "ALPHA_ESC": 0.878972419304931
+    }
+  },
+  "backlog_new_chain_files_exported": false,
+  "plan_cost_scope": "Existing 416s history timing is not a PS/lightcone benchmark; forecast arithmetic only.",
+  "PS_storage_bytes_per_model": {
+    "21": 172032,
+    "31": 253952
+  },
+  "outputs_sha256": {
+    "figures/fig17_obs_combinations.png": "e812d41b5005c171d2b1ce6f8252a7a0cbed4dd3807edd6ddac0bd4da7e9b710",
+    "figures/fig17_obs_combinations.pdf": "5930a1aa9def167b387fc57254426dc45c967236f0dcb39417bd02cf1e03a676"
+  },
+  "new_simulation_training_or_sampler_run": false
+}
