@@ -1,0 +1,680 @@
+[
+  {
+    "phase": "39",
+    "contract": "phase39_matched_bt_grid_500_v1.json",
+    "status": "predeclared_before_exact_generation",
+    "result_validation": {
+      "status": "phase39_180_view_rejected",
+      "passed": false
+    },
+    "result_build": {
+      "status": "phase39_180_view_built",
+      "model_cells": 180
+    },
+    "result_corrected": {
+      "status": "phase39_180_view_validated",
+      "passed": true
+    },
+    "data_dirs": [
+      "phase39_180_view_v1"
+    ]
+  },
+  {
+    "phase": "39",
+    "contract": "phase39_matched_bt_grid_500_v1_recovery.json",
+    "status": "predeclared_before_recovery_generation",
+    "result_validation": {
+      "status": "phase39_180_view_rejected",
+      "passed": false
+    },
+    "result_build": {
+      "status": "phase39_180_view_built",
+      "model_cells": 180
+    },
+    "result_corrected": {
+      "status": "phase39_180_view_validated",
+      "passed": true
+    },
+    "data_dirs": [
+      "phase39_180_view_v1"
+    ]
+  },
+  {
+    "phase": "39",
+    "contract": "phase39_numerical_domain_amendment_v1.json",
+    "status": "transparent_post_generation_pretraining_amendment",
+    "result_validation": {
+      "status": "phase39_180_view_rejected",
+      "passed": false
+    },
+    "result_build": {
+      "status": "phase39_180_view_built",
+      "model_cells": 180
+    },
+    "result_corrected": {
+      "status": "phase39_180_view_validated",
+      "passed": true
+    },
+    "data_dirs": [
+      "phase39_180_view_v1"
+    ]
+  },
+  {
+    "phase": "40",
+    "contract": "phase40_180_residual_training_v1.json",
+    "status": "predeclared_train_validation_only_training_contract",
+    "result_v1": {
+      "status": "phase40_development_acceptance_passed",
+      "passed": true
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "41",
+    "contract": "phase41_grid_head_training_v1.json",
+    "status": "predeclared_phase41_grid_head_train_validation_contract",
+    "result_v1": {
+      "status": "phase41_grid_head_comparison_not_passed",
+      "passed": false
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "42",
+    "contract": "phase42_fixed_kp1_ms1p5_1000_v1.json",
+    "status": "predeclared_before_phase42_exact_generation",
+    "design_fixed_KP_h_Mpc": 1.0,
+    "design_fixed_MS": 1.5,
+    "result_validation": {
+      "status": "phase42_fixed_180_view_validated",
+      "passed": true
+    },
+    "result_corrected": {
+      "status": "phase42_fixed_dataset_validated",
+      "passed": true
+    },
+    "result_build": {
+      "status": "phase42_fixed_180_view_built",
+      "fixed_KP_h_Mpc": 1.0,
+      "fixed_MS": 1.5,
+      "model_cells": 180
+    },
+    "result_v1": {
+      "status": "phase42_fixed_development_acceptance_passed",
+      "passed": true
+    },
+    "result_v2": {
+      "status": "phase42_fixed_training_entry_preflight_v2_passed",
+      "passed": true
+    },
+    "data_dirs": [
+      "phase42_fixed_kp1_ms1p5_180_view_v1"
+    ]
+  },
+  {
+    "phase": "42",
+    "contract": "phase42_fixed_kp1_ms1p5_180_training_v1.json",
+    "status": "frozen_executable_phase42_training_contract",
+    "design_fixed_KP_h_Mpc": 1.0,
+    "design_fixed_MS": 1.5,
+    "result_validation": {
+      "status": "phase42_fixed_180_view_validated",
+      "passed": true
+    },
+    "result_corrected": {
+      "status": "phase42_fixed_dataset_validated",
+      "passed": true
+    },
+    "result_build": {
+      "status": "phase42_fixed_180_view_built",
+      "fixed_KP_h_Mpc": 1.0,
+      "fixed_MS": 1.5,
+      "model_cells": 180
+    },
+    "result_v1": {
+      "status": "phase42_fixed_development_acceptance_passed",
+      "passed": true
+    },
+    "result_v2": {
+      "status": "phase42_fixed_training_entry_preflight_v2_passed",
+      "passed": true
+    },
+    "data_dirs": [
+      "phase42_fixed_kp1_ms1p5_180_view_v1"
+    ]
+  },
+  {
+    "phase": "42",
+    "contract": "phase42_fixed_kp1_ms1p5_training_plan_v1.json",
+    "status": "predeclared_before_phase42_dataset_validation_not_yet_executable",
+    "design_fixed_KP_h_Mpc": 1.0,
+    "design_fixed_MS": 1.5,
+    "result_validation": {
+      "status": "phase42_fixed_180_view_validated",
+      "passed": true
+    },
+    "result_corrected": {
+      "status": "phase42_fixed_dataset_validated",
+      "passed": true
+    },
+    "result_build": {
+      "status": "phase42_fixed_180_view_built",
+      "fixed_KP_h_Mpc": 1.0,
+      "fixed_MS": 1.5,
+      "model_cells": 180
+    },
+    "result_v1": {
+      "status": "phase42_fixed_development_acceptance_passed",
+      "passed": true
+    },
+    "result_v2": {
+      "status": "phase42_fixed_training_entry_preflight_v2_passed",
+      "passed": true
+    },
+    "data_dirs": [
+      "phase42_fixed_kp1_ms1p5_180_view_v1"
+    ]
+  },
+  {
+    "phase": "43",
+    "contract": "phase43_fixed_kp1_ms1p5_add5000_v1.json",
+    "status": "predeclared_before_phase43_exact_generation",
+    "design_fixed_KP_h_Mpc": 1.0,
+    "design_fixed_MS": 1.5,
+    "result_validation": {
+      "status": "phase43_add5000_fixed_dataset_validated",
+      "passed": true
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "44",
+    "contract": "phase44_fixed_kp1_ms1p5_combined_180_training_v1.json",
+    "status": "frozen_executable_phase44_training_contract",
+    "result_build": {
+      "status": "phase44_fixed_180_view_built",
+      "fixed_KP_h_Mpc": 1.0,
+      "fixed_MS": 1.5,
+      "model_cells": 180
+    },
+    "result_validation": {
+      "status": "phase44_fixed_180_view_validated",
+      "passed": true
+    },
+    "result_v1": {
+      "status": "phase44_fixed_development_acceptance_passed",
+      "passed": true
+    },
+    "data_dirs": [
+      "phase44_fixed_kp1_ms1p5_combined_180_view_v1"
+    ]
+  },
+  {
+    "phase": "44",
+    "contract": "phase44_fixed_kp1_ms1p5_combined_training_plan_v1.json",
+    "status": "predeclared_before_phase44_combined_view_and_training",
+    "result_build": {
+      "status": "phase44_fixed_180_view_built",
+      "fixed_KP_h_Mpc": 1.0,
+      "fixed_MS": 1.5,
+      "model_cells": 180
+    },
+    "result_validation": {
+      "status": "phase44_fixed_180_view_validated",
+      "passed": true
+    },
+    "result_v1": {
+      "status": "phase44_fixed_development_acceptance_passed",
+      "passed": true
+    },
+    "data_dirs": [
+      "phase44_fixed_kp1_ms1p5_combined_180_view_v1"
+    ]
+  },
+  {
+    "phase": "45",
+    "contract": "phase45_fixed_kp1_ms1p5_likelihood_scope_development_v1.json",
+    "status": "frozen_phase45_likelihood_scope_development_contract",
+    "result_v1": {
+      "status": "phase45_zero_power_xhi_diagnostic_complete"
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "46",
+    "contract": "phase46_fixed_kp1_ms1p5_two_part_likelihood_development_v1.json",
+    "status": "frozen_phase46_two_part_likelihood_development_contract",
+    "result_v1": {
+      "status": "phase46_two_part_likelihood_development_diagnostic_complete"
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "47",
+    "contract": "phase47_fixed_kp1_ms1p5_variance_floor_sensitivity_v1.json",
+    "status": "frozen_phase47_variance_floor_sensitivity_contract",
+    "result_v1": {
+      "status": "phase47_variance_floor_sensitivity_complete"
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "48",
+    "contract": "phase48_fixed_kp1_ms1p5_chunk_hurdle_comparison_v1.json",
+    "status": "frozen_phase48_chunk_hurdle_comparison_contract",
+    "result_v1": {
+      "status": "phase48_chunk_hurdle_development_comparison_complete",
+      "passed": true
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "49",
+    "contract": "phase49_fixed_kp1_ms1p5_mock_recovery_v1.json",
+    "status": "frozen_before_phase49_fixed_mock_recovery",
+    "result_v1": {
+      "status": "phase49_fixed_mock_recovery_preflight_complete",
+      "passed": false
+    },
+    "data_dirs": [
+      "phase49_fixed_kp1_ms1p5_mock_recovery_v1"
+    ]
+  },
+  {
+    "phase": "50",
+    "contract": "phase50_fixed_kp1_ms1p5_oof_uq_v1.json",
+    "status": "frozen_before_phase50_oof_uq_training",
+    "result_v1": {
+      "status": "phase50_calibrated_likelihood_preflight_complete",
+      "passed": false
+    },
+    "data_dirs": [
+      "phase50_fixed_kp1_ms1p5_oof_uq_v1"
+    ]
+  },
+  {
+    "phase": "51",
+    "contract": "phase51_fixed_kp1_ms1p5_targeted_transition_1000_v1.json",
+    "status": "frozen_before_phase51_targeted_exact_generation",
+    "result_validation": {
+      "status": "phase51_targeted_exact_BT_dataset_validated",
+      "passed": true
+    },
+    "data_dirs": [
+      "phase51_fixed_kp1_ms1p5_targeted_transition_1000_v1"
+    ]
+  },
+  {
+    "phase": "52",
+    "contract": "phase52_direct_bt_targeted_retrain_plan_v1.json",
+    "status": "predeclared_before_phase52_direct_view_and_training",
+    "result_validation": {
+      "status": "phase52_direct_bt_combined_view_validated",
+      "passed": true
+    },
+    "result_v1": {
+      "status": "phase52f_xhi_auxiliary_view_complete",
+      "passed": true
+    },
+    "result_build": {
+      "status": "phase52_direct_bt_combined_view_built"
+    },
+    "data_dirs": [
+      "phase52_direct_bt_combined_180_view_v1",
+      "phase52f_xhi_auxiliary_v1"
+    ]
+  },
+  {
+    "phase": "52",
+    "contract": "phase52_direct_bt_targeted_retrain_v1.json",
+    "status": "frozen_executable_phase52_direct_bt_training_contract",
+    "result_validation": {
+      "status": "phase52_direct_bt_combined_view_validated",
+      "passed": true
+    },
+    "result_v1": {
+      "status": "phase52f_xhi_auxiliary_view_complete",
+      "passed": true
+    },
+    "result_build": {
+      "status": "phase52_direct_bt_combined_view_built"
+    },
+    "data_dirs": [
+      "phase52_direct_bt_combined_180_view_v1",
+      "phase52f_xhi_auxiliary_v1"
+    ]
+  },
+  {
+    "phase": "52b",
+    "contract": "phase52b_region_balanced_state_sweep_v1.json",
+    "status": "frozen_executable_phase52b_region_balanced_sweep_contract",
+    "result_v1": {
+      "status": "phase52b_balanced_screening_complete",
+      "passed": false
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "52c",
+    "contract": "phase52c_structured_architecture_ablation_v1.json",
+    "status": "frozen_executable_phase52c_structured_architecture_ablation_contract",
+    "result_v1": {
+      "status": "phase52c_structured_architecture_development_comparison_complete",
+      "passed": false
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "52d",
+    "contract": "phase52d_state_boundary_diagnostic_v1.json",
+    "status": "frozen_executable_phase52d_state_boundary_diagnostic_contract",
+    "result_v1": {
+      "status": "phase52d_state_boundary_diagnostic_complete"
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "52e",
+    "contract": "phase52e_monotonic_transition_head_v1.json",
+    "status": "frozen_executable_phase52e_monotonic_transition_head_contract",
+    "result_v1": {
+      "status": "phase52e_nonmonotonic_state_diagnostic_complete"
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "52e",
+    "contract": "phase52e_nonmonotonic_state_diagnostic_v1.json",
+    "status": "frozen_executable_phase52e_nonmonotonic_state_diagnostic_contract",
+    "result_v1": {
+      "status": "phase52e_nonmonotonic_state_diagnostic_complete"
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "52f",
+    "contract": "phase52f_xhi_auxiliary_view_v1.json",
+    "status": "frozen_executable_phase52f_xhi_auxiliary_view_contract",
+    "result_v1": {
+      "status": "phase52f_xhi_auxiliary_view_complete",
+      "passed": true
+    },
+    "data_dirs": [
+      "phase52f_xhi_auxiliary_v1"
+    ]
+  },
+  {
+    "phase": "52g",
+    "contract": "phase52g_xhi_multitask_ablation_v1.json",
+    "status": "frozen_executable_phase52g_xhi_multitask_ablation_contract",
+    "result_v1": {
+      "status": "phase52g_xhi_multitask_development_comparison_complete",
+      "passed": false
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "53",
+    "contract": "phase53_v3_lstm2d_ps_adaptation_v1.json",
+    "status": "frozen_executable_phase53_v3_lstm2d_ps_adaptation_contract",
+    "result_v1": {
+      "status": "phase53_v3_lstm2d_ps_development_comparison_complete",
+      "passed": true
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "54a",
+    "contract": "phase54a_development_only_diagnosis_v1.json",
+    "status": "frozen_executable_phase54a_development_only_diagnosis_contract",
+    "result_v1": {
+      "status": "phase54a_development_only_diagnosis_complete"
+    },
+    "data_dirs": [
+      "phase54a_single_seed_opened_test_v1"
+    ]
+  },
+  {
+    "phase": "54a",
+    "contract": "phase54a_single_seed_sealed_test_v1.json",
+    "status": "frozen_executable_phase54a_single_seed_sealed_test_contract",
+    "result_v1": {
+      "status": "phase54a_development_only_diagnosis_complete"
+    },
+    "data_dirs": [
+      "phase54a_single_seed_opened_test_v1"
+    ]
+  },
+  {
+    "phase": "54b",
+    "contract": "phase54b_multi_ic_256x4_bt_pilot_v1.json",
+    "status": "predeclared_before_phase54b_exact_generation",
+    "design_BT_tasks": 1024,
+    "design_PL_tasks": 0,
+    "design_fixed_KP_h_Mpc": 1.0,
+    "design_fixed_MS": 1.5,
+    "design_ic_replicates_per_theta": 4,
+    "design_independent_theta": 256,
+    "result_preflight": {
+      "status": "phase54b_multi_ic_preflight_passed",
+      "passed": true,
+      "BT_tasks": 1024
+    },
+    "result_validation": {
+      "status": "phase54b_multi_ic_generation_validated",
+      "passed": true,
+      "training_eligible": false
+    },
+    "result_evaluation": {
+      "status": "phase54b_multi_ic_mean_power_evaluation_complete",
+      "passed": true,
+      "authorized_for_MCMC": false,
+      "training_eligible": false,
+      "complete_theta": 251
+    },
+    "data_dirs": [
+      "phase54b_multi_ic_256x4_bt_pilot_v1"
+    ]
+  },
+  {
+    "phase": "55",
+    "contract": "phase55_unique_ic_mean_training_v1.json",
+    "status": "predeclared_before_phase55_exact_generation",
+    "design_BT_tasks": 12096,
+    "design_PL_tasks": 0,
+    "design_fixed_KP_h_Mpc": 1.0,
+    "design_fixed_MS": 1.5,
+    "result_preflight": {
+      "status": "phase55b_targeted_recovery_preflight_passed",
+      "passed": true,
+      "BT_tasks": 128
+    },
+    "result_validation": {
+      "status": "phase55b_targeted_recovery_generation_validated",
+      "passed": true,
+      "authorized_for_MCMC": false
+    },
+    "data_dirs": [
+      "phase55b_targeted_recovery_128_v1"
+    ]
+  },
+  {
+    "phase": "55b",
+    "contract": "phase55b_targeted_recovery_128_v1.json",
+    "status": "predeclared_before_phase55b_targeted_recovery_generation",
+    "result_preflight": {
+      "status": "phase55b_targeted_recovery_preflight_passed",
+      "passed": true,
+      "BT_tasks": 128
+    },
+    "result_validation": {
+      "status": "phase55b_targeted_recovery_generation_validated",
+      "passed": true,
+      "authorized_for_MCMC": false
+    },
+    "data_dirs": [
+      "phase55b_targeted_recovery_128_v1"
+    ]
+  },
+  {
+    "phase": "56",
+    "contract": "phase56_unique_ic_lstm2d_mean_plan_v1.json",
+    "status": "implementation_of_predeclared_phase55_future_training_gate",
+    "result_v1": {
+      "status": "phase56_unique_ic_lstm2d_mean_development_evaluation_complete",
+      "passed": false,
+      "authorized_for_MCMC": false,
+      "selected_for_new_independent_multi_ic_test": false,
+      "validation_theta": 494
+    },
+    "data_dirs": [
+      "phase56b_unique_ic_lstm2d_mean_v1"
+    ]
+  },
+  {
+    "phase": "56b",
+    "contract": "phase56b_unique_ic_lstm2d_mean_recovery_plan_v1.json",
+    "status": "implementation_of_predeclared_phase55_future_training_gate",
+    "result_v1": {
+      "status": "phase56_unique_ic_lstm2d_mean_development_evaluation_complete",
+      "passed": false,
+      "authorized_for_MCMC": false,
+      "selected_for_new_independent_multi_ic_test": false,
+      "validation_theta": 494
+    },
+    "data_dirs": [
+      "phase56b_unique_ic_lstm2d_mean_v1"
+    ]
+  },
+  {
+    "phase": "56b",
+    "contract": "phase56b_unique_ic_lstm2d_mean_recovery_v1.json",
+    "status": "frozen_executable_phase56_unique_ic_lstm2d_mean_contract",
+    "result_v1": {
+      "status": "phase56_unique_ic_lstm2d_mean_development_evaluation_complete",
+      "passed": false,
+      "authorized_for_MCMC": false,
+      "selected_for_new_independent_multi_ic_test": false,
+      "validation_theta": 494
+    },
+    "data_dirs": [
+      "phase56b_unique_ic_lstm2d_mean_v1"
+    ]
+  },
+  {
+    "phase": "58",
+    "contract": "phase58_four_ic_mean_training_v1.json",
+    "status": "predeclared_before_phase58_four_ic_exact_generation",
+    "design_BT_tasks": 23604,
+    "design_PL_tasks": 0,
+    "design_fixed_KP_h_Mpc": 1.0,
+    "design_fixed_MS": 1.5,
+    "result_preflight": {
+      "status": "phase58_four_ic_mean_preflight_passed",
+      "passed": true,
+      "authorized_for_MCMC": false
+    },
+    "result_validation": {
+      "status": "phase58_four_ic_mean_generation_validated",
+      "passed": true,
+      "authorized_for_MCMC": false
+    },
+    "data_dirs": [
+      "phase58_four_ic_mean_training_v1"
+    ]
+  },
+  {
+    "phase": "59",
+    "contract": "phase59_mean4_lstm2d_training_plan_v1.json",
+    "status": "predeclared_phase59_mean4_lstm2d_training_plan",
+    "result_v1": {
+      "status": "phase59_mean4_lstm2d_development_evaluation_complete",
+      "passed": true,
+      "authorized_for_MCMC": false,
+      "selected_for_new_independent_multi_ic_test": true,
+      "validation_theta": 494,
+      "training_theta": 7804
+    },
+    "data_dirs": [
+      "phase59_mean4_lstm2d_v1"
+    ]
+  },
+  {
+    "phase": "59",
+    "contract": "phase59_mean4_lstm2d_training_v1.json",
+    "status": "frozen_executable_phase59_mean4_lstm2d_contract",
+    "result_v1": {
+      "status": "phase59_mean4_lstm2d_development_evaluation_complete",
+      "passed": true,
+      "authorized_for_MCMC": false,
+      "selected_for_new_independent_multi_ic_test": true,
+      "validation_theta": 494,
+      "training_theta": 7804
+    },
+    "data_dirs": [
+      "phase59_mean4_lstm2d_v1"
+    ]
+  },
+  {
+    "phase": "60",
+    "contract": "phase60_independent_multi_ic_sealed_test_v1.json",
+    "status": "predeclared_before_phase60_exact_generation",
+    "design_BT_tasks": 1024,
+    "design_PL_tasks": 0,
+    "design_fixed_KP_h_Mpc": 1.0,
+    "design_fixed_MS": 1.5,
+    "design_ic_replicates_per_theta": 4,
+    "design_independent_theta": 256,
+    "result_preflight": {
+      "status": "phase60_independent_multi_ic_preflight_passed",
+      "passed": true,
+      "BT_tasks": 1024
+    },
+    "result_validation": {
+      "status": "phase60_independent_multi_ic_generation_validated",
+      "passed": true,
+      "training_eligible": false
+    },
+    "result_evaluation": {
+      "status": "phase60_independent_multi_ic_sealed_test_evaluation_complete",
+      "passed": false,
+      "authorized_for_MCMC": false,
+      "training_eligible": false,
+      "complete_theta": 249
+    },
+    "data_dirs": [
+      "phase60_independent_multi_ic_sealed_test_v1"
+    ]
+  },
+  {
+    "phase": "61",
+    "contract": "phase61_phase59_development_tail_diagnosis_v1.json",
+    "status": "predeclared_phase61_development_only_diagnosis",
+    "result_v1": {
+      "status": "phase61_phase59_development_tail_diagnosis_complete"
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "62",
+    "contract": "phase62_tail_aware_loss_ablation_v1.json",
+    "status": "frozen_phase62_development_only_tail_loss_ablation",
+    "result_preflight": {
+      "status": "phase62_tail_aware_loss_preflight_passed",
+      "passed": true,
+      "validation_theta": 494,
+      "training_theta": 7804
+    },
+    "result_evaluation": {
+      "status": "phase62_tail_aware_loss_development_evaluation_complete",
+      "selected_for_new_independent_multi_ic_test": true
+    },
+    "data_dirs": []
+  },
+  {
+    "phase": "63",
+    "contract": "phase63_10d_training_asset_audit_v1.json",
+    "status": "predeclared_phase63_readonly_10d_asset_audit",
+    "data_dirs": []
+  }
+]
