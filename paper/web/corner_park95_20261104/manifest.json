@@ -1,0 +1,1720 @@
+{
+  "source_inputs_sha256": {
+    "/Users/amadeus/Documents/ChatGPT/论文/overleaf-btemu/paper/reproduction/chains/chain6_1000.h5": "0947166e31fa99a38c5b5ae078fcd611f64bafae4a9d8f85c88f8841e6fab984",
+    "/Users/amadeus/Documents/ChatGPT/论文/overleaf-btemu/paper/reproduction/chains/chain6_exact_200.h5": "1c0492ee414d48ced59ac7ece6918aba9a4a858373f1141bf48e024fe39d1198",
+    "/Users/amadeus/Documents/ChatGPT/论文/overleaf-btemu/paper/reproduction/chains/chain6_ext2_2000.h5": "d018dfef73bf878c8e333906c1f97b60e55b4b0f4bccf92a52e092937bbb7ccd",
+    "/Users/amadeus/Documents/ChatGPT/论文/overleaf-btemu/paper/reproduction/chains/chain8_2000.h5": "07ca1dd9c995f924b6f219440db9b50b66f8223f8cc477aebef546da04bbd77b",
+    "/Users/amadeus/Documents/ChatGPT/论文/overleaf-btemu/paper/reproduction/chains/chain8_ext_3399.h5": "80c117c70eca2ccbadc2238158e0042d4fca9adad871e966081580907d318432",
+    "/Users/amadeus/Documents/ChatGPT/论文/overleaf-btemu/paper/reproduction/chains/chain6_ext_2000.h5": "12340b843b25c296f46ea647ada2c9e853563c645fab9ac3ba5c864d791c64af",
+    "/Users/amadeus/Documents/ChatGPT/论文/21cmTB/web_data/joint_repaired1000/pooled_samples.csv": "d58ee4058d92851ba1fed01ad14e191e8cd6d04677f9eb1050abb675916f3c01",
+    "/Users/amadeus/Documents/ChatGPT/论文/21cmTB/web_data/joint_repaired1000/free_ms_samples.csv": "9c008ba4b271093dbc99e8aeb2ac873c3d25bf2a78e0abecb79851fa469b0c51"
+  },
+  "same_original_samples": true,
+  "same_palette_for_all_designs": true,
+  "no_figure_information_blocks": true,
+  "designs": [
+    {
+      "kind": "park95",
+      "name": "Park 风格 · 95% 样本区域",
+      "en": "Park-style 95% sample-density region",
+      "desc": "单层浅灰填色与一条深灰外轮廓；阈值由密度积分得到，保留紧凑下三角与对角边缘分布。",
+      "nonce": "4081be5d3c6c34ec0729ba2c7d5faa84",
+      "renderer_sha256": "e7dd3f15a8417e7ed6e96334127a5de5c25274abccb93b0712f5975f974e8a6c",
+      "hash": "bec28666b0fe1f19d9234822d8660708de644a4d32962b057950283649347d31",
+      "id": "bec28666b0fe",
+      "outputs": {
+        "fig11_btemu_corner6_5000": "fcf1dd7e6123f91f0e111fe3d2b7436cf64653f7afcf5c8fed77c6ba31a84dfe",
+        "fig12_btemu_corner8_5568": "3fea1df0c8ab6d1ad19da428e8ed765a13fb9e9a61754f9aee0849eed7424de5",
+        "fig13_exact_corner6_200": "7b4a0430d686a72cc836d4b613b3b80af8ec06e9ae22441aed8f42a08c1eef71",
+        "fig8_21cmtb_corner_fixed8": "6670e9c313f508b94ffe7b74a62d27272d52958f1e75b736690d3f3db801ae34",
+        "fig9_21cmtb_corner_free9": "1096e7e6c111eb05154f57e272bd6427735279e1378961bb2c05b7c89d86e6ee"
+      },
+      "checks": {
+        "fig11_btemu_corner6_5000": {
+          "rows": 80000,
+          "all_pair_histogram_counts": [
+            80000,
+            80000,
+            80000,
+            80000,
+            80000,
+            80000,
+            80000,
+            80000,
+            80000,
+            80000,
+            80000,
+            80000,
+            80000,
+            80000,
+            80000
+          ],
+          "bins": 32,
+          "smoothing_sigma_bins_2d": 1.1,
+          "smoothing_sigma_bins_1d": 0.8,
+          "figure_information_blocks": 0,
+          "region_definition": "95% highest-density region of interpolated smoothed stored-sample density",
+          "contour_probability_content": 0.95,
+          "regions": [
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 1,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500045157185739,
+              "integrated_mass_strictly_above_level": 0.9499973227983121,
+              "threshold": 36.82775174103757,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 2,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500066021898654,
+              "integrated_mass_strictly_above_level": 0.9499939715736108,
+              "threshold": 64.66875522421493,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 2,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500055611064465,
+              "integrated_mass_strictly_above_level": 0.9499981472128793,
+              "threshold": 37.95913506399428,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950001136030902,
+              "integrated_mass_strictly_above_level": 0.9499910751089996,
+              "threshold": 51.511920139738905,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500054448180177,
+              "integrated_mass_strictly_above_level": 0.9499980009827137,
+              "threshold": 38.11243675672284,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500014206060039,
+              "integrated_mass_strictly_above_level": 0.9499920659224211,
+              "threshold": 47.8959799431064,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950004435274045,
+              "integrated_mass_strictly_above_level": 0.9499980571334697,
+              "threshold": 32.65607974412662,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500031356038691,
+              "integrated_mass_strictly_above_level": 0.9499952951394184,
+              "threshold": 40.14317798759739,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950002865528269,
+              "integrated_mass_strictly_above_level": 0.9499959854952361,
+              "threshold": 35.22576912782348,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500040160624359,
+              "integrated_mass_strictly_above_level": 0.9499981090410656,
+              "threshold": 30.243949415448046,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500003329274607,
+              "integrated_mass_strictly_above_level": 0.9499936055114582,
+              "threshold": 34.44436993265418,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500006035523653,
+              "integrated_mass_strictly_above_level": 0.9499956435250037,
+              "threshold": 25.39534009185551,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950000952653063,
+              "integrated_mass_strictly_above_level": 0.949994046431358,
+              "threshold": 35.35985512992683,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500026506102753,
+              "integrated_mass_strictly_above_level": 0.9499965997977595,
+              "threshold": 30.98016008031071,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 4,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950003912047201,
+              "integrated_mass_strictly_above_level": 0.9499989769754394,
+              "threshold": 25.267567419911167,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            }
+          ],
+          "filled_bands_per_dataset": 1,
+          "outline_levels_per_dataset": 1,
+          "fill_alpha": 0.45,
+          "in_figure_information_blocks": 0
+        },
+        "fig12_btemu_corner8_5568": {
+          "rows": 89088,
+          "all_pair_histogram_counts": [
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088,
+            89088
+          ],
+          "bins": 32,
+          "smoothing_sigma_bins_2d": 1.1,
+          "smoothing_sigma_bins_1d": 0.8,
+          "figure_information_blocks": 0,
+          "region_definition": "95% highest-density region of interpolated smoothed stored-sample density",
+          "contour_probability_content": 0.95,
+          "regions": [
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 1,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500021142903345,
+              "integrated_mass_strictly_above_level": 0.9499954606729197,
+              "threshold": 37.93647796912074,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 2,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500032964215321,
+              "integrated_mass_strictly_above_level": 0.949993433740876,
+              "threshold": 56.233375635002375,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 2,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950006292774216,
+              "integrated_mass_strictly_above_level": 0.949999399847202,
+              "threshold": 39.30093323699611,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500031252116445,
+              "integrated_mass_strictly_above_level": 0.9499970791477703,
+              "threshold": 34.472431259155265,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500000363677445,
+              "integrated_mass_strictly_above_level": 0.9499924100435697,
+              "threshold": 43.482493957024595,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500021668928463,
+              "integrated_mass_strictly_above_level": 0.9499967307078805,
+              "threshold": 30.99512615889109,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500043172131815,
+              "integrated_mass_strictly_above_level": 0.9499979153638426,
+              "threshold": 36.50098904944961,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500173448294554,
+              "integrated_mass_strictly_above_level": 0.9499868485090354,
+              "threshold": 43.469699097029135,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500004930718927,
+              "integrated_mass_strictly_above_level": 0.9499945428168911,
+              "threshold": 33.92616432623095,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500006869819224,
+              "integrated_mass_strictly_above_level": 0.9499945052887547,
+              "threshold": 35.24573957922952,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950004375153468,
+              "integrated_mass_strictly_above_level": 0.9499984502120187,
+              "threshold": 33.78183576645718,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500023021899405,
+              "integrated_mass_strictly_above_level": 0.9499962308859095,
+              "threshold": 34.616341344842056,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500185540979946,
+              "integrated_mass_strictly_above_level": 0.9499956824320731,
+              "threshold": 32.601455578188165,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500062128247959,
+              "integrated_mass_strictly_above_level": 0.9499993655552809,
+              "threshold": 39.04061097945933,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 4,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500037370522718,
+              "integrated_mass_strictly_above_level": 0.9499978935577105,
+              "threshold": 33.31745558251845,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500062040356422,
+              "integrated_mass_strictly_above_level": 0.9499977682809672,
+              "threshold": 48.097568798972134,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500077217998197,
+              "integrated_mass_strictly_above_level": 0.9499994999591697,
+              "threshold": 46.87790975022796,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500000505967271,
+              "integrated_mass_strictly_above_level": 0.9499930916576976,
+              "threshold": 39.67730945629797,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500103036491132,
+              "integrated_mass_strictly_above_level": 0.949983442576518,
+              "threshold": 51.05065035439141,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 4,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500033354311248,
+              "integrated_mass_strictly_above_level": 0.9499975378760558,
+              "threshold": 33.05552550273758,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 5,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500021716904339,
+              "integrated_mass_strictly_above_level": 0.9499958852531178,
+              "threshold": 35.84295216855722,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500051827921632,
+              "integrated_mass_strictly_above_level": 0.9499987173705748,
+              "threshold": 36.86345462167939,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950006066676249,
+              "integrated_mass_strictly_above_level": 0.9499975295288373,
+              "threshold": 48.675672872005826,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500031643295699,
+              "integrated_mass_strictly_above_level": 0.9499968938941774,
+              "threshold": 35.75171508792088,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500033175496593,
+              "integrated_mass_strictly_above_level": 0.9499945152459458,
+              "threshold": 50.187496526346465,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 4,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500006860873963,
+              "integrated_mass_strictly_above_level": 0.9499946164013184,
+              "threshold": 34.60711637065771,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 5,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500019322881929,
+              "integrated_mass_strictly_above_level": 0.949995059326847,
+              "threshold": 39.18709634417229,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 6,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500056884297313,
+              "integrated_mass_strictly_above_level": 0.9499755818389709,
+              "threshold": 57.21890042953485,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            }
+          ],
+          "filled_bands_per_dataset": 1,
+          "outline_levels_per_dataset": 1,
+          "fill_alpha": 0.45,
+          "in_figure_information_blocks": 0
+        },
+        "fig13_exact_corner6_200": {
+          "rows": 6400,
+          "all_pair_histogram_counts": [
+            6400,
+            6400,
+            6400,
+            6400,
+            6400,
+            6400,
+            6400,
+            6400,
+            6400,
+            6400,
+            6400,
+            6400,
+            6400,
+            6400,
+            6400
+          ],
+          "bins": 32,
+          "smoothing_sigma_bins_2d": 1.1,
+          "smoothing_sigma_bins_1d": 0.8,
+          "figure_information_blocks": 0,
+          "region_definition": "95% highest-density region of interpolated smoothed stored-sample density",
+          "contour_probability_content": 0.95,
+          "regions": [
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 1,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500066171859997,
+              "integrated_mass_strictly_above_level": 0.9499993064073722,
+              "threshold": 2.9944949258153257,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 2,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500073837938905,
+              "integrated_mass_strictly_above_level": 0.9499967156924443,
+              "threshold": 4.369654352359731,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 2,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500048710995334,
+              "integrated_mass_strictly_above_level": 0.949998056330829,
+              "threshold": 2.7913292613383343,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500052897875046,
+              "integrated_mass_strictly_above_level": 0.9499963118215932,
+              "threshold": 3.6773748373046327,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500054481512307,
+              "integrated_mass_strictly_above_level": 0.9499981964945553,
+              "threshold": 2.9702785741785367,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500005127264104,
+              "integrated_mass_strictly_above_level": 0.9499925863296675,
+              "threshold": 3.2466521058641447,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500010144858273,
+              "integrated_mass_strictly_above_level": 0.9499942762234701,
+              "threshold": 2.759992261511546,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500016245306458,
+              "integrated_mass_strictly_above_level": 0.9499931145613655,
+              "threshold": 3.4856834172931688,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500153970316292,
+              "integrated_mass_strictly_above_level": 0.9499898080461606,
+              "threshold": 2.6203121119813266,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500005604070849,
+              "integrated_mass_strictly_above_level": 0.9499948662358433,
+              "threshold": 2.33233254046096,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500027030512386,
+              "integrated_mass_strictly_above_level": 0.9499836180955864,
+              "threshold": 2.6057326117077566,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500010572328501,
+              "integrated_mass_strictly_above_level": 0.9499876975516106,
+              "threshold": 2.736062717867345,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500031651573826,
+              "integrated_mass_strictly_above_level": 0.9499961547168537,
+              "threshold": 2.8714764405954853,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500051935775958,
+              "integrated_mass_strictly_above_level": 0.9499983737866158,
+              "threshold": 2.7933863853893577,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 4,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500047609316614,
+              "integrated_mass_strictly_above_level": 0.9499980167687966,
+              "threshold": 2.762409109478506,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            }
+          ],
+          "filled_bands_per_dataset": 1,
+          "outline_levels_per_dataset": 1,
+          "fill_alpha": 0.45,
+          "in_figure_information_blocks": 0
+        },
+        "fig8_21cmtb_corner_fixed8": {
+          "rows": 64000,
+          "all_pair_histogram_counts": [
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000,
+            64000
+          ],
+          "bins": 32,
+          "smoothing_sigma_bins_2d": 1.1,
+          "smoothing_sigma_bins_1d": 0.8,
+          "figure_information_blocks": 0,
+          "region_definition": "95% highest-density region of interpolated smoothed stored-sample density",
+          "contour_probability_content": 0.95,
+          "regions": [
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 1,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500046887196341,
+              "integrated_mass_strictly_above_level": 0.9499975556493307,
+              "threshold": 29.21705596243548,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 2,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500033839596921,
+              "integrated_mass_strictly_above_level": 0.9499900359039609,
+              "threshold": 54.67363627495493,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 2,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500000768251794,
+              "integrated_mass_strictly_above_level": 0.9499923475190359,
+              "threshold": 31.659237963545756,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500007994704686,
+              "integrated_mass_strictly_above_level": 0.9499912663443142,
+              "threshold": 39.04768472877534,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.95000029792025,
+              "integrated_mass_strictly_above_level": 0.9499942740784068,
+              "threshold": 24.673656189567172,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500053592011962,
+              "integrated_mass_strictly_above_level": 0.9499957290615174,
+              "threshold": 39.44505212468467,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500045762987128,
+              "integrated_mass_strictly_above_level": 0.9499981406501571,
+              "threshold": 26.360416483785386,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500002674649283,
+              "integrated_mass_strictly_above_level": 0.9499928761944924,
+              "threshold": 30.27464370474049,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950001674895511,
+              "integrated_mass_strictly_above_level": 0.9499948971172364,
+              "threshold": 27.7617798122766,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500006492506764,
+              "integrated_mass_strictly_above_level": 0.9499951104802675,
+              "threshold": 22.686803594489806,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950005930413319,
+              "integrated_mass_strictly_above_level": 0.9499991249620184,
+              "threshold": 27.875128527010865,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500010983190968,
+              "integrated_mass_strictly_above_level": 0.9499948017965663,
+              "threshold": 25.790556285472867,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500043277387968,
+              "integrated_mass_strictly_above_level": 0.9499971036772924,
+              "threshold": 29.58975592216532,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500050449509067,
+              "integrated_mass_strictly_above_level": 0.949998512200078,
+              "threshold": 26.758147394356342,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 4,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500046988291292,
+              "integrated_mass_strictly_above_level": 0.9499987688335231,
+              "threshold": 24.28926200271492,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500048399785624,
+              "integrated_mass_strictly_above_level": 0.9499976741379191,
+              "threshold": 29.35128327488946,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950004401021875,
+              "integrated_mass_strictly_above_level": 0.9499951603332629,
+              "threshold": 37.849860555494615,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500008459700752,
+              "integrated_mass_strictly_above_level": 0.9499931904161363,
+              "threshold": 31.3571489334779,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500042129778111,
+              "integrated_mass_strictly_above_level": 0.9499974884684526,
+              "threshold": 27.543590331639585,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 4,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500011544747426,
+              "integrated_mass_strictly_above_level": 0.9499950917165265,
+              "threshold": 24.833057653008257,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 5,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500058001211902,
+              "integrated_mass_strictly_above_level": 0.9499992873249505,
+              "threshold": 26.676413397551432,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500071962784142,
+              "integrated_mass_strictly_above_level": 0.9499998374485804,
+              "threshold": 30.141766999234534,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500049091864073,
+              "integrated_mass_strictly_above_level": 0.9499958298667525,
+              "threshold": 37.18889330673106,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500059980208947,
+              "integrated_mass_strictly_above_level": 0.9499981921296504,
+              "threshold": 31.972930536733173,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500033052664423,
+              "integrated_mass_strictly_above_level": 0.9499966036633497,
+              "threshold": 27.44976626643588,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 4,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500052100714148,
+              "integrated_mass_strictly_above_level": 0.9499996444565575,
+              "threshold": 22.79675845557675,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 5,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500025350803623,
+              "integrated_mass_strictly_above_level": 0.9499960231690971,
+              "threshold": 26.672788541500438,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 6,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950005294480881,
+              "integrated_mass_strictly_above_level": 0.9499957935580334,
+              "threshold": 38.915779982966555,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            }
+          ],
+          "filled_bands_per_dataset": 1,
+          "outline_levels_per_dataset": 1,
+          "fill_alpha": 0.45,
+          "in_figure_information_blocks": 0
+        },
+        "fig9_21cmtb_corner_free9": {
+          "rows": 12800,
+          "all_pair_histogram_counts": [
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800,
+            12800
+          ],
+          "bins": 32,
+          "smoothing_sigma_bins_2d": 1.1,
+          "smoothing_sigma_bins_1d": 0.8,
+          "figure_information_blocks": 0,
+          "region_definition": "95% highest-density region of interpolated smoothed stored-sample density",
+          "contour_probability_content": 0.95,
+          "regions": [
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 1,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500065719848189,
+              "integrated_mass_strictly_above_level": 0.9499812060735906,
+              "threshold": 5.19493861956893,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 2,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500051071091106,
+              "integrated_mass_strictly_above_level": 0.9499964191776422,
+              "threshold": 7.117153458903768,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 2,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500039981043534,
+              "integrated_mass_strictly_above_level": 0.9499972894587946,
+              "threshold": 5.495722441899225,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500060708684955,
+              "integrated_mass_strictly_above_level": 0.9499997697776383,
+              "threshold": 5.161853630323323,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950001071765228,
+              "integrated_mass_strictly_above_level": 0.9499935303500642,
+              "threshold": 6.1779273022733685,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 3,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500042234938951,
+              "integrated_mass_strictly_above_level": 0.9499979420175704,
+              "threshold": 5.145785405208956,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500065532735199,
+              "integrated_mass_strictly_above_level": 0.94999950273389,
+              "threshold": 5.775802064793773,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500025296958843,
+              "integrated_mass_strictly_above_level": 0.9499946879854752,
+              "threshold": 6.42392916707289,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500067454012613,
+              "integrated_mass_strictly_above_level": 0.9499997849267585,
+              "threshold": 5.702020712727712,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 4,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950004374658108,
+              "integrated_mass_strictly_above_level": 0.9499988323885991,
+              "threshold": 4.5402271818160465,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500040798294741,
+              "integrated_mass_strictly_above_level": 0.9499974939952308,
+              "threshold": 5.395115412069159,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500043309348146,
+              "integrated_mass_strictly_above_level": 0.9499974063173375,
+              "threshold": 5.672646637089285,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500010205656578,
+              "integrated_mass_strictly_above_level": 0.9499943540334673,
+              "threshold": 5.461223170425666,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500013674068077,
+              "integrated_mass_strictly_above_level": 0.94996967496095,
+              "threshold": 6.490612911679414,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 4,
+              "y_parameter_index": 5,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500058239392437,
+              "integrated_mass_strictly_above_level": 0.9499999189498018,
+              "threshold": 4.83736735081333,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500035249808704,
+              "integrated_mass_strictly_above_level": 0.9499969860966218,
+              "threshold": 5.356653976401864,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500070736780368,
+              "integrated_mass_strictly_above_level": 0.9499998422033928,
+              "threshold": 5.924024028406222,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500041653140465,
+              "integrated_mass_strictly_above_level": 0.9499976748696909,
+              "threshold": 5.31697201624415,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500011792360419,
+              "integrated_mass_strictly_above_level": 0.9499937029214784,
+              "threshold": 6.124596890395578,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 4,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950003694742922,
+              "integrated_mass_strictly_above_level": 0.94999836860995,
+              "threshold": 4.363168130556227,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 5,
+              "y_parameter_index": 6,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950013083330826,
+              "integrated_mass_strictly_above_level": 0.9499828847406782,
+              "threshold": 6.184671262294888,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950002976949615,
+              "integrated_mass_strictly_above_level": 0.9499967164730669,
+              "threshold": 5.128582388111215,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500043128450814,
+              "integrated_mass_strictly_above_level": 0.9499982594064886,
+              "threshold": 4.958976895202832,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500057070335081,
+              "integrated_mass_strictly_above_level": 0.9499999809164369,
+              "threshold": 4.6908351046115975,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.950006425311028,
+              "integrated_mass_strictly_above_level": 0.9499995030479602,
+              "threshold": 5.6707179052263,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 4,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500046267918585,
+              "integrated_mass_strictly_above_level": 0.9499886487062676,
+              "threshold": 4.3630825719883735,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 5,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500031030446966,
+              "integrated_mass_strictly_above_level": 0.9499960396269083,
+              "threshold": 5.786351852160491,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 6,
+              "y_parameter_index": 7,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500046266725974,
+              "integrated_mass_strictly_above_level": 0.9499985130807386,
+              "threshold": 5.008254450760324,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 0,
+              "y_parameter_index": 8,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500125535392299,
+              "integrated_mass_strictly_above_level": 0.9499986224840998,
+              "threshold": 11.412320362548446,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 1,
+              "y_parameter_index": 8,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500041233211123,
+              "integrated_mass_strictly_above_level": 0.949997665329431,
+              "threshold": 5.290386785355624,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 2,
+              "y_parameter_index": 8,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.95000115668302,
+              "integrated_mass_strictly_above_level": 0.9499933108337869,
+              "threshold": 6.427319691689972,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 3,
+              "y_parameter_index": 8,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500011025704441,
+              "integrated_mass_strictly_above_level": 0.9499947357874994,
+              "threshold": 5.215668588340864,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 4,
+              "y_parameter_index": 8,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500045837771399,
+              "integrated_mass_strictly_above_level": 0.9499977415804283,
+              "threshold": 5.605127546211212,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 5,
+              "y_parameter_index": 8,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500049059416534,
+              "integrated_mass_strictly_above_level": 0.9499981070316612,
+              "threshold": 5.569667065631091,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 6,
+              "y_parameter_index": 8,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500050874014379,
+              "integrated_mass_strictly_above_level": 0.9499981416941635,
+              "threshold": 5.689923399271014,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            },
+            {
+              "x_parameter_index": 7,
+              "y_parameter_index": 8,
+              "target_mass": 0.95,
+              "integrated_mass_at_or_above_level": 0.9500010907980841,
+              "integrated_mass_strictly_above_level": 0.9499947228775686,
+              "threshold": 5.216600486281886,
+              "integration_grid_shape": [
+                256,
+                256
+              ]
+            }
+          ],
+          "filled_bands_per_dataset": 1,
+          "outline_levels_per_dataset": 1,
+          "fill_alpha": 0.45,
+          "in_figure_information_blocks": 0
+        }
+      }
+    }
+  ],
+  "direction": "Park-style single 95% stored-sample density region",
+  "second_dataset_added": false,
+  "analytic_validation": {
+    "gaussian_threshold_over_peak": 0.05002846368114842,
+    "expected_gaussian_threshold_over_peak": 0.05,
+    "uniform_ties": "whole plateau included",
+    "passed": true
+  },
+  "reference": "https://arxiv.org/html/1809.08995v2#S6.F4",
+  "dependencies_sha256": {
+    "paper/web/corner_contours_20261104/render.py": "ba51a8c4e99a380c09f41aa6835684ee5f9b7481dd0e9296f0ee79038236bcce",
+    "paper/web/corner_structures_20261104/render.py": "d7a98a16bf48ef8b91913801b8279b74f3debf8d1805f6b54cd6881c93c4d7dc"
+  }
+}
