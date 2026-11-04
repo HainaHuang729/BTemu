@@ -1,0 +1,13 @@
+{
+  "source_revision": "e250ae0",
+  "received_after_reports_frozen": true,
+  "reviewers_not_given_this_update": true,
+  "source_sha256": {
+    "corner_kpms_scan_kp10_msfree7d_100k_20261031.png": "0754fa86fdd25d44dc21531fef9ebd583c672642964a3b920bacd24f9393b899",
+    "corner_kpms_scan_kp5_ms1p5_100k_20261031.png": "f0dc10a6bd28d724183c3865d8d8ce40b38762e25ee5cc089485b4187f373ce1",
+    "corner_kpms_scan_kp1_ms1p5_100k_20261031.png": "36fb3fa6489fbf6be1fdb5e32d5a32402bf4ae23baf01fdf70998a03bdf57636",
+    "corner_kpms_scan_kp10_ms2p5_100k_20261031.png": "bf7e87ef36cbe266784b37edbdb7a7db7ae32e1399f2a3492ccc7caa08afc9ef"
+  },
+  "visual_inspection_only": true,
+  "no_raw_chain_or_diagnostics_in_this_commit": true
+}

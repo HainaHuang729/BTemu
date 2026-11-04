@@ -17,5 +17,6 @@
   "substantive_claim_anchors_present": true,
   "actual_figures_inspected_by_each_reviewer": true,
   "no_manuscript_or_html_body_edits": true,
-  "review_package_sha256": "31ef27237451df521ec0b8d13314cf8cbf3a1af2df0f3a1b9bf28dbb39bad6d7"
+  "review_package_sha256": "0170f89166c22b53b3d21ee8d8f03d4d3976d7b2403240d4fd4e46c08340117b",
+  "post_freeze_source_update_separately_labelled": true
 }
