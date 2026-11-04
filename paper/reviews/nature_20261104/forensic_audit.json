@@ -1,0 +1,151 @@
+{
+  "reviewer_hashes_before_audit": [
+    "fd71d9757c5e64bf857233cde6be734eac3712d5ed57a4b5bcf082cab935b4ee",
+    "ede12bd330296e9d9235f01d5bdb13ba4edabe7e5b19078939f840532dbd9b7d",
+    "92d7cf61cc2de8ea32ff09798ef6095c332ca8d2aa7abc144036ee2c0bc8e03a"
+  ],
+  "packet_hashes_verified": true,
+  "findings": [
+    {
+      "audit_id": "AUD-01",
+      "status": "passed",
+      "location": "Methods reported-history-accuracy and new-model-validation",
+      "claim_pointer": "Older validation metrics distinguish average and seed 11",
+      "evidence_pointer": "validation_predictions.npz; methods_body.tex tab:accuracy",
+      "check": "Recompute trajectory RMSE from all 512 histories and verify the arithmetic physical-output average",
+      "result": {
+        "average": {
+          "median": 0.0010076164530363834,
+          "q95": 0.006814576402167939
+        },
+        "seed11": {
+          "median": 0.00152412201824959,
+          "q95": 0.010080229640065698
+        }
+      },
+      "impact": "The older prediction-level results are reproducible; source old-model column mixing is already corrected in the manuscript",
+      "resolution_test": "Retain separate predictor definitions",
+      "reviewer_overlap": "R1-M3; R2-M4 mention the distinction without asserting the old metrics fail"
+    },
+    {
+      "audit_id": "AUD-02",
+      "status": "aggregation_ambiguity",
+      "location": "Methods new-model-validation; HTML validation table",
+      "claim_pointer": "The new q90 and RMSE values characterize the current predictor",
+      "evidence_pointer": "metrics_100k.json; methods_body.tex tab:100k-validation",
+      "check": "Inspect fields and supplied evaluation artifacts",
+      "result": {
+        "training_n": 100000,
+        "split_n": 10000,
+        "training_seeds": [
+          11,
+          29,
+          47,
+          71,
+          101
+        ],
+        "prediction_arrays_in_packet": false,
+        "missing": [
+          "evaluated membership",
+          "prediction aggregation",
+          "signed/absolute q90 definitions"
+        ]
+      },
+      "impact": "No matched improvement factor or current-predictor inference qualification can be reproduced",
+      "resolution_test": "Supply the generating evaluation code and prediction/label pairs",
+      "reviewer_overlap": "R1-M3; R2-M4"
+    },
+    {
+      "audit_id": "AUD-03",
+      "status": "passed",
+      "location": "Physics fixed-spectrum-100k; HTML fixed table",
+      "claim_pointer": "Reported parameter-centre changes are transcribed correctly",
+      "evidence_pointer": "results_20261104.md; physics_body.tex tab:fixed-100k",
+      "check": "Subtract the tabulated centres directly",
+      "result": {
+        "kp1_minus_kp5_eta": -0.629,
+        "kp1_minus_kp5_alpha": 0.08799999999999997,
+        "kp1_minus_kp10_eta": -0.702,
+        "kp1_minus_kp10_alpha": 0.18000000000000005
+      },
+      "impact": "Correct descriptive arithmetic; significance and run parity remain separate questions",
+      "resolution_test": "Retain fixed-MS and jointly changed-spectrum comparisons separately",
+      "reviewer_overlap": "R1-M1"
+    },
+    {
+      "audit_id": "AUD-04",
+      "status": "confirmed_internal_error",
+      "location": "Source timing ledger section 4, phase60 row",
+      "claim_pointer": "The source equates 26 hours of core time with 943695 core-seconds",
+      "evidence_pointer": "timing_ledger.md phase60 sealed test row",
+      "check": "Divide core-seconds by 3600",
+      "result": {
+        "source_hours": 26,
+        "core_seconds": 943695,
+        "recomputed_core_hours": 262.1375
+      },
+      "impact": "The source ledger has an arithmetic contradiction. The visible HTML already uses the correct 262.14 core-h; no manuscript number is changed by this finding",
+      "resolution_test": "Correct the source hours or identify a different accounting quantity. Do not replace the corrected HTML by the 26 h prose",
+      "reviewer_overlap": "No reviewer-local concern ID for this arithmetic finding"
+    },
+    {
+      "audit_id": "AUD-05",
+      "status": "unresolved_input_needed",
+      "location": "Source timing ledger section 2; metrics_100k.json seconds",
+      "claim_pointer": "New training time is reported under two totals",
+      "evidence_pointer": "timing_ledger.md 13 h 30 m; metrics_100k.json seconds",
+      "check": "Convert JSON seconds to hours and compare with the ledger",
+      "result": {
+        "json_seconds": 47661.272694741376,
+        "json_hours": 13.239242415205938,
+        "ledger_hours": 13.5,
+        "difference_seconds": 938.7273052586243
+      },
+      "impact": "Different elapsed scopes or a transcription could explain the discrepancy. Current HTML distinguishes the two values",
+      "resolution_test": "Supply job ID, start/end and the scope of the JSON timer",
+      "reviewer_overlap": "No reviewer-local concern ID for this elapsed discrepancy"
+    },
+    {
+      "audit_id": "AUD-06",
+      "status": "passed",
+      "location": "Physics app:current-chains and app:t3-selection; methods finite comparison",
+      "claim_pointer": "Displayed retained counts follow the stated distinct selections",
+      "evidence_pointer": "physics_body.tex and methods_body.tex chain construction; visible_html_content.txt",
+      "check": "Multiply stated retained steps by 32 walkers",
+      "result": {
+        "6D_last_half_rows": 80000,
+        "8D_last_half_rows": 89088,
+        "exact200_all_rows": 6400,
+        "exact200_T6_rows": 3200,
+        "T3_joint_ext2_rows": 32000
+      },
+      "impact": "No count conflict is found between these distinct archived selections; this does not diagnose convergence",
+      "resolution_test": "Preserve selection labels and avoid assigning old plots to new 100k chains",
+      "reviewer_overlap": "R1-M1; R2-M2; R3-M1 distinguish sample construction from inference qualification"
+    },
+    {
+      "audit_id": "AUD-07",
+      "status": "provenance_gap",
+      "location": "Physics spectrum-modification and both likelihood definitions",
+      "claim_pointer": "The physical interpretation depends on the actual native spectrum, normalization and inference convention",
+      "evidence_pointer": "physics_body.tex spectrum-modification author note; methods_body.tex likelihood/postprocessing paragraphs",
+      "check": "Read explicit implementation qualifications in supplied texts",
+      "result": "Native no-break numerical equivalence, complete deployed identities and optical-depth parity are not established by this packet",
+      "impact": "A contract formula is not a verified native implementation or a primordial-spectrum mapping",
+      "resolution_test": "Supply frozen run/native records or restrict framing to the verified phenomenological family",
+      "reviewer_overlap": "R1-M4; R2-M3; R3-M3"
+    },
+    {
+      "audit_id": "AUD-08",
+      "status": "not_assessable",
+      "location": "Methods T7 summary and eq:t7-target-difference",
+      "claim_pointer": "IC target-difference summaries describe finite-reference likelihoods",
+      "evidence_pointer": "T7_summary.json; methods_body.tex initial-condition-scatter-and-limits-of-inference",
+      "check": "Inventory raw family histories and deployed predictions in packet",
+      "result": "Family-level likelihood arrays and deployed predictions are not supplied; signed and absolute statistics cannot be reconstructed from aggregate JSON",
+      "impact": "The IC audit cannot be turned into a new-model error bound or universal error floor",
+      "resolution_test": "Provide family-level histories/likelihoods and same-point deployed predictions",
+      "reviewer_overlap": "R1-M2; R2-M4; R3-M2"
+    }
+  ]
+}

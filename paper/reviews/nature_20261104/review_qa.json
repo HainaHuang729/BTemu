@@ -1,0 +1,21 @@
+{
+  "reviewer_count": 3,
+  "isolated_contexts": true,
+  "preassigned_emphases": true,
+  "immutable_packet_files": 28,
+  "reviewer_report_sha256": [
+    "fd71d9757c5e64bf857233cde6be734eac3712d5ed57a4b5bcf082cab935b4ee",
+    "ede12bd330296e9d9235f01d5bdb13ba4edabe7e5b19078939f840532dbd9b7d",
+    "92d7cf61cc2de8ea32ff09798ef6095c332ca8d2aa7abc144036ee2c0bc8e03a"
+  ],
+  "reports_unchanged_after_freezing": true,
+  "forensic_pass_after_freezing": true,
+  "audit_findings": 8,
+  "consensus_and_audit_separated": true,
+  "blocking_disagreement_preserved": true,
+  "reports_english": true,
+  "substantive_claim_anchors_present": true,
+  "actual_figures_inspected_by_each_reviewer": true,
+  "no_manuscript_or_html_body_edits": true,
+  "review_package_sha256": "31ef27237451df521ec0b8d13314cf8cbf3a1af2df0f3a1b9bf28dbb39bad6d7"
+}

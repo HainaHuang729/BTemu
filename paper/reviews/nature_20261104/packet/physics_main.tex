@@ -1,0 +1,33 @@
+\documentclass[reprint,superscriptaddress,nofootinbib,nobibnotes,amsmath,amssymb,aps,prd,floatfix,longbibliography]{revtex4-2}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,bm,booktabs,graphicx,xcolor}
+\usepackage{hyperref}
+\usepackage{xurl}
+% Support both Overleaf's project-root build and latexmk -cd builds.
+\IfFileExists{paper/sections/btemu_body.tex}{%
+  \def\btemubody{paper/sections/btemu_body.tex}%
+  \def\btemubib{reference/btemu}%
+  \graphicspath{{paper/figures/}{paper/figures/coeval_optional/}{paper/figures/extra/}}%
+}{%
+  \def\btemubody{sections/btemu_body.tex}%
+  \def\btemubib{../reference/btemu}%
+  \graphicspath{{figures/}{figures/coeval_optional/}{figures/extra/}}%
+}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlength{\emergencystretch}{2em}
+\renewcommand{\dbltopfraction}{0.95}
+\renewcommand{\textfraction}{0.02}
+\begin{document}
+\title{Blue-tilted primordial power spectra and reionization: exploratory joint inference with galaxy astrophysics}
+\author{Haina Huang}
+\affiliation{Department of Physics, The Chinese University of Hong Kong, Shatin, Hong Kong, China}
+\date{November 4, 2026}
+\begin{abstract}
+A change in the small-scale matter spectrum can alter the predicted sources of reionization, while galaxy parameters provide additional freedom to fit the observations. We examine their interplay in a BT-modified 21cmFAST calculation with a spectral break scale $k_p$ and small-scale slope MS. The galaxy prescription contains eight astrophysical parameters; the current joint runs vary six of them, with two X-ray parameters fixed. At fixed astrophysics, the exported ionization histories separate as the spectrum changes. After fitting galaxy parameters independently for each spectrum, the stored luminosity-function maxima remain close to the PL reference over part of the displayed grid and deteriorate elsewhere. Joint samples combine luminosity functions, optical depth and a neutral-fraction constraint, and explore six galaxy coordinates or those coordinates together with $k_p$ and MS. The new six-coordinate observation-combination summaries show their largest decrease in sample spread in the escape-fraction normalization. Newer fixed-spectrum summaries also show changes in the fitted galaxy centres across spectral settings. The free-spectrum distributions are broad. Independent convergence has not been established, so weak observational information and incomplete sampling remain possible explanations. These results motivate a joint treatment of spectrum and galaxy freedom and a comparison of the information supplied by each observation.
+\end{abstract}
+\maketitle
+\begin{quote}\small Physics working draft v0.17. Emulator development is documented separately.\end{quote}
+\input{\btemubody}
+\end{document}

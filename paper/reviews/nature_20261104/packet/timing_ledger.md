@@ -1,0 +1,69 @@
+# Timing and cost ledger — 2026-11-04
+
+All wall times are measured from Slurm accounting or the job logs; core-hours are `elapsed × cpus`.
+
+## 1. Single 21cmFAST realization (production settings)
+
+| quantity | value |
+|---|---|
+| box / mesh | 250 Mpc, DIM 512, HII_DIM 128, 16 threads |
+| median wall time | **416 s** |
+| q90 wall time | 494 s |
+| cost per realization | ~1.85 core-hours |
+
+## 2. BTemu dataset (xHI histories)
+
+| stage | wall | core-hours |
+|---|---:|---:|
+| 100,000 train + 10,000 validation, 64 concurrent | ~2 weeks (interrupted several times) | **~200,000** |
+| snapshot rebuild from labels.sqlite | 1–2 min | ~0 |
+| 5-seed training, 65,536 points, 8 cores | 4 h 38 m | ~37 |
+| **5-seed training, 100,000 points, 8 cores** | **13 h 30 m** | ~108 |
+| validation prediction + metrics (512 / 10,000 samples) | 5–6 min | ~0.2 |
+
+## 3. MCMC chains
+
+| chain | steps × walkers | configuration | wall |
+|---|---|---|---|
+| exact 6-D reference | 200 × 32 | 16 workers × 16 threads | **2 d 13 h** (1019 s/iteration) |
+| emulator 6-D, segment 1 | 1000 | single process | 4 h 07 m (14.7 s/step) |
+| emulator 6-D, segment 2 | 2000 | single process | 8 h 34 m |
+| emulator 6-D, segment 3 | 2000 | 8 cores | ~4 h |
+| 8-D KP/MS, segment 1 | 2000 | 8 cores | 4 h 48 m (8.6 s/step) |
+| 8-D KP/MS, segment 2 | 6000 | 8 cores | 12 h 00 m |
+| 8-D KP/MS, segment 3 | 7400 | 8 cores | 16 h 00 m (timeout, resumed) |
+| 8-D KP/MS, segment 4 | 600 | 8 cores | 1 h 12 m |
+| kp/ms scan chains (1500 steps each) | 1500 | 2 threads, 3 in parallel | ~4 h per chain |
+| scan continuations | 2500 / 4000 / 1500 | same | 6–10 h per chain |
+| **100k-model chains (kp10, kp1, kp5, 7-D)** | 3000 each | **16 processes** | **38–46 min each (≈0.8 s/step)** |
+| PS-only exploratory | 600 | single process | 12 m 23 s |
+| **PS + LF joint** | 1200 | 16 processes | **~21 min** |
+
+Speed-up from multiprocessing: 7.7 s/step (single) → 0.8 s/step (16 processes), about 10×.
+
+## 4. PS-related runs
+
+| run | content | cost |
+|---|---|---|
+| PS pilot | 8 realizations × 6 redshifts, PS extraction | 484 s per realization, 1 h 05 m total |
+| emulator vs independent sims | 4 fresh realizations + comparison | 34 min (job), ~2.3 core-hours |
+| 8-IC pilot (full-box estimator) | 105 thetas × 4 ICs | ~33 min per theta, ~2.5–3 h per 5-theta job |
+| 8-IC pilot (chunked estimator) | same, 8 sub-boxes | running, expect similar |
+| phase58 legacy 4-IC training set | 23,604 simulations | 49.2 h wall at 1,024 cores (documented in the contract) |
+| phase60 sealed test | 1,024 simulations | 26 h of core time (943,695 core-seconds) |
+
+## 5. Post-processing / bookkeeping jobs
+
+| task | wall |
+|---|---|
+| advance.py controller pass | 3–4 min |
+| reconciliation of unstarted slots | 2–4 min |
+| R-hat / posterior summaries | 1–2 min per chain set |
+| figure generation | < 1 min |
+| monitor poll (2-hour interval) | seconds |
+
+## 6. Headline cost ratios
+
+- One exact 21cmFAST evaluation ≈ **460 s**; one BTemu prediction ≈ **8 × 10⁻⁵ s** → about **6 × 10⁶** speed-up for the forward model.
+- A 3000-step chain with 32 walkers costs ~96,000 evaluations: **1,400 h with exact**, **~2 h with the emulator + 16 processes**.
+- Retraining on the full 100k dataset costs less than **2 h of a single 256-core node**, i.e. about the same as 25 exact evaluations.

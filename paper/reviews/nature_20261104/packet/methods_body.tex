@@ -1,0 +1,321 @@
+\section{Introduction}\label{introduction}
+
+Repeated reionization calculations can make joint exploration of a modified power spectrum and galaxy parameters expensive. A history emulator approximates this part of the forward calculation while retaining an explicit observational likelihood. Here we document BTemu for a selected BT-modified 21cmFAST model, its released prediction-level validation and the limits of the available inference checks.
+
+The scope is defined by the physical model and the quantities used in inference. BTemu takes eight astrophysical coordinates together with a spectral break scale $k_p$ and small-scale slope MS, and predicts a volume-averaged neutral-fraction history. The luminosity functions retain the original exact provider, and the optical depth is derived from the history. This allows the history approximation to be tested separately from the LF calculation.
+
+Emulation and comparisons of inferred distributions are established approaches in this setting \cite{Breitman2024}. The more recent 21cmEMU v3 uses diffusion and LSTM models for a broader collection of summary observables and includes simulations with different initial conditions \cite{Breitman2026}. The present task concerns the neutral-fraction histories of a selected BT calculation. We evaluate its released predictions and finite inference checks under a specified history-based likelihood. The broader observable sets and different physical models in the published emulators require common observables and error definitions before a quantitative accuracy comparison.
+
+The released arrays establish development-validation accuracy for one five-model average. A short exact chain permits a finite-sample comparison, while an existing repeat-IC audit exposes the distinction between representative-history and IC-marginalized likelihoods. Independent final testing, appropriate reference sampling and a validated treatment of this distinction remain open. The effect of BT on the physical MCMC results belongs to the separate reionization analysis.
+
+
+\section{Emulated model and likelihood interface}\label{physical-model-and-simulations}
+
+The forward calculation specifies how an input spectrum and a galaxy prescription produce the observables entering inference. We distinguish the emulator design domain from the priors used by individual inference runs, and the input linear matter spectrum from the primordial curvature spectrum.
+
+\subsection{Spectrum modification}\label{spectrum-modification}
+
+The frozen implementation describes the input linear matter power spectrum as
+
+\[
+P_{\mathrm{lin}}(k)=A\,T_{\mathrm{EH}}^2(k)
+\begin{cases}
+k^{n_s}, & k\leq k_p,\\
+k^{\mathrm{MS}}k_p^{n_s-\mathrm{MS}}, & k>k_p,
+\end{cases}
+\]
+
+with the native $\sigma_8$ normalization determining $A$. Holding $\sigma_8$ fixed changes $A$ as the spectrum shape changes; it does not hold the large-scale primordial amplitude fixed. This expression describes the spectrum supplied to the simulation, including its transfer function. It should be distinguished from a definition of the primordial curvature spectrum. The branches join continuously at \ensuremath{k_p}.~MS = $n_s=0.968$ removes the break algebraically; numerical equivalence with the separately implemented PL branch requires an implementation check.
+
+The parameter domain is \ensuremath{k_p} \(\in\) {[}1,30{]} $h\,\mathrm{Mpc}^{-1}$ and MS \(\in\) {[}0.5,4{]}. Since this includes MS below n\_s, the full design also contains spectra with a shallower small-scale slope than the reference. We use ``blue-tilted'\,' for the enhanced-slope subset and retain the full domain when describing emulator training. The native code receives \ensuremath{k_p} in $\mathrm{Mpc}^{-1}$, obtained by multiplying the value in $h\,\mathrm{Mpc}^{-1}$ by h = 0.678. Relative amplitudes must be evaluated with the adopted normalization rather than inferred from the slope alone.
+
+{[}Author note: Supply the exact primordial-spectrum definition and the native normalization test before interpreting bounds on MS as bounds on a primordial index. The expression above follows the exported contract; it has not been independently checked against the external native source.{]}
+
+\subsection{Astrophysical parameters}\label{astrophysical-parameters}
+
+The model contains eight astrophysical coordinates: F\_STAR10, ALPHA\_STAR, F\_ESC10, ALPHA\_ESC, M\_TURN, t\_STAR, L\_X, and NU\_X\_THRESH. F\_STAR10 and ALPHA\_STAR describe the normalization and mass dependence of star formation; F\_ESC10 and ALPHA\_ESC describe the escape of ionizing photons. M\_TURN sets a characteristic suppression mass, and t\_STAR controls the star-formation timescale. L\_X and NU\_X\_THRESH describe the X-ray emission normalization and low-energy threshold.
+
+The numerical coordinates must be distinguished from their physical quantities. F\_STAR10 and F\_ESC10 are stored as base-ten logarithms, M\_TURN as $\log_{10}(M/M_\odot)$, and L\_X as the logarithm of the luminosity per unit star-formation rate. The inference coordinate ETA\_STAR obeys
+
+\begin{equation}\log_{10}f_{\star,10}=\eta_\star+\log_{10}t_\star.\end{equation}
+
+The reference galaxy prescription \cite{Park2019} is
+\begin{align}
+f_\star(M_h)&=\min\!\left[1,f_{\star,10}\left(\frac{M_h}{10^{10}M_\odot}\right)^{\alpha_\star}\right],\\
+M_\star&=f_\star\frac{\Omega_b}{\Omega_m}M_h,\qquad
+\dot M_\star=\frac{M_\star H(z)}{t_\star},\\
+f_{\rm esc}(M_h)&=\min\!\left[1,f_{{\rm esc},10}\left(\frac{M_h}{10^{10}M_\odot}\right)^{\alpha_{\rm esc}}\right],\\
+f_{\rm duty}(M_h)&=\exp(-M_{\rm turn}/M_h).
+\end{align}
+These equations specify the adopted reference parametrization. The UV conversion, halo-mass-function implementation and BT modifications in the external native build still require a frozen source release; the equations alone do not verify that build.
+
+Changing coordinates must preserve the original prior density. A uniform prior in $\log_{10} f_{\star,10}$ and $t_\star$ is mapped to a slanted support in $(\eta_\star,t_\star)$, with unit Jacobian. A rectangular uniform prior in $\eta_\star$ and $t_\star$ instead gives a different support. The run-specific support must be recorded. The emulator input ranges in Table~\ref{tab:parameters} specify its design support; they do not by themselves define the prior for every inference calculation.
+
+\subsection{Numerical histories}\label{numerical-histories}
+
+The selected simulation uses a 250 Mpc box, HII\_DIM = 128, and DIM = 512. Inhomogeneous recombinations, mass-dependent ionizing efficiency, and spin-temperature fluctuations are enabled. The fixed cosmological values are \(\Omega\)\_m = 0.308, \(\Omega\)\_b = 0.0484, h = 0.678, $\sigma_8=0.815$, and $n_s=0.968$.
+
+The predicted quantity is the volume mean of the coeval neutral-fraction field, xH\_box. It is sampled at integer redshifts from z = 5 to 35, with an additional node at z = 5.9, giving 32 values. These are volume-averaged coeval histories. They contain neither a spatial light-cone construction nor a 21-cm brightness-temperature power spectrum. Histories retain the simulator's residual neutral fraction at z = 5; no additional completion-of-reionization condition or monotonicity constraint is imposed.
+
+\subsection{Luminosity functions and reionization constraints}\label{luminosity-functions-and-reionization-constraints}\label{observational-data-and-inference}
+
+The luminosity-function term retains 34 of 49 available HST-era and Donnan data points under the strict selection \ensuremath{M_{\mathrm{UV}}} \textgreater{} -20. The source tables cover $z=6,7,8,9,10$; the high-redshift subset is attributed to Donnan et al.~\cite{Donnan2024}. The HST tables are inherited through the original 21CMMC data bundle \cite{Greig2015,Park2019}. Their point-by-point mapping to the original observational publications remains to be supplied; the atlas display set is not substituted for this likelihood selection. The exported specification uses the supplied pointwise uncertainties without a covariance matrix; for the asymmetric Donnan errors it adopts the arithmetic mean of the upper and lower errors.
+
+The optical-depth constraint \cite{Planck2018} is a split-normal likelihood with mean 0.0544, upper uncertainty 0.007, and lower uncertainty 0.0081, attributed in the contract to Planck 2018 TT,TE,EE+lowE. The neutral-fraction term uses the McGreer constraint at $z=5.9$ \cite{McGreer2015}: no penalty below \ensuremath{x_{\mathrm{HI}}} = 0.06, with a specified scatter of 0.05 above that threshold. The likelihood implementation is inherited from the original analysis.
+
+For a representative history $X(\theta)$, the adopted form of the history-dependent terms is
+\begin{align}
+\ell_\tau&=-\frac{1}{2}\left[\frac{\tau[X]-0.0544}{\sigma_\tau}\right]^2,\\
+\sigma_\tau&=\begin{cases}0.0081,&\tau[X]<0.0544,\\0.007,&\tau[X]\geq0.0544,\end{cases}\\
+\ell_x&=-\frac{1}{2}\left[\frac{\max(0,X(5.9)-0.06)}{0.05}\right]^2.
+\end{align}
+Parameter-independent normalizations are omitted. The LF term $\ell_{\rm LF}^{\rm exact}(\theta)$ is evaluated by the original exact provider. The export does not establish whether its residuals are formed in linear or logarithmic density, so we do not invent an LF kernel from the plotted error bars.
+
+We define the emulator interface in this paper as the deterministic representative-history approximation
+\begin{equation}
+\ell_{\rm rep}(\theta)=\ell_{\rm LF}^{\rm exact}(\theta)
++\ell_\tau[\widehat X(\theta)]+\ell_x[\widehat X(\theta)].
+\end{equation}
+The five-model average $\widehat X$ is not assumed to be a validated conditional IC mean. This likelihood is not marginalized over initial conditions. If $H(\theta,s)$ denotes a simulated history with random seed $s$, the marginalized likelihood would instead average $\exp\{\ell_\tau[H]+\ell_x[H]\}$ over $s$ before taking its logarithm. The available IC audit does not validate replacement of that average by $\ell_{\rm rep}$. Complete receipts are still needed to establish that each archived chain used the stated deterministic interface and the same LF kernel and priors.
+
+Optical depth is derived from the history using the original \texttt{tau\_from\_history} and native \texttt{compute\_tau} routines; there is no separate optical-depth network. The executable adapter reads the contract's postprocessing arguments $z_{\min}=5$, $z_{\max}=35$, with 31 interpolation points. A separate likelihood metadata entry lists $5$--$30$ and 25 points. We use the executable adapter convention to describe the interface, while treating optical-depth parity between archived runs as unverified until their invocation records are supplied.
+
+\subsection{Parameter domain and chain definitions}\label{parameter-domain-and-chain-definitions}
+
+Table~\ref{tab:parameters} lists the ten-dimensional emulator design support. Uniform design sampling in these coordinates must not be confused with an independently transformed inference prior.
+
+\begin{table*}[t]
+\caption{Emulator design support. These ranges do not independently specify an inference prior.}
+\label{tab:parameters}
+\centering\small
+\begin{tabular}{p{0.2\textwidth}p{0.15\textwidth}p{0.56\textwidth}}
+\toprule
+Coordinate & Design range & Stored units or convention \\
+\midrule
+F\_STAR10 & {[}-3, 0{]} & log10 star-formation efficiency normalization \\
+ALPHA\_STAR & {[}-0.5, 1{]} & dimensionless slope \\
+F\_ESC10 & {[}-3, 0{]} & log10 escape-fraction normalization \\
+ALPHA\_ESC & {[}-1, 0.5{]} & dimensionless slope \\
+M\_TURN & {[}8, 11{]} & $\log_{10}(M/M_\odot)$ \\
+t\_STAR & {[}0.01, 1{]} & dimensionless \\
+L\_X & {[}38, 42{]} & log10($\mathrm{erg\,s^{-1}}/(M_\odot\,\mathrm{yr^{-1}})$) \\
+NU\_X\_THRESH & {[}100, 1500{]} & eV \\
+\ensuremath{k_p} & {[}1, 30{]} & $h\,\mathrm{Mpc}^{-1}$ \\
+MS & {[}0.5, 4{]} & dimensionless slope \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The six-parameter comparison fixes L\_X = 40.5 and NU\_X\_THRESH = 500 eV according to the new results snapshot. Its HDF5 parameter order is ETA\_STAR, t\_STAR, ALPHA\_STAR, M\_TURN, F\_ESC10, ALPHA\_ESC. The new eight-dimensional files append KP\_h\_Mpc and MS to these six coordinates; they do not sample L\_X or NU\_X\_THRESH. The new configuration table attributes fixed $L_X=40.5$, $E_0=500\,\mathrm{eV}$ to these runs and $k_p=10\,h\,\mathrm{Mpc}^{-1}$, MS $=2.5$ to 6D. The exact-chain attributes confirm the latter spectrum settings. The emulator HDF5 files do not independently confirm all fixed values or provide weight hashes, so these table-level attributions remain distinct from verified run receipts. These runs must remain distinct from the older eight-astrophysical-coordinate exact calculation in 21cmTB.
+
+Posterior comparisons require the same observations, priors, fixed parameters, and optical-depth convention. They also require converged chains with adequate effective sample sizes. The existing run lengths and preliminary centre offsets alone do not establish posterior fidelity.
+
+\section{BTemu and the accuracy of reionization histories}\label{btemu-a-surrogate-for-neutral-fraction-histories}
+
+BTemu approximates the history calculation for joint exploration of the spectrum and galaxy parameters. We first define the training labels and predictor, then evaluate the released predictions before examining the available inference chains. History accuracy and agreement of inferred distributions are assessed separately.
+
+\subsection{Training data and initial conditions}\label{training-data-and-initial-conditions}
+
+The current development programme assigns one independent random initial-condition realization to each physical parameter point. It is distinct from the earlier fixed-initial-condition dataset. The parameter design uses independently scrambled Sobol draws with prescribed strata and mappings; the resulting design is not a globally balanced Sobol net. The initial-condition seed is not an input to the network.
+
+The November 4 results export reports completion of the 100,000-training-history and 10,000-validation-history dataset and a new five-seed model. The earlier October 30 08:33 (UTC+8) count was 85,020 and 3,888. We retain the independently reproduced 65,536-example-model validation separately from the new summary in Section~\ref{new-model-validation}. Failed evaluations and selection rules must remain traceable when constructing the final training set.
+
+A network trained with squared history error on random realizations can target a conditional mean under appropriate sampling and optimization. That interpretation still needs independent validation here. In particular, agreement with individual random-realization labels contains both prediction error and realization scatter. It does not directly measure the error relative to a well-determined mean history.
+
+\subsection{Network and training objective}\label{network-and-training-objective}
+
+The configured residual multilayer perceptron has ten inputs, a width of 256, four residual blocks with hidden width 512, and 32 outputs. Each block contains layer normalization, two linear transformations, a SiLU activation, and a residual contribution scaled by 0.5. A sigmoid decoder bounds each predicted neutral fraction between zero and one without enforcing a relation between neighbouring redshift nodes.
+
+Training minimizes the mean squared error in physical \ensuremath{x_{\mathrm{HI}}}, with equal weights for the 32 redshifts. The shared configuration specifies AdamW with learning rate 0.001, weight decay 0.0001, batch size 128, and a maximum of 1,000 epochs. It uses validation-based learning-rate reduction and early stopping. Five initializations, with seeds 11, 29, 47, 71, and 101, assess sensitivity to training initialization. The released validation script averages their five physical sigmoid outputs. This aggregation is verified for the validation arrays; it does not establish calibrated predictive uncertainty or independently identify the predictor weights used by every inference run.
+
+{[}Author note: Match these shared configuration values against the external 65k run receipt and identify the predictor used in each downstream chain.{]}
+
+\subsection{Accuracy measures}\label{accuracy-measures}
+
+For history i, we define the absolute trajectory error as
+
+\[
+\mathrm{RMSE}_i=\left[\frac{1}{32}\sum_{j=1}^{32}
+\left(\widehat{x}_{\mathrm{HI},i}(z_j)-x_{\mathrm{HI},i}(z_j)\right)^2\right]^{1/2}.
+\]
+
+Quantiles are taken across whole parameter-point histories. Since \ensuremath{x_{\mathrm{HI}}} is dimensionless, an RMSE of 0.0010 is an absolute neutral-fraction error. It is not a relative error of 0.10\% with respect to the true history. Relative errors also need care near a vanishing neutral fraction.
+
+We separately examine absolute errors in \ensuremath{x_{\mathrm{HI}}}(5.9), derived optical depth, and the history-dependent log likelihood. The history likelihood contains the optical-depth and neutral-fraction terms; the exact LF contribution is unchanged at a fixed parameter point. Evaluation of the full inference interface must additionally account for the LF provider's domain and numerical behavior.
+
+\subsection{Reproduced development-validation accuracy}\label{reported-history-accuracy}
+
+The released prediction array contains 512 unique development-validation histories, 32 redshift nodes, predictions from all five training seeds, and their arithmetic mean in physical neutral fraction. We recompute every entry in Table~\ref{tab:accuracy} directly from these arrays. This is development validation, used during model development, rather than a sealed final test. The 512-history selection belongs to the earlier predictor and is distinct from the new 100,000-example model report.
+
+\begin{table}[t]
+\caption{Absolute trajectory RMSE across the same 512 development-validation histories. The five-model average is a distinct predictor from each individual network.}
+\label{tab:accuracy}\centering\small
+\begin{tabular}{lcc}\toprule
+Predictor & Median & 95th percentile\\\midrule
+Five-model average & 0.001008 & 0.006815\\
+Seed 11 & 0.001524 & 0.010080\\
+Seed 29 & 0.001462 & 0.008348\\
+Seed 47 & 0.001322 & 0.008302\\
+Seed 71 & 0.001276 & 0.007786\\
+Seed 101 & 0.001322 & 0.008294\\\bottomrule
+\end{tabular}\end{table}
+
+\begin{figure*}[t]\centering
+\includegraphics[width=\textwidth,height=.60\textheight,keepaspectratio]{btemu/fig14_validation.pdf}
+\caption{Direct reconstruction from the 512 released development-validation histories. (a,b) Histories at ascending RMSE ranks 256 and 487, selected before plotting to represent the median and 95th-percentile region; solid lines are simulations and dashed lines the five-model average. Lines connect the 32 original nodes. The lower panels show signed residuals, average prediction minus simulation, on explicitly labelled scales. (c) Empirical RMSE distribution for all 512 histories, with median (dotted) and interpolated 95th percentile (dashed). The examples do not represent independent test coverage or IC uncertainty.}
+\label{fig:validation}\end{figure*}
+
+The mean and maximum RMSE of the five-model average are 0.002132 and 0.040523. The 95th percentile of the maximum absolute error within each history is 0.028465. Thus a small median trajectory error does not control all histories or likelihood tails. Derived optical-depth and likelihood accuracy requires prediction-level postprocessing under one frozen convention.
+
+
+\subsection{The 100,000-example development model}\label{new-model-validation}
+
+The November 4 export reports training on 100,000 histories with a 10,000-history development-validation split and five training seeds (11, 29, 47, 71 and 101). The model is identified as \texttt{random\_ic\_development\_100000\_20261103}. Table~\ref{tab:100k-validation} gives its supplied accuracy summary. The exported split remains part of model development; no sealed final test is reported.
+
+\begin{table}[t]\centering\small
+\caption{Reported development-validation statistics for the 100,000-example model. Values are transcribed from the frozen JSON. The evaluation membership, prediction arrays and aggregation rule are not exported. The signs, absolute-value convention and precise postprocessing for the three reported $q_{90}$ error statistics still require the generating evaluation code.}\label{tab:100k-validation}
+\begin{tabular}{lr}\toprule
+Statistic & Reported value\\\midrule
+Trajectory RMSE, median & 0.000850668\\
+Trajectory RMSE, $q_{95}$ & 0.00556364\\
+$x_{\rm HI}(5.9)$ error, reported $q_{90}$ & 0.0045705\\
+$\tau$ error, reported $q_{90}$ & 0.000335078\\
+$\Delta\ell_{\rm joint}$, reported $q_{90}$ & 1.17734\\
+\bottomrule\end{tabular}\end{table}
+
+The older comparison column in the source report mixes predictor definitions. Recomputing the released 512 histories gives a trajectory-RMSE $q_{95}=0.006814576$ for the five-model average, whereas seed 11 gives 0.010080230. The source's rounded old value 0.0101 matches the latter, while its median 0.0010 matches the average. We therefore report the new statistics separately. A numerical improvement factor requires both predictors to be evaluated on the same histories with the same aggregation and postprocessing.
+
+\section{Finite inference checks}\label{inference-status}
+
+\subsection{Sampling status and scope of the comparison}
+
+The current fixed-spectrum and free-spectrum emulator calculations explore the six galaxy coordinates and those same coordinates with $k_p$ and MS, respectively. Their definitions are given in Section~\ref{parameter-domain-and-chain-definitions}. The supplied files contain 5,000 six-dimensional and 5,568 eight-dimensional stored steps. The ordinary split monitoring statistic spans 1.0340--1.0535 and 1.1136--1.5125, respectively. As the walkers interact within an ensemble, these statistics do not establish convergence from independent chains. Appendix~\ref{app:current-chains} preserves the segment construction, retained samples, moments and corner plots in Figures~\ref{fig:btemu6}--\ref{fig:btemu8}.
+
+These runs test the feasibility of exploring the joint parameter space with the history approximation. Their current sample distributions cannot determine whether the observations constrain $k_p$ or MS after marginalizing over the galaxy parameters. For that purpose, both the approximation and the sampling must be qualified under the same likelihood and priors.
+
+\subsection{Finite comparison with the exact calculation}
+
+The archived T6 export for the earlier model permits a reproducible finite-sample comparison with the 200-step exact chain. We retain stored steps 100--199 for exact (3,200 rows), and steps 2500--4999 of the ordered emulator combination (80,000 rows). Both use population standard deviations ($\mathrm{ddof}=0$). This common fractional selection is a descriptive convention, not a demonstration that either selection is stationary. It differs from Figure~\ref{fig:exact200}, which retains all 200 exact steps.
+
+\begin{table}[t]\centering\small
+\caption{Finite-chain T6 comparison. $\Delta\mu/\sigma_e$ uses emulator minus exact mean and exact sample spread; $s_m/s_e$ is the emulator-to-exact population standard-deviation ratio. These are not posterior-fidelity tests.}\label{tab:t6}
+\begin{tabular}{lrr}\toprule
+Coordinate & $\Delta\mu/\sigma_e$ & $s_m/s_e$\\\midrule
+$\eta_\star$ & $-0.09969$ & 0.90921\\
+$t_\star$ & $-0.02906$ & 1.04530\\
+$\alpha_\star$ & 0.13155 & 0.89545\\
+$\log_{10}(M_{\rm turn}/M_\odot)$ & $-0.09990$ & 1.01531\\
+$\log_{10}f_{{\rm esc},10}$ & $-0.02397$ & 1.06763\\
+$\alpha_{\rm esc}$ & 0.21948 & 0.91470\\\bottomrule
+\end{tabular}\end{table}
+
+This comparison does not test the new 100,000-example predictor. The maximum absolute shift is 0.219479 and the width ratio spans 0.895453--1.067625. The correlation matrices have Frobenius difference 0.668568. These quantities supersede the older rounded summaries for this explicitly defined selection. The exact file is marked smoke-only and unconverged; agreement of a few moments cannot establish the tails, stationarity, or target parity. Independent converged exact sampling, matching priors, postprocessing and predictor/native identities remain necessary before a posterior-fidelity claim.
+
+
+
+\section{Initial conditions and the interpretation of inference}\label{initial-condition-scatter-and-limits-of-inference}
+
+The representative-history likelihood in Section~\ref{luminosity-functions-and-reionization-constraints} requires an additional check because the training labels vary with their initial conditions. The completed initial-condition audit evaluates 128 parameter families with eight realizations each, using 128 existing references and 896 new simulations. It reports an across-family q90 of 0.9480653 for the within-family standard deviation of the joint history log likelihood. The corresponding neutral-fraction standard-deviation statistic at z = 5.9 is 0.007510504. The audit failed its conservative single-realization screen; subsequent development production did not reverse that result.
+
+\begin{table*}[t]\centering\small
+\caption{T7 summary of the existing 128-family, eight-IC development audit. Columns describe the distribution of each family statistic over the 128 parameter families. IC standard deviations use $\mathrm{ddof}=1$; trajectory scatter is their RMS over redshift. The fixed realization is included in the eight-IC mean $\bar X_8$, so the last two rows compare overlapping samples. Values are rounded from the released summary, rather than independently recomputed from family arrays.}\label{tab:t7-ic-summary}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrr}\toprule
+Family statistic & $q_{50}$ & $q_{90}$ & $q_{95}$ & Maximum\\\midrule
+Trajectory IC scatter RMS & $2.88102\times10^{-4}$ & 0.00313344 & 0.00371418 & 0.00515828\\
+$s_{\rm IC}(\tau)$ & $2.85541\times10^{-5}$ & $1.35128\times10^{-4}$ & $1.8982\times10^{-4}$ & $2.73557\times10^{-4}$\\
+$s_{\rm IC}[x_{\rm HI}(5.9)]$ & $1.24622\times10^{-4}$ & 0.0075105 & 0.0137167 & 0.0220459\\
+$s_{\rm IC}(\ell_{\rm hist})$ & 0.0768612 & 0.948065 & 1.4382 & 2.21011\\
+$\max_z|X_{\rm fixed}-\bar X_8|$ & $7.47935\times10^{-4}$ & 0.0133987 & 0.0172319 & 0.02776\\
+History RMSE, $X_{\rm fixed}$ versus $\bar X_8$ & $1.89073\times10^{-4}$ & 0.00288353 & 0.00363617 & 0.00699707\\
+\bottomrule\end{tabular*}\end{table*}
+
+Table~\ref{tab:t7-ic-summary} separates the IC spread within a parameter family from the difference between a fixed realization and the finite eight-IC mean. The latter comparison shares a realization with its reference. All 128 families were used during development. The table summarizes the existing audit rather than adding simulations or an independent test of the deployed predictor.
+
+The value near 0.948 describes IC scatter in the history log likelihood. Emulator error relative to a mean history is a different statistic, so this spread supplies no universal lower bound on that error. The production records assign one random realization to each training point, and the squared-error training code reads each stored history directly. We retain per-realization development validation and the deterministic representative-history inference target. Learning a conditional mean from such labels is possible in principle; this audit does not establish the accuracy of that learned mean or redefine the training labels as eight-IC averages.
+
+For a family with histories $X_r$ and arithmetic mean $\bar X_8$, define
+\begin{equation}
+\delta\ell=\ell_{\rm hist}[\bar X_8]
+-\log\!\left[\frac{1}{8}\sum_{r=1}^{8}\exp\{\ell_{\rm hist}[X_r]\}\right].
+\label{eq:t7-target-difference}
+\end{equation}
+Here $\ell_{\rm hist}$ contains the optical-depth and neutral-fraction terms. The LF contribution is fixed within a family. This compares the likelihood of a mean history to the finite-IC average likelihood, rather than to the average log likelihood. In general,
+
+\[
+\mathbb{E}_{\mathrm{IC}}[\mathcal{L}(x_{\mathrm{HI}})]
+\ne \mathcal{L}(\mathbb{E}_{\mathrm{IC}}[x_{\mathrm{HI}}]).
+\]
+
+The generating source calculates the reported $\delta\ell$ quantiles from signed values. The released JSON gives $q_{50}=-0.00249132$, $q_{90}=1.12259\times10^{-7}$ and $q_{95}=6.02990\times10^{-7}$, with maximum $|\delta\ell|=1.90797$. Small upper signed quantiles do not determine the quantiles of $|\delta\ell|$. The earlier completion note separately reports $q_{90}(|\delta\ell|)=0.308246$. The new aggregate JSON does not contain this absolute quantile, and the family arrays needed to recompute it are not supplied. We retain that value as a documented summary, with the signed and absolute definitions distinguished.
+
+The overlapping-subset calculation also leaves uncertainty in the finite eight-IC reference. Assessing the deployed predictor against a mean target requires its predictions at these parameter points and a quantified reference uncertainty; equivalence to IC-marginalized inference requires the likelihood comparison in Equation~\ref{eq:t7-target-difference}.
+
+Other limitations concern the validation domain and the available evidence. The quoted 65k errors need region-dependent and tail diagnostics, together with uncertainty coverage tests. Comparisons with published emulators require common observables, error definitions, and validation distributions; the original percentage comparison does not supply them. A runtime claim likewise needs measurements for the complete likelihood calculation, including the retained exact LF evaluation. Finally, the available histories cover z = 5--35 and cannot validate low-redshift neutral-hydrogen or 21-cm predictions.
+
+\subsection{Separate power-spectrum IC comparison}
+
+The November 4 PS pilot report compares four- and eight-IC means, but also reports different PS estimators: the training calculation averages 12 sub-boxes, whereas the comparison uses the full box. Matching box size, resolution and cosmology does not establish matching windows or mode weighting. The quoted median difference of 1.25\% and $q_{90}=13.9\%$ therefore do not isolate the effect of adding IC realizations. Raw spectra, identical $k$ bins and masks, and the same estimator at the same parameter points are needed to assess convergence with IC count. These PS summaries neither validate the history emulator nor alter the existing T7 history audit.
+
+\section{Validation required for scientific deployment}\label{validation-plan}
+
+The open methodological question is how errors in a representative-history approximation affect the intended inference when each simulated label has a random IC realization. The current results identify this issue but do not establish a correction. A completed validation must first freeze the predictor, normalizer, IC target and likelihood convention.
+
+Independent test histories should then measure the error of the actual deployed average, including its redshift dependence and tails across the physical support. Repeated-IC outputs are needed to distinguish realization scatter from error relative to a sufficiently resolved conditional mean. If an IC-marginalized likelihood is intended, it must be evaluated and validated as that target rather than assumed equivalent to the likelihood of a mean history.
+
+Finally, complete matching priors and fixed settings are needed for an independent converged exact--emulator comparison. Parameter distributions, tail behaviour, correlations and predicted observables should be compared alongside effective sample sizes. Full likelihood costs must include the retained exact LF calculation and optical-depth postprocessing. These are validation requirements, not results already obtained in this draft.
+
+
+\section{Conclusions}\label{conclusions}
+
+BTemu approximates the neutral-fraction history of a selected BT-modified 21cmFAST calculation. Its arithmetic five-model average achieves an absolute trajectory RMSE median of 0.001008 and 95th percentile of 0.006815 on 512 released development-validation histories. The released arrays permit independent reconstruction of those statistics, with the predictor aggregation distinguished from individual training seeds.
+
+The later 100,000-example model reports a development trajectory RMSE median of 0.000850668 and $q_{95}=0.00556364$. Its evaluation arrays and aggregation rule remain to be supplied for independent reconstruction and a controlled comparison with the earlier predictor.
+
+The finite exact comparison and repeat-IC audit set limits on interpretation. A 200-step smoke-only reference cannot qualify posterior agreement, and training against random-realization labels does not validate IC marginalization. An independent final test, matching inference configurations, independent reference sampling and a validated treatment of the likelihood target are still required. The release supports reconstruction of history errors and finite-chain checks. Qualification of the resulting physical inference requires the remaining validation tests.
+
+
+\section*{Data and code availability}
+
+The public code is available at \href{https://github.com/HainaHuang729/BTemu}{HainaHuang729/BTemu}, identified as \texttt{bt-history-emulator 0.1.0}. The evidence snapshot at revision \texttt{05b729b} supplies the released validation predictions and six chain files. The T7 audit summary and its generating-source definitions are frozen at revision \texttt{da2ec97}, with source bytes and checks in \path{paper/reproduction/data/t7_update_20261031/}. The later production-count snapshot is retained from revision \texttt{dcd0131}; it does not replace the frozen validation membership or prediction arrays. The November 4 results and PS inventory are frozen at revision \texttt{45edd17} in \path{paper/reproduction/data/model_update_20261104/}. They supply summaries rather than new prediction arrays or chain files. The manuscript project includes self-relative reproduction sources, dependency information, frozen-input preparation and source hashes in \path{paper/reproduction/}. These regenerate the history metrics, finite comparison and descriptive figures without fitting a network or rerunning simulations.
+
+The external checkpoint directory is identified as \path{artifacts/random_ic_development_65536_20261026}. Weights, normalizer, raw training labels, native binaries, full production receipts and complete inference configurations remain external. Consequently the released arrays support prediction-level metric reproduction but not a rerun of the deployed network or complete likelihood. The fixed and free-spectrum files also require their actual predictor and target identities before qualifying inference parity.
+
+\bibliographystyle{apsrev4-2}
+\bibliography{\btemubib}
+\clearpage\appendix
+\setcounter{figure}{0}\renewcommand{\thefigure}{S\arabic{figure}}
+
+\section{Chain construction for the finite comparison}\label{app:current-chains}
+
+\subsection{New six- and eight-dimensional emulator chains}\label{new-six--and-eight-dimensional-emulator-chains}
+
+The newly exported six-dimensional files contain 1,000, 2,000, and 2,000 stored steps, combined in that order for 5,000 steps with 32 walkers. The eight-dimensional files contain 2,000 and 3,568 steps, giving 5,568 steps with the same walker count. The latter extension is named chain8\_ext\_3399.h5, but its chain dataset has shape (3568, 32, 8), with finite parameter and log-probability values throughout. We use the stored shape, rather than the filename or the snapshot's approximately 5,400-step total.
+
+Following the source snapshot's last-half convention, the six-dimensional figure retains steps 2500--4999 (zero-based), or 80,000 correlated rows. The eight-dimensional figure retains steps 2784--5567, or 89,088 correlated rows. No thinning, additional parameter cuts, or coordinate transformations are applied. Segment boundaries have no exact repeated full-ensemble suffix/prefix; individual repeated states are retained because sampler rejections are valid stored states. The source ordering is adopted as the continuation order. Complete target and RNG continuity cannot be independently certified without checkpoint metadata and run configurations.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.78\textheight,keepaspectratio]{btemu/fig11_btemu_corner6_5000.pdf}
+\caption{Six-dimensional BTemu chain, combined 5,000 stored steps \(\times\) 32 walkers; all 80,000 rows from its last half are shown as marginal histograms and 32 \(\times\) 32 binned pair densities. The square-root count colour mapping is independently normalized in each pair panel. The white-background and serif-font convention matches the main-text figures. No smoothing, thinning, or probability-content contours are used. These are descriptive finite-chain distributions, not accepted confidence regions.}
+\label{fig:btemu6}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.78\textheight,keepaspectratio]{btemu/fig12_btemu_corner8_5568.pdf}
+\caption{Eight-dimensional BTemu chain with six astrophysical coordinates plus \ensuremath{k_p} and MS, combined 5,568 stored steps \(\times\) 32 walkers. All 89,088 last-half rows are retained. Display conventions match Figure~\ref{fig:btemu6}. This is not the historical eight-astrophysical-coordinate exact calculation or the nine-coordinate free-MS calculation in 21cmTB. The extended filename understates the number of stored steps; the HDF5 shape defines this snapshot.}
+\label{fig:btemu8}
+\end{figure*}
+
+For monitoring, we recompute the ordinary split variance-ratio statistic by splitting the full chronological chain in half for each of its 32 walkers. This creates 64 sequences whose within- and between-sequence variances define the statistic. Its range is 1.0340--1.0535 for 6D, with t\_STAR highest, and 1.1136--1.5125 for 8D, with ETA\_STAR highest. The walkers belong to an interacting ensemble, so this is not evidence from 64 independent chains. It is also not the rank-normalized/folded statistic reported for some 21cmTB archives. These measures must not be pooled under one acceptance claim. The six-dimensional maximum remains above the proposed 1.05 threshold, and the eight-dimensional run remains exploratory. Modern rank-normalized and folded diagnostics \cite{Vehtari2021} address additional failures of ordinary variance-ratio statistics. Their use here would still require independent ensemble runs; splitting interacting walkers does not manufacture independent chains. Integrated autocorrelation estimates and effective sample sizes must accompany the independent-run checks.
+
+\section{Exact smoke-chain distribution}\label{app:exact-smoke}
+
+The exact file below is the same reference used in the finite comparison. The standalone plot retains all stored steps, whereas the moment comparison uses the stated last-half selection.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.78\textheight,keepaspectratio]{btemu/fig13_exact_corner6_200.pdf}
+\caption{Exact six-coordinate calculation with 200 stored steps and 32 walkers, retaining all 6400 rows. The source attributes specify fixed \ensuremath{k_p} = 10 $h\,\mathrm{Mpc}^{-1}$ and MS = 2.5, LF+Planck\_tau+McGreer\_xHI likelihood, USE\_TS\_FLUCT = true, burnin = 20, and scientific role SMOKE\_ONLY\_NOT\_CONVERGED\_NOT\_A\_POSTERIOR. The burn-in attribute is reported without assuming whether it refers to preceding iterations or part of the stored array; no extra discard is applied, and initial-state datasets are not appended. Plot conventions match Figure~\ref{fig:btemu6}. This descriptive diagnostic is not a validated posterior or an accepted exact reference for emulator fidelity.}
+\label{fig:exact200}
+\end{figure*}

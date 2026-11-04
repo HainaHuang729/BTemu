@@ -1,0 +1,52 @@
+BTemu | Results and figures | 4 November 2026 
+4 November 2026 · Results and manuscript update 
+BTemu: new model and fixed-spectrum results 
+Development validation of the 100,000-example model and galaxy-parameter summaries across fixed spectral settings. Fixed-kp/ms chains Corner plots Model validation Runtime Sources and manuscript Print / save as PDF Physics v0.17 / Methods v0.5 
+
+Galaxy parameters at fixed spectral settings Download SVG Download CSV Reported centres and spreads; bars have no assigned credible-interval coverage. kp in h Mpc⁻¹. 
+Spectral setting η★ α★ log₁₀(Mturn/M☉) log₁₀ fesc,10 αesc 
+kp=10, ms=2.5 -0.940 ± 0.041 0.571 ± 0.077 8.970 ± 0.410 -1.050 ± 0.420 0.077 ± 0.340 
+kp=1, ms=1.5 -1.642 ± 0.053 0.751 ± 0.069 8.710 ± 0.440 -1.190 ± 0.400 0.190 ± 0.240 
+kp=5, ms=1.5 -1.013 ± 0.041 0.663 ± 0.081 8.840 ± 0.420 -1.020 ± 0.410 0.011 ± 0.370 Compare reported centres: kp1 − kp5, fixed ms=1.5 kp1/ms1.5 − kp10/ms2.5 kp5/ms1.5 − kp10/ms2.5 
+
+3,000 steps per run · acceptance 0.31–0.38 · exploratory summaries. 
+7D run, fixed kp=10: MS = 2.28 ± 1.01. 
+
+Corner plots 
+Earlier-model chains; descriptive sample densities. 6D emulator: fixed spectrum 8D emulator: free kp and MS Exact 6D: 200-step smoke chain 
+6D emulator: fixed spectrum 5,000 steps × 32 walkers; last-half selection: 80,000 rows. Fixed kp=10 h Mpc⁻¹, MS=2.5. 
+8D emulator: free kp and MS 5,568 steps × 32 walkers; last-half selection: 89,088 rows. Six galaxy coordinates plus kp and MS. 
+Exact 6D: 200-step smoke chain 200 steps × 32 walkers; all 6,400 rows. Fixed kp=10 h Mpc⁻¹, MS=2.5. Unconverged smoke chain. 
+Select a chain above. Click the image to open it at full resolution. 
+
+Development validation of the 100,000-example model Download SVG 
+Training: 100,000 histories · development split: 10,000 · 5 seeds. 
+Statistic New model: reported value 
+Trajectory RMSE: median 0.000850668351 
+Trajectory RMSE: q95 0.00556364397 
+xHI(5.9) error: reported q90 0.00457050425 
+Optical-depth error: reported q90 0.000335077941 
+Joint log-likelihood difference: reported q90 1.17733512 
+Development-validation summary; q90 values follow the source definitions. 
+Trajectory RMSE Older predictors: the same 512 histories. New model: reported values from a separate evaluation. 
+
+Runtime Download timing JSON 
+Step Reported duration Configuration 
+Dataset: 100k train + 10k validation ~2 weeks 64 concurrent; ~200,000 core-h 
+Snapshot rebuild 1–2 min labels.sqlite 
+65k five-seed training 4 h 38 min 8 cores; ~37 core-h 
+100k five-seed training 13.2392 h / 13.50 h JSON / ledger; 8 cores in ledger 
+Validation predictions and metrics 5–6 min 512 / 10,000 samples 
+100k fixed-spectrum and 7D chains 38–46 min each 3,000 steps; 16 processes 
+Archived exact 6D smoke chain 2 d 13 h 200 steps × 32 walkers 
+PS+LF joint chain ~21 min 1,200 steps; 16 processes 
+PS-only exploratory chain 12 min 23 s 600 steps 
+PS pilot 1 h 05 min 484 s per realization 
+phase58 four-IC dataset 49.2 h 1,024 cores; 23,604 simulations 
+phase60 sealed test 262.14 core-h 943,695 core-seconds 
+Postprocessing and figures 1–2 min / <1 min summaries / figure generation 
+Source: 4 November run ledger. The 100k training row lists JSON / ledger values; phase60 is converted from core-seconds. 
+
+Sources 
+Physics v0.17, p. 6 · Methods v0.5, p. 5 · BTemu revision 45edd17 
+BTemu · Results archive · 4 November 2026 Figures: STIX serif / manuscript colours Reported and independently recomputed values are distinguished Close full-resolution image 

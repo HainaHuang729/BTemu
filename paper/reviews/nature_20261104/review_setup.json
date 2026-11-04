@@ -1,0 +1,23 @@
+{
+  "packet": "/Users/amadeus/Documents/ChatGPT/\u8bba\u6587/BTemu/paper/reviews/nature_20261104/packet",
+  "reviewers": [
+    {
+      "id": "R1",
+      "emphasis": "technical soundness and inference validity"
+    },
+    {
+      "id": "R2",
+      "emphasis": "originality and scientific importance"
+    },
+    {
+      "id": "R3",
+      "emphasis": "interdisciplinary interest and readability"
+    }
+  ],
+  "scope": "physics v0.17, methods v0.5, visible HTML and supplied source exports",
+  "isolation": "three fork_turns=none subagents; no reports shared before freezing",
+  "source_revisions": {
+    "manuscript": "4024d43858528f17d580aab7edefe5eb73272bd9",
+    "BTemu": "a352e44d08bdeeccf169964f6f85e072bb6f1a50"
+  }
+}

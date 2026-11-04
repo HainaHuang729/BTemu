@@ -1,0 +1,33 @@
+\documentclass[reprint,superscriptaddress,nofootinbib,nobibnotes,amsmath,amssymb,aps,prd,floatfix,longbibliography]{revtex4-2}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,bm,booktabs,graphicx,xcolor}
+\usepackage{hyperref}
+\usepackage{xurl}
+% Support both Overleaf's project-root build and latexmk -cd builds.
+\IfFileExists{paper/btemu_methods/body.tex}{%
+  \def\btemubody{paper/btemu_methods/body.tex}%
+  \def\btemubib{reference/btemu}%
+  \graphicspath{{paper/figures/}{paper/figures/coeval_optional/}{paper/figures/extra/}}%
+}{%
+  \def\btemubody{body.tex}%
+  \def\btemubib{../../reference/btemu}%
+  \graphicspath{{../figures/}{../figures/coeval_optional/}{../figures/extra/}}%
+}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlength{\emergencystretch}{2em}
+\renewcommand{\dbltopfraction}{0.95}
+\renewcommand{\textfraction}{0.02}
+\begin{document}
+\title{BTemu: a history emulator for BT-modified reionization calculations}
+\author{Haina Huang}
+\affiliation{Department of Physics, The Chinese University of Hong Kong, Shatin, Hong Kong, China}
+\date{November 4, 2026}
+\begin{abstract}
+We document BTemu, a ten-input emulator of the volume-averaged neutral-fraction history in a selected BT-modified 21cmFAST calculation. Its inputs comprise eight astrophysical coordinates, a spectral break scale and a small-scale slope; its outputs are 32 redshift nodes. Luminosity functions retain an exact provider, and optical depth is derived from the history. On 512 released development-validation histories, the arithmetic average of five residual multilayer perceptrons gives an absolute trajectory RMSE median of 0.001008 and 95th percentile of 0.006815. Individual-seed and average-predictor errors are reported separately. A later 100,000-example model reports a development RMSE median of 0.000850668 and 95th percentile of 0.00556364; its prediction arrays and aggregation rule are not yet exported. A comparison with an explicitly unconverged 200-step exact chain gives a maximum finite-sample mean difference of 0.2195 exact sample standard deviations, without qualifying posterior fidelity. The repeat-initial-condition audit motivates distinguishing representative-history, conditional-mean and IC-marginalized likelihood targets. Independent final testing, converged matching inference and validation of the intended target remain necessary. These results characterize the released predictor and specify the validation still required for its use in scientific inference.
+\end{abstract}
+\maketitle
+\begin{quote}\small Methods working draft v0.5. Existing development results are separated from proposed validation. Independent novelty and scientific deployment are not yet established.\end{quote}
+\input{\btemubody}
+\end{document}

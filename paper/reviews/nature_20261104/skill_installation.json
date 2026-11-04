@@ -1,0 +1,16 @@
+{
+  "source": "https://github.com/Yuan1z0825/nature-skills",
+  "installer": "skill-installer/scripts/install-skill-from-github.py",
+  "date_hkt": "2026-11-04",
+  "skills": {
+    "nature-reviewer": {
+      "path": "/Users/amadeus/.codex/skills/nature-reviewer/SKILL.md",
+      "sha256": "8ca28cc8e8bda2b5254056940d2a696dc0d3cabcd5573cdec98ffc3cbd162610"
+    },
+    "nature-shared": {
+      "path": "/Users/amadeus/.codex/skills/nature-shared/SKILL.md",
+      "sha256": "3d914e73f023cab4f247d82f906a948307de8a867fd6c33df999badf67c5d5f2"
+    }
+  },
+  "note": "Open-source third-party Nature-style assessment instructions, not a journal service or editorial decision."
+}
