@@ -1,0 +1,79 @@
+{
+  "paper/main.tex": {
+    "equations_preserved": true,
+    "tables_preserved": true,
+    "labels_preserved": true,
+    "citation_keys_preserved": true,
+    "figure_paths_preserved": true,
+    "source_sha256_before": "f3a2c9c3bd735156a8e2c3633fe680f30b9885d89cc4f7c7973aba64a7326f86",
+    "source_sha256_after": "0fca80937f94efb5587151d169eb4c76f3d3c75ec8fbc6b93b21652a6bc70e3f",
+    "words_before": 274,
+    "words_after": 233,
+    "author_notes_remaining": 0
+  },
+  "paper/sections/btemu_body.tex": {
+    "equations_preserved": true,
+    "tables_preserved": true,
+    "labels_preserved": true,
+    "citation_keys_preserved": true,
+    "figure_paths_preserved": true,
+    "source_sha256_before": "39507b9a8adc525c3921e24cd6a99e72ed7c0840b956bcd93ad39af40af6a515",
+    "source_sha256_after": "9349179c67eb314a250a400419fad3856893f2ed2936edbc21c7c7efd055557d",
+    "words_before": 7678,
+    "words_after": 7297,
+    "author_notes_remaining": 0
+  },
+  "paper/btemu_methods/main.tex": {
+    "equations_preserved": true,
+    "tables_preserved": true,
+    "labels_preserved": true,
+    "citation_keys_preserved": true,
+    "figure_paths_preserved": true,
+    "source_sha256_before": "67d104dae6fe1fcc635b4ed16fa06e9bf192bcbae6da52939f1fcbbc38a2b243",
+    "source_sha256_after": "ae045f3e942110210c474aeef6ac9ddb5643fc1fb9ff1d3bcb27e8e62f645b8e",
+    "words_before": 262,
+    "words_after": 214,
+    "author_notes_remaining": 0
+  },
+  "paper/btemu_methods/body.tex": {
+    "equations_preserved": true,
+    "tables_preserved": true,
+    "labels_preserved": true,
+    "citation_keys_preserved": true,
+    "figure_paths_preserved": true,
+    "source_sha256_before": "7459f1bdf7fff2c2b1ecc896169c9404a496dba0011440c496cdfd41539a6b4c",
+    "source_sha256_after": "fd84c2513e67b9322fd6b9ff13af726c3a3aed8ada6c8199f07542df05c3aa9a",
+    "words_before": 4771,
+    "words_after": 4192,
+    "author_notes_remaining": 0
+  },
+  "pdfs": {
+    "BT_reionization_physics_v0.18_20261104.pdf": {
+      "pages": 22,
+      "sha256": "8281e3ad80771214d4d56eb674d1e094c7cb9218fefa7b97049aacd1e5b5b34c",
+      "compile": "latexmk -cd pdf passed",
+      "visual_review": "All-page contact sheets and full-resolution title pages inspected",
+      "undefined_references_or_citations": false,
+      "overfull_boxes": false,
+      "warnings": "existing nameref label-definition warning only"
+    },
+    "BTemu_methods_development_v0.6_20261104.pdf": {
+      "pages": 11,
+      "sha256": "a9e93ba7fa8aa64ba52e1a9f065779a7f620c4a8e8a1b0fa6ca1499603e284fe",
+      "compile": "latexmk -cd pdf passed",
+      "visual_review": "All-page contact sheets and full-resolution title pages inspected",
+      "undefined_references_or_citations": false,
+      "overfull_boxes": false,
+      "warnings": "existing nameref label-definition warning only"
+    }
+  },
+  "scope": {
+    "no_new_simulation_or_fit": true,
+    "all_scientific_equations_tables_labels_citation_keys_and_figure_paths_preserved": true,
+    "review_reports_unchanged": true,
+    "missing_materials_separate": true,
+    "direct_text_fixes_not_used_to_close_unfinished_scientific_validation": true,
+    "phase60_source_arithmetic_corrected": true,
+    "methods_old_and_new_predictors_remain_separate": true
+  }
+}
