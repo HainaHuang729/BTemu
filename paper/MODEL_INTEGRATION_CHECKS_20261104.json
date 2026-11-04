@@ -1,0 +1,49 @@
+{
+  "paper/sections/btemu_body.tex": {
+    "equations_preserved": true,
+    "old_tables_preserved": true,
+    "labels_preserved": true,
+    "citations_preserved": true,
+    "figure_paths_preserved": true
+  },
+  "paper/btemu_methods/body.tex": {
+    "equations_preserved": true,
+    "old_tables_preserved": true,
+    "labels_preserved": true,
+    "citations_preserved": true,
+    "figure_paths_preserved": true
+  },
+  "pdfs": {
+    "paper/main.pdf": {
+      "count": 22,
+      "review_pages": [
+        5,
+        6
+      ],
+      "output_sha256": "f98ba57a3eff8774ee099ada8038ac8ce92555dc0f0b4d941acadf0011ea404e"
+    },
+    "paper/btemu_methods/main.pdf": {
+      "count": 12,
+      "review_pages": [
+        1,
+        5,
+        7
+      ],
+      "output_sha256": "1c5e7fef49eefbc43016ff2a11557d3d5ca08b77200b058c7410effd0ec4c231"
+    }
+  },
+  "compilation": {
+    "physics": "latexmk -cd pdf passed",
+    "methods": "latexmk -cd pdf passed",
+    "undefined_references_or_citations": false,
+    "overfull_boxes": false,
+    "warnings": "existing nameref label-definition warning only"
+  },
+  "visual_review": {
+    "all_pages_contact_sheets": true,
+    "new_tables_full_resolution": true,
+    "physics_fixed_table_page": 6,
+    "methods_new_validation_table_page": 5,
+    "layout_issues_found": false
+  }
+}
