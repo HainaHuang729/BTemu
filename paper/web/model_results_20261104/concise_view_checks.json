@@ -2,9 +2,13 @@
   "all_embedded_summary_data_preserved": true,
   "all_timing_payloads_preserved": true,
   "all_corner_image_bytes_preserved": true,
-  "visible_runtime_rows": 7,
+  "visible_runtime_rows": 13,
   "full_workflow_rows_in_collapsed_details": 25,
   "audit_and_interpretation_notes_collapsed": true,
   "numeric_charts_and_tables_retained": true,
-  "english_desktop_screenshot_reviewed": true
+  "english_desktop_screenshot_reviewed": true,
+  "latest_ledger_revision": "4d99ddd",
+  "latest_ledger_quoted_as_reported": true,
+  "phase60_core_seconds_to_hours": 262.1375,
+  "new_timing_table_screenshot_reviewed": true
 }

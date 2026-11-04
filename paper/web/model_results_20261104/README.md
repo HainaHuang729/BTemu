@@ -21,3 +21,5 @@ Both editions now list 25 workflow steps, with unavailable elapsed times explici
 ## Concise results view
 
 The default view retains numerical tables, plots and recorded runtimes. Full workflow rows, missing timings and audit notes remain in closed details panels. All embedded data and original corner images are preserved.
+
+The concise runtime table now incorporates the newly exported ledger at revision `4d99ddd`. Both 100k training times (JSON and ledger) remain distinguished. The phase60 core-time value is converted from 943695 core-seconds to 262.1375 core-hours; no headline speedup extrapolations are adopted. The earlier timing inventory is retained under a closed details panel.

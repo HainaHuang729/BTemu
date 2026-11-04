@@ -78,15 +78,33 @@ def render(en=False):
  data={'workflow':payload,'coeval_histories':hist,'cache_comparison':cache,'atlas_timings':atlasrecords,'source_manifest':manifest,'scope':'Mixed historical/new reported timings and per-call/per-iteration units; no end-to-end sum or speedup inferred'}
  # Avoid embedding full history arrays in the timing download.
  data['coeval_histories']=[{'label':k,'seconds':v['seconds']} for k,v in hist.items()]
+ ledger=(D/'TIMING_20261104.md').read_text()
+ ledger_rows=[
+  ('数据生成：100k train + 10k validation','Dataset: 100k train + 10k validation','~2 weeks','64 concurrent; ~200,000 core-h'),
+  ('快照重建','Snapshot rebuild','1–2 min','labels.sqlite'),
+  ('65k 五种子训练','65k five-seed training','4 h 38 min','8 cores; ~37 core-h'),
+  ('100k 五种子训练','100k five-seed training','13.2392 h / 13.50 h','JSON / ledger; 8 cores in ledger'),
+  ('验证预测与指标','Validation predictions and metrics','5–6 min','512 / 10,000 samples'),
+  ('新模型固定谱与 7D 链','100k fixed-spectrum and 7D chains','38–46 min each','3,000 steps; 16 processes'),
+  ('历史 exact 6D 测试链','Archived exact 6D smoke chain','2 d 13 h','200 steps × 32 walkers'),
+  ('PS+LF 联合链','PS+LF joint chain','~21 min','1,200 steps; 16 processes'),
+  ('PS-only 探索链','PS-only exploratory chain','12 min 23 s','600 steps'),
+  ('PS pilot','PS pilot','1 h 05 min','484 s per realization'),
+  ('phase58 四 IC 数据集','phase58 four-IC dataset','49.2 h','1,024 cores; 23,604 simulations'),
+  ('phase60 封存测试','phase60 sealed test','262.14 core-h','943,695 core-seconds'),
+  ('后处理与图表','Postprocessing and figures','1–2 min / <1 min','summaries / figure generation')]
+ summary=table(tr(['步骤','报告耗时','配置'],['Step','Reported duration','Configuration']),''.join('<tr>'+''.join('<td>'+html.escape(v)+'</td>' for v in [tr(zh,eng),duration,config])+'</tr>' for zh,eng,duration,config in ledger_rows))
+ data['latest_ledger']={'revision':'4d99ddd','text':ledger,'rows':ledger_rows,'notes':'100k JSON/ledger training durations differ. Phase60 943695 core-seconds = 262.1375 core-hours; source prose 26 h is arithmetically inconsistent. No headline speedup ratios adopted.'}
  title=tr('各步骤耗时与运行记录','Runtime by step and available run records')
  intro=tr('按实际记录列出整个工作流。新模型耗时、历史单例与每迭代计时分别标注；缺失项目保留为空，不从步数估算。','The workflow is listed with the timing records currently available. New-model elapsed time, historical per-realization costs and per-iteration costs are labelled separately. Missing durations are not inferred from step counts.')
  warning=tr('各项存在不同硬件、样本数、并行度和计时范围，部分记录互相重叠，不能相加得到项目总耗时。T8 的网络预测不等于完整似然，历史每步时间也不能套用到新 100k 链。','These records have different hardware, sample counts, parallelism and timing scopes, with possible overlap. They cannot be summed into an end-to-end project duration. T8 network prediction is not the complete likelihood, and historical iteration costs are not assigned to new 100k-model chains.')
  trainingnote=tr('100k 源 JSON 为 47,661.272695 s = 13.2392 h；早期摘要的 13.5 h 与该字段不同。页面采用 JSON 数值，暂不解释为五个 seed 总 GPU 成本。','The 100k source JSON gives 47,661.272695 s = 13.2392 h, differing from the earlier prose value of 13.5 h. The page uses the JSON value without interpreting it as the total GPU cost of five seeds.')
  atlasnote=tr('21cmTB 历史 atlas 的配置为 BOX_LEN=250 Mpc、DIM=768、HII_DIM=256、16 threads，区别于当前 DIM=512/HII_DIM=128。该表不用于估计新模型训练数据成本。','The historical 21cmTB atlas uses BOX_LEN=250 Mpc, DIM=768, HII_DIM=256 and 16 threads, distinct from the current DIM=512/HII_DIM=128 setup. It is not used to estimate the new training-data cost.')
  result=f'<section id="timing"><div class="section-head"><h2>'+tr('耗时','Runtime')+'</h2><div class="actions"><button id="timing-json">'+tr('下载耗时 JSON','Download timing JSON')+'</button></div></div>'+summary
- result+='<p class="small">'+tr('仅列有计时的步骤；各项采用其原始计量口径。','Recorded durations, with their original timing units.')+'</p>'
- result+='<details><summary>'+tr('完整工作流（含未记录项目）','Full workflow, including unrecorded durations')+'</summary>'+full_workflow+'<p class="small">'+warning+'</p><p class="small">'+trainingnote+'</p></details>'
+ result+='<p class="small">'+tr('来源：11 月 4 日运行台账。100k 训练分别列 JSON / 台账值；phase60 按 core-seconds 换算。','Source: 4 November run ledger. The 100k training row lists JSON / ledger values; phase60 is converted from core-seconds.')+'</p>'
+ result+='<details><summary>'+tr('早期导出计时与完整来源','Earlier timing export and full sources')+'</summary>'+full_workflow+'<p class="small">'+warning+'</p><p class="small">'+trainingnote+'</p></details>'
  for name,note,body in [(tr('逐次 coeval 历史计算（6 条记录）','Individual coeval history calculations (6 records)'),tr('其中五条 BT 用于论文；来源标注的 PL 身份仍待核实。','Five BT cases enter the manuscript; the source-labelled PL identity remains unverified.'),historytable),(tr('Exact / cache（15 条计时与 3 条失败记录）','Exact/cache comparison (15 timed cases and 3 failed cases)'),tr('保留数值不一致的模式，不以最快运行宣称加速。','Numerically discrepant modes are retained; the fastest entry is not treated as a valid speedup.'),cachetable),(tr(f'历史 21cmTB atlas（{len(ar)} 条计时）',f'Historical 21cmTB atlas ({len(ar)} timing records)'),atlasnote,atlastable)]:
   result+=f'<details><summary>{name}</summary><p class="small">{note}</p>{body}</details>'
+ result+='<details><summary>'+tr('新增耗时台账原文','New runtime ledger: source record')+'</summary><pre style="white-space:pre-wrap;font-size:13px">'+html.escape(ledger)+'</pre><p class="small">'+html.escape(data['latest_ledger']['notes'])+'</p></details>'
  result+='</section><script type="application/json" id="timing-data">'+json.dumps(data,ensure_ascii=False).replace('</','<\\/')+'</script>'
  return result
