@@ -1,0 +1,14 @@
+{
+  "edition": "English desktop; Chinese page also gains archived corners",
+  "original_audit_unchanged": true,
+  "all_three_png_hashes_verified": true,
+  "no_new_corner_inferred_from_moments": true,
+  "all_corner_tabs_checked": true,
+  "all_images_loaded": true,
+  "full_resolution_dialog_checked": true,
+  "escape_closes_dialog": true,
+  "english_page_no_chinese_remaining": true,
+  "desktop_1440_no_horizontal_page_overflow": true,
+  "desktop_and_corner8_screenshots_reviewed": true,
+  "mobile_testing": "not requested; desktop layout only"
+}
