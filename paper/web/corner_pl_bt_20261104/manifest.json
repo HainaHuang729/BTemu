@@ -1,5 +1,5 @@
 {
-  "source_revision": "d65a89d051ef78aa37b0e473b4d3b7859fc10e30",
+  "source_revision": "eb828e0fb22be64117c7c0ae56c7605251ee913c",
   "selection": "All 3000 stored steps x 32 walkers for each model; no additional discard or thinning",
   "parameters": [
     "ETA_STAR",
@@ -9,24 +9,59 @@
     "F_ESC10",
     "ALPHA_ESC"
   ],
+  "style_name": "park-overlay-unified-v1",
+  "shared_coordinate_limits": [
+    [
+      -3.036086310356128,
+      1.2302042224286156
+    ],
+    [
+      -0.014510859993396871,
+      1.0247098469676246
+    ],
+    [
+      -0.5290173279832207,
+      1.0363961828654074
+    ],
+    [
+      7.925507656678483,
+      11.055024995249648
+    ],
+    [
+      -3.065298431056225,
+      0.07471175484256148
+    ],
+    [
+      -1.0371897562239922,
+      0.5374773833166334
+    ]
+  ],
+  "shared_marginal_ymax": [
+    3.5013470936744637,
+    2.405735718201064,
+    5.377656469431892,
+    1.1435197713164607,
+    1.9713875404077565,
+    2.129568364101299
+  ],
   "cases": [
     {
       "file": "PL_vs_kp10_ms2p5_100k_Park95.png",
       "label": "BT: kp=10, ms=2.5",
       "audit": "PL_vs_kp10_ms2p5_100k_Park95.json",
-      "sha256": "8d1a3c3e022b66aca4f520cd2328ffcea41728e7a6d12093cd986c3da86db5be"
+      "sha256": "5ff24d2bca17efce56b946d28d61779e7652875cb67673e7c3dcefb42daff05b"
     },
     {
       "file": "PL_vs_kp1_ms1p5_100k_Park95.png",
       "label": "BT: kp=1, ms=1.5",
       "audit": "PL_vs_kp1_ms1p5_100k_Park95.json",
-      "sha256": "3381f95449e67f6e3bc222d51b4dd48b3c7874280bbc9977d0e51ed50062e0bb"
+      "sha256": "cb11764ab4d114ef48d3c6bb8a731cacbcfdc1995036715893a6b6ee0a9244d3"
     },
     {
       "file": "PL_vs_kp5_ms1p5_100k_Park95.png",
       "label": "BT: kp=5, ms=1.5",
       "audit": "PL_vs_kp5_ms1p5_100k_Park95.json",
-      "sha256": "bd54cab5430b513be40784d3f61b2112df12882715cd82f1458812417bbacc12"
+      "sha256": "0c0b3edffa6572bf5d5fbbd928123fe38e7cce1a60f1a1a0cbe48b7da49086dc"
     }
   ]
 }

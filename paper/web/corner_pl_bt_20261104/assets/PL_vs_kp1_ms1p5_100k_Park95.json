@@ -1,8 +1,8 @@
 {
   "common_coordinate_limits": [
     [
-      -3.0352744566945087,
-      1.2301844211197956
+      -3.036086310356128,
+      1.2302042224286156
     ],
     [
       -0.014510859993396871,
@@ -13,17 +13,25 @@
       1.0363961828654074
     ],
     [
-      7.927307236071711,
-      10.981242240127282
+      7.925507656678483,
+      11.055024995249648
     ],
     [
       -3.065298431056225,
       0.07471175484256148
     ],
     [
-      -1.036966991244417,
-      0.5374719500244487
+      -1.0371897562239922,
+      0.5374773833166334
     ]
+  ],
+  "common_marginal_ymax": [
+    3.5013470936744637,
+    2.405735718201064,
+    5.377656469431892,
+    1.1435197713164607,
+    1.9713875404077565,
+    2.129568364101299
   ],
   "sample_density_coverage": {
     "PL": [
@@ -32,9 +40,9 @@
         "y_parameter": "t_STAR",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500000247018404,
-        "integrated_mass_strictly_above_level": 0.9499760407444351,
-        "threshold": 147.3574342992464,
+        "integrated_mass_at_or_above_level": 0.9500147126079495,
+        "integrated_mass_strictly_above_level": 0.9499907389148289,
+        "threshold": 147.29437053210742,
         "integration_grid_shape": [
           256,
           256
@@ -45,9 +53,9 @@
         "y_parameter": "ALPHA_STAR",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500030058013258,
-        "integrated_mass_strictly_above_level": 0.9499561341754436,
-        "threshold": 287.97926942130664,
+        "integrated_mass_at_or_above_level": 0.9500013777572694,
+        "integrated_mass_strictly_above_level": 0.9499544011896159,
+        "threshold": 288.62403166306814,
         "integration_grid_shape": [
           256,
           256
@@ -71,9 +79,9 @@
         "y_parameter": "M_TURN",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500179742117969,
-        "integrated_mass_strictly_above_level": 0.9499860639830999,
-        "threshold": 196.0564451148959,
+        "integrated_mass_at_or_above_level": 0.9500071163913145,
+        "integrated_mass_strictly_above_level": 0.9499745520072026,
+        "threshold": 200.07557598370605,
         "integration_grid_shape": [
           256,
           256
@@ -84,9 +92,9 @@
         "y_parameter": "M_TURN",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500066301043988,
-        "integrated_mass_strictly_above_level": 0.9499953112347117,
-        "threshold": 69.54313535591697,
+        "integrated_mass_at_or_above_level": 0.9500098421879022,
+        "integrated_mass_strictly_above_level": 0.9499983353343107,
+        "threshold": 70.69810846651579,
         "integration_grid_shape": [
           256,
           256
@@ -97,9 +105,9 @@
         "y_parameter": "M_TURN",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500109376904273,
-        "integrated_mass_strictly_above_level": 0.9499904837123522,
-        "threshold": 125.66924129407911,
+        "integrated_mass_at_or_above_level": 0.9500043991167378,
+        "integrated_mass_strictly_above_level": 0.9499835118715606,
+        "threshold": 128.33123436900462,
         "integration_grid_shape": [
           256,
           256
@@ -110,9 +118,9 @@
         "y_parameter": "F_ESC10",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500251994453205,
-        "integrated_mass_strictly_above_level": 0.9499868385150335,
-        "threshold": 235.68955568324742,
+        "integrated_mass_at_or_above_level": 0.9500041690299403,
+        "integrated_mass_strictly_above_level": 0.9499658256279132,
+        "threshold": 235.58186205490347,
         "integration_grid_shape": [
           256,
           256
@@ -149,9 +157,9 @@
         "y_parameter": "F_ESC10",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500046909905174,
-        "integrated_mass_strictly_above_level": 0.949987044730075,
-        "threshold": 108.4186241591162,
+        "integrated_mass_at_or_above_level": 0.9500104408339178,
+        "integrated_mass_strictly_above_level": 0.9499922740010259,
+        "threshold": 111.61702128825135,
         "integration_grid_shape": [
           256,
           256
@@ -162,9 +170,9 @@
         "y_parameter": "ALPHA_ESC",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500118388408954,
-        "integrated_mass_strictly_above_level": 0.9499930948758653,
-        "threshold": 115.16292114382212,
+        "integrated_mass_at_or_above_level": 0.9500105729843934,
+        "integrated_mass_strictly_above_level": 0.9499918706367114,
+        "threshold": 114.90722415755403,
         "integration_grid_shape": [
           256,
           256
@@ -175,9 +183,9 @@
         "y_parameter": "ALPHA_ESC",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500054366451963,
-        "integrated_mass_strictly_above_level": 0.9499958630039154,
-        "threshold": 58.82045203188875,
+        "integrated_mass_at_or_above_level": 0.9500002495846351,
+        "integrated_mass_strictly_above_level": 0.9499906761107387,
+        "threshold": 58.81942361942954,
         "integration_grid_shape": [
           256,
           256
@@ -188,9 +196,9 @@
         "y_parameter": "ALPHA_ESC",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500063112746444,
-        "integrated_mass_strictly_above_level": 0.9499946554361619,
-        "threshold": 71.61347163718841,
+        "integrated_mass_at_or_above_level": 0.9500086748814982,
+        "integrated_mass_strictly_above_level": 0.9499970146407142,
+        "threshold": 71.64051937630171,
         "integration_grid_shape": [
           256,
           256
@@ -201,9 +209,9 @@
         "y_parameter": "ALPHA_ESC",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500023069613164,
-        "integrated_mass_strictly_above_level": 0.9499940248733382,
-        "threshold": 50.885148539120436,
+        "integrated_mass_at_or_above_level": 0.950007098944975,
+        "integrated_mass_strictly_above_level": 0.949998616902633,
+        "threshold": 52.11366814930167,
         "integration_grid_shape": [
           256,
           256
@@ -214,9 +222,9 @@
         "y_parameter": "ALPHA_ESC",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500071288372399,
-        "integrated_mass_strictly_above_level": 0.9499903173186638,
-        "threshold": 103.28997013205557,
+        "integrated_mass_at_or_above_level": 0.9500088951609587,
+        "integrated_mass_strictly_above_level": 0.9499920871223597,
+        "threshold": 103.26858915191514,
         "integration_grid_shape": [
           256,
           256
@@ -229,9 +237,9 @@
         "y_parameter": "t_STAR",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500138729002299,
-        "integrated_mass_strictly_above_level": 0.9499927589704381,
-        "threshold": 129.72398464028296,
+        "integrated_mass_at_or_above_level": 0.9500061944619825,
+        "integrated_mass_strictly_above_level": 0.9499850918373074,
+        "threshold": 129.65452600402415,
         "integration_grid_shape": [
           256,
           256
@@ -242,9 +250,9 @@
         "y_parameter": "ALPHA_STAR",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500150135436929,
-        "integrated_mass_strictly_above_level": 0.9499758979271193,
-        "threshold": 240.32634822823346,
+        "integrated_mass_at_or_above_level": 0.9500200317741541,
+        "integrated_mass_strictly_above_level": 0.9499810843458811,
+        "threshold": 239.29299930726177,
         "integration_grid_shape": [
           256,
           256
@@ -268,9 +276,9 @@
         "y_parameter": "M_TURN",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500240557700457,
-        "integrated_mass_strictly_above_level": 0.9499964389133293,
-        "threshold": 169.67796766562742,
+        "integrated_mass_at_or_above_level": 0.9500058023536643,
+        "integrated_mass_strictly_above_level": 0.949977461511601,
+        "threshold": 174.1261336369037,
         "integration_grid_shape": [
           256,
           256
@@ -281,9 +289,9 @@
         "y_parameter": "M_TURN",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500071254158834,
-        "integrated_mass_strictly_above_level": 0.9499968378002795,
-        "threshold": 63.20711026873249,
+        "integrated_mass_at_or_above_level": 0.9500351129670442,
+        "integrated_mass_strictly_above_level": 0.9499932271193913,
+        "threshold": 64.3366619950411,
         "integration_grid_shape": [
           256,
           256
@@ -294,9 +302,9 @@
         "y_parameter": "M_TURN",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500054334209357,
-        "integrated_mass_strictly_above_level": 0.9499896021012961,
-        "threshold": 97.26762786530409,
+        "integrated_mass_at_or_above_level": 0.950012775703539,
+        "integrated_mass_strictly_above_level": 0.9499965687057905,
+        "threshold": 99.57579416553276,
         "integration_grid_shape": [
           256,
           256
@@ -307,9 +315,9 @@
         "y_parameter": "F_ESC10",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500017140129906,
-        "integrated_mass_strictly_above_level": 0.9499782818103121,
-        "threshold": 143.96745325789408,
+        "integrated_mass_at_or_above_level": 0.9500199837854076,
+        "integrated_mass_strictly_above_level": 0.9499965681492889,
+        "threshold": 143.865668314408,
         "integration_grid_shape": [
           256,
           256
@@ -346,9 +354,9 @@
         "y_parameter": "F_ESC10",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500067928830109,
-        "integrated_mass_strictly_above_level": 0.9499974076295062,
-        "threshold": 57.6629975319463,
+        "integrated_mass_at_or_above_level": 0.9500053696012116,
+        "integrated_mass_strictly_above_level": 0.9499958108589607,
+        "threshold": 58.728912389758335,
         "integration_grid_shape": [
           256,
           256
@@ -359,9 +367,9 @@
         "y_parameter": "ALPHA_ESC",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.950015859159467,
-        "integrated_mass_strictly_above_level": 0.9499978094281322,
-        "threshold": 110.89754932104132,
+        "integrated_mass_at_or_above_level": 0.9500095186959224,
+        "integrated_mass_strictly_above_level": 0.9499914634297436,
+        "threshold": 110.93155540315924,
         "integration_grid_shape": [
           256,
           256
@@ -372,9 +380,9 @@
         "y_parameter": "ALPHA_ESC",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500034255717289,
-        "integrated_mass_strictly_above_level": 0.9499966498204854,
-        "threshold": 41.630215641451926,
+        "integrated_mass_at_or_above_level": 0.9500006304172187,
+        "integrated_mass_strictly_above_level": 0.9499938537289627,
+        "threshold": 41.6359726457358,
         "integration_grid_shape": [
           256,
           256
@@ -385,9 +393,9 @@
         "y_parameter": "ALPHA_ESC",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500024007948308,
-        "integrated_mass_strictly_above_level": 0.9499919841276715,
-        "threshold": 64.00000302721965,
+        "integrated_mass_at_or_above_level": 0.950008662335753,
+        "integrated_mass_strictly_above_level": 0.9499982511347485,
+        "threshold": 63.96641897229276,
         "integration_grid_shape": [
           256,
           256
@@ -398,9 +406,9 @@
         "y_parameter": "ALPHA_ESC",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.950001672000318,
-        "integrated_mass_strictly_above_level": 0.9499934626781502,
-        "threshold": 50.43807539967875,
+        "integrated_mass_at_or_above_level": 0.950002687999274,
+        "integrated_mass_strictly_above_level": 0.9499942908020936,
+        "threshold": 51.59237947723114,
         "integration_grid_shape": [
           256,
           256
@@ -411,9 +419,9 @@
         "y_parameter": "ALPHA_ESC",
         "rows": 96000,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500027708440427,
-        "integrated_mass_strictly_above_level": 0.949994456692105,
-        "threshold": 51.0821495039383,
+        "integrated_mass_at_or_above_level": 0.9500080919821686,
+        "integrated_mass_strictly_above_level": 0.9499997778362539,
+        "threshold": 51.08211250029585,
         "integration_grid_shape": [
           256,
           256
@@ -499,13 +507,41 @@
       }
     ]
   },
+  "style_name": "park-overlay-unified-v1",
   "style": {
     "BT": "blue solid outline with single light-grey fill",
-    "PL": "orange dashed outline, no fill"
+    "PL": "orange dashed outline, no fill",
+    "font": "STIXGeneral",
+    "figure_inches": [
+      8.25,
+      8.25
+    ],
+    "contour_width_pt": 1.0,
+    "marginal_width_pt": 1.15,
+    "axis_width_pt": 0.45,
+    "fill_alpha_2d": 0.3,
+    "fill_alpha_1d": 0.18,
+    "pl_dash_pattern": [
+      4,
+      2
+    ],
+    "annotation_order_top_to_bottom": [
+      "BT",
+      "PL"
+    ],
+    "annotation_decimals": [
+      3,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "shared_across_all_cases": true
   },
   "second_data_set_included": true,
   "upper_triangle_information_blocks": 0,
-  "renderer_sha256": "2e2fb7b13577f4a71d655f4ac61bda35aa5bf1fc7e5976d3cb9253a20b0250ac",
+  "renderer_sha256": "7fba6cb3273eec8b60acf5b624d30195e1b658b9367f95e9fb2b6d7f9caeed41",
   "park_renderer_sha256": "54c7e0ebe1cc906d66f5c9057a32e80bbb68875df7788041926416b0837aadf7",
   "sources": {
     "PL": {
@@ -565,6 +601,6 @@
       "coordinate_transform": "none"
     }
   },
-  "output_sha256": "3381f95449e67f6e3bc222d51b4dd48b3c7874280bbc9977d0e51ed50062e0bb",
+  "output_sha256": "cb11764ab4d114ef48d3c6bb8a731cacbcfdc1995036715893a6b6ee0a9244d3",
   "label": "BT: kp=1, ms=1.5"
 }

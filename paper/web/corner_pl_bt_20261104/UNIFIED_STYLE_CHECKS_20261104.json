@@ -1,0 +1,17 @@
+{
+  "style_name": "park-overlay-unified-v1",
+  "case_count": 3,
+  "source_hashes_and_sample_selections_unchanged": true,
+  "marginal_quantile_summaries_unchanged": true,
+  "common_axes_and_ticks_across_cases": true,
+  "common_marginal_vertical_scales": true,
+  "identical_PL_density_regions_across_cases": true,
+  "upper_triangle_empty": true,
+  "all_label_extents_passed": true,
+  "contour_regions_checked": 90,
+  "browser": {
+    "choices": 3,
+    "image_loaded": true,
+    "horizontal_overflow": false
+  }
+}

@@ -18,6 +18,9 @@ ROOT=B.parents[2]
 PARAMETERS=['ETA_STAR','t_STAR','ALPHA_STAR','M_TURN','F_ESC10','ALPHA_ESC']
 LABELS=[r'$\eta_\star$',r'$t_\star$',r'$\alpha_\star$',r'$\log_{10}M_{\rm turn}$',r'$\log_{10}f_{{\rm esc},10}$',r'$\alpha_{\rm esc}$']
 PL='#B56B42';BT='#285E7A';FILL='#8B9BA8'
+STYLE_NAME='park-overlay-unified-v1'
+DASH=(0,(4,2))
+STAT_DECIMALS=[3,2,2,2,2,2]
 
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 
@@ -51,10 +54,10 @@ def load(path,discard,names_path=None):
     receipt=dict(file=str(path.resolve()),sha256=sha(path),stored_shape=shape,discard_leading_stored_rows_or_steps=discard,retained_rows=len(a),source_parameters=names,selected_parameters=PARAMETERS,coordinate_transform='none')
     return a,receipt
 
-def number(a):
+def number(a,decimals=None):
     lo,m,hi=np.quantile(a,[.025,.5,.975]);lower=m-lo;upper=hi-m
     positive=[x for x in [lower,upper] if x>0]
-    dec=max(0,min(6,1-int(np.floor(np.log10(min(positive)))))) if positive else 3
+    dec=decimals if decimals is not None else (max(0,min(6,1-int(np.floor(np.log10(min(positive)))))) if positive else 3)
     fmt=lambda x:f'{x:.{dec}f}'
     return rf'${fmt(m)}^{{+{fmt(upper)}}}_{{-{fmt(lower)}}}$',dict(median=float(m),q025=float(lo),q975=float(hi))
 
@@ -66,38 +69,41 @@ def display_limits(a):
 
 def axis_ticks(lim):
     lo,hi=lim;span=hi-lo
-    ticks=MaxNLocator(4,min_n_ticks=2).tick_values(lo,hi)
-    ticks=ticks[(ticks>=lo+.13*span)&(ticks<=hi-.13*span)]
-    return ticks[[0,-1]] if len(ticks)>2 else ticks
+    ticks=MaxNLocator(4,min_n_ticks=3).tick_values(lo,hi)
+    ticks=ticks[(ticks>=lo+.08*span)&(ticks<=hi-.08*span)]
+    return ticks
 
-def render(pl,bt,out):
+def render(pl,bt,out,shared_limits=None,shared_marginal_ymax=None):
     p=B.parent/'corner_park95_20261104/render.py';sp=importlib.util.spec_from_file_location('park95',p);park=importlib.util.module_from_spec(sp);sp.loader.exec_module(park)
-    lim=display_limits(np.concatenate([pl,bt]));n=len(PARAMETERS)
-    plt.rcParams.update({'font.family':'STIXGeneral','mathtext.fontset':'stix','font.size':10,'axes.labelsize':12,'xtick.labelsize':9.5,'ytick.labelsize':9.5,'text.color':'#344C5E','axes.labelcolor':'#344C5E','xtick.color':'#506577','ytick.color':'#506577','figure.facecolor':'white'})
-    fig,axs=plt.subplots(n,n,figsize=(8.1,8.1));fig.subplots_adjust(left=.12,right=.985,bottom=.105,top=.91,wspace=.065,hspace=.065)
+    lim=shared_limits if shared_limits is not None else display_limits(np.concatenate([pl,bt]));n=len(PARAMETERS)
+    for a in [pl,bt]:assert all(a[:,i].min()>=lo and a[:,i].max()<=hi for i,(lo,hi) in enumerate(lim))
+    plt.rcParams.update({'font.family':'STIXGeneral','mathtext.fontset':'stix','font.size':10,'axes.labelsize':11.5,'xtick.labelsize':9,'ytick.labelsize':9,'text.color':'#344C5E','axes.labelcolor':'#344C5E','xtick.color':'#506577','ytick.color':'#506577','figure.facecolor':'white','axes.facecolor':'white','axes.grid':False})
+    fig,axs=plt.subplots(n,n,figsize=(8.25,8.25));fig.subplots_adjust(left=.125,right=.985,bottom=.11,top=.91,wspace=.10,hspace=.10)
     checks={'PL':[],'BT':[]};summaries={'PL':[],'BT':[]}
     for i in range(n):
       for j in range(n):
         ax=axs[i,j]
         if j>i:ax.set_visible(False);continue
         ax.set_xlim(lim[j]);ax.xaxis.set_major_locator(FixedLocator(axis_ticks(lim[j])));ax.xaxis.set_major_formatter(FuncFormatter(lambda v,p:f'{v:g}'))
-        ax.tick_params(direction='in',length=2,width=.45,labelbottom=i==n-1,labelleft=j==0 and i!=j)
-        for spine in ax.spines.values():spine.set_color('#77838D');spine.set_linewidth(.55)
+        ax.tick_params(direction='in',length=2.1,width=.45,labelbottom=i==n-1,labelleft=j==0 and i!=j,pad=3)
+        for spine in ax.spines.values():spine.set_color('#A3ADB6');spine.set_linewidth(.45)
         if i==j:
-            for name,a,c,ls,ytext in [('BT',bt,BT,'-',1.08),('PL',pl,PL,'--',1.27)]:
+            for name,a,c,ls,ytext in [('BT',bt,BT,'-',1.27),('PL',pl,PL,DASH,1.08)]:
                 h,e=np.histogram(a[:,i],bins=32,range=lim[i],density=True);y=gaussian_filter1d(h,.8,mode='reflect');x=(e[1:]+e[:-1])/2
                 ax.plot(x,y,color=c,ls=ls,lw=1.15)
-                if name=='BT':ax.fill_between(x,0,y,color=FILL,alpha=.32,lw=0)
-                title,stats=number(a[:,i]);summaries[name].append(dict(parameter=PARAMETERS[i],**stats))
-                ax.text(.5,ytext,name+' '+title,transform=ax.transAxes,ha='center',va='bottom',fontsize=8.8,color=c)
-            ax.set_yticks([]);ax.set_ylim(bottom=0)
+                if name=='BT':ax.fill_between(x,0,y,color=FILL,alpha=.18,lw=0)
+                title,stats=number(a[:,i],STAT_DECIMALS[i]);summaries[name].append(dict(parameter=PARAMETERS[i],**stats))
+                ax.text(.5,ytext,name+' '+title,transform=ax.transAxes,ha='center',va='bottom',fontsize=8.6,color=c)
+            ax.set_yticks([])
+            if shared_marginal_ymax is not None:ax.set_ylim(0,shared_marginal_ymax[i])
+            else:ax.set_ylim(bottom=0)
         else:
             ax.set_ylim(lim[i]);ax.yaxis.set_major_locator(FixedLocator(axis_ticks(lim[i])));ax.yaxis.set_major_formatter(FuncFormatter(lambda v,p:f'{v:g}'))
-            for name,a,c,ls in [('BT',bt,BT,'-'),('PL',pl,PL,'--')]:
+            for name,a,c,ls in [('BT',bt,BT,'-'),('PL',pl,PL,DASH)]:
                 h,_,_=np.histogram2d(a[:,j],a[:,i],bins=32,range=[lim[j],lim[i]]);assert int(h.sum())==len(a)
                 x,y,field,level,coverage=park.density_grid(h,lim[j],lim[i])
-                if name=='BT':ax.contourf(x,y,field,levels=[level,np.nextafter(field.max(),np.inf)],colors=[FILL],alpha=.45)
-                ax.contour(x,y,field,levels=[level],colors=[c],linewidths=1.,linestyles=ls)
+                if name=='BT':ax.contourf(x,y,field,levels=[level,np.nextafter(field.max(),np.inf)],colors=[FILL],alpha=.30)
+                ax.contour(x,y,field,levels=[level],colors=[c],linewidths=1.,linestyles=[ls])
                 checks[name].append(dict(x_parameter=PARAMETERS[j],y_parameter=PARAMETERS[i],rows=len(a),**coverage))
         if i==n-1:ax.set_xlabel(LABELS[j],labelpad=7)
         if j==0 and i!=j:ax.set_ylabel(LABELS[i],labelpad=7)
@@ -109,7 +115,7 @@ def render(pl,bt,out):
                 bb=t.get_window_extent(r);assert bb.x0>=-1 and bb.y0>=-1 and bb.x1<=fig.bbox.width+1 and bb.y1<=fig.bbox.height+1,t.get_text()
     assert not fig.texts
     out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=250,facecolor='white');plt.close(fig)
-    return dict(common_coordinate_limits=lim,sample_density_coverage=checks,marginal_summaries=summaries,style={'BT':'blue solid outline with single light-grey fill','PL':'orange dashed outline, no fill'},second_data_set_included=True,upper_triangle_information_blocks=0,renderer_sha256=sha(Path(__file__)),park_renderer_sha256=sha(Path(park.__file__)))
+    return dict(common_coordinate_limits=lim,common_marginal_ymax=shared_marginal_ymax,sample_density_coverage=checks,marginal_summaries=summaries,style_name=STYLE_NAME,style={'BT':'blue solid outline with single light-grey fill','PL':'orange dashed outline, no fill','font':'STIXGeneral','figure_inches':[8.25,8.25],'contour_width_pt':1.,'marginal_width_pt':1.15,'axis_width_pt':.45,'fill_alpha_2d':.30,'fill_alpha_1d':.18,'pl_dash_pattern':[4,2],'annotation_order_top_to_bottom':['BT','PL'],'annotation_decimals':STAT_DECIMALS,'shared_across_all_cases':shared_limits is not None},second_data_set_included=True,upper_triangle_information_blocks=0,renderer_sha256=sha(Path(__file__)),park_renderer_sha256=sha(Path(park.__file__)))
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
