@@ -17,3 +17,7 @@ Use `python build.py audit.json index_en.html --en` for the English desktop edit
 ## Runtime inventory
 
 Both editions now list 25 workflow steps, with unavailable elapsed times explicitly marked. Expandable tables preserve six coeval runs, 15 timed cache cases plus three setup failures, and 87 archived atlas timings. `timing_section.py` renders these records from hash-checked snapshots in `timing_sources/`. The page exports timing JSON. Historical per-call/per-iteration values are not assigned to new 100k-model runs, and mixed or overlapping costs are not summed into an end-to-end duration. New-model source `seconds` converts to 13.2392 h, with per-seed/hardware allocation unverified.
+
+## Concise results view
+
+The default view retains numerical tables, plots and recorded runtimes. Full workflow rows, missing timings and audit notes remain in closed details panels. All embedded data and original corner images are preserved.

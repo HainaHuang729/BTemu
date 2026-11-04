@@ -44,7 +44,16 @@ def render(en=False):
  absent('图表生成、论文编译与 HTML 整理','Figure generation, manuscript compilation and HTML assembly')
  headers=tr(['步骤','耗时','计量口径与范围','来源'],['Step','Recorded duration','Unit and scope','Source'])
  def table(headers,body):return '<div class="table-wrap timing-table"><table><thead><tr>'+''.join('<th>'+v+'</th>' for v in headers)+'</tr></thead><tbody>'+body+'</tbody></table></div>'
- summary=table(headers,''.join(rows))
+ full_workflow=table(headers,''.join(rows))
+ compact=[]
+ for item in payload:
+  if item['seconds'] is None:continue
+  # Original row labels are already localized; retain them from the rendered row.
+  original=rows[payload.index(item)]
+  label=original.split('<td>')[1].split('</td>')[0]
+  unit=tr('每迭代（历史）','per iteration (historical)') if 'iteration' in item['stage'] else tr('每样本（历史）','per sample (historical)') if 'predict' in item['stage'].lower() else tr('单例中位数（历史）','median realization (historical)') if 'realization' in item['stage'] else tr('报告运行总时长','reported run elapsed')
+  compact.append('<tr><td>'+label+'</td><td>'+fmt(item['seconds'])+'</td><td>'+unit+'</td></tr>')
+ summary=table(tr(['步骤','耗时','口径'],['Step','Duration','Unit']),''.join(compact))
  hr=[]
  for label,r in hist.items():
   text=tr('16 threads；32 节点 coeval；计时含配置、模拟及 xH_box 均值提取。','16 threads; 32-node coeval calculation, including configuration, simulation and xH_box mean extraction.')
@@ -74,7 +83,9 @@ def render(en=False):
  warning=tr('各项存在不同硬件、样本数、并行度和计时范围，部分记录互相重叠，不能相加得到项目总耗时。T8 的网络预测不等于完整似然，历史每步时间也不能套用到新 100k 链。','These records have different hardware, sample counts, parallelism and timing scopes, with possible overlap. They cannot be summed into an end-to-end project duration. T8 network prediction is not the complete likelihood, and historical iteration costs are not assigned to new 100k-model chains.')
  trainingnote=tr('100k 源 JSON 为 47,661.272695 s = 13.2392 h；早期摘要的 13.5 h 与该字段不同。页面采用 JSON 数值，暂不解释为五个 seed 总 GPU 成本。','The 100k source JSON gives 47,661.272695 s = 13.2392 h, differing from the earlier prose value of 13.5 h. The page uses the JSON value without interpreting it as the total GPU cost of five seeds.')
  atlasnote=tr('21cmTB 历史 atlas 的配置为 BOX_LEN=250 Mpc、DIM=768、HII_DIM=256、16 threads，区别于当前 DIM=512/HII_DIM=128。该表不用于估计新模型训练数据成本。','The historical 21cmTB atlas uses BOX_LEN=250 Mpc, DIM=768, HII_DIM=256 and 16 threads, distinct from the current DIM=512/HII_DIM=128 setup. It is not used to estimate the new training-data cost.')
- result=f'<section id="timing"><div class="section-head"><h2>{title}</h2><div class="actions"><button id="timing-json">'+tr('下载耗时 JSON','Download timing JSON')+f'</button></div></div><p class="lead">{intro}</p>{summary}<div class="annotation"><p>{trainingnote}</p></div><p class="small">{warning}</p>'
+ result=f'<section id="timing"><div class="section-head"><h2>'+tr('耗时','Runtime')+'</h2><div class="actions"><button id="timing-json">'+tr('下载耗时 JSON','Download timing JSON')+'</button></div></div>'+summary
+ result+='<p class="small">'+tr('仅列有计时的步骤；各项采用其原始计量口径。','Recorded durations, with their original timing units.')+'</p>'
+ result+='<details><summary>'+tr('完整工作流（含未记录项目）','Full workflow, including unrecorded durations')+'</summary>'+full_workflow+'<p class="small">'+warning+'</p><p class="small">'+trainingnote+'</p></details>'
  for name,note,body in [(tr('逐次 coeval 历史计算（6 条记录）','Individual coeval history calculations (6 records)'),tr('其中五条 BT 用于论文；来源标注的 PL 身份仍待核实。','Five BT cases enter the manuscript; the source-labelled PL identity remains unverified.'),historytable),(tr('Exact / cache（15 条计时与 3 条失败记录）','Exact/cache comparison (15 timed cases and 3 failed cases)'),tr('保留数值不一致的模式，不以最快运行宣称加速。','Numerically discrepant modes are retained; the fastest entry is not treated as a valid speedup.'),cachetable),(tr(f'历史 21cmTB atlas（{len(ar)} 条计时）',f'Historical 21cmTB atlas ({len(ar)} timing records)'),atlasnote,atlastable)]:
   result+=f'<details><summary>{name}</summary><p class="small">{note}</p>{body}</details>'
  result+='</section><script type="application/json" id="timing-data">'+json.dumps(data,ensure_ascii=False).replace('</','<\\/')+'</script>'
