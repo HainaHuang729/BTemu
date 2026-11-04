@@ -1,0 +1,32 @@
+{
+  "source_revision": "d65a89d051ef78aa37b0e473b4d3b7859fc10e30",
+  "selection": "All 3000 stored steps x 32 walkers for each model; no additional discard or thinning",
+  "parameters": [
+    "ETA_STAR",
+    "t_STAR",
+    "ALPHA_STAR",
+    "M_TURN",
+    "F_ESC10",
+    "ALPHA_ESC"
+  ],
+  "cases": [
+    {
+      "file": "PL_vs_kp10_ms2p5_100k_Park95.png",
+      "label": "BT: kp=10, ms=2.5",
+      "audit": "PL_vs_kp10_ms2p5_100k_Park95.json",
+      "sha256": "8d1a3c3e022b66aca4f520cd2328ffcea41728e7a6d12093cd986c3da86db5be"
+    },
+    {
+      "file": "PL_vs_kp1_ms1p5_100k_Park95.png",
+      "label": "BT: kp=1, ms=1.5",
+      "audit": "PL_vs_kp1_ms1p5_100k_Park95.json",
+      "sha256": "3381f95449e67f6e3bc222d51b4dd48b3c7874280bbc9977d0e51ed50062e0bb"
+    },
+    {
+      "file": "PL_vs_kp5_ms1p5_100k_Park95.png",
+      "label": "BT: kp=5, ms=1.5",
+      "audit": "PL_vs_kp5_ms1p5_100k_Park95.json",
+      "sha256": "bd54cab5430b513be40784d3f61b2112df12882715cd82f1458812417bbacc12"
+    }
+  ]
+}

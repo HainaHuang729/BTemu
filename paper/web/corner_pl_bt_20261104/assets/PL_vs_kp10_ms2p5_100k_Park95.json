@@ -1,0 +1,570 @@
+{
+  "common_coordinate_limits": [
+    [
+      -3.0348687054703127,
+      1.213548620927768
+    ],
+    [
+      -0.014510859993396871,
+      1.0247098469676246
+    ],
+    [
+      -0.39846579616246897,
+      1.032332764304929
+    ],
+    [
+      7.925507656678483,
+      11.055024995249648
+    ],
+    [
+      -3.065298431056225,
+      0.07471175484256148
+    ],
+    [
+      -1.0371897562239922,
+      0.5374773833166334
+    ]
+  ],
+  "sample_density_coverage": {
+    "PL": [
+      {
+        "x_parameter": "ETA_STAR",
+        "y_parameter": "t_STAR",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500020353945896,
+        "integrated_mass_strictly_above_level": 0.9499784400125734,
+        "threshold": 144.97002710728617,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ETA_STAR",
+        "y_parameter": "ALPHA_STAR",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500290154942445,
+        "integrated_mass_strictly_above_level": 0.9499845436540005,
+        "threshold": 273.23498645889407,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "t_STAR",
+        "y_parameter": "ALPHA_STAR",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500034765576456,
+        "integrated_mass_strictly_above_level": 0.9499895799926716,
+        "threshold": 85.38049519842276,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ETA_STAR",
+        "y_parameter": "M_TURN",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500019095859311,
+        "integrated_mass_strictly_above_level": 0.949970356518651,
+        "threshold": 193.86204536980694,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "t_STAR",
+        "y_parameter": "M_TURN",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500098421879022,
+        "integrated_mass_strictly_above_level": 0.9499983353343107,
+        "threshold": 70.69810846651579,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ALPHA_STAR",
+        "y_parameter": "M_TURN",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500004844093116,
+        "integrated_mass_strictly_above_level": 0.949980981925663,
+        "threshold": 119.8232595374741,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ETA_STAR",
+        "y_parameter": "F_ESC10",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.950022446354303,
+        "integrated_mass_strictly_above_level": 0.9499839300571072,
+        "threshold": 236.64412997150427,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "t_STAR",
+        "y_parameter": "F_ESC10",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.950006158116778,
+        "integrated_mass_strictly_above_level": 0.9499906301780081,
+        "threshold": 95.40365580301052,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ALPHA_STAR",
+        "y_parameter": "F_ESC10",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500729791346221,
+        "integrated_mass_strictly_above_level": 0.9499836832538754,
+        "threshold": 137.1584728268599,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "M_TURN",
+        "y_parameter": "F_ESC10",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500104408339178,
+        "integrated_mass_strictly_above_level": 0.9499922740010259,
+        "threshold": 111.61702128825135,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ETA_STAR",
+        "y_parameter": "ALPHA_ESC",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500025377741352,
+        "integrated_mass_strictly_above_level": 0.9499839288287938,
+        "threshold": 114.33336017677797,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "t_STAR",
+        "y_parameter": "ALPHA_ESC",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500002495846351,
+        "integrated_mass_strictly_above_level": 0.9499906761107387,
+        "threshold": 58.81942361942954,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ALPHA_STAR",
+        "y_parameter": "ALPHA_ESC",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500066362335277,
+        "integrated_mass_strictly_above_level": 0.9499956876270044,
+        "threshold": 67.26823847923876,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "M_TURN",
+        "y_parameter": "ALPHA_ESC",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.950007098944975,
+        "integrated_mass_strictly_above_level": 0.949998616902633,
+        "threshold": 52.11366814930167,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "F_ESC10",
+        "y_parameter": "ALPHA_ESC",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500088951609587,
+        "integrated_mass_strictly_above_level": 0.9499920871223597,
+        "threshold": 103.26858915191514,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      }
+    ],
+    "BT": [
+      {
+        "x_parameter": "ETA_STAR",
+        "y_parameter": "t_STAR",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500211321731737,
+        "integrated_mass_strictly_above_level": 0.9499996541951318,
+        "threshold": 131.96069708861765,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ETA_STAR",
+        "y_parameter": "ALPHA_STAR",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500388443821588,
+        "integrated_mass_strictly_above_level": 0.9499949170940292,
+        "threshold": 269.8892582691336,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "t_STAR",
+        "y_parameter": "ALPHA_STAR",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.950009002969425,
+        "integrated_mass_strictly_above_level": 0.9499963659303935,
+        "threshold": 77.64196781004975,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ETA_STAR",
+        "y_parameter": "M_TURN",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500278820253342,
+        "integrated_mass_strictly_above_level": 0.949994585568088,
+        "threshold": 204.5734333202496,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "t_STAR",
+        "y_parameter": "M_TURN",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500049679563569,
+        "integrated_mass_strictly_above_level": 0.9499945835802105,
+        "threshold": 63.80160704271988,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ALPHA_STAR",
+        "y_parameter": "M_TURN",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500176574788164,
+        "integrated_mass_strictly_above_level": 0.9499963225193825,
+        "threshold": 131.08199076179136,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ETA_STAR",
+        "y_parameter": "F_ESC10",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500030815362084,
+        "integrated_mass_strictly_above_level": 0.9499753699636386,
+        "threshold": 170.25990186766657,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "t_STAR",
+        "y_parameter": "F_ESC10",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500003845518044,
+        "integrated_mass_strictly_above_level": 0.9499903332983317,
+        "threshold": 61.75490133466811,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ALPHA_STAR",
+        "y_parameter": "F_ESC10",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500010580528592,
+        "integrated_mass_strictly_above_level": 0.9499852081300214,
+        "threshold": 97.3819259169955,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "M_TURN",
+        "y_parameter": "F_ESC10",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.950005092164466,
+        "integrated_mass_strictly_above_level": 0.9499942086908221,
+        "threshold": 66.86806206809754,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ETA_STAR",
+        "y_parameter": "ALPHA_ESC",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500097076255456,
+        "integrated_mass_strictly_above_level": 0.9499908946140248,
+        "threshold": 115.58714278521393,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "t_STAR",
+        "y_parameter": "ALPHA_ESC",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500047879596012,
+        "integrated_mass_strictly_above_level": 0.9499996634854772,
+        "threshold": 31.48476901975181,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "ALPHA_STAR",
+        "y_parameter": "ALPHA_ESC",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500040849854384,
+        "integrated_mass_strictly_above_level": 0.9499928823794985,
+        "threshold": 68.82881089379121,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "M_TURN",
+        "y_parameter": "ALPHA_ESC",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.9500071160408993,
+        "integrated_mass_strictly_above_level": 0.9499972285592225,
+        "threshold": 60.74868742048772,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      },
+      {
+        "x_parameter": "F_ESC10",
+        "y_parameter": "ALPHA_ESC",
+        "rows": 96000,
+        "target_mass": 0.95,
+        "integrated_mass_at_or_above_level": 0.950000608056867,
+        "integrated_mass_strictly_above_level": 0.9499937188473364,
+        "threshold": 42.32730335607516,
+        "integration_grid_shape": [
+          256,
+          256
+        ]
+      }
+    ]
+  },
+  "marginal_summaries": {
+    "PL": [
+      {
+        "parameter": "ETA_STAR",
+        "median": -0.9262536610707588,
+        "q025": -0.9938808369013556,
+        "q975": -0.8535570318119855
+      },
+      {
+        "parameter": "t_STAR",
+        "median": 0.7589707474798156,
+        "q025": 0.3239926865504129,
+        "q975": 0.9891555396264196
+      },
+      {
+        "parameter": "ALPHA_STAR",
+        "median": 0.545028174876812,
+        "q025": 0.4097517498525003,
+        "q975": 0.6782719123666799
+      },
+      {
+        "parameter": "M_TURN",
+        "median": 8.60109590630624,
+        "q025": 8.033079675662625,
+        "q975": 9.377421038260437
+      },
+      {
+        "parameter": "F_ESC10",
+        "median": -0.229247993569837,
+        "q025": -0.9034415467010052,
+        "q975": -0.009361474741367502
+      },
+      {
+        "parameter": "ALPHA_ESC",
+        "median": 0.17384373065805078,
+        "q025": -0.7547183099275646,
+        "q975": 0.48503747998373675
+      }
+    ],
+    "BT": [
+      {
+        "parameter": "ETA_STAR",
+        "median": -0.9432484388710738,
+        "q025": -1.019193683255351,
+        "q975": -0.8476906689682967
+      },
+      {
+        "parameter": "t_STAR",
+        "median": 0.5026425455053344,
+        "q025": 0.0614122583119287,
+        "q975": 0.9721358787002504
+      },
+      {
+        "parameter": "ALPHA_STAR",
+        "median": 0.5741183661556999,
+        "q025": 0.40542787357444965,
+        "q975": 0.7275341162111958
+      },
+      {
+        "parameter": "M_TURN",
+        "median": 9.069734316224745,
+        "q025": 8.09984131616302,
+        "q975": 9.581401496823371
+      },
+      {
+        "parameter": "F_ESC10",
+        "median": -1.103844476865354,
+        "q025": -1.7578582037978268,
+        "q975": -0.137985755066786
+      },
+      {
+        "parameter": "ALPHA_ESC",
+        "median": 0.12708052091717115,
+        "q025": -0.8105724277395355,
+        "q975": 0.48395871820134995
+      }
+    ]
+  },
+  "style": {
+    "BT": "blue solid outline with single light-grey fill",
+    "PL": "orange dashed outline, no fill"
+  },
+  "second_data_set_included": true,
+  "upper_triangle_information_blocks": 0,
+  "renderer_sha256": "2e2fb7b13577f4a71d655f4ac61bda35aa5bf1fc7e5976d3cb9253a20b0250ac",
+  "park_renderer_sha256": "54c7e0ebe1cc906d66f5c9057a32e80bbb68875df7788041926416b0837aadf7",
+  "sources": {
+    "PL": {
+      "file": "/Users/amadeus/Documents/ChatGPT/论文/BTemu/paper/paper_materials/chains_20261104/pl_100k.h5",
+      "sha256": "ab1a468c4347b688cdd732fafa13d53d41ddde21eb3c2fdc48afff14e45a68f2",
+      "stored_shape": [
+        3000,
+        32,
+        6
+      ],
+      "discard_leading_stored_rows_or_steps": 0,
+      "retained_rows": 96000,
+      "source_parameters": [
+        "ETA_STAR",
+        "t_STAR",
+        "ALPHA_STAR",
+        "M_TURN",
+        "F_ESC10",
+        "ALPHA_ESC"
+      ],
+      "selected_parameters": [
+        "ETA_STAR",
+        "t_STAR",
+        "ALPHA_STAR",
+        "M_TURN",
+        "F_ESC10",
+        "ALPHA_ESC"
+      ],
+      "coordinate_transform": "none"
+    },
+    "BT": {
+      "file": "/Users/amadeus/Documents/ChatGPT/论文/BTemu/paper/paper_materials/chains_20261104/kp10_ms2p5_100k.h5",
+      "sha256": "9fd2a798956f677afe4cf5303a1d026abf9c8d0dc24bfd2d7ed3bf1402a7be2d",
+      "stored_shape": [
+        3000,
+        32,
+        6
+      ],
+      "discard_leading_stored_rows_or_steps": 0,
+      "retained_rows": 96000,
+      "source_parameters": [
+        "ETA_STAR",
+        "t_STAR",
+        "ALPHA_STAR",
+        "M_TURN",
+        "F_ESC10",
+        "ALPHA_ESC"
+      ],
+      "selected_parameters": [
+        "ETA_STAR",
+        "t_STAR",
+        "ALPHA_STAR",
+        "M_TURN",
+        "F_ESC10",
+        "ALPHA_ESC"
+      ],
+      "coordinate_transform": "none"
+    }
+  },
+  "output_sha256": "8d1a3c3e022b66aca4f520cd2328ffcea41728e7a6d12093cd986c3da86db5be",
+  "label": "BT: kp=10, ms=2.5"
+}
