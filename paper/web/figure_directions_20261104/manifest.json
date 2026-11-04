@@ -1,0 +1,368 @@
+{
+  "source": "/Users/amadeus/Documents/ChatGPT/论文/overleaf-btemu/paper/reproduction",
+  "canonical_input_sha256": {
+    "chains/chain6_1000.h5": "0947166e31fa99a38c5b5ae078fcd611f64bafae4a9d8f85c88f8841e6fab984",
+    "chains/chain6_exact_200.h5": "1c0492ee414d48ced59ac7ece6918aba9a4a858373f1141bf48e024fe39d1198",
+    "chains/chain6_ext2_2000.h5": "d018dfef73bf878c8e333906c1f97b60e55b4b0f4bccf92a52e092937bbb7ccd",
+    "chains/chain8_2000.h5": "07ca1dd9c995f924b6f219440db9b50b66f8223f8cc477aebef546da04bbd77b",
+    "chains/chain8_ext_3399.h5": "80c117c70eca2ccbadc2238158e0042d4fca9adad871e966081580907d318432",
+    "chains/chain6_ext_2000.h5": "12340b843b25c296f46ea647ada2c9e853563c645fab9ac3ba5c864d791c64af",
+    "data/21cmtb_figure_manifest_20261029.json": "5a5a95215577e9a63ea30b6031b506ec9db48817cf8b030b041beb69c32b400d",
+    "data/new_chain_audit_20261029.json": "0381204a8908d5076bc650218fcade1af7083a94d03680086edc2c8b8f996b45",
+    "data/exact200_corner_audit_20261029.json": "b12db8f89647de6f2fde5031cd91a58d211fb3dac05aee592312294a6eba32aa",
+    "data/t2_metadata_inventory_20261029.json": "42b3d9fc177045da0de8e8793823b6419f90b1dd828d19b3d3a95cbc06086b5a",
+    "data/21cmtb_evidence_20261029.json": "32d6052c85124dfb9af2f6ad176a7c536b5a31057760c389963cfd79c1ca096e",
+    "data/t6_recomputed_20261029.json": "a90ac04ed2727e8dbfb71943156fe2741fde37a66d8180aafff18b2850a4d1b9",
+    "data/validation_recomputed_20261029.json": "7d0b54654e482d6a0eaa166e3748c1da56e579128bd8a9628812eb8a8bd1a31a",
+    "data/t3_update_20261103/audit.json": "f05ea604847f96745ac70dd059d1245a4a87ff269db0230429fff580063ddc46",
+    "data/t3_update_20261103/BACKLOG_20261101.md": "772efe7ee9c5ec159fb080246f210e037e67056b1d7fed67de5b87a102462f27",
+    "data/t3_update_20261103/source_manifest.json": "2d7a34456fbd199f9564a756783f7daccc4b159025a44675dbebb534579abca3",
+    "data/t3_update_20261103/fig_t3_obs_combinations.png": "dec3742ffad39f215d75245c9d4880cb678ddd661eb2da64a42f32d1ee9c41e3",
+    "data/t3_update_20261103/t3_obs_combinations.json": "f950efc22fd15c582aff9544bdf1147ebfd1a55a57a8d97cde0ac18b94c620fd",
+    "data/t3_update_20261103/t3_fig.py": "d47bb57334a34f46649a14f996179da0f970021204cc73bcf6297f62d5689c38",
+    "data/t3_update_20261103/PS_PLAN_20261102.md": "ebec0eba86e063dc3457534d15ca221be26663ff7e74fa84c5506ecf67cd6e34",
+    "data/t3_update_20261103/t3_obs_combinations.md": "4854ce5a84005a2cdbea8c2e0e252b8693f85968e53d492f4c86dad2bba71e52",
+    "data/t3_update_20261103/t3_table.tex": "3b4b09df27ca5c53c05d3941196c6f3eadfbf6ccce6d585547caa0896e51a3de",
+    "data/material_update_20261030/audit.json": "d7a020c11d3fa543bbb860ce2b18df7038b7d1fedf94212e8d72288e5e397a3c",
+    "data/material_update_20261030/source_manifest.json": "65c3811177ab8748c38ec26cc05f6c3ee5284019441905cbeb728d46c2ed8891",
+    "data/material_update_20261030/t4_paired_recovery.json": "361ec0805432a63b44795f520dae2a22bf30a6191f0898e29dd7a3c39cdf4be3",
+    "data/material_update_20261030/t4b_paired_recovery_sigma.json": "8a8d7c556ef1dd36f42c652d219a41015c5de00f14881a0d7e416c68fe7d0037",
+    "data/material_update_20261030/paired_recovery_table.tex": "992adcbacedaa9c900f05ca6d732946e79e4e33ecea88196642c100940faa871",
+    "data/material_update_20261030/t4_paired_recovery.md": "6c799b879dffc7e2d513bad96d375d5e22efbe0295bbb3746c29c5f959ada40a",
+    "data/material_update_20261030/t2b_matched_kpms.md": "480aa2dce65c9a8f4fa0c9b8f4f1ff4663a60bb901ed05ffecaa0e6aa3b9317d",
+    "data/material_update_20261030/t4b_paired_recovery_sigma.md": "801d506bb543e1ec6e29b6eb67cee143c53b9fe3a4900d091f8cfa0e4811551c",
+    "data/material_update_20261030/t2b_matched_kpms_histories.json": "f7e12e7b4799051abdc0f81532bef23aa13353e67192645f076ed744c82c6988",
+    "data/material_update_20261030/work_status.json": "19f0489ad36fc536ee0af33fecd1d6cc192da131acae8cdabfbac170d81d6648",
+    "data/material_update_20261030/t4b_sigma.py": "1103c349cfd868d8e3757f7545d1416e51be24755ed9114fe765ee70b3cf01a1",
+    "data/material_update_20261030/t2b_fig.py": "6129ce044fed709ba1e5f00fa9b08c5d7bb7148e3c63a936d504e4def28073d3",
+    "data/material_update_20261030/t2b_matched.py": "370ff154560607fa6a02b9a7c85dffb694f67ab0364aa6753d8a31f71f5bed92",
+    "data/material_update_20261030/t4_lite.py": "3c23070efaf3a6d787772b4e7f54af7414d44916092b52b1d4d5d627201e3f4f",
+    "data/t7_update_20261031/history_target_semantics.json": "ae3d03326db596acf3dac3ae11377068e9349d9e6b2f2dc2f87c5e199e56d15f",
+    "data/t7_update_20261031/audit.json": "1e3918c457976c1ab33791e61b1be1c7f9e6442e0d90956f4df706f5b0742256",
+    "data/t7_update_20261031/source_manifest.json": "26f9fa0e817fc84eb54c5e0c0934d37d12f0bc94af7a3f8b9fad62262dd2635b",
+    "data/t7_update_20261031/t7_table.tex": "38512548ee396d809c35e74d69915f4918b0221616d2e0b75f494a03ebdf03da",
+    "data/t7_update_20261031/ic_audit_acceptance.json": "090c4f6fdfb08ceedff5b3830137586a33ab50fb9a3adb9a17a1d2853c109738",
+    "data/t7_update_20261031/ic_audit_completion.md": "6557c28ce1619798e4690cea69b9c8a3882a20840943f72e549eb4e6786418e1",
+    "data/t7_update_20261031/t7_ic_sensitivity_report.json": "608e25bea36a05d06f24fab34ac959a6f2410ebbd29c7a1bc8cd4ee2961cf73a",
+    "data/t7_update_20261031/random_ic_development_20261014.md": "4a7b2b68c3f767517263f5cd5c41de251f724b75ae81bc6d0ac2fc3893304410",
+    "data/t7_update_20261031/common.py": "b280381a6fd84e0888effac07d1a361a2b955ff47ceaeb94496db32824a282f7",
+    "data/t7_update_20261031/random_ic_explicit_start.md": "f111525a2e8ca710a50bebb2c0db651e9fd153c89b1d5d405a166199f3d1d5c2",
+    "data/t7_update_20261031/report.py": "5d39c195a11596115648b811508a0a5ea1e209642c11750de742f567b58bc703",
+    "data/t7_update_20261031/training.py": "6d48a82f3072ec62366934283c2662cd338398e3e37833b588ec3b6ce2356dbc",
+    "data/t7_update_20261031/ic_audit_v1.json": "9f3814de43a8a866c6efd2ddb9e8c21155a28e421e785e49089f6823df05315a",
+    "data/t7_update_20261031/t7_ic_conditional_mean.md": "227ee7c65a1c59863c1de39dc63adb9feee3e7651a3c63868a25387a1699a016",
+    "data/model_update_20261104/audit.json": "ec3989f62895350e22ad07f9bb4f2bf907cd593e57984c8cdd0e3ff6be9b1056",
+    "data/model_update_20261104/PS_HISTORY_20261103.md": "1c07fe687c72ab14fb84fc6e64b3cb636cc3891d0c51ef31beed50031c19b322",
+    "data/model_update_20261104/source_manifest.json": "3e7f250f672a218acf951e8d9b70815c2a71b141e120b682eaca87c771ffa9cc",
+    "data/model_update_20261104/100k_comparison_metrics.json": "f7c1ce7fe1e507a5911ae2874ccd35652405dab43fbc534f194d83a948529391",
+    "data/model_update_20261104/fixed_rows.tex": "900d99265cf6cd0dc0fcea8256275129cd9d5868400248929352121a871578f8",
+    "data/model_update_20261104/validation_rows.tex": "4d673b465c836ad85c394ce5695855e503fbbbd70b50110f201f291909304f45",
+    "data/model_update_20261104/phases.json": "f5950761aeede2b6e18331228f613c6f6b3af75ee58b4cf8785ffeda3625f754",
+    "data/model_update_20261104/RESULTS_20261104.md": "597310cb87a1a66ffcabeca03c869ba47416e76145ec310e81c94819d33e0784",
+    "data/model_update_20261104/preservation_before.json": "15b2434bd314f68a0cc03dfdfa35d6f6fc4f8a98c7ebf917348f46e01525d62c",
+    "paper_materials/tables/t5b_validation_predictions.npz": "ac53130045034015c8f02d647aa23cf44824d597405af7015db84973f7b5b0f3"
+  },
+  "statistics_identical_across_all_five": true,
+  "figures": [
+    [
+      "fig11_btemu_corner6_5000",
+      "6D corner"
+    ],
+    [
+      "fig12_btemu_corner8_5568",
+      "8D corner"
+    ],
+    [
+      "fig13_exact_corner6_200",
+      "Exact 200-step corner"
+    ],
+    [
+      "fig8_21cmtb_corner_fixed8",
+      "21cmTB 8D corner"
+    ],
+    [
+      "fig9_21cmtb_corner_free9",
+      "21cmTB 9D corner"
+    ],
+    [
+      "fig15_kpms_focus",
+      "谱参数 / Spectrum focus"
+    ],
+    [
+      "fig17_obs_combinations",
+      "观测组合 / Observation combinations"
+    ],
+    [
+      "fig16_fixed_astro_bt_histories",
+      "固定星系参数历史 / Fixed-galaxy histories"
+    ],
+    [
+      "fig5_21cmtb_histories",
+      "历史对照 / Atlas histories"
+    ],
+    [
+      "fig6_21cmtb_lf_grid",
+      "LF 网格 / LF grid"
+    ],
+    [
+      "fig7_21cmtb_lf_fits",
+      "LF 拟合 / LF fits"
+    ],
+    [
+      "fig14_validation",
+      "模型验证 / Model validation"
+    ],
+    [
+      "fig10_21cmtb_diagnostics",
+      "链诊断 / Chain diagnostics"
+    ]
+  ],
+  "designs": [
+    {
+      "name": "经典黑白",
+      "en": "Monochrome journal",
+      "palette": [
+        "#161616",
+        "#343434",
+        "#777777",
+        "#999999",
+        "#575757"
+      ],
+      "density": [
+        "#ffffff",
+        "#f2f2f2",
+        "#cecece",
+        "#999999",
+        "#5c5c5c",
+        "#181818"
+      ],
+      "font": "STIXGeneral",
+      "math": "stix",
+      "frame": "box",
+      "width": 1.25,
+      "fill": 0.08,
+      "spacing": 0.14,
+      "key": 0.6,
+      "grid": false,
+      "desc": "黑白印刷取向；完整细边框、衬线字体，以灰阶与线型建立层次。",
+      "nonce": "3b142d95a66c78addad9c64dc13acc8d",
+      "source_style": "academic-v3",
+      "preview_only": true,
+      "hash": "0b92dc67f9edb43a30ad99c126f8c1d7174a15db3029baa3116226764b47345c",
+      "id": "0b92dc67f9ed",
+      "outputs": {
+        "fig17_obs_combinations": "6f07ed37e99f4bc07af29457cbf7e5338552e92fb35e0244ea557d94a55511e9",
+        "fig16_fixed_astro_bt_histories": "c1fecb5754a93beeb8e54ebae1f5153f2e2fcf212ce89f69b6244d6d1d18e7dd",
+        "fig5_21cmtb_histories": "2c65e89ca5eaf396dc9d83ddb0b0239b29071864aa9aad0d063b38ab34117737",
+        "fig6_21cmtb_lf_grid": "b2c04f10b0aa185ce9b43761d770e9c01a499b234f2a171b46298441093359bf",
+        "fig7_21cmtb_lf_fits": "f96a3d641a205617134af75ad29dd8dedc5f38335a8bb015012ac904114c9169",
+        "fig14_validation": "e5bf5e54c3a3d57d2d0b8cb36347df08a8b661b071018209f726d3b0c2ac4b52",
+        "fig10_21cmtb_diagnostics": "c4d6b62e2bec93d543ae1709748284ecf8d4d21ba5c0c05d486711a4493a37b5",
+        "fig11_btemu_corner6_5000": "8b9c8ec3acbb6c651e74671e778b3931e6cb0749ba05000ac97718d633b7825e",
+        "fig12_btemu_corner8_5568": "51ee9a7a67d6fc3d061bac9a08578aba844be240c06b97d457dd899e491e4186",
+        "fig13_exact_corner6_200": "6f221564dbafa4cb31857f6c93e278e762a81e6b8d7981a9d2885dc92252d3bc",
+        "fig15_kpms_focus": "c1abcbb8298cc7ae6620d2c11c72592e4ea11ad7fd64993c0355b30d863e8521",
+        "fig8_21cmtb_corner_fixed8": "0f150eb22041967b7260216712ef06b2b5bb367a02d3c5eab9498d289b55c49d",
+        "fig9_21cmtb_corner_free9": "4119a390f18a26389b961df05fb08695eef28aa62d67c999987b183703f3a5ac"
+      },
+      "statistics_sha256": "47ec7b61d3ea85415038912927a130f42c6cb7c7bd25a3007fb83c7aac09b589"
+    },
+    {
+      "name": "冷色精密",
+      "en": "Teal precision",
+      "palette": [
+        "#173343",
+        "#007B83",
+        "#526DA0",
+        "#748B49",
+        "#308B71"
+      ],
+      "density": [
+        "#ffffff",
+        "#eaf5f4",
+        "#bee1dc",
+        "#74bcb5",
+        "#318b8b",
+        "#14545e"
+      ],
+      "font": "DejaVu Sans",
+      "math": "dejavusans",
+      "frame": "open",
+      "width": 1.55,
+      "fill": 0.16,
+      "spacing": 0.085,
+      "key": 0.6,
+      "grid": true,
+      "desc": "青绿密度、无衬线字体、开放坐标轴；紧凑排列与轻横向导线。",
+      "nonce": "1348b9c3ba8fceb825b86e4a0cb40ed7",
+      "source_style": "academic-v3",
+      "preview_only": true,
+      "hash": "715b10b91a58095c1503ef20b61cabad0aa5b1aadf60c9b545712b317b2bd143",
+      "id": "715b10b91a58",
+      "outputs": {
+        "fig17_obs_combinations": "54749c4c97e32aa3ed4df89dba3ec67b0846237236cca6364997eb3730d3f232",
+        "fig16_fixed_astro_bt_histories": "71abaf52d6a2c6a5a48a092782ce28688bc054ce36d392029a63a0e2ae8e4e1a",
+        "fig5_21cmtb_histories": "c75c4c03837e14b27152b62ed563297b79d665540dd0036982d5c7cc9b917fbd",
+        "fig6_21cmtb_lf_grid": "5319a04735bd2b53d495e72318bb479225548cccec950a8de681de5113f6d2f1",
+        "fig7_21cmtb_lf_fits": "6db6ee19e1c08485dabd2547c5f2023f91e8e51aa115c84d5ff7e01d793328f9",
+        "fig14_validation": "b773b09121bf6e114459ed9c95a75f3f0e31efba0defeba87b2f11bd33944a2d",
+        "fig10_21cmtb_diagnostics": "5d74981f2ff74aa5d34dcd2e26006bf7c2cc869c188e7f69d1e198cb7e9589dc",
+        "fig11_btemu_corner6_5000": "ec89f7df6831e809195d06bd8020d71d2d5cb75a6ec44eecfca1981983f9718e",
+        "fig12_btemu_corner8_5568": "ee010f13fab5a0b3b4c7ef52dc93b75999278882d43722fd8632791ca438c92b",
+        "fig13_exact_corner6_200": "e337ade99dd6ff93deb832dca59d5a5f78d800bd138a50dd70897d64f3f025b6",
+        "fig15_kpms_focus": "1d5235ff2db84ede2c3992989504cc6dd45481be0f2df14ec7293b10e0cb5ff2",
+        "fig8_21cmtb_corner_fixed8": "c393b146be5c933a1c70ffcbb679b6b51c899d6220ae4a46eee2cb092dff9f73",
+        "fig9_21cmtb_corner_free9": "1c1f87ef73f6f4abc0fd0128d0b0630234162f6da382e7a0a68135a420d3bc03"
+      },
+      "statistics_sha256": "47ec7b61d3ea85415038912927a130f42c6cb7c7bd25a3007fb83c7aac09b589"
+    },
+    {
+      "name": "蓝橙对照",
+      "en": "Blue–orange contrast",
+      "palette": [
+        "#253649",
+        "#2465A2",
+        "#D4762A",
+        "#9D822D",
+        "#258B86"
+      ],
+      "density": [
+        "#ffffff",
+        "#edf3fa",
+        "#bcd2ed",
+        "#739fce",
+        "#3b70ac",
+        "#183f72"
+      ],
+      "font": "DejaVu Sans",
+      "math": "dejavusans",
+      "frame": "bracket",
+      "width": 1.85,
+      "fill": 0.12,
+      "spacing": 0.2,
+      "key": 0.59,
+      "grid": false,
+      "desc": "蓝色主体、橙色比较项；更宽面板间距，较强线重和更醒目的点标记。",
+      "nonce": "ba9f656df2a3772600e7a2c001f9f8eb",
+      "source_style": "academic-v3",
+      "preview_only": true,
+      "hash": "bfc059f7064067e7ec5b7c0e4336948aa1bfd69d67ff72900eeb7afd1b3e1091",
+      "id": "bfc059f70640",
+      "outputs": {
+        "fig17_obs_combinations": "1154019909433c934335aa652e253e9a4985b5b1ccf87d205dc97b2e5ec51b67",
+        "fig16_fixed_astro_bt_histories": "105d49be2a2969d85154ee091a79091e48f7773ee8c405802112b43608a7b9b4",
+        "fig5_21cmtb_histories": "0260a3807d27f494cdc4c6ae04a936ccb26a161c91ee8add4ddf241c6713c2b8",
+        "fig6_21cmtb_lf_grid": "0fd7ae2b3e93c33628f559f3fc6f3246f82c14c6d115dba3c53f1cd9e2177f11",
+        "fig7_21cmtb_lf_fits": "dfb003e29849663a4db872cfbff3226860c6a267636be6085618b80fe5c58124",
+        "fig14_validation": "18f81c69c6b0ebc63ba9ab5f4eac7ed300e80e9e077a6e89cb20bf2bfa4a05a7",
+        "fig10_21cmtb_diagnostics": "f1950e245a96f59af24183a10d38e51e1816357d15028322fbe8fc6221871715",
+        "fig11_btemu_corner6_5000": "326cf43f7bcdb408fff21795062b8d6f79e03f11cd7e5b7758d87df7af5cbae8",
+        "fig12_btemu_corner8_5568": "5828c6d9a6497868f8fa22ad055ab2998c78b9c9ed66343ab42caa901957964c",
+        "fig13_exact_corner6_200": "a5bb87874616eb94b2e5abd5a88d8fb7d7085047c78ce9378e19aa1f3549ec78",
+        "fig15_kpms_focus": "56aa1295385373fcce3ff7ac7219286e613e5a0423d38fdef5346e98647d6663",
+        "fig8_21cmtb_corner_fixed8": "cecd48298f886acd42cc0e01f80b454b64256e7e301de0a29d90439fb6b81f1b",
+        "fig9_21cmtb_corner_free9": "7544f740cbb47ae8289c710f3c351327888777256bc8664da7b6c1fb40aad5a2"
+      },
+      "statistics_sha256": "47ec7b61d3ea85415038912927a130f42c6cb7c7bd25a3007fb83c7aac09b589"
+    },
+    {
+      "name": "紫色层次",
+      "en": "Plum editorial",
+      "palette": [
+        "#302A41",
+        "#72558C",
+        "#B15D70",
+        "#A6843D",
+        "#438783"
+      ],
+      "density": [
+        "#ffffff",
+        "#f4eff7",
+        "#ddcde8",
+        "#b395cb",
+        "#8865a5",
+        "#50336e"
+      ],
+      "font": "STIXGeneral",
+      "math": "stix",
+      "frame": "open",
+      "width": 1.65,
+      "fill": 0.24,
+      "spacing": 0.13,
+      "key": 0.6,
+      "grid": false,
+      "desc": "紫色连续密度与莓红比较项；加重边缘分布、衬线排版与柔和轴线。",
+      "nonce": "f3250991807f966e2e646e2706347116",
+      "source_style": "academic-v3",
+      "preview_only": true,
+      "hash": "5d453963b5fc0675a0d1d9ded8764cc9014030f6706b0f177eacae6da6eaf262",
+      "id": "5d453963b5fc",
+      "outputs": {
+        "fig17_obs_combinations": "0ce49a7f357e48beb189a4809194a423be67976756b7dce25b1b8a923eff1697",
+        "fig16_fixed_astro_bt_histories": "fd433f2d323b0b2b8b29bc7b95d69c6d024716c59467210594ce31051195d98e",
+        "fig5_21cmtb_histories": "bdce7dd2d1eb71433257356c8e80eaadb1e496e8cd990a9d79fa82d5f8ef3944",
+        "fig6_21cmtb_lf_grid": "38dce8652007e1566f3892ad710dad833157020aecc30cba69e65a170088dfde",
+        "fig7_21cmtb_lf_fits": "3c625af23c7dd6f218c3c5ecb790577cf3017ad8677dccb8d0880345fb6c3155",
+        "fig14_validation": "b497f3230ee051a3983a12aa23d0aa340b6f7bc6ee84f3f3b85f7023037d7219",
+        "fig10_21cmtb_diagnostics": "acd7caa0765eddff966e72b7c8b841c8f0d735d1d87f8cf8ecd0c6927ea253fa",
+        "fig11_btemu_corner6_5000": "87ff9f145f9b69c9a508b2ec2bcb8cb88852d854a728771f858ce0fa27136efa",
+        "fig12_btemu_corner8_5568": "a8a783836f6a74e16dee4b1251bc4da717783eedb4b88052ec9581b269a78abf",
+        "fig13_exact_corner6_200": "70d420927863cb7c9f09e4110f05a6f5da1b9b6b4b8ebbe9022b5a704b20b0bf",
+        "fig15_kpms_focus": "a72a50c2db2ac8aa229aa9287c6f22655591caa81520f9b1af1c0fa21966b8c9",
+        "fig8_21cmtb_corner_fixed8": "01926f11ee736c3556c563ece56a2921b4100a6bbae838060631cab0452769e4",
+        "fig9_21cmtb_corner_free9": "aab04c997b302050d8dce56ffa1213a8192889f03fd771611fa8b21ab01776e0"
+      },
+      "statistics_sha256": "47ec7b61d3ea85415038912927a130f42c6cb7c7bd25a3007fb83c7aac09b589"
+    },
+    {
+      "name": "极简线稿",
+      "en": "Minimal technical",
+      "palette": [
+        "#202B37",
+        "#285777",
+        "#9C5348",
+        "#8C7839",
+        "#4B7971"
+      ],
+      "density": [
+        "#ffffff",
+        "#f6f8fa",
+        "#e2e8ef",
+        "#aebfce",
+        "#718da7",
+        "#355774"
+      ],
+      "font": "DejaVu Sans",
+      "math": "dejavusans",
+      "frame": "bottom",
+      "width": 1.05,
+      "fill": 0.0,
+      "spacing": 0.16,
+      "key": 0.6,
+      "grid": true,
+      "desc": "淡密度与无填充边缘直方图；细线、短刻度、点状导线，突出数据结构。",
+      "nonce": "d528f3a2265257adce45265f56485310",
+      "source_style": "academic-v3",
+      "preview_only": true,
+      "hash": "40dae9373b8c0a71ed6eaad833b49402cb4403cf3fddf0de24059a8400df1e69",
+      "id": "40dae9373b8c",
+      "outputs": {
+        "fig17_obs_combinations": "05d1492e1983da084bbd8e3e24361b077016e5a3324c4523eb96cd10008cd9bc",
+        "fig16_fixed_astro_bt_histories": "2219f508b3aafd1c8b29ba55c7d10c1cfe20d123e805c0d3871b7b37ddde84f4",
+        "fig5_21cmtb_histories": "10dce182c75b45fad9f1a8e1a338bc9aa76fd9a11cd3e3c9d909ae7aa005e1d1",
+        "fig6_21cmtb_lf_grid": "879e40bc8dda6dfa242c6fb67f94b723532740aeb29f7f43917c5223da3ae6a8",
+        "fig7_21cmtb_lf_fits": "7c3c2342dcac21fca58993b0ac38f6b74e3f9bf48a0aaa758c34f3d4b4419d8d",
+        "fig14_validation": "5b2c1798e79852eb104ec3e4a31bea04253fe6a87870689d6c0df86e256e63fa",
+        "fig10_21cmtb_diagnostics": "11c218914e133c976b38030a982e6c56af476aa14202a4f39afcd7b5d92d5a37",
+        "fig11_btemu_corner6_5000": "20ae7db41c7d213ae894e8309e43a9a894c88ca2a58209b237ff3b702e445a9b",
+        "fig12_btemu_corner8_5568": "484df63723658e5f3282763051afb74ba891ac75bbe2826102ce9beb7e5e59d2",
+        "fig13_exact_corner6_200": "574481ffa80a2ba0ca68844b10992d5f5e7e841f56777cdaba6ce9c9615e6b37",
+        "fig15_kpms_focus": "0258b3bb2196edd02ec231c9cff39b23b35a66851b1143c512e90f88d8d10925",
+        "fig8_21cmtb_corner_fixed8": "409988d4c5356cda7db9caf0b182b156ddd4b22c193831743333ab5f99a78a8b",
+        "fig9_21cmtb_corner_free9": "e135c5f8e6fef036a6318bb9972b942c792f0bb362389e0d74565f88e2dcae44"
+      },
+      "statistics_sha256": "47ec7b61d3ea85415038912927a130f42c6cb7c7bd25a3007fb83c7aac09b589"
+    }
+  ],
+  "focus": "Corner figures: same 6D example, with 8D and exact quick-switches"
+}
