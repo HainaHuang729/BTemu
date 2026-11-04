@@ -13,3 +13,7 @@ python build.py audit.json index.html
 ## English edition and archived corner plots
 
 Use `python build.py audit.json index_en.html --en` for the English desktop edition. The Chinese edition remains `index.html`. Both embed the unchanged 6D, 8D and exact200 PNGs from `assets/`; hashes are recorded in `corner_sources.json`. Buttons select a chain, and clicking a plot opens its original resolution in a scrollable dialog. New 100k-model raw chains remain unexported. No corner plot is inferred from the summary table.
+
+## Runtime inventory
+
+Both editions now list 25 workflow steps, with unavailable elapsed times explicitly marked. Expandable tables preserve six coeval runs, 15 timed cache cases plus three setup failures, and 87 archived atlas timings. `timing_section.py` renders these records from hash-checked snapshots in `timing_sources/`. The page exports timing JSON. Historical per-call/per-iteration values are not assigned to new 100k-model runs, and mixed or overlapping costs are not summed into an end-to-end duration. New-model source `seconds` converts to 13.2392 h, with per-seed/hardware allocation unverified.

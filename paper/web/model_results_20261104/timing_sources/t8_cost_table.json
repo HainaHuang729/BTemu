@@ -1,0 +1,9 @@
+{
+  "emulator_mean_prediction_seconds_per_sample_32_nodes": 8.146225482050796e-05,
+  "emulator_ensemble_of_5_seconds_per_sample": 0.00040731127410253976,
+  "exact_21cmfast_wall_seconds_median": 415.98,
+  "exact_chain_seconds_per_iteration": 1019.0,
+  "emulator_chain_seconds_per_iteration_6d": 14.7,
+  "emulator_chain_seconds_per_iteration_8d": 8.6,
+  "note": "exact timings from the production ledger and the 6-D exact chain; emulator timings measured on 4 threads, batch 1"
+}

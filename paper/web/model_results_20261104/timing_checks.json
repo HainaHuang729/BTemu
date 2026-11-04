@@ -1,0 +1,14 @@
+{
+  "workflow_rows": 25,
+  "coeval_records": 6,
+  "cache_timed_cases": 15,
+  "cache_failed_cases": 3,
+  "atlas_records": 87,
+  "source_hashes_checked_by_builder": true,
+  "timing_json_download_verified": true,
+  "unit_conversion_seconds_to_hours": 13.239242415205938,
+  "new_chain_total_extrapolation": false,
+  "mixed_stage_total_or_speedup_claim": false,
+  "desktop_timing_and_coeval_screenshots_reviewed": true,
+  "missing_duration_rows": 18
+}

@@ -62,6 +62,8 @@ for i,(filename,title,caption) in enumerate(zip(corner_files,corner_titles,corne
  panels.append(f'<figure class="corner-panel" id="corner-{i}" role="tabpanel"'+(' hidden' if i else '')+f'><h3>{title}</h3><a href="{url}" target="_blank" rel="noopener" aria-label="{title}"><img src="{url}" alt="{title}" loading="lazy"></a><figcaption class="caption">{caption}</figcaption></figure>')
 hint='Select a chain above. Click the image to open it at full resolution.' if en else '上方切换链；点击图片可打开原始分辨率。'
 html=html.replace('@@CORNERS@@',f'<section id="corners"><h2>{heading}</h2><p class="lead">{note}</p><div class="corner-tabs" role="tablist" aria-label="Corner plots">{tabs}</div>'+''.join(panels)+f'<p class="small">{hint}</p></section>')
+from timing_section import render as render_timing
+html=html.replace('@@TIMING@@',render_timing(en))
 close_label='Close full-resolution image' if en else '关闭原图'
 html=html.replace('</body>',f'<dialog id="corner-dialog" style="width:96vw;max-width:96vw;height:94vh;border:1px solid #a9b8c8;border-radius:8px;padding:16px"><button onclick="document.getElementById(&quot;corner-dialog&quot;).close()">{close_label}</button><div style="overflow:auto;height:calc(100% - 55px);margin-top:10px"><img id="corner-full-image" alt="" style="max-width:none;width:auto;height:auto"></div></dialog></body>')
 output.parent.mkdir(parents=True,exist_ok=True);output.write_text('\n'.join(line.rstrip() for line in html.splitlines())+'\n')

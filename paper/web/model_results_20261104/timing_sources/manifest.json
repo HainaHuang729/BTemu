@@ -1,0 +1,26 @@
+{
+  "t8_cost_table.json": {
+    "original_path": "paper/paper_materials/metrics/t8_cost_table.json",
+    "sha256": "211794b184abe6c6881aa34856da510f77fe15273774ec87757c40d0ff3027bf"
+  },
+  "100k_comparison_metrics.json": {
+    "original_path": "paper/paper_materials/metrics/100k_comparison_metrics.json",
+    "sha256": "f7c1ce7fe1e507a5911ae2874ccd35652405dab43fbc534f194d83a948529391"
+  },
+  "t2b_matched_kpms_histories.json": {
+    "original_path": "paper/paper_materials/tables/t2b_matched_kpms_histories.json",
+    "sha256": "f7e12e7b4799051abdc0f81532bef23aa13353e67192645f076ed744c82c6988"
+  },
+  "t2b_matched.py": {
+    "original_path": "paper/paper_materials/t2b_matched.py",
+    "sha256": "370ff154560607fa6a02b9a7c85dffb694f67ab0364aa6753d8a31f71f5bed92"
+  },
+  "atlas_index.json": {
+    "original_path": "paper/data/21cmtb_web_audit_20261029/web_data/index.json",
+    "sha256": "11806c72be35569419e6f1da82676b5d61663e4f30f153268773e784239a9902"
+  },
+  "cache_comparison.json": {
+    "original_path": "paper/data/21cmtb_web_audit_20261029/web_data/cache_comparison/index.json",
+    "sha256": "6cc96330a0ea320bc8e8cd954819555ccd4eb3da9812b689307fb2b6ceb569f8"
+  }
+}

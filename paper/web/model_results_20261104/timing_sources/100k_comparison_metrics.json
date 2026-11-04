@@ -1,0 +1,34 @@
+{
+  "dataset_version": "random_ic_v2",
+  "N": 100000,
+  "validation_n": 10000,
+  "seeds": [
+    {
+      "seed": 11,
+      "best_val_mse": 2.7227311875321902e-05
+    },
+    {
+      "seed": 29,
+      "best_val_mse": 3.226021726732142e-05
+    },
+    {
+      "seed": 47,
+      "best_val_mse": 3.1961648346623406e-05
+    },
+    {
+      "seed": 71,
+      "best_val_mse": 3.236681368434802e-05
+    },
+    {
+      "seed": 101,
+      "best_val_mse": 3.258785727666691e-05
+    }
+  ],
+  "trajectory_RMSE_median": 0.0008506683514504011,
+  "trajectory_RMSE_q95": 0.005563643971917824,
+  "tau_q90": 0.00033507794141769416,
+  "xHI_q90": 0.004570504253875837,
+  "dlogL_q90": 1.177335122574713,
+  "seconds": 47661.272694741376,
+  "note": "full-dataset milestone; development split, no sealed access"
+}
