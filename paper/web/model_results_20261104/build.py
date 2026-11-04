@@ -11,8 +11,8 @@ source=Path(sys.argv[1]) if len(sys.argv)>1 else B/'audit.json'
 output=Path(sys.argv[2]) if len(sys.argv)>2 else B/'index.html'
 en='--en' in sys.argv
 a=json.loads(source.read_text())
-plt.rcParams.update({'font.family':'STIXGeneral','mathtext.fontset':'stix','font.size':11,'axes.spines.top':False,'axes.spines.right':False,'axes.linewidth':.7,'axes.labelcolor':'#242424','text.color':'#242424','svg.fonttype':'path','savefig.facecolor':'white'})
-colors=['#315c83','#aa5145','#a38943'];labels=[r'$\eta_\star$',r'$\alpha_\star$',r'$\log_{10}(M_{\rm turn}/M_\odot)$',r'$\log_{10}f_{{\rm esc},10}$',r'$\alpha_{\rm esc}$']
+plt.rcParams.update({'font.family':'STIXGeneral','mathtext.fontset':'stix','font.size':11,'axes.spines.top':False,'axes.spines.right':False,'axes.linewidth':.65,'axes.labelcolor':'#243447','text.color':'#243447','svg.fonttype':'path','savefig.facecolor':'white'})
+colors=['#315E8B','#BE624F','#AA843B'];labels=[r'$\eta_\star$',r'$\alpha_\star$',r'$\log_{10}(M_{\rm turn}/M_\odot)$',r'$\log_{10}f_{{\rm esc},10}$',r'$\alpha_{\rm esc}$']
 def svg(fig,name):
  buf=io.StringIO();fig.savefig(buf,format='svg',bbox_inches='tight');plt.close(fig)
  s=buf.getvalue();s=s[s.index('<svg'):];s=re.sub(r'<svg\s','<svg role="img" aria-label="'+name+'" ',s,count=1)
@@ -29,7 +29,7 @@ fig,axes=plt.subplots(1,2,figsize=(10.8,3.1))
 old=a['previous_recomputed'];new=a['new_metrics']
 for ax,key,title in zip(axes,['median','q95'],['Trajectory RMSE: median','Trajectory RMSE: 95th percentile']):
  vals=[old['five_model_average'][key],old['seed11'][key],new['trajectory_RMSE_'+('median' if key=='median' else 'q95')]]
- for i,(v,c) in enumerate(zip(vals,['#315c83','#8c97a3','#aa5145'])):
+ for i,(v,c) in enumerate(zip(vals,['#315E8B','#8c97a3','#BE624F'])):
   ax.plot(v,2-i,'o',color=c,ms=6);ax.annotate(f'{v:.6f}',(v,2-i),xytext=(9,0),textcoords='offset points',va='center',fontsize=11)
  ax.axhline(.5,color='#9ba9b5',ls='--',lw=.8);ax.set_yticks([2,1,0]);ax.set_yticklabels(['65k five-model average','65k seed 11','100k reported predictor']);ax.set_title(title,loc='left',pad=14,fontsize=13);ax.set_ylim(-.65,2.6);ax.set_xlim(0,max(vals)*1.45);ax.tick_params(axis='y',length=0);ax.grid(axis='x',color='#e2e7ed',lw=.6);ax.ticklabel_format(axis='x',style='sci',scilimits=(0,0),useMathText=True)
 fig.subplots_adjust(wspace=.9,left=.2,right=.98,bottom=.22,top=.79)

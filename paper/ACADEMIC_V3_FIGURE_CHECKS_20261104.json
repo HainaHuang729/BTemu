@@ -1,0 +1,57 @@
+{
+  "style": "academic-v3",
+  "redrawn_scientific_assets": 13,
+  "source_input_hashes_checked": 34,
+  "only_derived_audit_metadata_changed": [
+    "paper/reproduction/data/21cmtb_figure_manifest_20261029.json",
+    "paper/reproduction/data/new_chain_audit_20261029.json",
+    "paper/reproduction/data/exact200_corner_audit_20261029.json",
+    "paper/reproduction/data/validation_recomputed_20261029.json",
+    "paper/reproduction/data/t3_update_20261103/audit.json",
+    "paper/reproduction/data/material_update_20261030/audit.json"
+  ],
+  "all_chain_arrays_and_npz_bytes_unchanged": true,
+  "summaries_diagnostics_and_histogram_counts_preserved": true,
+  "all_34_LF_points_retained": true,
+  "limit_and_tick_numeric_algorithms_unchanged": true,
+  "bins": 32,
+  "smoothing": false,
+  "new_confidence_contours": false,
+  "density_normalization": "PowerNorm(0.5), independently normalized per panel, unchanged",
+  "figure_outputs_sha256": {
+    "fig10_21cmtb_diagnostics.pdf": "2a3500eb11350f34db799c1ec8162b125cc941665af01e7355d865c69520c441",
+    "fig15_kpms_focus.pdf": "87fa2626ea79432cc6716d1223b648007983686bba645d2b4783c2963097bd46",
+    "fig8_21cmtb_corner_fixed8.pdf": "9772b26fcab3126070a5e6ed51f53f860c6492b38ac31177b34c88a433d3b046",
+    "fig13_exact_corner6_200.pdf": "fe867c39a1aa626cc2ff81a11cf966ccf4ff8d79c500de6ea5f7136036e34b3d",
+    "fig9_21cmtb_corner_free9.pdf": "c0975d6ca6a0fcdebab43e701440d6c76ef70f06f02a92ed09a64bd93e53a8c1",
+    "fig5_21cmtb_histories.pdf": "fe0c3af1fbec176603948ef2f0555735ca87e8d3fa110cff6b1959f4b0e5440f",
+    "fig6_21cmtb_lf_grid.pdf": "32d3ef8bc5f0bffc85c57882bd1e56802ef8d08893615f43b0376d8052304a37",
+    "fig14_validation.pdf": "5b30f00309280e8233ddc1052f2d99abdf2925a4c6256e0d9e384c4b94c59e18",
+    "fig16_fixed_astro_bt_histories.pdf": "7c97349b032b445d20ea97009e0fb8c5016f8d325b098f2baaf575bd6609c5b9",
+    "fig12_btemu_corner8_5568.pdf": "0fb8b6eed429acb5a7bdbca918fe4fe7a0abe86cafc1f52d35377266c605749d",
+    "fig11_btemu_corner6_5000.pdf": "ff07a088699c6929fbdc6b7b06b06c016d235c844dfe30f45ec8682f456df084",
+    "fig17_obs_combinations.pdf": "9bfb9bf24751763466e619802eca126f3a0118afa8af2547c3795c868b85ada9",
+    "fig7_21cmtb_lf_fits.pdf": "d0b893020ba21deb04c1822c8d4ffaafb00c3a7e49c230a34428d357401e4d75"
+  },
+  "visual_review": "All redesigned figures inspected in gallery; all PDF pages reviewed; full-resolution corner/T3/validation pages inspected",
+  "browser": {
+    "desktop_width": 1440,
+    "visible_inference_figures": 6,
+    "vector_download_links": 13,
+    "horizontal_page_overflow": false
+  },
+  "pdfs": {
+    "BT_reionization_physics_v0.20_20261104.pdf": {
+      "pages": 20,
+      "sha256": "b814f96f00481dfd5f775a34d387a7e51942fcb4095c78c49b4cc79b36724886",
+      "compile": "passed",
+      "warning": "existing nameref label-definition warning only"
+    },
+    "BTemu_methods_development_v0.8_20261104.pdf": {
+      "pages": 10,
+      "sha256": "f14f488216195ac17e5d540e4147d6c2907280b73f8135b146084b4be3da4268",
+      "compile": "passed",
+      "warning": "existing nameref label-definition warning only"
+    }
+  }
+}

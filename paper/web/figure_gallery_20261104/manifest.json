@@ -1,0 +1,54 @@
+{
+  "fig17_obs_combinations": {
+    "png_sha256": "62677ad62b5480acf562cb3b860ac110c7b6909a091f3f1583e06a2d0a8fd13b",
+    "pdf_sha256": "9bfb9bf24751763466e619802eca126f3a0118afa8af2547c3795c868b85ada9"
+  },
+  "fig16_fixed_astro_bt_histories": {
+    "png_sha256": "eac762cc9090b3439bc56e8d863b81c3ec58b42c09be7ac10624bf5f418f647e",
+    "pdf_sha256": "7c97349b032b445d20ea97009e0fb8c5016f8d325b098f2baaf575bd6609c5b9"
+  },
+  "fig5_21cmtb_histories": {
+    "png_sha256": "49f50c0a130ee3b456f18345488135147abb4c5ebfe495d18abb5a28c0eeec5b",
+    "pdf_sha256": "fe0c3af1fbec176603948ef2f0555735ca87e8d3fa110cff6b1959f4b0e5440f"
+  },
+  "fig6_21cmtb_lf_grid": {
+    "png_sha256": "451a1acd747875c62d9a5a0e4b0f04540178c31678ed5d3303a57c47d5ce1141",
+    "pdf_sha256": "32d3ef8bc5f0bffc85c57882bd1e56802ef8d08893615f43b0376d8052304a37"
+  },
+  "fig7_21cmtb_lf_fits": {
+    "png_sha256": "c0c11f2746e87708569449b4d151c2f04606ad63679d737062acb9ad7128668a",
+    "pdf_sha256": "d0b893020ba21deb04c1822c8d4ffaafb00c3a7e49c230a34428d357401e4d75"
+  },
+  "fig15_kpms_focus": {
+    "png_sha256": "64093186d103ceccb39c005b763e88c2a6786eda4e1276734144010d06819958",
+    "pdf_sha256": "87fa2626ea79432cc6716d1223b648007983686bba645d2b4783c2963097bd46"
+  },
+  "fig11_btemu_corner6_5000": {
+    "png_sha256": "4332cf7f525ab65e3cf6c5dff11ca3243e3410f7ce6ebd812e2af7e70c30a39b",
+    "pdf_sha256": "ff07a088699c6929fbdc6b7b06b06c016d235c844dfe30f45ec8682f456df084"
+  },
+  "fig12_btemu_corner8_5568": {
+    "png_sha256": "a0ac8dff7078d3e075d2c88d5e3514506d2cc5929c2077175002b0e83db7a58f",
+    "pdf_sha256": "0fb8b6eed429acb5a7bdbca918fe4fe7a0abe86cafc1f52d35377266c605749d"
+  },
+  "fig13_exact_corner6_200": {
+    "png_sha256": "ec0c84b29390706db987229edd8a789f0552d1950bc1be05ea87bb774070fc12",
+    "pdf_sha256": "fe867c39a1aa626cc2ff81a11cf966ccf4ff8d79c500de6ea5f7136036e34b3d"
+  },
+  "fig14_validation": {
+    "png_sha256": "3fe0e2a97402fa94ed88176277786a8ffa317a184be9c0eca614a9a2a1a123e3",
+    "pdf_sha256": "5b30f00309280e8233ddc1052f2d99abdf2925a4c6256e0d9e384c4b94c59e18"
+  },
+  "fig10_21cmtb_diagnostics": {
+    "png_sha256": "27c90126f9b92eaccbf5257f0e9fe14c68240105d1a654161f0fc4dbfe0dd899",
+    "pdf_sha256": "2a3500eb11350f34db799c1ec8162b125cc941665af01e7355d865c69520c441"
+  },
+  "fig8_21cmtb_corner_fixed8": {
+    "png_sha256": "f9f566a951ebcc76401b0d2803cb33b5657d6f9e7d4ac78f8458c550b69176e4",
+    "pdf_sha256": "9772b26fcab3126070a5e6ed51f53f860c6492b38ac31177b34c88a433d3b046"
+  },
+  "fig9_21cmtb_corner_free9": {
+    "png_sha256": "358f79fc73dd7eab7f80996d35185e03809494a4cde48cd75acaab50e7f6a1af",
+    "pdf_sha256": "c0975d6ca6a0fcdebab43e701440d6c76ef70f06f02a92ed09a64bd93e53a8c1"
+  }
+}

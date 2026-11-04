@@ -1,9 +1,9 @@
 {
-  "source": "Existing October 29 academic-style figures; unchanged PNG bytes",
+  "source": "Academic-v3 redraw from the same archived rows and 32-bin construction",
   "sha256": {
-    "fig11_btemu_corner6_5000.png": "8197c58278855e7467d7a6fcc55a448fc09dc1c30fbba37aa363eeaef4e44e27",
-    "fig12_btemu_corner8_5568.png": "92bf0985e83a80d8a4f7380120d5d191b0c646b6cb3dba08155050b0a3179e53",
-    "fig13_exact_corner6_200.png": "604bc7a8820316465607ff36bee9d640267e0ebc7eebd25fbd72edb48a7d61d0"
+    "fig11_btemu_corner6_5000.png": "4332cf7f525ab65e3cf6c5dff11ca3243e3410f7ce6ebd812e2af7e70c30a39b",
+    "fig12_btemu_corner8_5568.png": "a0ac8dff7078d3e075d2c88d5e3514506d2cc5929c2077175002b0e83db7a58f",
+    "fig13_exact_corner6_200.png": "ec0c84b29390706db987229edd8a789f0552d1950bc1be05ea87bb774070fc12"
   },
   "status": "Earlier-model descriptive chains; not new 100k-model corner plots"
 }
