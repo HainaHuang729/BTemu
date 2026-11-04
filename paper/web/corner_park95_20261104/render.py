@@ -49,13 +49,22 @@ def density_grid(h,limx,limy):
 
 def draw(a,labels,spec,limits,readable_ticks,groups=None):
     fig,checks=curves.draw(a,labels,dict(spec,kind='lines'),limits,readable_ticks,groups)
-    lim=limits(a);n=a.shape[1];regions=[]
+    fig.subplots_adjust(top=.95)
+    lim=limits(a);n=a.shape[1];regions=[];summaries=[]
     for i in range(n):
       for j in range(i+1):
         ax=fig.axes[i*n+j]
         for sp in ax.spines.values():sp.set_visible(True);sp.set_color('#77838D');sp.set_linewidth(.55)
         ax.tick_params(direction='in',bottom=True,left=i!=j,length=2,width=.45)
         if i==j:
+            lo,median,hi=np.quantile(a[:,i],[.025,.5,.975])
+            lower,upper=median-lo,hi-median
+            scale=min(v for v in [lower,upper] if v>0)
+            decimals=max(0,min(6,1-int(np.floor(np.log10(scale)))))
+            fmt=lambda v:f'{v:.{decimals}f}'
+            title=rf'${fmt(median)}^{{+{fmt(upper)}}}_{{-{fmt(lower)}}}$'
+            ax.set_title(title,fontsize=9.5 if n==6 else 8.8,pad=3,color=INK)
+            summaries.append(dict(parameter_index=i,label=labels[i],median=float(median),q025=float(lo),q975=float(hi),lower_offset=float(lower),upper_offset=float(upper),display=title,selection='all retained rows; pooled across historical ensemble groups'))
             for k,line in enumerate(ax.lines):
                 color=INK if k==0 else '#376C96';line.set_color(color);line.set_linewidth(1.05)
                 ax.fill_between(line.get_xdata(),0,line.get_ydata(),color=FILL if k==0 else color,alpha=.32 if k==0 else .12,lw=0)
@@ -69,7 +78,11 @@ def draw(a,labels,spec,limits,readable_ticks,groups=None):
             regions.append(dict(x_parameter_index=j,y_parameter_index=i,**audit))
     assert not fig.texts and all(not ax.get_visible() for i in range(n) for ax in fig.axes[i*n+i+1:(i+1)*n])
     checks.pop('contour_levels_peak_relative',None)
-    checks.update(region_definition='95% highest-density region of interpolated smoothed stored-sample density',contour_probability_content=.95,regions=regions,filled_bands_per_dataset=1,outline_levels_per_dataset=1,fill_alpha=.45,in_figure_information_blocks=0)
+    fig.canvas.draw();renderer=fig.canvas.get_renderer()
+    for i in range(n):
+        bb=fig.axes[i*n+i].title.get_window_extent(renderer)
+        assert bb.x0>=0 and bb.y0>=0 and bb.x1<=fig.bbox.width and bb.y1<=fig.bbox.height,'Marginal number outside canvas'
+    checks.update(region_definition='95% highest-density region of interpolated smoothed stored-sample density',contour_probability_content=.95,regions=regions,marginal_summaries=summaries,marginal_annotation='median with 2.5th–97.5th percentile offsets of retained rows',filled_bands_per_dataset=1,outline_levels_per_dataset=1,fill_alpha=.45,in_figure_information_blocks=0)
     return fig,checks
 
 def main(source,atlas):
@@ -84,7 +97,7 @@ def main(source,atlas):
         if prior is not None:old.write_bytes(prior)
     html=html.replace('Corner 图 · 五个设计方向','Corner 图 · Park 风格 95% 样本区域')
     html=html.replace('同一份原始样本、同一蓝色系，比较五种布局和密度表达；图内仅保留坐标与数据。','单层浅灰填色＋一条 95% 样本密度轮廓。紧凑下三角布局，右上角留空。')
-    html=html.replace('轮廓为面板峰值密度的等值线，平滑宽度为 0.9 个分箱；散点最多显示 4,500 个等距选取的存储行，轮廓使用全部留样。六边形计数使用全部样本。','轮廓包围平滑样本密度的 95%；采用 32×32 计数网格、1.1 分箱宽度平滑和 256×256 网格积分。全部留样参与计算。')
+    html=html.replace('轮廓为面板峰值密度的等值线，平滑宽度为 0.9 个分箱；散点最多显示 4,500 个等距选取的存储行，轮廓使用全部留样。六边形计数使用全部样本。','二维轮廓包围平滑样本密度的 95%。对角线上方数字为全部留样的中位数及 2.5%–97.5% 分位区间，以不对称上下偏差表示。')
     html=html.replace('</style>','article header,#compare,#one,#single{display:none!important}.grid{grid-template-columns:1fr;max-width:1200px;margin:auto}</style>')
     out=ROOT/'output/html/BTemu_corner_Park95_20261104.html';out.write_text(html);(B/'index.html').write_text(html.replace('figure_directions_20261104/','assets/'))
     m=json.loads((B/'manifest.json').read_text());m.pop('contours_are_peak_density_levels_not_credible_regions',None)

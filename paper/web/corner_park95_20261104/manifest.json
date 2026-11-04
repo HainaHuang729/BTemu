@@ -18,16 +18,16 @@
       "name": "Park 风格 · 95% 样本区域",
       "en": "Park-style 95% sample-density region",
       "desc": "单层浅灰填色与一条深灰外轮廓；阈值由密度积分得到，保留紧凑下三角与对角边缘分布。",
-      "nonce": "4081be5d3c6c34ec0729ba2c7d5faa84",
-      "renderer_sha256": "e7dd3f15a8417e7ed6e96334127a5de5c25274abccb93b0712f5975f974e8a6c",
-      "hash": "bec28666b0fe1f19d9234822d8660708de644a4d32962b057950283649347d31",
-      "id": "bec28666b0fe",
+      "nonce": "face3632c6807a2df13e56cee0f8e525",
+      "renderer_sha256": "54c7e0ebe1cc906d66f5c9057a32e80bbb68875df7788041926416b0837aadf7",
+      "hash": "9c1fece2e62a4fc8c4ec642b433e392ebff9c36d79fd39ae7fac273c5cf1d793",
+      "id": "9c1fece2e62a",
       "outputs": {
-        "fig11_btemu_corner6_5000": "fcf1dd7e6123f91f0e111fe3d2b7436cf64653f7afcf5c8fed77c6ba31a84dfe",
-        "fig12_btemu_corner8_5568": "3fea1df0c8ab6d1ad19da428e8ed765a13fb9e9a61754f9aee0849eed7424de5",
-        "fig13_exact_corner6_200": "7b4a0430d686a72cc836d4b613b3b80af8ec06e9ae22441aed8f42a08c1eef71",
-        "fig8_21cmtb_corner_fixed8": "6670e9c313f508b94ffe7b74a62d27272d52958f1e75b736690d3f3db801ae34",
-        "fig9_21cmtb_corner_free9": "1096e7e6c111eb05154f57e272bd6427735279e1378961bb2c05b7c89d86e6ee"
+        "fig11_btemu_corner6_5000": "e06d31a29b196d4919d53911f2f85ff53b2d15f2c339819cbc329748fe456be4",
+        "fig12_btemu_corner8_5568": "e8a30b48d91041545236d25e481d521d72810c8e64491c6bacbc1bccda3e0724",
+        "fig13_exact_corner6_200": "91c955e7475a94f5efd9ebee61ac5e8c0654ecb05838140f2adcf5f9b9b33f26",
+        "fig8_21cmtb_corner_fixed8": "8e2cc9de8cdb730364418e8013f9dfb8da446c7a5ab471adff25fdac8ddce8bf",
+        "fig9_21cmtb_corner_free9": "8f57d79bc1dd7ac288258855cd541aa82bbfae103704da65858bd291d97f3b6a"
       },
       "checks": {
         "fig11_btemu_corner6_5000": {
@@ -237,6 +237,75 @@
               ]
             }
           ],
+          "marginal_summaries": [
+            {
+              "parameter_index": 0,
+              "label": "$\\eta_\\star$",
+              "median": -0.9447433815380332,
+              "q025": -1.0176398115452352,
+              "q975": -0.8484526676195188,
+              "lower_offset": 0.07289643000720203,
+              "upper_offset": 0.0962907139185144,
+              "display": "$-0.945^{+0.096}_{-0.073}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 1,
+              "label": "$t_\\star$",
+              "median": 0.5121158279783949,
+              "q025": 0.06912639223123768,
+              "q975": 0.970761482528033,
+              "lower_offset": 0.44298943574715727,
+              "upper_offset": 0.458645654549638,
+              "display": "$0.51^{+0.46}_{-0.44}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 2,
+              "label": "$\\alpha_\\star$",
+              "median": 0.5772098769273417,
+              "q025": 0.4023334267994664,
+              "q975": 0.724281627082588,
+              "lower_offset": 0.17487645012787534,
+              "upper_offset": 0.14707175015524632,
+              "display": "$0.58^{+0.15}_{-0.17}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 3,
+              "label": "$\\log_{10}M_{\\rm turn}$",
+              "median": 9.054537424185703,
+              "q025": 8.082920334306854,
+              "q975": 9.576541391036914,
+              "lower_offset": 0.9716170898788494,
+              "upper_offset": 0.5220039668512104,
+              "display": "$9.05^{+0.52}_{-0.97}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 4,
+              "label": "$\\log_{10}f_{{\\rm esc},10}$",
+              "median": -1.132056964159445,
+              "q025": -1.7645426824187844,
+              "q975": -0.15703037853042145,
+              "lower_offset": 0.6324857182593395,
+              "upper_offset": 0.9750265856290234,
+              "display": "$-1.13^{+0.98}_{-0.63}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 5,
+              "label": "$\\alpha_{\\rm esc}$",
+              "median": 0.1591662011859874,
+              "q025": -0.8419543224480346,
+              "q975": 0.4872441711447873,
+              "lower_offset": 1.001120523634022,
+              "upper_offset": 0.3280779699587999,
+              "display": "$0.16^{+0.33}_{-1.00}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            }
+          ],
+          "marginal_annotation": "median with 2.5th–97.5th percentile offsets of retained rows",
           "filled_bands_per_dataset": 1,
           "outline_levels_per_dataset": 1,
           "fill_alpha": 0.45,
@@ -618,6 +687,97 @@
               ]
             }
           ],
+          "marginal_summaries": [
+            {
+              "parameter_index": 0,
+              "label": "$\\eta_\\star$",
+              "median": -0.9322037268163187,
+              "q025": -1.1585514824123186,
+              "q975": -0.8424178212052196,
+              "lower_offset": 0.22634775559599996,
+              "upper_offset": 0.08978590561109911,
+              "display": "$-0.932^{+0.090}_{-0.226}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 1,
+              "label": "$t_\\star$",
+              "median": 0.5321837217499852,
+              "q025": 0.07970844370026803,
+              "q975": 0.9786143764482526,
+              "lower_offset": 0.45247527804971716,
+              "upper_offset": 0.44643065469826737,
+              "display": "$0.53^{+0.45}_{-0.45}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 2,
+              "label": "$\\alpha_\\star$",
+              "median": 0.559440865979424,
+              "q025": 0.3999192879676808,
+              "q975": 0.8660553543258332,
+              "lower_offset": 0.15952157801174321,
+              "upper_offset": 0.30661448834640925,
+              "display": "$0.56^{+0.31}_{-0.16}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 3,
+              "label": "$\\log_{10}M_{\\rm turn}$",
+              "median": 8.843047311295429,
+              "q025": 8.057269916862817,
+              "q975": 9.748382599145627,
+              "lower_offset": 0.7857773944326123,
+              "upper_offset": 0.9053352878501979,
+              "display": "$8.84^{+0.91}_{-0.79}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 4,
+              "label": "$\\log_{10}f_{{\\rm esc},10}$",
+              "median": -1.1136835433123966,
+              "q025": -1.7798373430269678,
+              "q975": -0.13035014232909403,
+              "lower_offset": 0.6661537997145712,
+              "upper_offset": 0.9833334009833026,
+              "display": "$-1.11^{+0.98}_{-0.67}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 5,
+              "label": "$\\alpha_{\\rm esc}$",
+              "median": 0.09518790208999284,
+              "q025": -0.9345295882811278,
+              "q975": 0.4883054596765299,
+              "lower_offset": 1.0297174903711206,
+              "upper_offset": 0.39311755758653705,
+              "display": "$0.10^{+0.39}_{-1.03}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 6,
+              "label": "$k_p$",
+              "median": 16.56920146191232,
+              "q025": 3.451586186061917,
+              "q975": 29.42271516779438,
+              "lower_offset": 13.117615275850405,
+              "upper_offset": 12.853513705882058,
+              "display": "$17^{+13}_{-13}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 7,
+              "label": "$m_s$",
+              "median": 2.096968203138367,
+              "q025": 0.5717053698509342,
+              "q975": 3.8996222663284437,
+              "lower_offset": 1.5252628332874327,
+              "upper_offset": 1.8026540631900767,
+              "display": "$2.1^{+1.8}_{-1.5}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            }
+          ],
+          "marginal_annotation": "median with 2.5th–97.5th percentile offsets of retained rows",
           "filled_bands_per_dataset": 1,
           "outline_levels_per_dataset": 1,
           "fill_alpha": 0.45,
@@ -830,6 +990,75 @@
               ]
             }
           ],
+          "marginal_summaries": [
+            {
+              "parameter_index": 0,
+              "label": "$\\eta_\\star$",
+              "median": -0.940717041498317,
+              "q025": -1.0185374216394354,
+              "q975": -0.842868990371847,
+              "lower_offset": 0.07782038014111836,
+              "upper_offset": 0.09784805112646999,
+              "display": "$-0.941^{+0.098}_{-0.078}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 1,
+              "label": "$t_\\star$",
+              "median": 0.5303145132357321,
+              "q025": 0.06767306711995663,
+              "q975": 0.9678515942570299,
+              "lower_offset": 0.46264144611577546,
+              "upper_offset": 0.43753708102129785,
+              "display": "$0.53^{+0.44}_{-0.46}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 2,
+              "label": "$\\alpha_\\star$",
+              "median": 0.5611841040474637,
+              "q025": 0.3963947162136769,
+              "q975": 0.7463410936823535,
+              "lower_offset": 0.16478938783378677,
+              "upper_offset": 0.1851569896348898,
+              "display": "$0.56^{+0.19}_{-0.16}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 3,
+              "label": "$\\log_{10}M_{\\rm turn}$",
+              "median": 9.045277684836385,
+              "q025": 8.114541420822393,
+              "q975": 9.5870518485002,
+              "lower_offset": 0.9307362640139925,
+              "upper_offset": 0.5417741636638151,
+              "display": "$9.05^{+0.54}_{-0.93}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 4,
+              "label": "$\\log_{10}f_{{\\rm esc},10}$",
+              "median": -1.1266420637528403,
+              "q025": -1.802192858980661,
+              "q975": -0.26522321108895214,
+              "lower_offset": 0.6755507952278208,
+              "upper_offset": 0.8614188526638882,
+              "display": "$-1.13^{+0.86}_{-0.68}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 5,
+              "label": "$\\alpha_{\\rm esc}$",
+              "median": 0.09679948598507779,
+              "q025": -0.8889231488812663,
+              "q975": 0.48233520331305785,
+              "lower_offset": 0.9857226348663441,
+              "upper_offset": 0.3855357173279801,
+              "display": "$0.10^{+0.39}_{-0.99}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            }
+          ],
+          "marginal_annotation": "median with 2.5th–97.5th percentile offsets of retained rows",
           "filled_bands_per_dataset": 1,
           "outline_levels_per_dataset": 1,
           "fill_alpha": 0.45,
@@ -1211,6 +1440,97 @@
               ]
             }
           ],
+          "marginal_summaries": [
+            {
+              "parameter_index": 0,
+              "label": "$\\eta_\\star$",
+              "median": -0.940387422913585,
+              "q025": -1.0175024808673945,
+              "q975": -0.8442734955796015,
+              "lower_offset": 0.07711505795380946,
+              "upper_offset": 0.0961139273339835,
+              "display": "$-0.940^{+0.096}_{-0.077}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 1,
+              "label": "$t_\\star$",
+              "median": 0.5532255508318831,
+              "q025": 0.08357358181125718,
+              "q975": 0.9733633425358456,
+              "lower_offset": 0.4696519690206259,
+              "upper_offset": 0.4201377917039625,
+              "display": "$0.55^{+0.42}_{-0.47}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 2,
+              "label": "$\\alpha_\\star$",
+              "median": 0.566096665822253,
+              "q025": 0.39572052816825554,
+              "q975": 0.7267333362050674,
+              "lower_offset": 0.1703761376539975,
+              "upper_offset": 0.16063667038281437,
+              "display": "$0.57^{+0.16}_{-0.17}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 3,
+              "label": "$\\log_{10}M_{\\rm turn}$",
+              "median": 9.10403484836293,
+              "q025": 8.096638002002601,
+              "q975": 9.588541176499225,
+              "lower_offset": 1.0073968463603293,
+              "upper_offset": 0.4845063281362947,
+              "display": "$9.10^{+0.48}_{-1.01}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 4,
+              "label": "$\\log_{10}f_{{\\rm esc},10}$",
+              "median": -1.1308481735826454,
+              "q025": -1.7713120781622387,
+              "q975": -0.12257923839543838,
+              "lower_offset": 0.6404639045795932,
+              "upper_offset": 1.008268935187207,
+              "display": "$-1.13^{+1.01}_{-0.64}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 5,
+              "label": "$\\alpha_{\\rm esc}$",
+              "median": 0.11898739442508166,
+              "q025": -0.9006144795463276,
+              "q975": 0.48763017218347904,
+              "lower_offset": 1.0196018739714092,
+              "upper_offset": 0.3686427777583974,
+              "display": "$0.12^{+0.37}_{-1.02}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 6,
+              "label": "$\\log_{10}L_X$",
+              "median": 40.178593487033254,
+              "q025": 38.11513329360542,
+              "q975": 41.932495310721855,
+              "lower_offset": 2.0634601934278365,
+              "upper_offset": 1.7539018236886008,
+              "display": "$40.2^{+1.8}_{-2.1}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 7,
+              "label": "$E_0$",
+              "median": 733.7705941268905,
+              "q025": 121.69892384708999,
+              "q975": 1460.443134348855,
+              "lower_offset": 612.0716702798005,
+              "upper_offset": 726.6725402219645,
+              "display": "$734^{+727}_{-612}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            }
+          ],
+          "marginal_annotation": "median with 2.5th–97.5th percentile offsets of retained rows",
           "filled_bands_per_dataset": 1,
           "outline_levels_per_dataset": 1,
           "fill_alpha": 0.45,
@@ -1696,6 +2016,108 @@
               ]
             }
           ],
+          "marginal_summaries": [
+            {
+              "parameter_index": 0,
+              "label": "$\\eta_\\star$",
+              "median": -1.179784564295311,
+              "q025": -1.6206465276750615,
+              "q975": -0.8752991464035765,
+              "lower_offset": 0.44086196337975037,
+              "upper_offset": 0.30448541789173456,
+              "display": "$-1.18^{+0.30}_{-0.44}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 1,
+              "label": "$t_\\star$",
+              "median": 0.5324968030051598,
+              "q025": 0.129346562044367,
+              "q975": 0.9762070339212204,
+              "lower_offset": 0.40315024096079277,
+              "upper_offset": 0.44371023091606066,
+              "display": "$0.53^{+0.44}_{-0.40}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 2,
+              "label": "$\\alpha_\\star$",
+              "median": 0.5862426350918938,
+              "q025": 0.4275584476851904,
+              "q975": 0.8142849669118146,
+              "lower_offset": 0.15868418740670337,
+              "upper_offset": 0.22804233181992084,
+              "display": "$0.59^{+0.23}_{-0.16}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 3,
+              "label": "$\\log_{10}M_{\\rm turn}$",
+              "median": 8.934115587285614,
+              "q025": 8.083527476745013,
+              "q975": 9.552509126752895,
+              "lower_offset": 0.8505881105406008,
+              "upper_offset": 0.6183935394672808,
+              "display": "$8.93^{+0.62}_{-0.85}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 4,
+              "label": "$\\log_{10}f_{{\\rm esc},10}$",
+              "median": -1.0627385458509835,
+              "q025": -1.6439552124507608,
+              "q975": -0.3447176979261586,
+              "lower_offset": 0.5812166665997773,
+              "upper_offset": 0.7180208479248249,
+              "display": "$-1.06^{+0.72}_{-0.58}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 5,
+              "label": "$\\alpha_{\\rm esc}$",
+              "median": -0.197835891632084,
+              "q025": -0.9310664098352561,
+              "q975": 0.4638904683500661,
+              "lower_offset": 0.7332305182031721,
+              "upper_offset": 0.6617263599821501,
+              "display": "$-0.20^{+0.66}_{-0.73}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 6,
+              "label": "$\\log_{10}L_X$",
+              "median": 40.336744084140626,
+              "q025": 38.14338385728477,
+              "q975": 41.94139986243843,
+              "lower_offset": 2.1933602268558587,
+              "upper_offset": 1.6046557782978041,
+              "display": "$40.3^{+1.6}_{-2.2}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 7,
+              "label": "$E_0$",
+              "median": 570.575324971411,
+              "q025": 133.2131378487768,
+              "q975": 1415.1062732292853,
+              "lower_offset": 437.36218712263417,
+              "upper_offset": 844.5309482578743,
+              "display": "$571^{+845}_{-437}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            },
+            {
+              "parameter_index": 8,
+              "label": "$m_s$",
+              "median": 1.1708273723861293,
+              "q025": 0.9378012950174341,
+              "q975": 1.4797167390547994,
+              "lower_offset": 0.23302607736869518,
+              "upper_offset": 0.30888936666867006,
+              "display": "$1.17^{+0.31}_{-0.23}$",
+              "selection": "all retained rows; pooled across historical ensemble groups"
+            }
+          ],
+          "marginal_annotation": "median with 2.5th–97.5th percentile offsets of retained rows",
           "filled_bands_per_dataset": 1,
           "outline_levels_per_dataset": 1,
           "fill_alpha": 0.45,

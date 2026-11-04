@@ -7,3 +7,5 @@ For each pair, all retained rows enter the original 32-by-32 count histogram ove
 This is a 95% region of the smoothed stored-sample density. No posterior convergence or calibrated coverage is inferred from its presentation. It replaces the previous design-only 10%-of-peak threshold. The method was checked against a 2D standard Gaussian (expected threshold/peak 0.05), and a uniform plateau tie case. Input hashes, all 122 pairwise grid-mass checks and output hashes are recorded in manifest.json. Region masses range from 0.950000036 to 0.950018555.
 
 Style reference: Park et al. (2019), Figure 4: https://arxiv.org/html/1809.08995v2#S6.F4 .
+
+Numeric annotations: each diagonal panel now shows the retained-sample median with asymmetric offsets to the 2.5th and 97.5th percentiles (95% central quantile interval). Historical annotations summarize the pooled rows while the original two ensemble marginal curves remain separate. All 37 numbers were computed from the same retained arrays. The full 122 two-dimensional region checks and source hashes match the preceding unannotated version exactly.
