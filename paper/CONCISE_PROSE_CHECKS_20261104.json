@@ -1,0 +1,75 @@
+{
+  "paper/main.tex": {
+    "equations_preserved": true,
+    "numeric_table_bodies_preserved": true,
+    "labels_preserved": true,
+    "citation_groups_preserved": true,
+    "figure_paths_preserved": true,
+    "source_sha256_before": "0fca80937f94efb5587151d169eb4c76f3d3c75ec8fbc6b93b21652a6bc70e3f",
+    "source_sha256_after": "ce970641fc2f6117a3e9eaaf84db36354941993e5c4ff53ce13536c7e1161f64",
+    "source_words_before": 233,
+    "source_words_after": 224,
+    "source_word_reduction_percent": 3.862660944206009
+  },
+  "paper/sections/btemu_body.tex": {
+    "equations_preserved": true,
+    "numeric_table_bodies_preserved": true,
+    "labels_preserved": true,
+    "citation_groups_preserved": true,
+    "figure_paths_preserved": true,
+    "source_sha256_before": "9349179c67eb314a250a400419fad3856893f2ed2936edbc21c7c7efd055557d",
+    "source_sha256_after": "bc07a0bc05dbea7ffc47ff18f70e4f13de3927b66ad14a26a4fccaad3081ec21",
+    "source_words_before": 7297,
+    "source_words_after": 6131,
+    "source_word_reduction_percent": 15.979169521721259
+  },
+  "paper/btemu_methods/main.tex": {
+    "equations_preserved": true,
+    "numeric_table_bodies_preserved": true,
+    "labels_preserved": true,
+    "citation_groups_preserved": true,
+    "figure_paths_preserved": true,
+    "source_sha256_before": "ae045f3e942110210c474aeef6ac9ddb5643fc1fb9ff1d3bcb27e8e62f645b8e",
+    "source_sha256_after": "fe98c402e58ede8ff31929c04f68332334e7128aceac6ff45a0db07348dac5a6",
+    "source_words_before": 214,
+    "source_words_after": 198,
+    "source_word_reduction_percent": 7.476635514018692
+  },
+  "paper/btemu_methods/body.tex": {
+    "equations_preserved": true,
+    "numeric_table_bodies_preserved": true,
+    "labels_preserved": true,
+    "citation_groups_preserved": true,
+    "figure_paths_preserved": true,
+    "source_sha256_before": "fd84c2513e67b9322fd6b9ff13af726c3a3aed8ada6c8199f07542df05c3aa9a",
+    "source_sha256_after": "24b0cc851a6f98e61939924dd370a6ea3fe35b710ebb7ecdae1aaa13ba3f0866",
+    "source_words_before": 4192,
+    "source_words_after": 3108,
+    "source_word_reduction_percent": 25.858778625954194
+  },
+  "pdfs": {
+    "BT_reionization_physics_v0.19_20261104.pdf": {
+      "pages": 20,
+      "sha256": "d866d440df17d619d694beed589b5506295a76d49a978f8dd9bf4a49763cbc13",
+      "compilation": "passed",
+      "layout": "all pages reviewed; final methods conclusion pages inspected after removing redundant scope section",
+      "undefined_references_citations_or_overfull_boxes": false,
+      "warning": "existing nameref label-definition warning"
+    },
+    "BTemu_methods_development_v0.7_20261104.pdf": {
+      "pages": 10,
+      "sha256": "d9caed9beea292557c8a5f17ba1d43191ea378922a7224e7023089d04c08588f",
+      "compilation": "passed",
+      "layout": "all pages reviewed; final methods conclusion pages inspected after removing redundant scope section",
+      "undefined_references_citations_or_overfull_boxes": false,
+      "warning": "existing nameref label-definition warning"
+    }
+  },
+  "scope": {
+    "no_simulation_training_or_sampling": true,
+    "missing_materials_checklist_retained_separately": true,
+    "convergence_and_likelihood_target_status_unchanged": true,
+    "legacy_validation_plan_label_retained_as_alias_to_IC_section": true,
+    "rendering": "Full contact sheets with explicit page-number filtering, plus detailed result/conclusion pages"
+  }
+}

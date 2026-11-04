@@ -1,6 +1,6 @@
 # Materials required after the November 4 review
 
-Scope: physics v0.18 and methods v0.6. Existing evidence is listed first so completed exports are not requested again. This is a material and validation inventory, not authorization to launch simulations or sampling.
+Scope: physics v0.19 and methods v0.7. Existing evidence is listed first so completed exports are not requested again. This is a material and validation inventory, not authorization to launch simulations or sampling.
 
 ## P0. Physical spectrum and numerical identity
 
