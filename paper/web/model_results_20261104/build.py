@@ -64,5 +64,5 @@ hint='Select a chain above. Click the image to open it at full resolution.' if e
 html=html.replace('@@CORNERS@@',f'<section id="corners"><h2>{heading}</h2><p class="lead">{note}</p><div class="corner-tabs" role="tablist" aria-label="Corner plots">{tabs}</div>'+''.join(panels)+f'<p class="small">{hint}</p></section>')
 close_label='Close full-resolution image' if en else '关闭原图'
 html=html.replace('</body>',f'<dialog id="corner-dialog" style="width:96vw;max-width:96vw;height:94vh;border:1px solid #a9b8c8;border-radius:8px;padding:16px"><button onclick="document.getElementById(&quot;corner-dialog&quot;).close()">{close_label}</button><div style="overflow:auto;height:calc(100% - 55px);margin-top:10px"><img id="corner-full-image" alt="" style="max-width:none;width:auto;height:auto"></div></dialog></body>')
-output.parent.mkdir(parents=True,exist_ok=True);output.write_text(html)
+output.parent.mkdir(parents=True,exist_ok=True);output.write_text('\n'.join(line.rstrip() for line in html.splitlines())+'\n')
 print(json.dumps({'output':str(output),'bytes':output.stat().st_size,'audit_sha256':hashlib.sha256(source.read_bytes()).hexdigest()}))
