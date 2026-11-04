@@ -1,0 +1,11 @@
+{
+  "desktop_1440_no_page_overflow": true,
+  "mobile_390_no_page_overflow": true,
+  "charts_scroll_on_mobile": true,
+  "svg_download_parses": true,
+  "csv_download_rows": 15,
+  "json_download_matches_audit": true,
+  "comparison_kp1_minus_kp10_eta": "-0.702",
+  "offline_dependencies": "inline SVG, data, CSS and JS; no remote scripts/styles",
+  "visual_review": "desktop and mobile full-page screenshots reviewed"
+}

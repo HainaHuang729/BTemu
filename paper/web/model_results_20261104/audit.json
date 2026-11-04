@@ -1,0 +1,110 @@
+{
+  "revision": "45edd179770899d57ffd9dc1917f91a032be7d3c",
+  "source_hashes_verified": true,
+  "previous_prediction_sha256": "ac53130045034015c8f02d647aa23cf44824d597405af7015db84973f7b5b0f3",
+  "previous_recomputed": {
+    "five_model_average": {
+      "median": 0.0010076164530363834,
+      "q95": 0.006814576402167939
+    },
+    "seed11": {
+      "median": 0.00152412201824959,
+      "q95": 0.010080229640065698
+    }
+  },
+  "new_metrics": {
+    "trajectory_RMSE_median": 0.0008506683514504011,
+    "trajectory_RMSE_q95": 0.005563643971917824,
+    "xHI_q90": 0.004570504253875837,
+    "tau_q90": 0.00033507794141769416,
+    "dlogL_q90": 1.177335122574713
+  },
+  "new_evaluation_scope": "development split; prediction arrays, evaluated membership, aggregation and error definitions not exported",
+  "fixed_summaries": [
+    {
+      "kp": 10,
+      "ms": 2.5,
+      "reported_centers_spreads": [
+        [
+          -0.94,
+          0.041
+        ],
+        [
+          0.571,
+          0.077
+        ],
+        [
+          8.97,
+          0.41
+        ],
+        [
+          -1.05,
+          0.42
+        ],
+        [
+          0.077,
+          0.34
+        ]
+      ]
+    },
+    {
+      "kp": 1,
+      "ms": 1.5,
+      "reported_centers_spreads": [
+        [
+          -1.642,
+          0.053
+        ],
+        [
+          0.751,
+          0.069
+        ],
+        [
+          8.71,
+          0.44
+        ],
+        [
+          -1.19,
+          0.4
+        ],
+        [
+          0.19,
+          0.24
+        ]
+      ]
+    },
+    {
+      "kp": 5,
+      "ms": 1.5,
+      "reported_centers_spreads": [
+        [
+          -1.013,
+          0.041
+        ],
+        [
+          0.663,
+          0.081
+        ],
+        [
+          8.84,
+          0.42
+        ],
+        [
+          -1.02,
+          0.41
+        ],
+        [
+          0.011,
+          0.37
+        ]
+      ]
+    }
+  ],
+  "raw_new_chains_exported": false,
+  "ic4_ic8_scope": "text-only; estimator mismatch reported; no matched arrays or estimator code exported",
+  "cluster_read": "SSH authentication rejected; no remote file read",
+  "comparison_conclusion": "old q95 .0101 matches seed11, not five-model average; no matched improvement ratio computed",
+  "ps_excluded": "PS+LF abnormal chain and IC8 percentages excluded from accepted inference",
+  "elapsed_training_seconds": 47661.272694741376,
+  "elapsed_training_hours": 13.239242415205938
+}
