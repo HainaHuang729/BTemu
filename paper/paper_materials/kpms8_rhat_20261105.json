@@ -1,0 +1,34 @@
+{
+  "steps": 16018,
+  "walkers": 32,
+  "rhat": {
+    "ETA_STAR": 1.258,
+    "t_STAR": 1.036,
+    "ALPHA_STAR": 1.178,
+    "M_TURN": 1.082,
+    "F_ESC10": 1.044,
+    "ALPHA_ESC": 1.037,
+    "KP_h_Mpc": 1.084,
+    "MS": 1.039
+  },
+  "median": {
+    "ETA_STAR": -0.936,
+    "t_STAR": 0.529,
+    "ALPHA_STAR": 0.561,
+    "M_TURN": 8.82,
+    "F_ESC10": -1.1,
+    "ALPHA_ESC": 0.138,
+    "KP_h_Mpc": 15.74,
+    "MS": 2.037
+  },
+  "std": {
+    "ETA_STAR": 0.087,
+    "t_STAR": 0.28,
+    "ALPHA_STAR": 0.114,
+    "M_TURN": 0.464,
+    "F_ESC10": 0.409,
+    "ALPHA_ESC": 0.365,
+    "KP_h_Mpc": 8.118,
+    "MS": 0.962
+  }
+}
