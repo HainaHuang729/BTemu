@@ -5,44 +5,44 @@
       1.2302042224286156
     ],
     [
-      -0.014510859993396871,
-      1.0247098469676246
+      -0.01451167630337308,
+      1.0247433156766492
     ],
     [
-      -0.5290173279832207,
-      1.0363961828654074
+      -0.43458165546831906,
+      1.034092873779678
     ],
     [
-      7.925507656678483,
-      11.055024995249648
+      7.930842361126852,
+      10.835487471751163
     ],
     [
       -3.065298431056225,
       0.07471175484256148
     ],
     [
-      -1.0371897562239922,
-      0.5374773833166334
+      -1.037460805892114,
+      0.5374865388228794
     ]
   ],
   "common_marginal_ymax": [
-    3.5013470936744637,
-    2.405735718201064,
-    5.377656469431892,
-    1.1435197713164607,
-    1.9713875404077565,
-    2.129568364101299
+    3.5031882017201497,
+    2.4066459973931065,
+    5.729353084882629,
+    1.154527352323411,
+    1.9725793070724464,
+    2.130166239131754
   ],
   "sample_density_coverage": {
     "PL": [
       {
         "x_parameter": "ETA_STAR",
         "y_parameter": "t_STAR",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500147126079495,
-        "integrated_mass_strictly_above_level": 0.9499907389148289,
-        "threshold": 147.29437053210742,
+        "integrated_mass_at_or_above_level": 0.9500170611932999,
+        "integrated_mass_strictly_above_level": 0.9499928666980034,
+        "threshold": 148.56116913497416,
         "integration_grid_shape": [
           256,
           256
@@ -51,11 +51,11 @@
       {
         "x_parameter": "ETA_STAR",
         "y_parameter": "ALPHA_STAR",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500013777572694,
-        "integrated_mass_strictly_above_level": 0.9499544011896159,
-        "threshold": 288.62403166306814,
+        "integrated_mass_at_or_above_level": 0.9500313768723969,
+        "integrated_mass_strictly_above_level": 0.9499852938858492,
+        "threshold": 282.9628093036555,
         "integration_grid_shape": [
           256,
           256
@@ -64,11 +64,11 @@
       {
         "x_parameter": "t_STAR",
         "y_parameter": "ALPHA_STAR",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500084406340129,
-        "integrated_mass_strictly_above_level": 0.949993501911224,
-        "threshold": 91.78351281452396,
+        "integrated_mass_at_or_above_level": 0.9500112967240129,
+        "integrated_mass_strictly_above_level": 0.9499970372046768,
+        "threshold": 87.55755546528007,
         "integration_grid_shape": [
           256,
           256
@@ -77,11 +77,11 @@
       {
         "x_parameter": "ETA_STAR",
         "y_parameter": "M_TURN",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500071163913145,
-        "integrated_mass_strictly_above_level": 0.9499745520072026,
-        "threshold": 200.07557598370605,
+        "integrated_mass_at_or_above_level": 0.95001435705502,
+        "integrated_mass_strictly_above_level": 0.9499837445353392,
+        "threshold": 187.96968724516648,
         "integration_grid_shape": [
           256,
           256
@@ -90,11 +90,11 @@
       {
         "x_parameter": "t_STAR",
         "y_parameter": "M_TURN",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500098421879022,
-        "integrated_mass_strictly_above_level": 0.9499983353343107,
-        "threshold": 70.69810846651579,
+        "integrated_mass_at_or_above_level": 0.9500017739642639,
+        "integrated_mass_strictly_above_level": 0.9499908888460777,
+        "threshold": 66.83776057699873,
         "integration_grid_shape": [
           256,
           256
@@ -103,11 +103,11 @@
       {
         "x_parameter": "ALPHA_STAR",
         "y_parameter": "M_TURN",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500043991167378,
-        "integrated_mass_strictly_above_level": 0.9499835118715606,
-        "threshold": 128.33123436900462,
+        "integrated_mass_at_or_above_level": 0.9500140938752235,
+        "integrated_mass_strictly_above_level": 0.949995134570128,
+        "threshold": 116.41559356639813,
         "integration_grid_shape": [
           256,
           256
@@ -116,11 +116,11 @@
       {
         "x_parameter": "ETA_STAR",
         "y_parameter": "F_ESC10",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500041690299403,
-        "integrated_mass_strictly_above_level": 0.9499658256279132,
-        "threshold": 235.58186205490347,
+        "integrated_mass_at_or_above_level": 0.9500376286685583,
+        "integrated_mass_strictly_above_level": 0.9499986835531669,
+        "threshold": 239.1342246968271,
         "integration_grid_shape": [
           256,
           256
@@ -129,11 +129,11 @@
       {
         "x_parameter": "t_STAR",
         "y_parameter": "F_ESC10",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.950006158116778,
-        "integrated_mass_strictly_above_level": 0.9499906301780081,
-        "threshold": 95.40365580301052,
+        "integrated_mass_at_or_above_level": 0.9500018742275314,
+        "integrated_mass_strictly_above_level": 0.9499861526373882,
+        "threshold": 96.53509129670269,
         "integration_grid_shape": [
           256,
           256
@@ -142,11 +142,11 @@
       {
         "x_parameter": "ALPHA_STAR",
         "y_parameter": "F_ESC10",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500206973709406,
-        "integrated_mass_strictly_above_level": 0.9499966951531457,
-        "threshold": 147.46962613114,
+        "integrated_mass_at_or_above_level": 0.9500147862294622,
+        "integrated_mass_strictly_above_level": 0.9499911388855397,
+        "threshold": 145.20150211891288,
         "integration_grid_shape": [
           256,
           256
@@ -155,11 +155,11 @@
       {
         "x_parameter": "M_TURN",
         "y_parameter": "F_ESC10",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500104408339178,
-        "integrated_mass_strictly_above_level": 0.9499922740010259,
-        "threshold": 111.61702128825135,
+        "integrated_mass_at_or_above_level": 0.9500030333193937,
+        "integrated_mass_strictly_above_level": 0.9499857907186462,
+        "threshold": 105.87453445742293,
         "integration_grid_shape": [
           256,
           256
@@ -168,11 +168,11 @@
       {
         "x_parameter": "ETA_STAR",
         "y_parameter": "ALPHA_ESC",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500105729843934,
-        "integrated_mass_strictly_above_level": 0.9499918706367114,
-        "threshold": 114.90722415755403,
+        "integrated_mass_at_or_above_level": 0.9500055893056166,
+        "integrated_mass_strictly_above_level": 0.9499867183755716,
+        "threshold": 115.87294530318289,
         "integration_grid_shape": [
           256,
           256
@@ -181,11 +181,11 @@
       {
         "x_parameter": "t_STAR",
         "y_parameter": "ALPHA_ESC",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500002495846351,
-        "integrated_mass_strictly_above_level": 0.9499906761107387,
-        "threshold": 58.81942361942954,
+        "integrated_mass_at_or_above_level": 0.9500033964419188,
+        "integrated_mass_strictly_above_level": 0.9499937775063706,
+        "threshold": 59.063034520026406,
         "integration_grid_shape": [
           256,
           256
@@ -194,11 +194,11 @@
       {
         "x_parameter": "ALPHA_STAR",
         "y_parameter": "ALPHA_ESC",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500086748814982,
-        "integrated_mass_strictly_above_level": 0.9499970146407142,
-        "threshold": 71.64051937630171,
+        "integrated_mass_at_or_above_level": 0.9500047649702287,
+        "integrated_mass_strictly_above_level": 0.9499933185778344,
+        "threshold": 70.28414586196985,
         "integration_grid_shape": [
           256,
           256
@@ -207,11 +207,11 @@
       {
         "x_parameter": "M_TURN",
         "y_parameter": "ALPHA_ESC",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.950007098944975,
-        "integrated_mass_strictly_above_level": 0.949998616902633,
-        "threshold": 52.11366814930167,
+        "integrated_mass_at_or_above_level": 0.9500042707785606,
+        "integrated_mass_strictly_above_level": 0.9499963100491114,
+        "threshold": 48.881171507093214,
         "integration_grid_shape": [
           256,
           256
@@ -220,11 +220,11 @@
       {
         "x_parameter": "F_ESC10",
         "y_parameter": "ALPHA_ESC",
-        "rows": 96000,
+        "rows": 95942,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500088951609587,
-        "integrated_mass_strictly_above_level": 0.9499920871223597,
-        "threshold": 103.26858915191514,
+        "integrated_mass_at_or_above_level": 0.9500144559582218,
+        "integrated_mass_strictly_above_level": 0.9499974779087628,
+        "threshold": 104.2501133554752,
         "integration_grid_shape": [
           256,
           256
@@ -235,11 +235,11 @@
       {
         "x_parameter": "ETA_STAR",
         "y_parameter": "t_STAR",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500061944619825,
-        "integrated_mass_strictly_above_level": 0.9499850918373074,
-        "threshold": 129.65452600402415,
+        "integrated_mass_at_or_above_level": 0.9500030923209275,
+        "integrated_mass_strictly_above_level": 0.9499818432999736,
+        "threshold": 130.50502699577038,
         "integration_grid_shape": [
           256,
           256
@@ -248,11 +248,11 @@
       {
         "x_parameter": "ETA_STAR",
         "y_parameter": "ALPHA_STAR",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500200317741541,
-        "integrated_mass_strictly_above_level": 0.9499810843458811,
-        "threshold": 239.29299930726177,
+        "integrated_mass_at_or_above_level": 0.9500087504872727,
+        "integrated_mass_strictly_above_level": 0.9499708146866197,
+        "threshold": 232.99015512857818,
         "integration_grid_shape": [
           256,
           256
@@ -261,11 +261,11 @@
       {
         "x_parameter": "t_STAR",
         "y_parameter": "ALPHA_STAR",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500046285895966,
-        "integrated_mass_strictly_above_level": 0.9499926508226023,
-        "threshold": 73.59140041375203,
+        "integrated_mass_at_or_above_level": 0.95001113725462,
+        "integrated_mass_strictly_above_level": 0.949999745825852,
+        "threshold": 69.9626925001339,
         "integration_grid_shape": [
           256,
           256
@@ -274,11 +274,11 @@
       {
         "x_parameter": "ETA_STAR",
         "y_parameter": "M_TURN",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500058023536643,
-        "integrated_mass_strictly_above_level": 0.949977461511601,
-        "threshold": 174.1261336369037,
+        "integrated_mass_at_or_above_level": 0.9500088402904809,
+        "integrated_mass_strictly_above_level": 0.9499819790164378,
+        "threshold": 164.97377934607402,
         "integration_grid_shape": [
           256,
           256
@@ -287,11 +287,11 @@
       {
         "x_parameter": "t_STAR",
         "y_parameter": "M_TURN",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500351129670442,
-        "integrated_mass_strictly_above_level": 0.9499932271193913,
-        "threshold": 64.3366619950411,
+        "integrated_mass_at_or_above_level": 0.9500042907252476,
+        "integrated_mass_strictly_above_level": 0.9499944140980804,
+        "threshold": 60.65924156631238,
         "integration_grid_shape": [
           256,
           256
@@ -300,11 +300,11 @@
       {
         "x_parameter": "ALPHA_STAR",
         "y_parameter": "M_TURN",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.950012775703539,
-        "integrated_mass_strictly_above_level": 0.9499965687057905,
-        "threshold": 99.57579416553276,
+        "integrated_mass_at_or_above_level": 0.9500021379068344,
+        "integrated_mass_strictly_above_level": 0.9499874340959431,
+        "threshold": 90.30633653591666,
         "integration_grid_shape": [
           256,
           256
@@ -313,11 +313,11 @@
       {
         "x_parameter": "ETA_STAR",
         "y_parameter": "F_ESC10",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500199837854076,
-        "integrated_mass_strictly_above_level": 0.9499965681492889,
-        "threshold": 143.865668314408,
+        "integrated_mass_at_or_above_level": 0.9500000949406883,
+        "integrated_mass_strictly_above_level": 0.9499764052574974,
+        "threshold": 145.4948324949178,
         "integration_grid_shape": [
           256,
           256
@@ -326,11 +326,11 @@
       {
         "x_parameter": "t_STAR",
         "y_parameter": "F_ESC10",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500012005188014,
-        "integrated_mass_strictly_above_level": 0.9499902164753231,
-        "threshold": 67.48596312949905,
+        "integrated_mass_at_or_above_level": 0.9500064123996235,
+        "integrated_mass_strictly_above_level": 0.9499953808052968,
+        "threshold": 67.75269874933781,
         "integration_grid_shape": [
           256,
           256
@@ -339,11 +339,11 @@
       {
         "x_parameter": "ALPHA_STAR",
         "y_parameter": "F_ESC10",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500125617455574,
-        "integrated_mass_strictly_above_level": 0.9499981623503669,
-        "threshold": 88.46988405009274,
+        "integrated_mass_at_or_above_level": 0.9500075120757918,
+        "integrated_mass_strictly_above_level": 0.9499935492278881,
+        "threshold": 85.75556711700558,
         "integration_grid_shape": [
           256,
           256
@@ -352,11 +352,11 @@
       {
         "x_parameter": "M_TURN",
         "y_parameter": "F_ESC10",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500053696012116,
-        "integrated_mass_strictly_above_level": 0.9499958108589607,
-        "threshold": 58.728912389758335,
+        "integrated_mass_at_or_above_level": 0.9500087482937029,
+        "integrated_mass_strictly_above_level": 0.9499997560711371,
+        "threshold": 55.22749736314727,
         "integration_grid_shape": [
           256,
           256
@@ -365,11 +365,11 @@
       {
         "x_parameter": "ETA_STAR",
         "y_parameter": "ALPHA_ESC",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500095186959224,
-        "integrated_mass_strictly_above_level": 0.9499914634297436,
-        "threshold": 110.93155540315924,
+        "integrated_mass_at_or_above_level": 0.950005417344259,
+        "integrated_mass_strictly_above_level": 0.949987159750119,
+        "threshold": 112.1325928977706,
         "integration_grid_shape": [
           256,
           256
@@ -378,11 +378,11 @@
       {
         "x_parameter": "t_STAR",
         "y_parameter": "ALPHA_ESC",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500006304172187,
-        "integrated_mass_strictly_above_level": 0.9499938537289627,
-        "threshold": 41.6359726457358,
+        "integrated_mass_at_or_above_level": 0.9500054759931135,
+        "integrated_mass_strictly_above_level": 0.9499986818276382,
+        "threshold": 41.727698922045256,
         "integration_grid_shape": [
           256,
           256
@@ -391,11 +391,11 @@
       {
         "x_parameter": "ALPHA_STAR",
         "y_parameter": "ALPHA_ESC",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.950008662335753,
-        "integrated_mass_strictly_above_level": 0.9499982511347485,
-        "threshold": 63.96641897229276,
+        "integrated_mass_at_or_above_level": 0.9500013837333857,
+        "integrated_mass_strictly_above_level": 0.9499914005259945,
+        "threshold": 61.31382490213842,
         "integration_grid_shape": [
           256,
           256
@@ -404,11 +404,11 @@
       {
         "x_parameter": "M_TURN",
         "y_parameter": "ALPHA_ESC",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.950002687999274,
-        "integrated_mass_strictly_above_level": 0.9499942908020936,
-        "threshold": 51.59237947723114,
+        "integrated_mass_at_or_above_level": 0.9500045851059854,
+        "integrated_mass_strictly_above_level": 0.9499966663224795,
+        "threshold": 48.63476098432965,
         "integration_grid_shape": [
           256,
           256
@@ -417,11 +417,11 @@
       {
         "x_parameter": "F_ESC10",
         "y_parameter": "ALPHA_ESC",
-        "rows": 96000,
+        "rows": 95964,
         "target_mass": 0.95,
-        "integrated_mass_at_or_above_level": 0.9500080919821686,
-        "integrated_mass_strictly_above_level": 0.9499997778362539,
-        "threshold": 51.08211250029585,
+        "integrated_mass_at_or_above_level": 0.9500012547679245,
+        "integrated_mass_strictly_above_level": 0.9499929057778523,
+        "threshold": 51.27695893037116,
         "integration_grid_shape": [
           256,
           256
@@ -433,76 +433,76 @@
     "PL": [
       {
         "parameter": "ETA_STAR",
-        "median": -0.9262536610707588,
-        "q025": -0.9938808369013556,
-        "q975": -0.8535570318119855
+        "median": -0.9262773186655413,
+        "q025": -0.9938948058322371,
+        "q975": -0.8539962024401049
       },
       {
         "parameter": "t_STAR",
-        "median": 0.7589707474798156,
-        "q025": 0.3239926865504129,
+        "median": 0.7590925435834507,
+        "q025": 0.32582003794265324,
         "q975": 0.9891555396264196
       },
       {
         "parameter": "ALPHA_STAR",
-        "median": 0.545028174876812,
-        "q025": 0.4097517498525003,
-        "q975": 0.6782719123666799
+        "median": 0.545059042097573,
+        "q025": 0.41053675632481207,
+        "q975": 0.6780646983505937
       },
       {
         "parameter": "M_TURN",
-        "median": 8.60109590630624,
+        "median": 8.600757045988907,
         "q025": 8.033079675662625,
-        "q975": 9.377421038260437
+        "q975": 9.374279264940697
       },
       {
         "parameter": "F_ESC10",
-        "median": -0.229247993569837,
-        "q025": -0.9034415467010052,
-        "q975": -0.009361474741367502
+        "median": -0.22915770574053848,
+        "q025": -0.8975911523500008,
+        "q975": -0.009356359698506511
       },
       {
         "parameter": "ALPHA_ESC",
-        "median": 0.17384373065805078,
+        "median": 0.17412776684862158,
         "q025": -0.7547183099275646,
-        "q975": 0.48503747998373675
+        "q975": 0.48505774238297716
       }
     ],
     "BT": [
       {
         "parameter": "ETA_STAR",
-        "median": -1.6367494792768484,
-        "q025": -1.7482526490148687,
-        "q975": -1.5112657656762107
+        "median": -1.6367577160391091,
+        "q025": -1.748215355238011,
+        "q975": -1.5115493353822727
       },
       {
         "parameter": "t_STAR",
-        "median": 0.5209311221028694,
-        "q025": 0.0711826615818111,
-        "q975": 0.974872679364301
+        "median": 0.5208762552901847,
+        "q025": 0.07096610563509168,
+        "q975": 0.9748759580758081
       },
       {
         "parameter": "ALPHA_STAR",
-        "median": 0.7450234612208196,
-        "q025": 0.5884423848078546,
+        "median": 0.7450907733348322,
+        "q025": 0.5889622213154551,
         "q975": 0.8910319660582392
       },
       {
         "parameter": "M_TURN",
-        "median": 8.710781971861124,
+        "median": 8.710631633075678,
         "q025": 8.037076565422876,
-        "q975": 9.645535761498206
+        "q975": 9.641985571177031
       },
       {
         "parameter": "F_ESC10",
-        "median": -1.22647245383311,
-        "q025": -1.8330591223151878,
+        "median": -1.2264662814223295,
+        "q025": -1.8317210864930176,
         "q975": -0.279955867598292
       },
       {
         "parameter": "ALPHA_ESC",
-        "median": 0.2288022834640009,
-        "q025": -0.4282944074269468,
+        "median": 0.2288761573999298,
+        "q025": -0.42683578457472654,
         "q975": 0.48628897207828237
       }
     ]
@@ -541,7 +541,7 @@
   },
   "second_data_set_included": true,
   "upper_triangle_information_blocks": 0,
-  "renderer_sha256": "7fba6cb3273eec8b60acf5b624d30195e1b658b9367f95e9fb2b6d7f9caeed41",
+  "renderer_sha256": "458961697762797f05db9111f79b21e048f22345ec06acb70fee1a9aad648914",
   "park_renderer_sha256": "54c7e0ebe1cc906d66f5c9057a32e80bbb68875df7788041926416b0837aadf7",
   "sources": {
     "PL": {
@@ -553,7 +553,10 @@
         6
       ],
       "discard_leading_stored_rows_or_steps": 0,
-      "retained_rows": 96000,
+      "rows_before_log_prob_filter": 96000,
+      "excluded_nonfinite_log_prob": 58,
+      "log_prob_selection": "finite only",
+      "retained_rows": 95942,
       "source_parameters": [
         "ETA_STAR",
         "t_STAR",
@@ -581,7 +584,10 @@
         6
       ],
       "discard_leading_stored_rows_or_steps": 0,
-      "retained_rows": 96000,
+      "rows_before_log_prob_filter": 96000,
+      "excluded_nonfinite_log_prob": 36,
+      "log_prob_selection": "finite only",
+      "retained_rows": 95964,
       "source_parameters": [
         "ETA_STAR",
         "t_STAR",
@@ -601,6 +607,6 @@
       "coordinate_transform": "none"
     }
   },
-  "output_sha256": "cb11764ab4d114ef48d3c6bb8a731cacbcfdc1995036715893a6b6ee0a9244d3",
+  "output_sha256": "c297bf641277bd03554ed6bb2dc23d907ffaaa789998d511f4f8efa0f2500fce",
   "label": "BT: kp=1, ms=1.5"
 }

@@ -1,3 +1,5 @@
+> Availability update, 2026-11-05: PL, kp1/kp5/kp10, free-MS7D and kp20 raw files have now been received. This dated list is superseded by the [current material inventory](updates_20261105/REMAINING_MATERIALS_20261105.md).
+
 # Materials required after the November 4 review
 
 Scope: physics v0.19 and methods v0.7. Existing evidence is listed first so completed exports are not requested again. This is a material and validation inventory, not authorization to launch simulations or sampling.

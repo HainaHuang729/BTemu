@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-05",
+  "case_count": 4,
+  "parameter_count": 6,
+  "source_revision": "27b03de7601273fd1443028de1c220dfc16b5da9",
+  "finite_log_prob_filter": true,
+  "excluded_rows": {
+    "kp10_ms2p5_100k.h5": 51,
+    "kp10_msfree7d_100k.h5": 29,
+    "kp1_ms1p5_100k.h5": 36,
+    "kp20_ms2p5_10000.h5": 3,
+    "kp5_ms1p5_100k.h5": 96,
+    "pl_100k.h5": 58,
+    "ps_lf_joint.h5": null
+  },
+  "input_hashes_verified": true,
+  "summaries_match_audit": true,
+  "shared_PL_regions_identical": true,
+  "all_120_contour_mass_checks_passed": true,
+  "upper_triangle_empty": true,
+  "joined8_source_claim_max_corrected": 1.258,
+  "working_outline_preserves_upstream_source": true
+}

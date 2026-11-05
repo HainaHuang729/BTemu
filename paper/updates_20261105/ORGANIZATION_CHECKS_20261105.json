@@ -1,0 +1,24 @@
+{
+  "source_revision": "27b03de7601273fd1443028de1c220dfc16b5da9",
+  "new_source_files_unchanged": 8,
+  "readable_chain_files": 6,
+  "unreadable_chain_exports": [
+    "ps_lf_joint.h5"
+  ],
+  "zero_probability_selection_recorded": true,
+  "full_joined8_chain_available": false,
+  "joined8_reported_maximum": 1.258,
+  "fixed_spectrum_overlays": 4,
+  "density_mass_checks": 120,
+  "source_skeleton_preserved": true,
+  "manuscript_TeX_modified": false,
+  "browser": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "horizontal_overflow": false,
+    "images_loaded": 4,
+    "download_links": 5
+  }
+}

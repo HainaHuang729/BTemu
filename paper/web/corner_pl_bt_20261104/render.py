@@ -26,17 +26,20 @@ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 
 def load(path,discard,names_path=None):
     """Read actual stored samples; never reconstruct a joint distribution from quantiles."""
-    names=None
+    names=None;log_prob=None
     if path.suffix.lower() in ['.h5','.hdf5']:
         with h5py.File(path,'r') as f:
             key='chain' if 'chain' in f else 'mcmc/chain'
             a=f[key][:]
+            lp_key='log_prob' if 'log_prob' in f else 'mcmc/log_prob'
+            if lp_key in f:log_prob=f[lp_key][:]
             if 'parameter_names' in f:names=f['parameter_names'][:]
             elif 'parameter_names' in f.attrs:names=f.attrs['parameter_names']
     elif path.suffix.lower()=='.npz':
         with np.load(path,allow_pickle=False) as f:
             key='samples' if 'samples' in f else 'chain';a=f[key]
             if 'parameter_names' in f:names=f['parameter_names']
+            if 'log_prob' in f:log_prob=f['log_prob']
     elif path.suffix.lower()=='.csv':
         table=np.genfromtxt(path,delimiter=',',names=True);names=list(table.dtype.names);a=np.column_stack([table[n] for n in names])
     else:raise ValueError('Expected HDF5, NPZ, or named-column CSV samples')
@@ -46,12 +49,15 @@ def load(path,discard,names_path=None):
     names=[n.decode() if isinstance(n,bytes) else str(n) for n in names]
     assert a.ndim in [2,3] and a.shape[-1]==len(names)
     assert 0<=discard<len(a)
-    shape=list(a.shape);kept=a[discard:].reshape(-1,a.shape[-1])
+    shape=list(a.shape);kept=a[discard:].reshape(-1,a.shape[-1]);before=len(kept)
+    if log_prob is not None:
+        assert log_prob.shape==a.shape[:-1]
+        mask=np.isfinite(log_prob[discard:].reshape(-1));kept=kept[mask]
     missing=set(PARAMETERS)-set(names)
     if missing:raise ValueError(f'{path}: missing exact coordinates {sorted(missing)}; no automatic F_STAR10/ETA_STAR conversion is assumed')
     a=np.asarray(kept[:,[names.index(p) for p in PARAMETERS]],float)
     assert len(a)>1 and np.isfinite(a).all()
-    receipt=dict(file=str(path.resolve()),sha256=sha(path),stored_shape=shape,discard_leading_stored_rows_or_steps=discard,retained_rows=len(a),source_parameters=names,selected_parameters=PARAMETERS,coordinate_transform='none')
+    receipt=dict(file=str(path.resolve()),sha256=sha(path),stored_shape=shape,discard_leading_stored_rows_or_steps=discard,rows_before_log_prob_filter=before,excluded_nonfinite_log_prob=before-len(a),log_prob_selection='finite only' if log_prob is not None else 'not supplied',retained_rows=len(a),source_parameters=names,selected_parameters=PARAMETERS,coordinate_transform='none')
     return a,receipt
 
 def number(a,decimals=None):

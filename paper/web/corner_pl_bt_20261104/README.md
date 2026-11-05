@@ -1,11 +1,9 @@
-# Unified PL and BT corner overlays
+# Unified PL and BT overlays, updated November 5
 
-Open index.html for the offline viewer; the default is PL versus BT kp10/ms2.5. Select kp1/ms1.5 or kp5/ms1.5 for the other comparisons. Every plot contains exactly two distributions. Rebuild with `/usr/bin/python3 build.py`; `--page-only` rebuilds only the viewer from verified images.
+Four source comparisons are included: PL versus BT kp1/MS1.5, kp5/MS1.5, kp10/MS2.5 and the added kp20/MS2.5 chain. The default remains kp10. Rebuild with `/usr/bin/python3 build.py`. Open index.html for the offline viewer.
 
-The style is park-overlay-unified-v1: STIX type, thin grey boxes, blue solid BT curves with one light grey density fill, orange dashed PL curves, common line weights, and no upper-triangle information blocks. Numerical annotation order is BT above PL, with the same decimal precision per coordinate across models and cases.
+All available steps are read, with zero extra chronological discard or thinning. Rows with nonfinite log probability are excluded. The source counts and excluded rows are recorded in each audit: PL 95,942/96,000 retained; kp1 95,964; kp5 95,904; kp10 95,949; kp20 319,997/320,000. This finite-log-probability selection supersedes the November 4 design previews that included all stored rows. Source arrays are unchanged.
 
-All three cases now use one common coordinate range and 32-bin grid, obtained from the union of PL and all three BT arrays with 2.5% padding. Their diagonal marginal density vertical scales are also shared. The same PL density therefore has exactly the same numerical region and display scale in all three plots. This grid replaces the earlier pair-specific ranges. No retained row or quantile summary changed.
+Every comparison uses identical coordinate limits, 32-bin grids and marginal vertical scales. The PL contour is numerically identical in all four figures. BT is blue solid with one translucent grey fill; PL is orange dashed. Both get one independently integrated 95% smoothed sample-density outline. Diagonal labels give medians and 95% quantile offsets, BT above PL. The upper triangle is empty.
 
-Each chain contributes all 3,000 stored steps and 32 walkers (96,000 rows), with no additional discard or thinning; the source files do not specify burn-in selection. Named coordinates are unchanged and kp/ms attributes were checked against plot labels. Densities are normalized separately. Display smoothing is Gaussian sigma 1.1 bins in 2D and 0.8 in 1D. Each single 95% density region is determined by sorted integration on a 256-by-256 equal-area grid. All 90 model/panel checks passed (masses 0.950000250–0.950037083). Diagonal summaries are medians with offsets to the 2.5th and 97.5th percentiles.
-
-Source/output hashes, common ranges, marginal scales, row counts, quantiles and each contour integral are in the per-figure audit JSON files. UNIFIED_STYLE_CHECKS_20261104.json records preservation and display checks. Accepted manuscript assets are unchanged.
+Gaussian display smoothing remains sigma 1.1 bins in 2D and 0.8 in 1D, with 256-by-256 integration. MATERIAL_UPDATE_CHECKS_20261105.json records all 120 model/panel checks and the link to the new chain audit. UNIFIED_STYLE_CHECKS_20261104.json is the historical three-case, all-stored-row design record.

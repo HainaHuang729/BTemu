@@ -1,3 +1,5 @@
+> Availability update, 2026-11-05: PL, kp1/kp5/kp10, free-MS7D and kp20 raw files have now been received. This dated list is superseded by the [current material inventory](updates_20261105/REMAINING_MATERIALS_20261105.md).
+
 # 审查后仍需材料（2026-11-04）
 
 对应物理稿 v0.19、方法稿 v0.7。已完成的是表述、主线和证据对应关系的修订；以下验证不因改写而自动完成。优先回传已有产物，不默认启动新计算。

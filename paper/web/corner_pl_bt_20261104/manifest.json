@@ -1,6 +1,6 @@
 {
-  "source_revision": "eb828e0fb22be64117c7c0ae56c7605251ee913c",
-  "selection": "All 3000 stored steps x 32 walkers for each model; no additional discard or thinning",
+  "source_revision": "27b03de7601273fd1443028de1c220dfc16b5da9",
+  "selection": "Keep rows with finite log_prob; zero added chronological discard or thinning. Original step counts: 3000 x 32 for PL/kp1/kp5/kp10, 10000 x 32 for kp20.",
   "parameters": [
     "ETA_STAR",
     "t_STAR",
@@ -16,52 +16,66 @@
       1.2302042224286156
     ],
     [
-      -0.014510859993396871,
-      1.0247098469676246
+      -0.01451167630337308,
+      1.0247433156766492
     ],
     [
-      -0.5290173279832207,
-      1.0363961828654074
+      -0.43458165546831906,
+      1.034092873779678
     ],
     [
-      7.925507656678483,
-      11.055024995249648
+      7.930842361126852,
+      10.835487471751163
     ],
     [
       -3.065298431056225,
       0.07471175484256148
     ],
     [
-      -1.0371897562239922,
-      0.5374773833166334
+      -1.037460805892114,
+      0.5374865388228794
     ]
   ],
   "shared_marginal_ymax": [
-    3.5013470936744637,
-    2.405735718201064,
-    5.377656469431892,
-    1.1435197713164607,
-    1.9713875404077565,
-    2.129568364101299
+    3.5031882017201497,
+    2.4066459973931065,
+    5.729353084882629,
+    1.154527352323411,
+    1.9725793070724464,
+    2.130166239131754
   ],
   "cases": [
     {
       "file": "PL_vs_kp10_ms2p5_100k_Park95.png",
       "label": "BT: kp=10, ms=2.5",
       "audit": "PL_vs_kp10_ms2p5_100k_Park95.json",
-      "sha256": "5ff24d2bca17efce56b946d28d61779e7652875cb67673e7c3dcefb42daff05b"
+      "sha256": "0fedc4f9ecf8c782982b0170c1f7aa6fdd5b00f30f34e06758e9bedf6a259b41",
+      "pl_rows": 95942,
+      "bt_rows": 95949
     },
     {
       "file": "PL_vs_kp1_ms1p5_100k_Park95.png",
       "label": "BT: kp=1, ms=1.5",
       "audit": "PL_vs_kp1_ms1p5_100k_Park95.json",
-      "sha256": "cb11764ab4d114ef48d3c6bb8a731cacbcfdc1995036715893a6b6ee0a9244d3"
+      "sha256": "c297bf641277bd03554ed6bb2dc23d907ffaaa789998d511f4f8efa0f2500fce",
+      "pl_rows": 95942,
+      "bt_rows": 95964
     },
     {
       "file": "PL_vs_kp5_ms1p5_100k_Park95.png",
       "label": "BT: kp=5, ms=1.5",
       "audit": "PL_vs_kp5_ms1p5_100k_Park95.json",
-      "sha256": "0c0b3edffa6572bf5d5fbbd928123fe38e7cce1a60f1a1a0cbe48b7da49086dc"
+      "sha256": "6dd2896ba9882f248e4ec0760cfda4cafc0100a0594272b6d7d9258ea45051a9",
+      "pl_rows": 95942,
+      "bt_rows": 95904
+    },
+    {
+      "file": "PL_vs_kp20_ms2p5_10000_Park95.png",
+      "label": "BT: kp=20, ms=2.5",
+      "audit": "PL_vs_kp20_ms2p5_10000_Park95.json",
+      "sha256": "b9348e499999000e7e8ab35598add15e7bab07a4af8dcb48c125ccf0f42b1250",
+      "pl_rows": 95942,
+      "bt_rows": 319997
     }
   ]
 }
