@@ -1,0 +1,20 @@
+{
+  "main.tex": "ec2079c5ffca690bfe6bddc00b92555b13a0fd1c8cec4dc59e1191f96bb9ec00",
+  "body.tex": "a7915cb1476f216196d4389f1e7e4c116c1042767fcf236c94078f64f63a59d0",
+  "references.bib": "eb706ac87acc3c80dd053467685ebf08df7f1e9f5f5bc3dc23753ac95a7991c8",
+  "BT_reionization_physics_v0.21_20261106.pdf": "caea1bd7f82740771178967cd145636526024106a8ee5a9fa9212626b7bc9bc6",
+  "figures/btemu/fig10_21cmtb_diagnostics.pdf": "2a3500eb11350f34db799c1ec8162b125cc941665af01e7355d865c69520c441",
+  "figures/btemu/fig11_btemu_corner6_5000.pdf": "ff07a088699c6929fbdc6b7b06b06c016d235c844dfe30f45ec8682f456df084",
+  "figures/btemu/fig12_btemu_corner8_5568.pdf": "0fb8b6eed429acb5a7bdbca918fe4fe7a0abe86cafc1f52d35377266c605749d",
+  "figures/btemu/fig13_exact_corner6_200.pdf": "fe867c39a1aa626cc2ff81a11cf966ccf4ff8d79c500de6ea5f7136036e34b3d",
+  "figures/btemu/fig15_kpms_focus.pdf": "87fa2626ea79432cc6716d1223b648007983686bba645d2b4783c2963097bd46",
+  "figures/btemu/fig16_fixed_astro_bt_histories.pdf": "7c97349b032b445d20ea97009e0fb8c5016f8d325b098f2baaf575bd6609c5b9",
+  "figures/btemu/fig17_obs_combinations.pdf": "9bfb9bf24751763466e619802eca126f3a0118afa8af2547c3795c868b85ada9",
+  "figures/btemu/fig1_bt_bias.png": "e09759ca3f8c6888133baa17231b8aed03067e9e032939adc7e3c62c04709211",
+  "figures/btemu/fig5_21cmtb_histories.pdf": "fe0c3af1fbec176603948ef2f0555735ca87e8d3fa110cff6b1959f4b0e5440f",
+  "figures/btemu/fig6_21cmtb_lf_grid.pdf": "32d3ef8bc5f0bffc85c57882bd1e56802ef8d08893615f43b0376d8052304a37",
+  "figures/btemu/fig7_21cmtb_lf_fits.pdf": "d0b893020ba21deb04c1822c8d4ffaafb00c3a7e49c230a34428d357401e4d75",
+  "figures/btemu/fig8_21cmtb_corner_fixed8.pdf": "9772b26fcab3126070a5e6ed51f53f860c6492b38ac31177b34c88a433d3b046",
+  "figures/btemu/fig9_21cmtb_corner_free9.pdf": "c0975d6ca6a0fcdebab43e701440d6c76ef70f06f02a92ed09a64bd93e53a8c1",
+  "figures/btemu/fig_physics_kpms_100k.png": "638712b2eeee503ca77cbedb849a18d2f1f8252d6d197f7f80e0b081d163534a"
+}
