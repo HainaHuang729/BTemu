@@ -1,0 +1,3 @@
+# Physics v0.21 independent review
+
+Start with NATURE_REVIEW_PHYSICS_V021.md, which contains the setup, three frozen independent reports and the post-review synthesis. FORENSIC_AUDIT.md is the separate arithmetic and source-consistency pass. The local immutable packet is not duplicated in Git; packet_manifest.json records its hashes. The manuscript is the physics source package at repository path paper/physics_manuscript_v021_20261106, with raw arrays in paper/paper_materials/chains_20261104 and chains_20261106. No earlier reviews were supplied to reviewer contexts, and no manuscript was edited.

@@ -1,0 +1,18 @@
+{
+  "packet_unchanged": true,
+  "review_contexts": [
+    "/root/physics021_r1",
+    "/root/physics021_r2",
+    "/root/physics021_r3"
+  ],
+  "fork_turns": "none",
+  "emphasis_fixed_before_launch": true,
+  "shared_concern_ledger": false,
+  "source_location_clarification_sent_to_all": "Existing HDF5 arrays are under packet/chains; git ignore can hide them from rg --files. No packet content changed.",
+  "reports": {
+    "R1.md": "64dab5b993abf273af19bfc2c8120765f196c78e45e4c19e35c284e8a3f668c6",
+    "R2.md": "8cea18d7cfbf9d0902af77d03fc08b844d7830c9e9ba072d6e8de9fb4c80bb11",
+    "R3.md": "054975965ba21609583a3b16d67be4bff9bf7aa8c7101d7d34f4664a7eb937cb"
+  },
+  "audit_after_freeze": true
+}

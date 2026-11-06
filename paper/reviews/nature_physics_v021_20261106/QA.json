@@ -1,0 +1,12 @@
+{
+  "independent_reports": 3,
+  "contexts_isolated": true,
+  "all_received_same_packet": true,
+  "reports_unchanged_after_freeze": true,
+  "packet_unchanged": true,
+  "audit_after_reports_frozen": true,
+  "blocking_disagreement_preserved": true,
+  "current_raw_arrays_checked": true,
+  "manuscript_edited": false,
+  "simulation_training_sampling_started": false
+}
