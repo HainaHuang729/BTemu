@@ -1,3 +1,5 @@
+> 论文材料从 [当前主线](paper/MAINLINE.md) 开始阅读。正文按三个结果组织；按日期的材料和历史页面保留供复现。
+
 # BTemu
 
 A 10D numerical surrogate of the selected BT-modified 21cmFAST forward model: physical parameters → 32-node **volume-averaged global_xHI history**.

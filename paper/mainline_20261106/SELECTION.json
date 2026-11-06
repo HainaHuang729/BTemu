@@ -1,0 +1,17 @@
+{
+  "selected_images": [
+    {
+      "path": "paper/web/corner_pl_bt_20261104/assets/PL_vs_kp1_ms1p5_100k_Park95.png",
+      "sha256": "c297bf641277bd03554ed6bb2dc23d907ffaaa789998d511f4f8efa0f2500fce"
+    },
+    {
+      "path": "paper/analysis_kpms_20261106/kp_ms_marginal_prior.png",
+      "sha256": "638712b2eeee503ca77cbedb849a18d2f1f8252d6d197f7f80e0b081d163534a"
+    }
+  ],
+  "source_files_preserved": true,
+  "manuscript_tex_changed": false,
+  "primary_model": "100k",
+  "result_groups": 3,
+  "core_tasks": 2
+}

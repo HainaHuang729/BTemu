@@ -1,3 +1,5 @@
+> Historical November 5 outline. The current author-facing main line is `paper/MAINLINE.md`; this file is retained as a dated record.
+
 # BTemu: a history emulator for BT-modified reionization calculations
 
 Working outline reconciled with the November 5 exports. The original upstream skeleton remains in `paper/paper_materials/BTEMU_DRAFT_20261105.md`; the existing methods manuscript supplies the definitions, bibliography and earlier validation. This outline organizes the added evidence rather than replacing that manuscript.
