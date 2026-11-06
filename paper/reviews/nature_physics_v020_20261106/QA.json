@@ -1,0 +1,10 @@
+{
+  "reports": 3,
+  "contexts_isolated": true,
+  "common_packet_unchanged": true,
+  "reports_unchanged_since_freeze": true,
+  "audit_after_freeze": true,
+  "reviewer_availability_and_figure_pointer_qualifications_recorded": true,
+  "main_manuscript_changed": false,
+  "sampling_or_simulations_started": false
+}

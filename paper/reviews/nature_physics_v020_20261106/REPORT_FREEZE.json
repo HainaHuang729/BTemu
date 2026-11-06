@@ -1,0 +1,17 @@
+{
+  "packet_unchanged": true,
+  "review_contexts": [
+    "/root/physics020_r1",
+    "/root/physics020_r2",
+    "/root/physics020_r3"
+  ],
+  "fork_turns": "none",
+  "emphasis_fixed_before_launch": true,
+  "shared_concern_ledger": false,
+  "reports": {
+    "R1.md": "efbfa0a9a704169d730bbfd094969e4d31252dd4bd08a4d90b207f39e5247da4",
+    "R2.md": "3ae786815f7b48babc2f04c383cc6f98cafc297a08ff14119d2cb04581774446",
+    "R3.md": "28e4d0af4c10569695d2e372dcb5746bd0b6917bfd9e6d960e43365830744437"
+  },
+  "audit_runs_after_freeze": true
+}

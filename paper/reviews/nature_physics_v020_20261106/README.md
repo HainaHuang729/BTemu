@@ -1,0 +1,3 @@
+# Physics manuscript v0.20 review
+
+Start with NATURE_REVIEW_PHYSICS_V020.md, containing three independently finalized reviewer reports and a post-review synthesis. FORENSIC_AUDIT.md is a separate audit run after report freezing. Review sources are the retained physics_archive_20261106.tex, paper/sections/btemu_body.tex and the original reproduction/data records in the Overleaf project. The local source packet is not duplicated in Git; packet_manifest.json records all frozen hashes. REVIEW_SETUP.md and REPORT_FREEZE.json record independent context setup and frozen reports. The paper was not edited.
