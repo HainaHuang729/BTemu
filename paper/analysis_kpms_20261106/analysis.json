@@ -1,0 +1,358 @@
+{
+  "source_revision": "801a12f",
+  "source_file": "paper/paper_materials/chains_20261106/joint_kpms8_100k_600steps.h5",
+  "sha256": "d5d36854d071c3b7a0adce5ce6927e104d035533f204138541d65c7b54711201",
+  "shape": [
+    600,
+    32,
+    8
+  ],
+  "parameter_names": [
+    "ETA_STAR",
+    "t_STAR",
+    "ALPHA_STAR",
+    "M_TURN",
+    "F_ESC10",
+    "ALPHA_ESC",
+    "KP_h_Mpc",
+    "MS"
+  ],
+  "finite_log_prob_rows": 19200,
+  "excluded_rows": 0,
+  "model": "100k (upstream README identity; HDF5 has no attributes)",
+  "prior_source": "paper/paper_materials/tables/parameter_prior_table.csv",
+  "prior_sha256": "80a6352036f88df888c6dc085e8a04f9801729ea5bf78b0d4ff1511a4b2b705a",
+  "prior_status": "Uniform reference from archived prior table. Current HDF5 has no prior/likelihood/run attributes; confirm current run uses this table.",
+  "primary_selection": "steps 301–600 (zero-based [300:600]), 9600 samples. Matches upstream 100k README rounded intervals; not a diagnosed burn-in.",
+  "marginalization": "Project unweighted MCMC samples onto KP_h_Mpc and MS; integrate out six astrophysical coordinates.",
+  "interval_definition": "1D equal-tail 2.5–97.5 percentiles; 2D 95% highest smoothed sample-density region. Separate constructions.",
+  "intervals": [
+    {
+      "selection": "all_600",
+      "start_step_zero_based": 0,
+      "stop_step_exclusive": 600,
+      "rows": 19200,
+      "parameter": "KP_h_Mpc",
+      "q025": 4.101300645036157,
+      "q16": 8.27135631065331,
+      "median": 17.7216348183967,
+      "q84": 25.82057584395103,
+      "q975": 29.37927019303879,
+      "prior_low": 1.0,
+      "prior_high": 30.0,
+      "prior_q025": 1.725,
+      "prior_q975": 29.275,
+      "width95_over_prior_support": 0.8716541223449183,
+      "width95_over_prior_equal_tail95": 0.917530655099914
+    },
+    {
+      "selection": "all_600",
+      "start_step_zero_based": 0,
+      "stop_step_exclusive": 600,
+      "rows": 19200,
+      "parameter": "MS",
+      "q025": 0.5828256036016439,
+      "q16": 1.0213488216963966,
+      "median": 1.9185900639072588,
+      "q84": 3.3873755627334683,
+      "q975": 3.919392709143259,
+      "prior_low": 0.5,
+      "prior_high": 4.0,
+      "prior_q025": 0.5875,
+      "prior_q975": 3.9125,
+      "width95_over_prior_support": 0.9533048872976043,
+      "width95_over_prior_equal_tail95": 1.0034788287343204
+    },
+    {
+      "selection": "discard150",
+      "start_step_zero_based": 150,
+      "stop_step_exclusive": 600,
+      "rows": 14400,
+      "parameter": "KP_h_Mpc",
+      "q025": 4.2057550750835615,
+      "q16": 8.536825705083103,
+      "median": 17.88816212621881,
+      "q84": 25.48459570504941,
+      "q975": 29.25845457241595,
+      "prior_low": 1.0,
+      "prior_high": 30.0,
+      "prior_q025": 1.725,
+      "prior_q975": 29.275,
+      "width95_over_prior_support": 0.8638861895631857,
+      "width95_over_prior_equal_tail95": 0.9093538837507219
+    },
+    {
+      "selection": "discard150",
+      "start_step_zero_based": 150,
+      "stop_step_exclusive": 600,
+      "rows": 14400,
+      "parameter": "MS",
+      "q025": 0.5762428040615123,
+      "q16": 0.9893289404157917,
+      "median": 1.7727293442264496,
+      "q84": 3.318032999760289,
+      "q975": 3.9325233370826833,
+      "prior_low": 0.5,
+      "prior_high": 4.0,
+      "prior_q025": 0.5875,
+      "prior_q975": 3.9125,
+      "width95_over_prior_support": 0.958937295148906,
+      "width95_over_prior_equal_tail95": 1.0094076791041116
+    },
+    {
+      "selection": "last300",
+      "start_step_zero_based": 300,
+      "stop_step_exclusive": 600,
+      "rows": 9600,
+      "parameter": "KP_h_Mpc",
+      "q025": 4.419969654133211,
+      "q16": 8.394479933247945,
+      "median": 17.705716029882282,
+      "q84": 24.949393148403143,
+      "q975": 29.071113733999937,
+      "prior_low": 1.0,
+      "prior_high": 30.0,
+      "prior_q025": 1.725,
+      "prior_q975": 29.275,
+      "width95_over_prior_support": 0.8500394510298871,
+      "width95_over_prior_equal_tail95": 0.8947783695051443
+    },
+    {
+      "selection": "last300",
+      "start_step_zero_based": 300,
+      "stop_step_exclusive": 600,
+      "rows": 9600,
+      "parameter": "MS",
+      "q025": 0.5835052044018307,
+      "q16": 0.9927847898408912,
+      "median": 1.8133315553725196,
+      "q84": 3.3770334016242147,
+      "q975": 3.9623284405599963,
+      "prior_low": 0.5,
+      "prior_high": 4.0,
+      "prior_q025": 0.5875,
+      "prior_q975": 3.9125,
+      "width95_over_prior_support": 0.9653780674737616,
+      "width95_over_prior_equal_tail95": 1.0161874394460648
+    },
+    {
+      "selection": "last150",
+      "start_step_zero_based": 450,
+      "stop_step_exclusive": 600,
+      "rows": 4800,
+      "parameter": "KP_h_Mpc",
+      "q025": 4.747519231973676,
+      "q16": 8.394479933247945,
+      "median": 17.614698382969443,
+      "q84": 24.99331507880402,
+      "q975": 29.140091387675398,
+      "prior_low": 1.0,
+      "prior_high": 30.0,
+      "prior_q025": 1.725,
+      "prior_q975": 29.275,
+      "width95_over_prior_support": 0.841123177782818,
+      "width95_over_prior_equal_tail95": 0.8853928187187559
+    },
+    {
+      "selection": "last150",
+      "start_step_zero_based": 450,
+      "stop_step_exclusive": 600,
+      "rows": 4800,
+      "parameter": "MS",
+      "q025": 0.5851498451835653,
+      "q16": 1.0226468126458035,
+      "median": 1.7899245364873038,
+      "q84": 3.349718386502059,
+      "q975": 3.9683517504908994,
+      "prior_low": 0.5,
+      "prior_high": 4.0,
+      "prior_q025": 0.5875,
+      "prior_q975": 3.9125,
+      "width95_over_prior_support": 0.9666291158020954,
+      "width95_over_prior_equal_tail95": 1.0175043324232582
+    },
+    {
+      "selection": "first300",
+      "start_step_zero_based": 0,
+      "stop_step_exclusive": 300,
+      "rows": 9600,
+      "parameter": "KP_h_Mpc",
+      "q025": 3.858540323801578,
+      "q16": 8.130726006124888,
+      "median": 17.82058659829208,
+      "q84": 26.50743365764229,
+      "q975": 29.645981535798715,
+      "prior_low": 1.0,
+      "prior_high": 30.0,
+      "prior_q025": 1.725,
+      "prior_q975": 29.275,
+      "width95_over_prior_support": 0.889222110758522,
+      "width95_over_prior_equal_tail95": 0.9360232744826548
+    },
+    {
+      "selection": "first300",
+      "start_step_zero_based": 0,
+      "stop_step_exclusive": 300,
+      "rows": 9600,
+      "parameter": "MS",
+      "q025": 0.582738414376983,
+      "q16": 1.0546136952098037,
+      "median": 1.9628127725071494,
+      "q84": 3.3986494539271246,
+      "q975": 3.867464747444541,
+      "prior_low": 0.5,
+      "prior_high": 4.0,
+      "prior_q025": 0.5875,
+      "prior_q975": 3.9125,
+      "width95_over_prior_support": 0.9384932380193023,
+      "width95_over_prior_equal_tail95": 0.9878876189676866
+    }
+  ],
+  "region": {
+    "target_mass": 0.95,
+    "integrated_mass_at_or_above_level": 0.9500050178725336,
+    "integrated_mass_strictly_above_level": 0.9499969676987486,
+    "threshold": 4.946026773542956,
+    "integration_grid_shape": [
+      256,
+      256
+    ]
+  },
+  "diagnostics": {
+    "all600": {
+      "ETA_STAR": {
+        "ordinary_interacting_walker_split_ratio": 2.6069771118920113,
+        "acf_window": 272,
+        "iat_steps_descriptive": 53.965894270986226,
+        "length_over_iat": 11.11813318588105,
+        "pooled_ess_heuristic": 355.7802619481936,
+        "passes_length_50tau_heuristic": false
+      },
+      "t_STAR": {
+        "ordinary_interacting_walker_split_ratio": 1.6454116081862749,
+        "acf_window": 292,
+        "iat_steps_descriptive": 58.05124120829801,
+        "length_over_iat": 10.335696317794396,
+        "pooled_ess_heuristic": 330.74228216942066,
+        "passes_length_50tau_heuristic": false
+      },
+      "ALPHA_STAR": {
+        "ordinary_interacting_walker_split_ratio": 2.0421275376949453,
+        "acf_window": 294,
+        "iat_steps_descriptive": 58.44670575919383,
+        "length_over_iat": 10.265762496043129,
+        "pooled_ess_heuristic": 328.5043998733801,
+        "passes_length_50tau_heuristic": false
+      },
+      "M_TURN": {
+        "ordinary_interacting_walker_split_ratio": 1.7862680212477509,
+        "acf_window": 289,
+        "iat_steps_descriptive": 57.68571859431776,
+        "length_over_iat": 10.401187930405742,
+        "pooled_ess_heuristic": 332.83801377298374,
+        "passes_length_50tau_heuristic": false
+      },
+      "F_ESC10": {
+        "ordinary_interacting_walker_split_ratio": 1.6969121368402647,
+        "acf_window": 289,
+        "iat_steps_descriptive": 57.60986461740952,
+        "length_over_iat": 10.414883006315586,
+        "pooled_ess_heuristic": 333.27625620209875,
+        "passes_length_50tau_heuristic": false
+      },
+      "ALPHA_ESC": {
+        "ordinary_interacting_walker_split_ratio": 1.8524712518829134,
+        "acf_window": 289,
+        "iat_steps_descriptive": 57.45820281282808,
+        "length_over_iat": 10.442373249203758,
+        "pooled_ess_heuristic": 334.15594397452026,
+        "passes_length_50tau_heuristic": false
+      },
+      "KP_h_Mpc": {
+        "ordinary_interacting_walker_split_ratio": 1.7189142550913041,
+        "acf_window": 284,
+        "iat_steps_descriptive": 56.61670877449817,
+        "length_over_iat": 10.59757822359073,
+        "pooled_ess_heuristic": 339.12250315490337,
+        "passes_length_50tau_heuristic": false
+      },
+      "MS": {
+        "ordinary_interacting_walker_split_ratio": 1.6948892686209696,
+        "acf_window": 264,
+        "iat_steps_descriptive": 52.392720121298254,
+        "length_over_iat": 11.451972690306892,
+        "pooled_ess_heuristic": 366.46312608982055,
+        "passes_length_50tau_heuristic": false
+      }
+    },
+    "last300": {
+      "ETA_STAR": {
+        "ordinary_interacting_walker_split_ratio": 3.4462180144361305,
+        "acf_window": 142,
+        "iat_steps_descriptive": 28.124264135072025,
+        "length_over_iat": 10.666945757556324,
+        "pooled_ess_heuristic": 341.34226424180235,
+        "passes_length_50tau_heuristic": false
+      },
+      "t_STAR": {
+        "ordinary_interacting_walker_split_ratio": 2.215622038421853,
+        "acf_window": 154,
+        "iat_steps_descriptive": 30.69833033930522,
+        "length_over_iat": 9.772518462213856,
+        "pooled_ess_heuristic": 312.7205907908434,
+        "passes_length_50tau_heuristic": false
+      },
+      "ALPHA_STAR": {
+        "ordinary_interacting_walker_split_ratio": 2.5946538497197364,
+        "acf_window": 144,
+        "iat_steps_descriptive": 28.532685590643077,
+        "length_over_iat": 10.514257378505622,
+        "pooled_ess_heuristic": 336.4562361121799,
+        "passes_length_50tau_heuristic": false
+      },
+      "M_TURN": {
+        "ordinary_interacting_walker_split_ratio": 2.246849335176391,
+        "acf_window": 150,
+        "iat_steps_descriptive": 29.631952988198176,
+        "length_over_iat": 10.124206127064392,
+        "pooled_ess_heuristic": 323.97459606606054,
+        "passes_length_50tau_heuristic": false
+      },
+      "F_ESC10": {
+        "ordinary_interacting_walker_split_ratio": 2.207853756768302,
+        "acf_window": 139,
+        "iat_steps_descriptive": 27.396163857020138,
+        "length_over_iat": 10.950438227983017,
+        "pooled_ess_heuristic": 350.41402329545656,
+        "passes_length_50tau_heuristic": false
+      },
+      "ALPHA_ESC": {
+        "ordinary_interacting_walker_split_ratio": 2.1451015441308057,
+        "acf_window": 146,
+        "iat_steps_descriptive": 28.677791934025453,
+        "length_over_iat": 10.461056440124938,
+        "pooled_ess_heuristic": 334.75380608399803,
+        "passes_length_50tau_heuristic": false
+      },
+      "KP_h_Mpc": {
+        "ordinary_interacting_walker_split_ratio": 2.323163530295529,
+        "acf_window": 153,
+        "iat_steps_descriptive": 30.407296793947385,
+        "length_over_iat": 9.866052942256788,
+        "pooled_ess_heuristic": 315.7136941522172,
+        "passes_length_50tau_heuristic": false
+      },
+      "MS": {
+        "ordinary_interacting_walker_split_ratio": 2.2180521761765597,
+        "acf_window": 154,
+        "iat_steps_descriptive": 30.49812628126572,
+        "length_over_iat": 9.836669873856577,
+        "pooled_ess_heuristic": 314.77343596341046,
+        "passes_length_50tau_heuristic": false
+      }
+    }
+  },
+  "diagnostic_method": "Ordinary split variance ratio across interacting walkers; averaged per-walker FFT ACF with window M>=5*tau. Pooled ESS is heuristic and ignores cross-walker dependence. No independent-run Rhat/ESS available.",
+  "combine_models": false,
+  "old_16018_step_chain_available": false
+}

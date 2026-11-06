@@ -1,0 +1,23 @@
+{
+  "source_unchanged": true,
+  "shape": [
+    600,
+    32,
+    8
+  ],
+  "finite_rows": 19200,
+  "primary_rows": 9600,
+  "upstream_100k_intervals_reproduced": true,
+  "models_pooled": false,
+  "region_mass": 0.9500050178725336,
+  "browser": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "overflow": false,
+    "images_loaded": 2,
+    "downloads": 4
+  },
+  "sampling_started": false
+}
