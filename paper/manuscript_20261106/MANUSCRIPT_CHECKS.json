@@ -1,0 +1,25 @@
+{
+  "citation_keys_preserved": [
+    "Breitman2024",
+    "Breitman2026",
+    "Donnan2024",
+    "Greig2015",
+    "McGreer2015",
+    "Park2019",
+    "Planck2018",
+    "Vehtari2021"
+  ],
+  "citation_keys_removed": [],
+  "unique_labels": true,
+  "unresolved_refs": [],
+  "main_result_groups": 3,
+  "main_figures": 2,
+  "main_tables": 3,
+  "pages": 16,
+  "appendix_start_page": 7,
+  "mainline_pdf_entrypoints": [
+    "paper/main.tex",
+    "paper/btemu_methods/main.tex"
+  ],
+  "raw_sources_changed": false
+}

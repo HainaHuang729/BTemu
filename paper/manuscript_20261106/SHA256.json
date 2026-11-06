@@ -1,0 +1,16 @@
+{
+  "main.tex": "8d0950cf8acc7d24269bd12e3f93ddc656e7071e966eff3488ef6e384c756485",
+  "body.tex": "bdc17281b5cf2b1ef763e17b68236cdd35b65b1f7ead9e03b57b5ffa45c9f2d8",
+  "references.bib": "eb706ac87acc3c80dd053467685ebf08df7f1e9f5f5bc3dc23753ac95a7991c8",
+  "BTemu_v0.9_20261106.pdf": "afb351496ab78e085f318868895864c1c5b9c195075f07aeff919fbbc026d3f3",
+  "figures/btemu/fig11_btemu_corner6_5000.pdf": "ff07a088699c6929fbdc6b7b06b06c016d235c844dfe30f45ec8682f456df084",
+  "figures/btemu/fig12_btemu_corner8_5568.pdf": "0fb8b6eed429acb5a7bdbca918fe4fe7a0abe86cafc1f52d35377266c605749d",
+  "figures/btemu/fig13_exact_corner6_200.pdf": "fe867c39a1aa626cc2ff81a11cf966ccf4ff8d79c500de6ea5f7136036e34b3d",
+  "figures/btemu/fig14_validation.pdf": "5b30f00309280e8233ddc1052f2d99abdf2925a4c6256e0d9e384c4b94c59e18",
+  "figures/btemu/fig_app_kpms_stability.png": "d8030810dc82491fff32ead60b6c9f567c4fae24247a9fc2af9f503725447df2",
+  "figures/btemu/fig_app_pl_bt_kp10.png": "0fedc4f9ecf8c782982b0170c1f7aa6fdd5b00f30f34e06758e9bedf6a259b41",
+  "figures/btemu/fig_app_pl_bt_kp20.png": "b9348e499999000e7e8ab35598add15e7bab07a4af8dcb48c125ccf0f42b1250",
+  "figures/btemu/fig_app_pl_bt_kp5.png": "6dd2896ba9882f248e4ec0760cfda4cafc0100a0594272b6d7d9258ea45051a9",
+  "figures/btemu/fig_main_kpms.png": "638712b2eeee503ca77cbedb849a18d2f1f8252d6d197f7f80e0b081d163534a",
+  "figures/btemu/fig_main_pl_bt.png": "c297bf641277bd03554ed6bb2dc23d907ffaaa789998d511f4f8efa0f2500fce"
+}
