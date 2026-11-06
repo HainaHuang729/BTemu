@@ -1,0 +1,26 @@
+\documentclass[reprint,superscriptaddress,nofootinbib,nobibnotes,amsmath,amssymb,aps,prd,floatfix,longbibliography]{revtex4-2}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,bm,booktabs,graphicx,xcolor}
+\usepackage{hyperref}
+\usepackage{xurl}
+\def\btemubody{body.tex}
+\def\btemubib{references}
+\graphicspath{{figures/}}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlength{\emergencystretch}{2em}
+\renewcommand{\dbltopfraction}{0.95}
+\renewcommand{\textfraction}{0.02}
+\begin{document}
+\title{BTemu: a history emulator for BT-modified reionization calculations}
+\author{Haina Huang}
+\affiliation{Department of Physics, The Chinese University of Hong Kong, Shatin, Hong Kong, China}
+\date{November 6, 2026}
+\begin{abstract}
+Small-scale matter spectra and galaxy formation both affect reionization, so spectral inference requires marginalization over galaxy properties. BTemu predicts 32-node neutral-fraction histories from ten galaxy, heating and spectrum inputs. We use it to vary six galaxy parameters, a matter-spectrum break scale $k_p$ and slope $m_s$, with the X-ray settings fixed and the luminosity-function (LF) calculation exact. The 100,000-history model reports development trajectory-RMSE median $8.51\times10^{-4}$ and 95th percentile $5.56\times10^{-3}$. In a representative comparison with the power-law (PL) reference, blue-tilted (BT) samples at $k_p=1\,h\,\mathrm{Mpc}^{-1}$ and $m_s=1.5$ select lower star formation per unit halo mass, with a stronger reduction at lower mass. Marginalizing six galaxy coordinates from the last 300 steps of a 600-step joint chain gives 95\% sample intervals $k_p\in[4.420,29.071]\,h\,\mathrm{Mpc}^{-1}$ and $m_s\in[0.584,3.962]$. These preliminary representative-history results show a change at low $k_p$ and little range reduction for $m_s$ relative to the uniform-prior reference.
+\end{abstract}
+\maketitle
+\begin{quote}\small Working draft v0.10. Joint spectrum--galaxy inference.\end{quote}
+\input{\btemubody}
+\end{document}

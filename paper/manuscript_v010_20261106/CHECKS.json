@@ -1,0 +1,40 @@
+{
+  "version": "v0.10",
+  "pages": 16,
+  "appendix_start_page": 7,
+  "original_citation_keys_preserved": [
+    "Breitman2024",
+    "Breitman2026",
+    "Donnan2024",
+    "Greig2015",
+    "McGreer2015",
+    "Park2019",
+    "Planck2018",
+    "Vehtari2021"
+  ],
+  "existing_equations_preserved": true,
+  "original_main_intervals_and_accuracy_table_preserved": true,
+  "main_tables": 2,
+  "main_figures": 2,
+  "undefined_references_or_citations": false,
+  "overfull_boxes": false,
+  "all_figure_assets_unchanged": true,
+  "new_SFR_calculation_uses_original_source_hashes": true,
+  "new_SFR_median_ratios": [
+    {
+      "halo_mass_Msun": 1000000000.0,
+      "ratio_of_marginal_medians_BT_over_PL": 0.12277246420564915
+    },
+    {
+      "halo_mass_Msun": 10000000000.0,
+      "ratio_of_marginal_medians_BT_over_PL": 0.19476889602641653
+    },
+    {
+      "halo_mass_Msun": 100000000000.0,
+      "ratio_of_marginal_medians_BT_over_PL": 0.3079215916855797
+    }
+  ],
+  "review_reports_unchanged": true,
+  "sampling_or_training_started": false,
+  "standalone_package_text_matches_overleaf": true
+}

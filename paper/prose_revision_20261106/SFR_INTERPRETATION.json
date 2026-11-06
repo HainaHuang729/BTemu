@@ -1,0 +1,94 @@
+{
+  "definition": "S=dotM_star/[M_h H(z) (Omega_b/Omega_m)]=min[1,10^eta_star t_star (M_h/1e10 Msun)^alpha_star]/t_star",
+  "uncapped_definition": "S=10^eta_star (M_h/1e10 Msun)^alpha_star",
+  "units": "dimensionless; same fixed mass and redshift in both models",
+  "sources": {
+    "PL": {
+      "path": "paper/paper_materials/chains_20261104/pl_100k.h5",
+      "sha256": "ab1a468c4347b688cdd732fafa13d53d41ddde21eb3c2fdc48afff14e45a68f2",
+      "stored_shape": [
+        3000,
+        32,
+        6
+      ],
+      "rows": 95942,
+      "selection": "all finite log_prob rows, identical to the representative PL/BT corner; no additional discard"
+    },
+    "BT": {
+      "path": "paper/paper_materials/chains_20261104/kp1_ms1p5_100k.h5",
+      "sha256": "e303001ccf867e0ab432d3922b64b4a2c683e1a5ec10c883d5f342ff86e20f4c",
+      "stored_shape": [
+        3000,
+        32,
+        6
+      ],
+      "rows": 95964,
+      "selection": "all finite log_prob rows, identical to the representative PL/BT corner; no additional discard"
+    }
+  },
+  "summaries": [
+    {
+      "model": "PL",
+      "halo_mass_Msun": 1000000000.0,
+      "q025": 0.021816377076064916,
+      "median": 0.03384961487135506,
+      "q975": 0.05284936694673197,
+      "saturated_fraction": 0.0
+    },
+    {
+      "model": "PL",
+      "halo_mass_Msun": 10000000000.0,
+      "q025": 0.10141570041552597,
+      "median": 0.11850118174349032,
+      "q975": 0.13995995613604795,
+      "saturated_fraction": 0.0
+    },
+    {
+      "model": "PL",
+      "halo_mass_Msun": 100000000000.0,
+      "q025": 0.33961739275406494,
+      "median": 0.4168495553524857,
+      "q975": 0.5138759553522434,
+      "saturated_fraction": 0.0003231118800942236
+    },
+    {
+      "model": "BT",
+      "halo_mass_Msun": 1000000000.0,
+      "q025": 0.002322312902720842,
+      "median": 0.004155800630168448,
+      "q975": 0.007898112695504686,
+      "saturated_fraction": 0.0
+    },
+    {
+      "model": "BT",
+      "halo_mass_Msun": 10000000000.0,
+      "q025": 0.01785601922577793,
+      "median": 0.023080344346005355,
+      "q975": 0.030792905177715914,
+      "saturated_fraction": 0.0
+    },
+    {
+      "model": "BT",
+      "halo_mass_Msun": 100000000000.0,
+      "q025": 0.1126729920809686,
+      "median": 0.12835697857756356,
+      "q975": 0.14595155871097354,
+      "saturated_fraction": 0.0003126172314617982
+    }
+  ],
+  "ratios": [
+    {
+      "halo_mass_Msun": 1000000000.0,
+      "ratio_of_marginal_medians_BT_over_PL": 0.12277246420564915
+    },
+    {
+      "halo_mass_Msun": 10000000000.0,
+      "ratio_of_marginal_medians_BT_over_PL": 0.19476889602641653
+    },
+    {
+      "halo_mass_Msun": 100000000000.0,
+      "ratio_of_marginal_medians_BT_over_PL": 0.3079215916855797
+    }
+  ],
+  "interpretation": "single-halo active-galaxy prescription; not halo abundance, duty-cycle-weighted emissivity, or actual LF predictions. Ratios compare marginal medians of different samples, not paired simulations. Finite-chain status is inherited from source comparison."
+}
