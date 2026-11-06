@@ -1,0 +1,11 @@
+{
+  "reports": 3,
+  "reports_unchanged_since_freeze": true,
+  "packet_unchanged": true,
+  "review_context_isolation": "fork_turns none; same immutable source packet; no shared concerns or reports sent",
+  "audit_after_reports_frozen": true,
+  "all_major_concerns_have_blocking_flag": true,
+  "main_numbers_reproduced": true,
+  "manuscript_body_edited": false,
+  "review_conclusions_not_editorial_decision": true
+}

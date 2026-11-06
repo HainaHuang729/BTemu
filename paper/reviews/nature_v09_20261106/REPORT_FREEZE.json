@@ -1,0 +1,17 @@
+{
+  "packet_unchanged": true,
+  "review_contexts": [
+    "/root/v09_r1",
+    "/root/v09_r2",
+    "/root/v09_r3"
+  ],
+  "fork_turns": "none",
+  "emphasis_defined_before_launch": true,
+  "shared_concerns_sent": false,
+  "reports": {
+    "R1.md": "44a7b0f741ee1146262c9e78aa245ce11c039d98942f2d2be619cf92d4f56962",
+    "R2.md": "3462a77548681fcd88b491ba5aed7e72082ea609ea109d38b1ca5cfd04a0a3e0",
+    "R3.md": "0808bef82050a7888f23678a2f11bbee30813462a6ad25a7f199ab56fc7e17ef"
+  },
+  "forensic_audit_after_freeze": true
+}

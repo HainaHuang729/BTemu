@@ -1,0 +1,28 @@
+{
+  "manuscript_github_revision": "38e7e62",
+  "overleaf_revision": "606d7c4",
+  "files": {
+    "body_numbered.txt": "72cf681fe1f7b3cc4efc11ea279f88a8c43c314e1a1e76c6928bd858eac95844",
+    "fixed_kp1_summary.json": "9d89c3ba900ee8725147880f726928f640b113bcfe7792603ec45d5d8f87e320",
+    "current_analyze.py": "ad46ac6ff57673430205d21c2141b67398847872f4cbfc2f957980682949ab5e",
+    "current_intervals.csv": "63035308991eefac84628d56d7672923b0826dcdcd3c3ff53ff9376b796f4c1f",
+    "body.tex": "bdc17281b5cf2b1ef763e17b68236cdd35b65b1f7ead9e03b57b5ffa45c9f2d8",
+    "chain_summaries.csv": "7e9567bff7cd369cdb9d5e697cb5349e541e0daba15d6c988274ae7764585180",
+    "references.bib": "eb706ac87acc3c80dd053467685ebf08df7f1e9f5f5bc3dc23753ac95a7991c8",
+    "SCOPE.md": "0ade24badb041c1c31a084f07c5a95a96aa4febad9932d17876b65dbb723ab04",
+    "main.tex": "02e23070b7e6d9aa1182c5e205d517af830e01001531192252f5c6757eaa54e2",
+    "fig_main_kpms.png": "638712b2eeee503ca77cbedb849a18d2f1f8252d6d197f7f80e0b081d163534a",
+    "fig14_validation.pdf": "5b30f00309280e8233ddc1052f2d99abdf2925a4c6256e0d9e384c4b94c59e18",
+    "current8d.h5": "d5d36854d071c3b7a0adce5ce6927e104d035533f204138541d65c7b54711201",
+    "fig_main_pl_bt.png": "c297bf641277bd03554ed6bb2dc23d907ffaaa789998d511f4f8efa0f2500fce",
+    "prior_table.csv": "80a6352036f88df888c6dc085e8a04f9801729ea5bf78b0d4ff1511a4b2b705a",
+    "criteria.md": "93b46198ecc5c68e6b5fb31bc9c3f77a4d869cef631dfbd6ab361766bc919cdc",
+    "fig_app_kpms_stability.png": "d8030810dc82491fff32ead60b6c9f567c4fae24247a9fc2af9f503725447df2",
+    "100k_metrics.json": "f7c1ce7fe1e507a5911ae2874ccd35652405dab43fbc534f194d83a948529391",
+    "current_chain_readme.md": "a1b364a4cf587c9bbfa8ff6457dd70c51bd9a4f5b2651efd138e6bb68eadece3",
+    "v09.pdf": "afb351496ab78e085f318868895864c1c5b9c195075f07aeff919fbbc026d3f3",
+    "earlier_IC_summary.json": "608e25bea36a05d06f24fab34ac959a6f2410ebbd29c7a1bc8cd4ee2961cf73a",
+    "current_analysis.json": "0ad7230186335cbdc4a47b6c6c38762adfabc12c461b46ee73d9ff419f48a82b",
+    "main_numbered.txt": "b4521fe7c7d9848f7c70dedf6cb6df4426483437948dfca2fe495dda79bae733"
+  }
+}
