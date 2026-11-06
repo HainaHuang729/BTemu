@@ -1,0 +1,32 @@
+{
+  "version": "physics v0.22",
+  "pages": 22,
+  "appendix_start_page": 9,
+  "main_figures": 3,
+  "main_tables": 2,
+  "free_spectrum_figure_and_intervals_only_in_appendix": true,
+  "diagnostic_definition_not_independent_Rhat": true,
+  "existing_equations_preserved": true,
+  "citation_keys_preserved": [
+    "Breitman2024",
+    "Breitman2026",
+    "Donnan2024",
+    "Greig2015",
+    "McGreer2015",
+    "Mesinger2011",
+    "Murray2020",
+    "Park2019",
+    "Planck2018",
+    "Vehtari2021"
+  ],
+  "all_figure_bytes_unchanged": true,
+  "fixed_spectrum_statistics_and_SFR_ratios_preserved": true,
+  "labels_unique": true,
+  "unresolved_references": false,
+  "overfull_boxes": false,
+  "methods_default_and_v020_archive_unchanged": true,
+  "frozen_v021_reviews_unchanged": true,
+  "new_simulations_training_or_sampling": false,
+  "standalone_text_matches_all_pages": true,
+  "rendered_page_QA": true
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "label": "PL",
+    "kp": null,
+    "ms": null,
+    "path": "paper/paper_materials/chains_20261104/pl_100k.h5",
+    "sha256": "ab1a468c4347b688cdd732fafa13d53d41ddde21eb3c2fdc48afff14e45a68f2",
+    "shape": [
+      3000,
+      32,
+      6
+    ],
+    "retained_rows": 95942,
+    "excluded_nonfinite_log_prob": 58,
+    "selection": "all finite-log-probability rows; no chronological discard or thinning"
+  },
+  {
+    "label": "BT1",
+    "kp": 1,
+    "ms": 1.5,
+    "path": "paper/paper_materials/chains_20261104/kp1_ms1p5_100k.h5",
+    "sha256": "e303001ccf867e0ab432d3922b64b4a2c683e1a5ec10c883d5f342ff86e20f4c",
+    "shape": [
+      3000,
+      32,
+      6
+    ],
+    "retained_rows": 95964,
+    "excluded_nonfinite_log_prob": 36,
+    "selection": "all finite-log-probability rows; no chronological discard or thinning"
+  },
+  {
+    "label": "BT5",
+    "kp": 5,
+    "ms": 1.5,
+    "path": "paper/paper_materials/chains_20261104/kp5_ms1p5_100k.h5",
+    "sha256": "6919e6c9648c93ca1c1795e0b4505b62ff43266a45304fe04e876c1faa91b383",
+    "shape": [
+      3000,
+      32,
+      6
+    ],
+    "retained_rows": 95904,
+    "excluded_nonfinite_log_prob": 96,
+    "selection": "all finite-log-probability rows; no chronological discard or thinning"
+  },
+  {
+    "label": "BT10",
+    "kp": 10,
+    "ms": 2.5,
+    "path": "paper/paper_materials/chains_20261104/kp10_ms2p5_100k.h5",
+    "sha256": "9fd2a798956f677afe4cf5303a1d026abf9c8d0dc24bfd2d7ed3bf1402a7be2d",
+    "shape": [
+      3000,
+      32,
+      6
+    ],
+    "retained_rows": 95949,
+    "excluded_nonfinite_log_prob": 51,
+    "selection": "all finite-log-probability rows; no chronological discard or thinning"
+  },
+  {
+    "label": "BT20",
+    "kp": 20,
+    "ms": 2.5,
+    "path": "paper/paper_materials/chains_20261104/kp20_ms2p5_10000.h5",
+    "sha256": "bf7b68498dda7501a50f80fe128857380f625ca34b8f704bc6a205d93cef2fa5",
+    "shape": [
+      10000,
+      32,
+      6
+    ],
+    "retained_rows": 319997,
+    "excluded_nonfinite_log_prob": 3,
+    "selection": "all finite-log-probability rows; no chronological discard or thinning"
+  }
+]

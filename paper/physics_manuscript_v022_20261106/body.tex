@@ -1,0 +1,526 @@
+\section{Introduction}\label{introduction}
+
+The ionizing sources of reionization depend on the abundance of dark-matter haloes and on the radiation produced by their galaxies. A change in the small-scale matter spectrum can alter the source population, while star formation and photon escape change how that population is observed. Understanding their interplay requires comparing spectral response with the freedom in galaxy properties.
+
+Park et al.~\cite{Park2019} connected ultraviolet luminosity functions (LFs) and reionization observables to the parameters of a flexible galaxy prescription. We adopt that prescription in a BT-modified 21cmFAST calculation \cite{Mesinger2011,Murray2020} and vary a matter-spectrum break scale $k_p$ and slope $m_s$ at fixed $\sigma_8$. Our observations are LFs, Thomson optical depth and the neutral fraction at $z=5.9$; the additional mock 21-cm power-spectrum forecasts in Ref.~\cite{Park2019} are a separate experiment.
+
+We examine how ionization histories change at fixed galaxy properties and how source prescriptions vary among samples and LF fits with different spectra. BTemu supplies the history approximation; its architecture and validation are documented in the companion methods paper. Table~\ref{tab:experiment-map} distinguishes the numerical comparisons. Supplementary spectrum projections and observation-combination records are retained in the appendices.
+
+\section{Physical model and observational constraints}\label{physical-model-and-simulations}
+
+\subsection{Spectrum modification}\label{spectrum-modification}
+
+We use a phenomenological prescription for the input linear matter power spectrum,
+
+\[
+P_{\mathrm{lin}}(k)=A\,T_{\mathrm{EH}}^2(k)
+\begin{cases}
+k^{n_s}, & k\leq k_p,\\
+k^{\mathrm{MS}}k_p^{n_s-\mathrm{MS}}, & k>k_p,
+\end{cases}
+\]
+
+with the native $\sigma_8$ normalization determining $A$. Holding $\sigma_8$ fixed changes $A$ with the spectrum shape. This prescription defines the input matter spectrum, including its transfer function, at fixed $\sigma_8$ rather than fixed primordial amplitude. The branches join continuously at \ensuremath{k_p}. The plotted slope $m_s$ is the stored coordinate MS. Setting MS $=n_s=0.968$ removes the break in this expression; the separately implemented power-law (PL) branch is a distinct numerical reference.
+
+The parameter domain is \ensuremath{k_p} \(\in\) {[}1,30{]} $h\,\mathrm{Mpc}^{-1}$ and MS \(\in\) {[}0.5,4{]}. Since this includes MS below $n_s$, the full design also contains spectra with a shallower small-scale slope than the reference. We use ``blue-tilted'' (BT) for the enhanced-slope subset and retain the full domain when describing emulator training. The native code receives \ensuremath{k_p} in $\mathrm{Mpc}^{-1}$, obtained by multiplying the value in $h\,\mathrm{Mpc}^{-1}$ by h = 0.678.
+
+\subsection{Astrophysical parameters}\label{astrophysical-parameters}
+
+The model contains eight astrophysical coordinates: F\_STAR10, ALPHA\_STAR, F\_ESC10, ALPHA\_ESC, M\_TURN, t\_STAR, L\_X, and NU\_X\_THRESH. F\_STAR10 and ALPHA\_STAR describe the normalization and mass dependence of star formation; F\_ESC10 and ALPHA\_ESC describe the escape of ionizing photons. M\_TURN sets a characteristic suppression mass, and t\_STAR controls the star-formation timescale. L\_X and NU\_X\_THRESH describe the X-ray emission normalization and low-energy threshold.
+
+F\_STAR10 and F\_ESC10 are stored as base-ten logarithms, M\_TURN as $\log_{10}(M/M_\odot)$, and L\_X as the logarithm of the luminosity per unit star-formation rate. The star-formation normalization per timescale, $\eta_\star=\log_{10}(f_{\star,10}/t_\star)$, obeys
+
+\begin{equation}\log_{10}f_{\star,10}=\eta_\star+\log_{10}t_\star.\end{equation}
+
+The reference galaxy prescription \cite{Park2019} is
+\begin{align}
+f_\star(M_h)&=\min\!\left[1,f_{\star,10}\left(\frac{M_h}{10^{10}M_\odot}\right)^{\alpha_\star}\right],\\
+M_\star&=f_\star\frac{\Omega_b}{\Omega_m}M_h,\qquad
+\dot M_\star=\frac{M_\star H(z)}{t_\star},\\
+f_{\rm esc}(M_h)&=\min\!\left[1,f_{{\rm esc},10}\left(\frac{M_h}{10^{10}M_\odot}\right)^{\alpha_{\rm esc}}\right],\\
+f_{\rm duty}(M_h)&=\exp(-M_{\rm turn}/M_h).
+\end{align}
+The UV luminosity traces star formation, while the escaping ionizing luminosity also depends on $f_{\rm esc}$. This gives the LF and ionization-history terms sensitivity to different combinations of galaxy parameters.
+
+Changing coordinates must preserve the original prior density. A uniform prior in $\log_{10} f_{\star,10}$ and $t_\star$ is mapped to a slanted support in $(\eta_\star,t_\star)$, with unit Jacobian. A rectangular uniform prior in $\eta_\star$ and $t_\star$ instead gives a different support. Table~\ref{tab:parameters} gives the emulator design support; the transformed inference support depends on the adopted prior.
+
+\subsection{Numerical histories}\label{numerical-histories}
+
+The selected simulation uses a 250 Mpc box, HII\_DIM = 128, and DIM = 512. Inhomogeneous recombinations, mass-dependent ionizing efficiency, and spin-temperature fluctuations are enabled. The fixed cosmological values are \(\Omega\)\_m = 0.308, \(\Omega\)\_b = 0.0484, h = 0.678, $\sigma_8=0.815$, and $n_s=0.968$.
+
+The predicted quantity is the volume mean of the coeval neutral-fraction field, xH\_box. It is sampled at integer redshifts from z = 5 to 35, with an additional node at z = 5.9, giving 32 values. Histories retain the simulator's residual neutral fraction at z = 5; no additional completion-of-reionization condition or monotonicity constraint is imposed.
+
+\subsection{Luminosity functions and reionization constraints}\label{luminosity-functions-and-reionization-constraints}\label{observational-data-and-inference}
+
+The luminosity-function term retains 34 of 49 available HST-era and Donnan data points under the strict selection \ensuremath{M_{\mathrm{UV}}} \textgreater{} -20. The source tables cover $z=6,7,8,9,10$; the high-redshift subset is attributed to Donnan et al.~\cite{Donnan2024}. The HST tables are inherited through the original 21CMMC data bundle \cite{Greig2015,Park2019}. We use the supplied pointwise uncertainties without a covariance matrix; for the asymmetric Donnan errors we adopt the arithmetic mean of the upper and lower errors.
+
+The optical-depth constraint \cite{Planck2018} is a split-normal likelihood with mean 0.0544, upper uncertainty 0.007, and lower uncertainty 0.0081, from Planck 2018 TT,TE,EE+lowE. The neutral-fraction term uses the McGreer constraint at $z=5.9$ \cite{McGreer2015}: no penalty below \ensuremath{x_{\mathrm{HI}}} = 0.06, with a specified scatter of 0.05 above that threshold.
+
+For a representative history $X(\theta)$, the adopted form of the history-dependent terms is
+\begin{align}
+\ell_\tau&=-\frac{1}{2}\left[\frac{\tau[X]-0.0544}{\sigma_\tau}\right]^2,\\
+\sigma_\tau&=\begin{cases}0.0081,&\tau[X]<0.0544,\\0.007,&\tau[X]\geq0.0544,\end{cases}\\
+\ell_x&=-\frac{1}{2}\left[\frac{\max(0,X(5.9)-0.06)}{0.05}\right]^2.
+\end{align}
+Parameter-independent normalizations are omitted. The LF term $\ell_{\rm LF}^{\rm exact}(\theta)$ is evaluated by the original exact provider.
+
+We use the deterministic representative-history likelihood
+\begin{equation}
+\ell_{\rm rep}(\theta)=\ell_{\rm LF}^{\rm exact}(\theta)
++\ell_\tau[\widehat X(\theta)]+\ell_x[\widehat X(\theta)].
+\end{equation}
+Here $\widehat X$ is the representative BTemu history. The earlier released prediction arrays use the arithmetic five-model average. Initial-condition (IC) marginalization instead averages likelihoods over realizations before taking the logarithm; Appendix~\ref{app:approximation} gives the finite target comparisons.
+
+Optical depth is derived with \texttt{tau\_from\_history} and native \texttt{compute\_tau}, following the executable adapter's $z_{\min}=5$, $z_{\max}=35$ and 31 interpolation points.
+
+\begin{table*}[t]\centering\small
+\caption{Physical interventions and numerical products. These comparisons address different questions and use the source selections specified in the appendices.}\label{tab:experiment-map}
+\begin{tabular}{p{.16\textwidth}p{.25\textwidth}p{.28\textwidth}p{.22\textwidth}}\toprule
+Comparison & Fixed and varied quantities & Data and prediction & Interpretation\\\midrule
+Fixed galaxies & Shared eight-coordinate galaxy prescription; vary spectrum & 21cmTB atlas, 256/768 grids, 32-plane averages & Conditional history sensitivity\\
+LF fits & Fixed spectrum; vary four galaxy coordinates & 34 LF points; stored fits & Existence of compatible LF curves\\
+Galaxy samples & PL and fixed BT spectra; six galaxy coordinates vary & LF+$\tau$+$x_{\rm HI}$ as attributed; 100k BTemu & Recomputed finite-chain medians\\
+Free spectrum (appendix) & Six galaxy and two spectrum coordinates vary & 100k BTemu, 600 steps, 32 walkers & Exploration record in Appendix~\ref{app:free-spectrum-exploration}\\
+Supporting T3 & Three attributed observation combinations at one spectrum & Earlier predictor and separately retained files & Summary comparison in Appendix~\ref{app:t3-selection}\\\bottomrule
+\end{tabular}\end{table*}
+
+\section{Spectrum sensitivity at fixed galaxy parameters}\label{development-results}
+
+\subsection{Fixed-astrophysics BT/PL histories from 21cmTB}\label{fixed-astrophysics-btpl-histories-from-21cmtb}
+
+Figure~\ref{fig:atlas-history} compares four BT histories with their PL reference at one galaxy prescription. The atlas uses averages over saved transverse planes, distinct from the coeval volume means used by BTemu (Table~\ref{tab:experiment-map}). All use F\_STAR10 = -1.3, ALPHA\_STAR = 0.5, F\_ESC10 = -1.0, ALPHA\_ESC = -0.5, M\_TURN = 9, t\_STAR = 0.5, L\_X = 40.5, and NU\_X\_THRESH = 500 eV. Lines connect the stored samples.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.64\textheight,keepaspectratio]{btemu/fig5_21cmtb_histories.pdf}
+\caption{(a) Neutral fractions obtained as 1 minus the exported 32-plane mean ionized fractions for the matched PL reference and selected BT models. (b) Direct differences from the PL series at the identical stored redshifts, without interpolation. Lines connect stored nodes. The atlas specifies a common seed; matched phases and IC or resolution uncertainties have not been independently established. The $k_p=1$, MS $=2.5$ series is zero at every stored node, including the high-redshift boundary $z=35.0253$; its dotted line and boundary marker flag an unresolved transition outside the exported interval or an initialization issue.}
+\label{fig:atlas-history}
+\end{figure*}
+
+The export gives optical depths of 0.0516368 for PL, 0.111373 for \ensuremath{k_p} = 1/MS = 1.5, 0.476536 for \ensuremath{k_p} = 1/MS = 2.5, 0.209243 for \ensuremath{k_p} = 3/MS = 2.5, and 0.0654130 for \ensuremath{k_p} = 10/MS = 2.5. These values are rounded from the stored tau\_e fields, calculated by the site's ComputeTau-equivalent integral. The $k_p=1$, MS $=2.5$ history has $x_{\rm HI}=0$ at all 32 stored nodes, including the highest redshift. Its stored optical depth 0.476536 is therefore boundary-conditional: the export does not resolve its transition or establish the ionization state above the integration interval. The remaining displayed histories show increased ionization relative to PL within the exported interval. At a second fixed galaxy prescription, coeval BT histories also separate as $m_s$ varies; their within-BT comparison is retained in Appendix~\ref{app:fixed-astro-update}.
+
+\section{Galaxy freedom and luminosity-function fits}\label{galaxy-freedom}\label{lf-only-fits-on-the-fixed-spectrum-grid}
+
+For each fixed spectrum, four galaxy coordinates are fitted to the same 34 selected LF observations (Table~\ref{tab:experiment-map}).
+
+Figure~\ref{fig:lf-grid} compares the maximum stored LF log likelihoods, with the numerical grid in Table~\ref{tab:lf-values}. The PL control has maximum stored log likelihood $-13.261040774593372$.
+
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.64\textheight,keepaspectratio]{btemu/fig6_21cmtb_lf_grid.pdf}
+\caption{(a) Maximum stored LF log-likelihood difference, BT minus the shared PL control, for all 25 fixed-spectrum fits, with a linear colour scale symmetric about zero. (b) The same values for $k_p=10,20,30$ shown on an expanded vertical scale to resolve small differences; markers are stored values and connecting lines guide the eye. Positive entries indicate a higher stored maximum for BT; they are not a significance or a Bayes factor. Each model independently fits four coordinates with the same 34 selected observations. All chain diagnostic gates failed; rounded values near zero are labelled \textasciitilde0.}
+\label{fig:lf-grid}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.64\textheight,keepaspectratio]{btemu/fig7_21cmtb_lf_fits.pdf}
+\caption{Stored maximum-LF-likelihood curves for PL and three BT spectra at z = 6--10, with the selected observations and supplied asymmetric errors. Astrophysical parameters are fitted separately for each spectrum, in contrast to the fixed prescription in Figure~\ref{fig:atlas-history}. All 34 selected observations are retained, including $z=9$. The $z=6$ panel retains its full selected faint-end range; the higher-redshift panels use an observation-focused magnitude window with the same density scale. Error bars reaching nonpositive density extend below the displayed logarithmic range. Lines show individual fits; the failed sampling diagnostics are recorded in Figure~\ref{fig:lf-grid}.}
+\label{fig:lf-fits}
+\end{figure*}
+
+At \ensuremath{k_p} = 1 $h\,\mathrm{Mpc}^{-1}$, the maximum stored likelihood deteriorates as MS increases. At \ensuremath{k_p} = 20--30 $h\,\mathrm{Mpc}^{-1}$, it remains close to the PL value over the displayed grid. For $k_p=20$, BT minus PL spans $-0.000690$ to 0.074689 in stored log likelihood, and for $k_p=30$ it spans $-0.000139$ to 0.013702. Thus the archive contains comparably fitting LF curves for distinct spectra. These candidate fits establish compatibility, while both weak direct LF sensitivity and galaxy adjustment remain possible explanations for the near equality.
+
+\section{Galaxy samples and the source prescription}\label{inference-status}
+
+\subsection{Galaxy distributions at fixed spectrum}\label{fixed-spectrum-100k}
+
+Table~\ref{tab:fixed-100k} gives the medians of all six galaxy coordinates for the released fixed-spectrum samples and PL reference. At $m_s=1.5$, the $\eta_\star$ median changes from $-1.0154$ at $k_p=5$ to $-1.6368$ at $k_p=1$, while $\alpha_\star$ changes from 0.6611 to 0.7451. The PL medians are $-0.9263$ and 0.5451, respectively. Counts, selections and full quantiles are recorded in Appendix~\ref{app:recomputed-fixed} and the accompanying source table.
+
+\begin{table*}[t]\centering\small
+\caption{Recomputed medians of the six galaxy coordinates at fixed spectrum, using the 100,000-history BTemu model. All rows with finite log probability are retained. These are finite-chain sample medians; counts and summary definitions are given in Appendix~\ref{app:recomputed-fixed}. $k_p$ is in $h\,\mathrm{Mpc}^{-1}$.}\label{tab:fixed-100k}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrr}\toprule
+Model / $k_p$ & $m_s$ & $\eta_\star$ & $t_\star$ & $\alpha_\star$ & $\log_{10}(M_{\rm turn}/M_\odot)$ & $\log_{10} f_{{\rm esc},10}$ & $\alpha_{\rm esc}$\\\midrule
+PL & -- & -0.9263 & 0.7591 & 0.5451 & 8.6008 & -0.2292 & 0.1741\\
+1 & 1.5 & -1.6368 & 0.5209 & 0.7451 & 8.7106 & -1.2265 & 0.2289\\
+5 & 1.5 & -1.0154 & 0.5218 & 0.6611 & 8.8790 & -1.0994 & 0.1036\\
+10 & 2.5 & -0.9433 & 0.5028 & 0.5742 & 9.0695 & -1.1039 & 0.1272\\
+20 & 2.5 & -0.9237 & 0.5149 & 0.5370 & 8.7440 & -1.0792 & 0.0724\\
+\bottomrule\end{tabular*}\end{table*}
+
+The galaxy prescription gives a direct interpretation at fixed halo mass and redshift. Define
+\begin{align}
+S(M_h)&\equiv\frac{\dot M_\star}{M_hH(z)(\Omega_b/\Omega_m)}\nonumber\\
+&=\frac{\min\!\left[1,10^{\eta_\star}t_\star(M_h/10^{10}M_\odot)^{\alpha_\star}\right]}{t_\star}.
+\label{eq:physics-sfr-factor}
+\end{align}
+Below the efficiency cap, $S=10^{\eta_\star}(M_h/10^{10}M_\odot)^{\alpha_\star}$. Lower $\eta_\star$ reduces star formation per unit halo mass at the pivot, while larger $\alpha_\star$ reduces its relative low-mass contribution. Evaluating the capped expression on the PL and $k_p=1,m_s=1.5$ samples gives median $S=0.1185$ and 0.02308 at $10^{10}M_\odot$. The BT-to-PL ratios of marginal medians are 0.123, 0.195 and 0.308 at $10^9,10^{10},10^{11}M_\odot$. These factors describe active halos at the stated fixed masses and redshift.
+
+\FloatBarrier
+\section{Physical interpretation and scope}\label{initial-condition-scatter-and-limits-of-inference}
+
+The spectrum affects the matter fluctuations from which halos form, while the galaxy prescription assigns radiation to the resulting population. The factor $S$ isolates the active-halo star-formation part of that calculation. In the supplied PL and $k_p=1,m_s=1.5$ BT samples, its lower normalization and stronger low-mass reduction follow directly from $\eta_\star$ and $\alpha_\star$. Predicting an LF or the ionizing emissivity additionally weights the halo population by abundance and duty cycle. Escaped ionizing radiation also depends on $f_{\rm esc}$, whereas the non-ionizing UV luminosity follows star formation \cite{Park2019}. Optical depth integrates the ionization history and $x_{\rm HI}(5.9)$ probes its late state.
+
+This source-level interpretation does not specify how halo abundance changes in the actual normalized spectra. Fixed $\sigma_8$ changes the amplitude along with the shape. A matched LF and history comparison before and after galaxy adjustment would measure how much compatibility comes from weak direct sensitivity and how much from compensation. The existing calculations address distinct parts of that question, as defined in Table~\ref{tab:experiment-map}.
+
+The sample comparisons here are descriptive under the adopted representative-history calculation. Their attribution to a controlled spectral intervention requires verified executed priors and common run settings, sampling stability and the relevant BTemu likelihood validation. Supporting inference and approximation records are collected in the appendices.
+
+\section{Conclusions}\label{conclusions}
+
+The supplied numerical models show conditional history sensitivity and admit similar LF candidate fits for some different spectra. Their fixed-spectrum samples also imply different active-halo source prescriptions. At $10^{10}M_\odot$, the $k_p=1,m_s=1.5$ BT-to-PL ratio of marginal median star-formation factors is 0.195, with a stronger relative reduction toward lower mass over $10^9$--$10^{11}M_\odot$. The decisive next comparison is the same set of observables before and after galaxy adjustment under matched numerical and inference settings.
+
+\section*{Data and code availability}
+
+Recomputed fixed-spectrum statistics and source hashes are in \path{paper/reproduction/physics_revision_20261106/}. The corresponding BTemu raw arrays are in \path{paper/paper_materials/chains_20261104/}; the current free-spectrum source and marginal analysis are in \path{paper/paper_materials/chains_20261106/} and \path{paper/analysis_kpms_20261106/}.
+
+Code and released arrays are available in \href{https://github.com/HainaHuang729/BTemu}{BTemu} and the \href{https://github.com/HainaHuang729/21cmTB}{21cmTB} atlas. The numerical source definitions and selections are collected in Appendix~\ref{app:provenance}; source hashes and frozen records are retained in \path{paper/reproduction/}. Native binaries, predictor weights and complete production configurations remain external. The BTemu methods article supplies the history-emulator validation.
+
+\clearpage
+\bibliographystyle{apsrev4-2}
+\bibliography{\btemubib}
+\clearpage\appendix
+\setcounter{figure}{0}\renewcommand{\thefigure}{S\arabic{figure}}
+
+\section{Exploratory free-spectrum sample projections}\label{app:free-spectrum-exploration}\label{physics-current-inference}
+
+The current free-spectrum calculation is retained here as an empirical sample projection. For six galaxy coordinates $\phi$, the target spectral marginal is
+\begin{equation}
+p(k_p,m_s\mid D)=\int p(k_p,m_s,\phi\mid D)\,\mathrm d\phi.
+\end{equation}
+Projection estimates this target when the equally weighted MCMC draws adequately explore it. Here we describe the stored rows and their selection. We show the 100k-model chain's stored steps 301--600, containing 9,600 rows, in Figure~\ref{fig:physics-kpms-current}. The sample medians are 17.706 and 1.813, and the 95\% equal-tail intervals are $[4.420,29.071]\,h\,\mathrm{Mpc}^{-1}$ and [0.584,3.962]. The archived uniform reference priors are $k_p\in[1,30]\,h\,\mathrm{Mpc}^{-1}$ and $m_s\in[0.5,4]$. The selected $m_s$ range is similar to that reference, with the main $k_p$ difference at its low end.
+
+\begin{figure*}[t]\centering
+\includegraphics[width=.75\textwidth,height=.53\textheight,keepaspectratio]{btemu/fig_physics_kpms_100k.png}
+\caption{Preliminary spectrum sample marginals from the 100k history model, after projecting out six galaxy coordinates. Blue distributions use the last 300 of 600 stored steps, and orange dashed lines show the archived uniform-prior densities. Diagonal numbers give median and 95\% equal-tail offsets. The lower panel encloses 95\% of the smoothed two-dimensional sample density.}\label{fig:physics-kpms-current}\end{figure*}
+
+The retained range is a chronological convention, not a diagnosed equilibration cut. The ordinary split variance-ratio monitors across interacting walkers span 2.1451--3.4462; the $k_p$ and $m_s$ values are 2.3232 and 2.2181. Table~\ref{tab:current-sampling-monitors} gives all eight coordinates. These are warning diagnostics for these stored trajectories, not independent-chain, rank-normalized $\widehat R$. No coordinate passes the source calculation's chain-length/$\tau\geq50$ heuristic. The executed prior is also unconfirmed, so the orange curves remain an archived reference rather than an established prior-to-posterior information test.
+
+\begin{table}[b]\centering\small
+\caption{Descriptive ordinary split variance-ratio monitors for the retained 300 steps. Walkers interact within a single ensemble.}\label{tab:current-sampling-monitors}
+\begin{tabular}{lr}\toprule
+Coordinate & Monitor\\\midrule
+$\eta_\star$ & 3.4462\\
+$t_\star$ & 2.2156\\
+$\alpha_\star$ & 2.5947\\
+$\log_{10}(M_{\rm turn}/M_\odot)$ & 2.2468\\
+$\log_{10}f_{{\rm esc},10}$ & 2.2079\\
+$\alpha_{\rm esc}$ & 2.1451\\
+$k_p$ & 2.3232\\
+$m_s$ & 2.2181\\\bottomrule
+\end{tabular}\end{table}
+
+\section{Numerical approximation checks}\label{app:approximation}
+
+\subsection{History approximation}\label{reported-history-accuracy}
+
+The archived joint runs use the earlier BTemu predictor to approximate the volume-averaged history; luminosity functions retain the exact provider and optical depth is derived from the history. The released five-model arithmetic average is evaluated on 512 development-validation histories. Its absolute trajectory RMSE median and 95th percentile are 0.001008 and 0.006815. The methods draft gives the network and IC analysis. Published emulators provide precedents for examining the approximation through inferred distributions \cite{Breitman2024,Breitman2026}.
+
+The T7 summary of 128 parameter families with eight IC realizations adds a finite-reference check on this history approximation. The across-family $q_{90}$ of the fixed-realization history RMSE relative to the eight-IC mean is 0.00288353. The maximum absolute difference between the log likelihood of the mean history and the logarithm of the finite-IC average likelihood is 1.90797. These are IC comparisons between history and likelihood targets. The methods draft defines the signed and absolute statistics.
+
+\subsection{Finite comparison with the exact calculation}
+
+The new T6 export permits a reproducible finite-sample comparison with the 200-step exact chain. We retain stored steps 100--199 for exact (3,200 rows), and steps 2500--4999 of the ordered emulator combination (80,000 rows). Both use population standard deviations ($\mathrm{ddof}=0$). It differs from Figure~\ref{fig:exact200}, which retains all 200 exact steps.
+
+\begin{table}[t]\centering\small
+\caption{Finite-chain T6 comparison. $\Delta\mu/\sigma_e$ uses emulator minus exact mean and exact sample spread; $s_m/s_e$ is the emulator-to-exact population standard-deviation ratio.}\label{tab:t6}
+\begin{tabular}{lrr}\toprule
+Coordinate & $\Delta\mu/\sigma_e$ & $s_m/s_e$\\\midrule
+$\eta_\star$ & $-0.09969$ & 0.90921\\
+$t_\star$ & $-0.02906$ & 1.04530\\
+$\alpha_\star$ & 0.13155 & 0.89545\\
+$\log_{10}(M_{\rm turn}/M_\odot)$ & $-0.09990$ & 1.01531\\
+$\log_{10}f_{{\rm esc},10}$ & $-0.02397$ & 1.06763\\
+$\alpha_{\rm esc}$ & 0.21948 & 0.91470\\\bottomrule
+\end{tabular}\end{table}
+
+The maximum absolute shift is 0.219479 and the width ratio spans 0.895453--1.067625. The correlation matrices have Frobenius difference 0.668568. The exact file is marked smoke-only and unconverged; agreement of a few moments cannot establish the tails, stationarity, or target parity.
+
+\section{Recomputed fixed-spectrum definitions}\label{app:recomputed-fixed}
+
+The PL reference and BT chains at $k_p=1,m_s=1.5$, $k_p=5,m_s=1.5$ and $k_p=10,m_s=2.5$ each contain $3000\times32$ stored rows. Their finite-log-probability selections retain 95,942, 95,964, 95,904 and 95,949 rows, respectively. The $k_p=20,m_s=2.5$ chain contains $10000\times32$ rows and retains 319,997. No additional chronological discard or thinning is applied. Table~\ref{tab:fixed-100k} gives medians. The accompanying CSV gives means, population standard deviations and 2.5th, 16th, 50th, 84th and 97.5th percentiles for all six coordinates. The older unspecified $\pm$ source table is preserved in the frozen v0.20 record, rather than treated as a credible interval.
+
+The separate fixed-$k_p=10$, free-$m_s$ 7D file retains 95,971 finite-log-probability rows. Its recomputed $m_s$ median is 2.3975, with sample 95\% equal-tail range [0.5887,3.9043]. This is conditional on that fixed break scale and is separate from the free-$k_p,m_s$ result.
+
+\section{Simulation and inference provenance}\label{app:provenance}
+
+The executable optical-depth adapter uses redshift limits 5--35 and 31 interpolation points. A separate likelihood metadata entry lists 5--30 and 25 points. The main-text calculation follows the adapter.
+
+
+\subsection{Design support and earlier chain coordinates}\label{parameter-domain-and-chain-definitions}
+
+Table~\ref{tab:parameters} lists the ten-dimensional emulator design support.
+
+\begin{table*}[t]
+\caption{Emulator design support.}
+\label{tab:parameters}
+\centering\small
+\begin{tabular}{p{0.2\textwidth}p{0.15\textwidth}p{0.56\textwidth}}
+\toprule
+Coordinate & Design range & Stored units or convention \\
+\midrule
+F\_STAR10 & {[}-3, 0{]} & log10 star-formation efficiency normalization \\
+ALPHA\_STAR & {[}-0.5, 1{]} & dimensionless slope \\
+F\_ESC10 & {[}-3, 0{]} & log10 escape-fraction normalization \\
+ALPHA\_ESC & {[}-1, 0.5{]} & dimensionless slope \\
+M\_TURN & {[}8, 11{]} & $\log_{10}(M/M_\odot)$ \\
+t\_STAR & {[}0.01, 1{]} & dimensionless \\
+L\_X & {[}38, 42{]} & log10($\mathrm{erg\,s^{-1}}/(M_\odot\,\mathrm{yr^{-1}})$) \\
+NU\_X\_THRESH & {[}100, 1500{]} & eV \\
+\ensuremath{k_p} & {[}1, 30{]} & $h\,\mathrm{Mpc}^{-1}$ \\
+MS & {[}0.5, 4{]} & dimensionless slope \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The archived six-dimensional HDF5 order is ETA\_STAR, t\_STAR, ALPHA\_STAR, M\_TURN, F\_ESC10, ALPHA\_ESC. The eight-dimensional files append KP\_h\_Mpc and MS. The configuration summary assigns fixed $L_X=40.5$ and $E_0=500\,\mathrm{eV}$ to both, with $k_p=10\,h\,\mathrm{Mpc}^{-1}$ and MS $=2.5$ in 6D. The exact-chain attributes confirm the latter spectrum settings. These are six-galaxy-coordinate calculations, distinct from the older eight-astrophysical-coordinate exact runs in 21cmTB.
+
+\subsection{Companion 21cmTB simulation atlas}\label{companion-21cmtb-simulation-atlas}
+
+The \href{https://github.com/HainaHuang729/21cmTB}{21cmTB export} contains 55 successful BT calculations from a 57-point design and 32 distinct PL references. The design combines single-parameter astrophysical variations with a 5 \(\times\) 5 grid in \ensuremath{k_p} = \{1, 3, 10, 20, 30\} $h\,\mathrm{Mpc}^{-1}$ and MS = \{1.5, 2, 2.5, 3.25, 4\}. Two design points are unavailable because of spin-temperature failures: NU\_X\_THRESH = 100 eV at the baseline spectrum, and \ensuremath{k_p} = 1 $h\,\mathrm{Mpc}^{-1}$, MS = 4 at the baseline astrophysics.
+
+This atlas uses HII\_DIM = 256, DIM = 768, a 250 cMpc box, and seed 725213656658, with histories extending from approximately z = 35 to z = 6. Its matched PL calculations use the same astrophysical parameters and POWER\_SPECTRUM = 0. BTemu uses the 128/512 grids and a random-realization design.
+
+The atlas includes spatial light-cone central slices and 32 saved transverse planes. Its exported ionization histories are spatial averages associated with those planes, with x\_i = 1 - \(\langle\)\ensuremath{x_{\mathrm{HI}}}\(\rangle\). Their sampling geometry and redshifts differ from BTemu's coeval volume means. The repository also contains a separate 85-snapshot PL/BT viewer dataset; its brightness-temperature range warnings and lack of verified phase matching preclude treating that viewer as a validated pixelwise difference measurement.
+
+\subsection{Additional fixed-astrophysics coeval export}\label{app:fixed-astro-update}
+
+The underlying handoff configuration, native identity and realized IC records are not included in the new export. The same export labels a sixth series as PL. Its script retains an externally constructed configuration for that branch and calls the BT provider with \texttt{cosmo\_params\_for(None)}. The exported script alone does not establish whether that call selects a numerical PL spectrum. We therefore use only the five BT histories and their within-BT differences. The PL series requires the actual provider, handoff plan and recorded power-spectrum settings before a BT--PL comparison is made.
+
+\begin{table}[t]\centering\small
+\caption{Fixed astrophysical coordinates for the five BT coeval histories in Figure~\ref{fig:fixed-astro-bt}. Entries are rounded for display; the frozen JSON retains the exported precision. These values differ from the atlas prescription.}\label{tab:fixed-astro-update}
+\begin{tabular}{lr}\toprule
+Coordinate & Stored value\\\midrule
+$\log_{10}f_{\star,10}$ & $-1.240011$\\
+$\alpha_\star$ & 0.559511\\
+$\log_{10}f_{{\rm esc},10}$ & $-1.111213$\\
+$\alpha_{\rm esc}$ & 0.081557\\
+$\log_{10}(M_{\rm turn}/M_\odot)$ & 9.055067\\
+$t_\star$ & 0.499333\\
+$\log_{10}L_X$ & 40.5\\
+$E_0\ [\mathrm{eV}]$ & 500\\\bottomrule
+\end{tabular}\end{table}
+
+\subsection{Coeval BT histories at a second fixed galaxy prescription}\label{fixed-astro-bt-update}
+
+A later export supplies five BT coeval histories at a shared galaxy prescription (Figure~\ref{fig:fixed-astro-bt}). Its eight astrophysical values are retained in Table~\ref{tab:fixed-astro-update}. The source script selects these values from the median of the retained half of a six-coordinate chain, then changes only $k_p$ and MS among the five labelled BT cases. Each history contains the same 32 redshift nodes from $z=5$ to 35, including $z=5.9$. These are coeval volume means; the source definitions and missing run records are detailed in Appendix~\ref{app:fixed-astro-update}.
+
+At $k_p=10\,h\,\mathrm{Mpc}^{-1}$, the exported $x_{\rm HI}(8)$ decreases from 0.7861 to 0.7610 and 0.6520 as MS increases from 1.5 to 2 and 3. At $k_p=1\,h\,\mathrm{Mpc}^{-1}$, both available slopes have $x_{\rm HI}(8)=0$, while retaining nonzero neutral fractions at $z=35$. The separation of these histories illustrates the spectrum sensitivity at this fixed galaxy prescription.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.60\textheight,keepaspectratio]{btemu/fig16_fixed_astro_bt_histories.pdf}
+\caption{(a) Five exported coeval BT histories at the fixed astrophysical values in Table~\ref{tab:fixed-astro-update}; $k_p$ is in $h\,\mathrm{Mpc}^{-1}$. All 32 stored nodes are retained, with lines connecting them. (b) Direct differences at identical nodes between MS $=1.5$ or 3 and MS $=2$, all at $k_p=10$. The source-labelled PL curve is excluded pending verification of its numerical configuration (Appendix~\ref{app:fixed-astro-update}).}
+\label{fig:fixed-astro-bt}
+\end{figure*}
+
+\subsection{Supporting observation-combination comparison}\label{app:t3-selection}\label{observation-combinations}
+
+The T3 record supplies six-coordinate summaries for LF-only, LF plus optical depth, and LF plus optical depth and neutral fraction at a reported common spectrum $k_p=10\,h\,\mathrm{Mpc}^{-1}$, MS $=2.5$. Figure~\ref{fig:t3-obs-combinations} compares their sample means and standard deviations, with the values retained in Table~\ref{tab:t3-obs-combinations}. These summaries extend the four-coordinate LF archive with a comparison in the same six named coordinates as the joint runs.
+
+The largest decrease in the reported spread is in $\log_{10}f_{{\rm esc},10}$, from 0.867 for LF-only to 0.562 with optical depth and 0.386 with the neutral-fraction term. The corresponding means move from $-1.535$ to $-1.405$ and $-1.051$. The sampled spreads in $\eta_\star$, $t_\star$ and $\alpha_\star$ change less; they do not all decrease as observations are added. This pattern is consistent with the distinct roles of UV luminosities and ionization history in the reference galaxy prescription.
+
+\begin{figure*}[t]\centering
+\includegraphics[width=\textwidth,height=.58\textheight,keepaspectratio]{btemu/fig17_obs_combinations.pdf}
+\caption{Observation-combination samples at reported fixed $k_p=10\,h\,\mathrm{Mpc}^{-1}$ and MS $=2.5$. Markers and bars show means and population standard deviations, with last-half selection applied separately to each file. The panels describe star-formation efficiency per timescale ($\eta_\star$), timescale ($t_\star$), mass slope ($\alpha_\star$), suppression mass ($M_{\rm turn}$), escape normalization and escape mass slope. Bars are descriptive sample spreads. Appendix~\ref{app:t3-selection} records the selections and run provenance.}\label{fig:t3-obs-combinations}
+\end{figure*}
+
+The joint T3 summary uses 32,000 rows from the ext2 segment, while Table~\ref{tab:chain-moments} uses 80,000 rows from the ordered 5,000-step combination. These selections yield different moments.
+
+
+
+
+The source script reads three independent files: the LF-only and LF-plus-optical-depth files dated November 1, and the ext2 joint segment already included in the earlier evidence export. It reports a generic run length of 1500--2000 steps and retains each file's last half, using population standard deviations. The available ext2 file has shape $2000\times32\times6$, and its parameter order, SHA256 and all six last-half means and standard deviations match the T3 joint row exactly. The LF-only and LF-plus-optical-depth raw files are absent from the new export. The source script also does not compare the parameter orders of all three files before assigning labels; those two orders remain to be verified from their raw records.
+
+\begin{table*}[t]\centering\small
+\caption{T3 descriptive means and population standard deviations ($\mathrm{ddof}=0$), with last-half selection applied separately to each file. The common spectrum is attributed as $k_p=10\,h\,\mathrm{Mpc}^{-1}$, MS $=2.5$. The joint row is independently reproduced from stored steps 1000--1999 of the archived ext2 segment, with 32,000 correlated rows. The source-file verification is described above; these spreads are descriptive sample statistics.}\label{tab:t3-obs-combinations}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrr}\toprule
+Coordinate & LF only & LF $+\tau$ & LF $+\tau+x_{\rm HI}$\\\midrule
+$\eta_\star$ & $-0.949\pm0.041$ & $-0.950\pm0.041$ & $-0.939\pm0.044$\\
+$t_\star$ & $0.536\pm0.287$ & $0.545\pm0.276$ & $0.511\pm0.274$\\
+$\alpha_\star$ & $0.592\pm0.079$ & $0.593\pm0.080$ & $0.568\pm0.083$\\
+$\log_{10}(M_{\rm turn}/M_\odot)$ & $8.842\pm0.437$ & $8.878\pm0.411$ & $9.004\pm0.400$\\
+$\log_{10}f_{{\rm esc},10}$ & $-1.535\pm0.867$ & $-1.405\pm0.562$ & $-1.051\pm0.386$\\
+$\alpha_{\rm esc}$ & $-0.245\pm0.441$ & $-0.180\pm0.443$ & $0.007\pm0.387$\\
+\bottomrule\end{tabular*}\end{table*}
+
+\subsection{Distinct inference products in 21cmTB}\label{distinct-inference-products-in-21cmtb}
+
+The September 18 LF-only archive fits four coordinates at each fixed \ensuremath{k_p}/MS pair: ETA\_STAR, t\_STAR, ALPHA\_STAR, and M\_TURN. F\_STAR10 is obtained by the transformation in Section~\ref{astrophysical-parameters}. Each BT fit stores 15,000 steps for each of two 32-walker ensembles; the shared PL control stores 30,000 steps per ensemble. Both use the 34-point \ensuremath{M_{\mathrm{UV}}} \textgreater{} -20 selection. All 25 BT cases and the PL control have diagnostic\_gate\_passed = false in this snapshot. These LF-only fits are distinct from the BT-mock recovery tests in Section~\ref{fitting-bt-mock-data-with-a-pl-reference-model}.
+
+The October 10 repaired joint archive identifies eight sampled astrophysical coordinates at fixed \ensuremath{k_p} = 10 $h\,\mathrm{Mpc}^{-1}$ and MS = 2.5, with two 1,000-step, 32-walker ensembles. A separate free-MS branch has nine coordinates, two 200-step ensembles, and a different recorded native-library fingerprint. Both are explicitly exploratory. The October 18 extension lengthens only one fixed-spectrum ensemble to 2,000 steps, leaving its independent counterpart at 1,000. It therefore supplies no independent full-2,000-step \(\widehat R\). The newer BTemu HDF5 parameter\_names datasets now resolve the eight-dimensional sampled-coordinate definition, while the historical 21cmTB runs remain separate numerical products.
+
+A separate approximate PL-emulator reference stores two 35,000-step ensembles. Its archive reports passed configured diagnostics, maximum \(\widehat R\) = 1.0482718222588319, and minimum ensemble-mean ESS = 4465.290848307428. However, its cosmology differs from the BT contract, its M\_TURN upper prior bound is 10 rather than 11, and its emulator flags include photon conservation. Emulator uncertainty is not marginalized.
+
+The atlas also displays a 44-point collection of LF observations, while its inference archive uses the selected 34 points. Park-reproduction fits use 27 HST points and their own priors.
+
+\begin{table*}[t]
+\caption{Maximum stored LF log likelihoods on the fixed-spectrum grid; all chain diagnostic flags remain false.}
+\label{tab:lf-values}
+\centering\small
+\begin{tabular}{lccccc}
+\toprule
+\ensuremath{k_p} {[}$h\,\mathrm{Mpc}^{-1}${]} & MS = 1.5 & MS = 2 & MS = 2.5 & MS = 3.25 & MS = 4 \\
+\midrule
+1 & -11.895 & -21.612 & -36.937 & -85.220 & -143.670 \\
+3 & -12.058 & -11.306 & -12.451 & -21.902 & -42.298 \\
+10 & -13.159 & -13.047 & -12.915 & -12.671 & -12.328 \\
+20 & -13.262 & -13.261 & -13.257 & -13.241 & -13.186 \\
+30 & -13.261 & -13.261 & -13.260 & -13.258 & -13.247 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Additional cache histories and scope}
+
+A separate new cache export contains seven additional histories. The labelled PL history has $\log_{10}f_{\star,10}=-2.83$, whereas several BT histories use $-1.3$; another $k_p=1$, MS $=1.5$ history uses $-3.18$ and differs in five other astrophysical coordinates. The latter also lies outside the emulator's stated star-formation support. These differently configured curves are retained as a cache inventory. The label KP99/MS99 does not identify a verified physical PL branch.
+
+The low-redshift image supplied with BTemu is a matter power spectrum. The present likelihood uses LF and reionization-history observations.
+
+\subsection{Diagnostics for the archived fixed-spectrum inference}\label{diagnostics-for-the-archived-fixed-spectrum-inference}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.64\textheight,keepaspectratio]{btemu/fig10_21cmtb_diagnostics.pdf}
+\caption{Archived diagnostics for the fixed \ensuremath{k_p} = 10 $h\,\mathrm{Mpc}^{-1}$, MS = 2.5 exact calculation with two 1,000-step, 32-walker ensembles. Left: maximum rank/folded \(\widehat R\) across corresponding walkers. Right: stored length divided by the maximum integrated autocorrelation time. Dashed lines mark the archived gates \(\widehat R\) \(\leq\) 1.05 and length/IAT \(\geq\) 50. These are reported diagnostics, not newly computed estimates. They apply to this historical eight-astrophysical-coordinate run, rather than the six-dimensional BTemu comparison or its joint \ensuremath{k_p}/MS chain. Both displayed checks fail for every shown coordinate.}
+\label{fig:historical-diagnostics}
+\end{figure*}
+
+The archived fixed-spectrum and free-MS marginal distributions are redrawn in Appendix~\ref{app:historical-figures} with their original run definitions and exploratory status.
+
+\section{Earlier chain construction and sample distributions}\label{app:current-chains}
+
+\subsection{Earlier fixed- and free-spectrum samples}\label{joint-samples-fixed-free}
+
+The earlier BTemu calculation compares fixed- and free-spectrum samples. The coordinate definitions and attributed fixed settings are given in Section~\ref{parameter-domain-and-chain-definitions}. The six-dimensional run varies the galaxy coordinates at fixed spectrum; the eight-dimensional run additionally varies $k_p$ and MS. Their actual stored lengths are 5,000 and 5,568 steps, respectively. Appendix~\ref{app:current-chains} records the segment ordering, retention and full sampling construction.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=.92\textwidth,height=.64\textheight,keepaspectratio]{btemu/fig15_kpms_focus.pdf}
+\caption{Expanded view of the sampled spectrum coordinates in the earlier eight-dimensional BTemu chain. The central panel is exactly the same 32 by 32 $k_p$--MS count histogram as in Figure~\ref{fig:btemu8}; the top and right panels show its one-dimensional marginals. All 89,088 rows from the last half of the 5,568-step chain are retained. Colour shows square-root bin counts normalized to this panel's maximum, with no smoothing or probability-content contours. The sample is exploratory; independent convergence has not been established.}
+\label{fig:kpms-focus}
+\end{figure*}
+
+The following values are recalculated from the same retained samples used in Figures~\ref{fig:btemu6}--\ref{fig:btemu8}. Each entry gives the empirical mean \(\pm\) sample standard deviation, with its interpretation specified in Table~\ref{tab:chain-moments}. The full-precision moments and the 16th, 50th and 84th percentiles are recorded in data/new\_chain\_audit\_20261029.json.
+
+\begin{table*}[t]
+\caption{Descriptive sample means and sample standard deviations from the stated last-half selection. These are not accepted posterior constraints.}
+\label{tab:chain-moments}
+\centering\small
+\begin{tabular}{p{0.18\textwidth}p{0.36\textwidth}p{0.36\textwidth}}
+\toprule
+Coordinate & 6D mean \(\pm\) sample standard deviation & 8D mean \(\pm\) sample standard deviation \\
+\midrule
+ETA\_STAR & -0.9411 \(\pm\) 0.0435 & -0.9420 \(\pm\) 0.0739 \\
+t\_STAR & 0.5163 \(\pm\) 0.2703 & 0.5314 \(\pm\) 0.2761 \\
+ALPHA\_STAR & 0.5721 \(\pm\) 0.0823 & 0.5708 \(\pm\) 0.1053 \\
+M\_TURN & 8.9676 \(\pm\) 0.4147 & 8.8305 \(\pm\) 0.4583 \\
+F\_ESC10 & -1.0837 \(\pm\) 0.3959 & -1.0699 \(\pm\) 0.4178 \\
+ALPHA\_ESC & 0.0626 \(\pm\) 0.3617 & -0.0128 \(\pm\) 0.4133 \\
+KP\_h\_Mpc & 10 (configuration report) & 16.6579 \(\pm\) 7.9288 \\
+MS & 2.5 (configuration report) & 2.1544 \(\pm\) 0.9895 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Figure~\ref{fig:kpms-focus} shows broad sampled distributions for both spectrum coordinates, with no compact preferred region evident in this view. The full eight-dimensional sample, including every galaxy coordinate, is retained in Figure~\ref{fig:btemu8} in Appendix~\ref{app:current-chains}. Figure~\ref{fig:btemu6} shows the fixed-spectrum sample. The ordinary split monitoring ranges are 1.0340--1.0535 for six dimensions and 1.1136--1.5125 for eight dimensions. Independent convergence has not been established for these interacting-ensemble chains.
+
+Thus the free-spectrum sample does not yet distinguish weak observational information from incomplete exploration.
+
+
+
+
+\subsection{Six- and eight-dimensional emulator chains}\label{new-six--and-eight-dimensional-emulator-chains}
+
+The earlier-model six-dimensional files contain 1,000, 2,000, and 2,000 stored steps, combined in that order for 5,000 steps with 32 walkers. The eight-dimensional files contain 2,000 and 3,568 steps, giving 5,568 steps with the same walker count. The latter extension is named chain8\_ext\_3399.h5, but its chain dataset has shape (3568, 32, 8), with finite parameter and log-probability values throughout.
+
+Following the source snapshot's last-half convention, the six-dimensional figure retains steps 2500--4999 (zero-based), or 80,000 correlated rows. The eight-dimensional figure retains steps 2784--5567, or 89,088 correlated rows. No thinning, additional parameter cuts, or coordinate transformations are applied. Segment boundaries have no exact repeated full-ensemble suffix/prefix; Individual repeated states are retained, and segments follow the source continuation order.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.78\textheight,keepaspectratio]{btemu/fig11_btemu_corner6_5000.pdf}
+\caption{Six-dimensional BTemu chain, combined 5,000 stored steps \(\times\) 32 walkers; all 80,000 rows from its last half are shown as marginal histograms and 32 \(\times\) 32 binned pair densities. The square-root count colour mapping is independently normalized in each pair panel. No smoothing, thinning, or probability-content contours are used. }
+\label{fig:btemu6}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.78\textheight,keepaspectratio]{btemu/fig12_btemu_corner8_5568.pdf}
+\caption{Eight-dimensional BTemu chain with six astrophysical coordinates plus \ensuremath{k_p} and MS, combined 5,568 stored steps \(\times\) 32 walkers. All 89,088 last-half rows are retained. Display conventions match Figure~\ref{fig:btemu6}. }
+\label{fig:btemu8}
+\end{figure*}
+
+
+The ordinary split variance-ratio monitor divides each of the 32 walker trajectories in half, giving 64 sequences. Its range is 1.0340--1.0535 for 6D, with t\_STAR highest, and 1.1136--1.5125 for 8D, with ETA\_STAR highest. The 6D maximum exceeds the proposed 1.05 threshold. These sequences belong to an interacting ensemble, so the statistic serves as a monitor rather than an independent-chain convergence assessment. Rank-normalized and folded diagnostics \cite{Vehtari2021} address additional failures of ordinary variance-ratio statistics.
+
+\section{Mock-recovery reports}\label{app:mock-recovery}
+
+\subsection{Fitting BT mock data with a PL reference model}\label{fitting-bt-mock-data-with-a-pl-reference-model}
+
+The mock-analysis records describe ten cases fitted with a PL reference model. The PL control has a reported minimum \(\chi\)\textsuperscript{2} of 42.4 and parameter differences of 0.006--0.06\(\sigma\). Three BT cases give the preliminary values in Table~\ref{tab:mock-summary}.
+
+\begin{table*}[t]
+\caption{Reported PL fits to BT mocks; combined chain diagnostics did not pass.}
+\label{tab:mock-summary}
+\centering\small
+\begin{tabular}{p{0.2\textwidth}p{0.1\textwidth}p{0.39\textwidth}p{0.22\textwidth}}
+\toprule
+Mock & Minimum \(\chi\)\textsuperscript{2} & Selected parameter shifts & Largest reported width ratio \\
+\midrule
+bt\_kp10\_ms2 & 150.9 & \textless0.04\(\sigma\) & L\_X: 9.9 \\
+bt\_kp10\_ms3 & 432.2 & ALPHA\_STAR: 1.94\(\sigma\); F\_STAR10: 1.29\(\sigma\) & NU\_X\_THRESH: 31.9 \\
+bt\_kp10\_ms4 & 248.7 & F\_STAR10: 2.03\(\sigma\); M\_TURN: 1.54\(\sigma\) & NU\_X\_THRESH: 14.7 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The original bias-matrix image is retained in Appendix~\ref{app:historical-figures} as historical Figure~\ref{fig:mock-bias}.
+
+The combined mock-fit diagnostics failed; the fit differences are retained as numerical diagnostics.
+
+\subsection{New paired BT and PL recovery summaries}\label{paired-recovery-update}
+
+The later paired export supplies eight injected astrophysical coordinates, two stored initialization best points, and chain medians and population standard deviations for nominal BT and PL fits to the same mock case. Table~\ref{tab:paired-recovery} preserves these quantities. This eight-dimensional calculation samples all eight astrophysical coordinates, unlike the six-astrophysical-plus-two-spectrum chain used for Figure~\ref{fig:btemu8}.
+
+\begin{table*}[t]\centering\small
+\caption{Paired mock export: injected values, stored initialization best points, and descriptive summaries of the full chains. Each model supplies one $8000\times32\times8$ chain. The $\pm s$ entries give the population standard deviation of all 256,000 correlated rows, without initial-step removal; they are not credible intervals or standard errors. The two spectral coordinates are absent. The initialization best points are not independently verified chain maxima.}\label{tab:paired-recovery}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrr}\toprule
+Coordinate & Injected & BT best & PL best & BT median $\pm s$ & PL median $\pm s$\\\midrule
+$\log_{10}f_{\star,10}$ & -1.739 & -1.672 & -1.921 & $-1.533\pm0.106$ & $-1.301\pm0.202$\\
+$\alpha_\star$ & -0.111 & 0.956 & -0.022 & $0.334\pm0.208$ & $-0.331\pm0.111$\\
+$\log_{10}f_{{\rm esc},10}$ & -1.426 & -1.597 & -1.818 & $-1.690\pm0.096$ & $-1.689\pm0.181$\\
+$\alpha_{\rm esc}$ & 0.031 & -0.770 & 0.012 & $0.005\pm0.215$ & $0.352\pm0.118$\\
+$\log_{10}(M_{\rm turn}/M_\odot)$ & 9.589 & 8.678 & 9.532 & $9.464\pm0.118$ & $9.802\pm0.053$\\
+$t_\star$ & 0.454 & 0.595 & 0.455 & $0.671\pm0.144$ & $0.890\pm0.227$\\
+$\log_{10}L_X$ & 39.514 & 39.541 & 39.613 & $39.792\pm0.120$ & $39.819\pm0.143$\\
+$E_0\ [\mathrm{eV}]$ & 710.590 & 1144.147 & 615.426 & $1256.740\pm227.759$ & $1088.545\pm183.159$\\
+\bottomrule\end{tabular*}\end{table*}
+
+The exported summarizer reads only \texttt{ensemble\_1} for each model and flattens all $8000\times32$ rows. It applies no initial-step removal, stationarity test or independent-run convergence check. The checkpoint files and injected-data file remain external, so the displayed summaries cannot be independently recomputed from chain rows here. We verify the table arithmetic against the released JSON, including its definition $(\mathrm{median}-\theta_{\rm true})/s$, with $s$ calculated using $\mathrm{ddof}=0$. This descriptive ratio has no calibrated Gaussian significance.
+
+For example, the full-chain BT summary gives $\log_{10}f_{{\rm esc},10}=-1.690\pm0.096$, compared with the injected value $-1.426$. The corresponding PL summary gives $\log_{10}(M_{\rm turn}/M_\odot)=9.802\pm0.053$, compared with 9.589. The stored BT best point for $\alpha_\star$ is 0.956, whereas its full-chain median is 0.334. These summaries do not establish stable recovery under the nominal BT model or establish that a PL-specific offset exceeds the uncertainty of the correct-model analysis.
+
+\section{Source reconciliation and unresolved validation}\label{app:reconciliation}
+The source audit records earlier predictor and retention conventions. Earlier $q_{90}$ reports of 0.0079 in $x_{\rm HI}(5.9)$, 0.00070 in optical depth and 2.44 in history log likelihood belong to those records. The current approximation tables use the released arrays and explicit selections.
+
+\section{Historical and companion distribution figures}\label{app:historical-figures}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.64\textheight,keepaspectratio]{btemu/fig1_bt_bias.png}
+\caption{Original BT-mock shift and width-ratio matrices, unchanged. The source CSV and full chain diagnostics remain external; 21cmTB's observed-LF grid is a different experiment and is not used to recreate this image.}
+\label{fig:mock-bias}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.78\textheight,keepaspectratio]{btemu/fig8_21cmtb_corner_fixed8.pdf}
+\caption{Redrawn marginal distributions of the 21cmTB fixed-spectrum calculation at \ensuremath{k_p} = 10 $h\,\mathrm{Mpc}^{-1}$, MS = 2.5: eight sampled astrophysical coordinates, two 1,000-step ensembles and all 64,000 correlated stored rows. Diagonal histograms distinguish the independent ensembles in blue and red; lower panels show pooled 32 \(\times\) 32 bin counts with square-root colour normalization, independently scaled in each panel. No smoothing, thinning, coordinate transformation, or sample exclusion is applied. These descriptive densities are not credible regions. See Figure~\ref{fig:historical-diagnostics} for its failed diagnostics.}
+\label{fig:historical-exact8}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.78\textheight,keepaspectratio]{btemu/fig9_21cmtb_corner_free9.pdf}
+\caption{Redrawn distributions of the 21cmTB nine-coordinate free-MS calculation: eight astrophysical coordinates plus MS, two 200-step ensembles, and all 12,800 correlated stored rows. Histogram and density conventions match Figure~\ref{fig:historical-exact8}. The source labels this run exploratory.}
+\label{fig:historical-exact9}
+\end{figure*}
+
+The original low-redshift matter-spectrum image and the original six-dimensional and joint-\ensuremath{k_p}/MS BTemu corner images remain in the repository for traceability. The later BTemu update supplies the new 6D and 8D segments used in Figures~\ref{fig:btemu6}--\ref{fig:btemu8}. A current figure index and reproduction commands are given in \path{btemu_materials/FIGURES_20261029.md}.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=.78\textheight,keepaspectratio]{btemu/fig13_exact_corner6_200.pdf}
+\caption{Exact six-coordinate calculation with 200 stored steps and 32 walkers, retaining all 6400 rows. The source attributes specify fixed \ensuremath{k_p} = 10 $h\,\mathrm{Mpc}^{-1}$ and MS = 2.5, LF+Planck\_tau+McGreer\_xHI likelihood, USE\_TS\_FLUCT = true, burnin = 20, and scientific role SMOKE\_ONLY\_NOT\_CONVERGED\_NOT\_A\_POSTERIOR. The burn-in attribute is reported without assuming whether it refers to preceding iterations or part of the stored array; no extra discard is applied, and initial-state datasets are not appended. Plot conventions match Figure~\ref{fig:btemu6}.}
+\label{fig:exact200}
+\end{figure*}
