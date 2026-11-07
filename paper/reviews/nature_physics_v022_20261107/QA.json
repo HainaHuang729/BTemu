@@ -1,0 +1,8 @@
+{
+  "independent_reports": 3,
+  "common_immutable_packet": true,
+  "report_hashes_verified": true,
+  "audit_after_freeze": true,
+  "blocking_scope_preserved": true,
+  "manuscript_changed": false
+}
