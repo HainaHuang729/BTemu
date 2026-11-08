@@ -1,4 +1,4 @@
-> 21cmTB 物理稿见 [v0.22 正文与 PDF](paper/physics_manuscript_v022_20261106/README.md)。BTemu 方法稿保持独立。
+> 21cmTB 物理稿见 [v0.23 正文与 PDF](paper/physics_manuscript_v023_20261108/README.md)。BTemu 方法稿保持独立。
 
 > 论文材料从 [当前主线](paper/MAINLINE.md) 开始阅读。正文按三个结果组织；按日期的材料和历史页面保留供复现。
 
