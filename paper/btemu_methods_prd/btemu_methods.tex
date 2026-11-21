@@ -1,0 +1,333 @@
+\documentclass[aps,prd,reprint,superscriptaddress,nofootinbib,amsmath,amssymb,floatfix,longbibliography]{revtex4-2}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\newcommand{\manuscripttitle}{BTemu: Neural Emulation of Reionization Histories and 21-cm Power Spectra for Blue-Tilted Small-Scale Matter Power}
+\hypersetup{pdftitle={\manuscripttitle},pdfauthor={Haina Huang}}
+
+\setlength{\emergencystretch}{2em}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.92}
+\renewcommand{\floatpagefraction}{0.65}
+
+\newcommand{\figwide}[3]{%
+  \begin{figure*}[!tbp]
+    \centering
+    \includegraphics[width=168mm]{#1}
+    \caption{#2}\label{#3}
+  \end{figure*}%
+}
+
+\newcommand{\figcolumn}[3]{%
+  \begin{figure}[!tbp]
+    \centering
+    \includegraphics[width=\columnwidth]{#1}
+    \caption{#2}\label{#3}
+  \end{figure}%
+}
+
+\begin{document}
+\title{\manuscripttitle}
+\author{Haina Huang}
+\affiliation{Department of Physics, The Chinese University of Hong Kong, Shatin, Hong Kong, China}
+\date{November 21, 2026}
+
+\begin{abstract}
+Jointly constraining astrophysical galaxy formation parameters and enhancements in the small-scale linear matter power spectrum requires repeated cosmological reionization evaluations across at least eight to ten parameters, rendering direct seminumerical Bayesian sampling computationally prohibitive. We present the \textsc{BTemu} emulation framework for a broken-power-law matter spectrum integrated into \textsc{21cmFAST}, spanning ten parameters: eight astrophysical star-formation, ionizing-escape, and X-ray heating coordinates alongside a break scale $k_p \in [1, 30]\,h\,\mathrm{Mpc}^{-1}$ and small-scale slope $m_s \in [0.5, 4.0]$. The global neutral-fraction history surrogate (\textsc{BTemu}-$x_{\mathrm{HI}}$) employs a five-seed ensemble of pre-normalized residual multilayer perceptrons trained on 100,000 full-box realizations ($250\,\mathrm{Mpc}$, $512^3$ initial/matter grid, $128^3$ ionization grid, pinned at \texttt{N\_THREADS=16} because GNU Scientific Library Fourier-mode initialization depends on OpenMP thread count). Relative to an earlier 65,536-run baseline on 512 paired validation histories, the 100,000-run history model reduces $x_{\mathrm{HI}}(5.9)$ RMSE by $35.6\%$ ($0.00699 \to 0.00450$), optical-depth $\tau$ RMSE by $23.2\%$ ($8.74\times 10^{-4} \to 6.72\times 10^{-4}$), and $q_{90}$ reionization log-likelihood error by $26.6\%$ ($1.612 \to 1.183$), while achieving median trajectory RMSE $8.51\times 10^{-4}$ across 10,000 development histories. Although prior-box initial-condition (IC) scatter across 128 eight-IC families yields $q_{90}[s_{\mathrm{IC}}(\ell_{\mathrm{hist}})] = 0.948$, 56 stratified direct-\textsc{21cmFAST} checks within the empirical observational posterior show $\ell_{\mathrm{reion}}$ $q_{90}$ errors of only $0.056$ (8D) and $0.026$ (6D), and eight four-IC posterior checks verify that representative mean-history likelihoods track exact four-IC marginal likelihoods within $\leq 0.0054$. Extending \textsc{BTemu} to the 32-redshift, 32-wavenumber ($k \in [0.1, 1.0]\,\mathrm{Mpc}^{-1}$) 21-cm power spectrum (\textsc{BTemu}-PS), controlled pilots demonstrate that single-IC coverage matches four-IC training accuracy at $N=534$ ($0.581$ vs.\ $0.579\,\mathrm{dex}$), whereas parameter-space expansion from 267 to 2,326 runs lowers RMSE to $0.344\,\mathrm{dex}$, and that 12-subbox averaging introduces parameter-dependent low-$k$ bias up to $1.48\times$ that matched median corrections cannot repair ($1.066 \to 1.063\,\mathrm{dex}$), motivating our completed 100,000-box full-box FFT production archive and clean 47-point external baseline ($0.2627\,\mathrm{dex}$). Finally, we document the exact open validation gates currently blocking science release of the preliminary joint PS+$x_{\mathrm{HI}}$ and GPU-MCMC prototypes.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+High-redshift ultraviolet (UV) galaxy luminosity functions (LFs), cosmic microwave background (CMB) optical depth measurements, Ly$\alpha$ forest dark-pixel bounds, and interferometric 21-cm power-spectrum upper limits probe overlapping astrophysical and cosmological physics during cosmic dawn and the epoch of reionization (EoR) \cite{Mesinger2011,Park2019,Planck2018,McGreer2015,Donnan2024,HERA2023}. When nonstandard small-scale primordial or dark-matter physics enhances the matter power spectrum above wavenumbers $k \gtrsim 1\,h\,\mathrm{Mpc}^{-1}$ \cite{Parashari23JWSTPPS,Hira24bluetilt,MunozDvorkin2020}, the resulting excess of low-mass halos shifts the halo mass--UV magnitude relation and reionization timing. Constraining small-scale spectral parameters robustly therefore requires marginalizing simultaneously over flexible galaxy-formation, ionizing-escape, and intergalactic medium (IGM) heating prescriptions rather than holding astrophysics fixed. While UV LFs can be evaluated rapidly from extended Press--Schechter halo mass functions, three-dimensional seminumerical reionization and 21-cm simulations in \textsc{21cmFAST} \cite{Mesinger2011,Murray2020} remain far too costly per evaluation for exhaustive multi-prior Bayesian inference across eight to ten dimensions without surrogate acceleration.
+
+Neural emulation of \textsc{21cmFAST} summary observables is a well-established methodology. Notably, \textsc{21cmEMU} \cite{Breitman2024} demonstrated fast accurate surrogates for standard $\Lambda$CDM astrophysics, and \textsc{21cmEMUv3} \cite{Breitman2026} extended emulation with hybrid diffusion--long short-term memory (LSTM) architectures incorporating explicit initial-condition (IC) stochasticity. The \textsc{BTemu} framework described in this work addresses a distinct, complementary regime: joint emulation across an extended ten-dimensional domain combining the eight astrophysical parameters of Park \textit{et al.}~\cite{Park2019} with two phenomenological parameters characterizing a broken small-scale linear matter power spectrum---break scale $k_p$ and small-scale tilt $m_s$---evaluated under frozen production box, resolution, physics, and threading contracts.
+
+The present methods paper deliberately separates surrogate architecture, data contracts, numerical reproducibility, random-IC likelihood target semantics, and power-spectrum training-budget scaling from the astrophysical constraint analysis reported in our companion physical inference paper, which utilizes the validated \textsc{BTemu}-$x_{\mathrm{HI}}$ surrogate solely as a calibrated likelihood tool alongside exact UV LFs. Equally important, because active extensions of \textsc{BTemu} to joint 21-cm power-spectrum emulation and GPU-accelerated Markov Chain Monte Carlo (MCMC) are currently at intermediate release-audit stages, we adopt strict validation-gate discipline throughout: verified local, cluster, and posterior-stratified results are presented with full quantitative provenance, whereas preliminary prototypes exhibiting validation-split overlap or unverified MCMC diagnostics are explicitly segregated into open acceptance gates rather than presented as unbiased benchmarks.
+
+The remainder of this paper is organized as follows. Section~\ref{sec:model} specifies the modified matter power spectrum, ten-dimensional design support, simulation data contracts (\texttt{ps\_xhi\_fullbox\_v1}), the discovery of GNU Scientific Library (GSL) OpenMP thread dependence in \textsc{21cmFAST} IC generation, and exact likelihood interfaces. Section~\ref{sec:history} details the \textsc{BTemu}-$x_{\mathrm{HI}}$ architecture, five-seed ensembling, paired 65,536-to-100,000 accuracy scaling, and a finite smoke-chain comparison against exact simulations. Section~\ref{sec:ic} formalizes representative-history versus IC-marginalized likelihood targets, reconciling prior-box IC sensitivity against stratified direct-simulation validation inside posterior support. Section~\ref{sec:ps} presents controlled 21-cm power-spectrum scaling and estimator-bias experiments alongside the 100,000-box full-box production dataset. Section~\ref{sec:gates} records all open validation gates blocking final joint-emulator and GPU-MCMC release, and Section~\ref{sec:conclusions} summarizes conclusions and code/data provenance.
+
+\section{Forward Simulation Model and Data Contracts}\label{sec:model}
+
+\subsection{Broken-Power-Law Matter Spectrum and Galaxy Model}\label{sec:bt_model}
+
+We modify the linear matter power spectrum within \textsc{21cmFAST} (\texttt{POWER\_SPECTRUM=6}) via a continuous broken power law normalized individually to fixed $\sigma_8 = 0.815$ alongside flat Planck 2015 cosmological parameters ($\Omega_m = 0.308$, $\Omega_b = 0.0484$, $h = 0.678$, $n_s = 0.968$) \cite{Planck2015,Eisenstein1998}:
+\begin{equation}
+P_{\mathrm{lin}}(k) = A(\sigma_8)\,T_{\mathrm{EH}}^2(k)
+\begin{cases}
+k^{n_s}, & k \le k_p,\\
+k^{m_s}\,k_p^{\,n_s - m_s}, & k > k_p,
+\end{cases}
+\label{eq:pk_bt}
+\end{equation}
+where $T_{\mathrm{EH}}(k)$ is the Eisenstein--Hu transfer function \cite{Eisenstein1998}, $k_p \in [1, 30]\,h\,\mathrm{Mpc}^{-1}$ is converted internally via $k_p/\mathrm{Mpc}^{-1} = h\,(k_p/[h\,\mathrm{Mpc}^{-1}])$, and $m_s \in [0.5, 4.0]$ (stored as \texttt{MS}). Holding $\sigma_8$ fixed adjusts the overall amplitude $A$ whenever enhanced small-scale power for $m_s > n_s$ contributes non-negligibly to the $8\,h^{-1}\,\mathrm{Mpc}$ variance. At $m_s = n_s = 0.968$, Eq.~\eqref{eq:pk_bt} reduces identically to the standard power-law (PL, \texttt{POWER\_SPECTRUM=0}) transfer branch \cite{Murray2020}.
+
+Galaxy star formation and ionizing escape follow the halo-mass-dependent parameterization of Ref.~\cite{Park2019}:
+\begin{align}
+f_\star(M_h) &= \min\!\left[1,\, f_{\star,10}\left(\frac{M_h}{10^{10}\,M_\odot}\right)^{\alpha_\star}\right],\\
+\dot{M}_\star &= \frac{f_\star(M_h)\,(\Omega_b/\Omega_m)\,M_h\,H(z)}{t_\star},\\
+f_{\mathrm{esc}}(M_h) &= \min\!\left[1,\, f_{\mathrm{esc},10}\left(\frac{M_h}{10^{10}\,M_\odot}\right)^{\alpha_{\mathrm{esc}}}\right],\\
+f_{\mathrm{duty}}(M_h) &= \exp\!\left(-\frac{M_{\mathrm{turn}}}{M_h}\right),
+\end{align}
+augmented by the soft X-ray luminosity per unit star formation rate $\log_{10} L_X/\mathrm{SFR}$ (\texttt{L\_X}) and photon energy threshold $E_0$ (\texttt{NU\_X\_THRESH}). Note that UV LFs depend on $\eta_\star \equiv \log_{10} f_{\star,10} - \log_{10} t_\star$, whereas the emulator input vector retains the orthogonal canonical parameterization $( \log_{10} f_{\star,10}, t_\star )$. Table~\ref{tab:params} summarizes the full ten-dimensional design support and frozen simulation flags.
+
+\begin{table}[!tbp]
+\caption{Ten-dimensional \textsc{BTemu} parameter design support and frozen simulation contract parameters (\texttt{ps\_xhi\_fullbox\_v1}). All astrophysical parameters follow Ref.~\cite{Park2019}; the native binary is verified against SHA-256 digest \texttt{3211a6629109da73...94e5702b2}.}
+\label{tab:params}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{ruledtabular}
+\begin{tabular}{llp{4.05cm}}
+Coordinate & Range & Physical meaning / unit \\
+\hline
+\texttt{F\_STAR10} & $[-3.0,\, 0.0]$ & $\log_{10} f_{\star,10}$ (SF norm.) \\
+\texttt{ALPHA\_STAR} & $[-0.5,\, 1.0]$ & $\alpha_\star$ (stellar mass slope) \\
+\texttt{F\_ESC10} & $[-3.0,\, 0.0]$ & $\log_{10} f_{\mathrm{esc},10}$ (escape norm.) \\
+\texttt{ALPHA\_ESC} & $[-1.0,\, 0.5]$ & $\alpha_{\mathrm{esc}}$ (escape slope) \\
+\texttt{M\_TURN} & $[8.0,\, 11.0]$ & $\log_{10}(M_{\mathrm{turn}}/M_\odot)$ \\
+\texttt{t\_STAR} & $[0.01,\, 1.0]$ & $t_\star$ (SF timescale) \\
+\texttt{L\_X} & $[38.0,\, 42.0]$ & $\log_{10}(L_X/\mathrm{SFR})$ ($\mathrm{erg\,s^{-1}\,yr}\,M_\odot^{-1}$) \\
+\texttt{NU\_X\_THRESH} & $[100,\, 1500]$ & $E_0/\mathrm{eV}$ (X-ray threshold) \\
+\texttt{KP\_h\_Mpc} & $[1.0,\, 30.0]$ & $k_p/(h\,\mathrm{Mpc}^{-1})$ (break) \\
+\texttt{MS} & $[0.5,\, 4.0]$ & $m_s$ (small-scale slope) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\subsection{Simulation Contract, Observables, and GSL Thread-Count Reproducibility}\label{sec:contract}
+
+All production simulations use a cubic comoving box of length $\texttt{BOX\_LEN}=250\,\mathrm{Mpc}$ with $\texttt{DIM}=512$ high-resolution initial density/velocity grid cells and $\texttt{HII\_DIM}=128$ ionization/brightness-temperature cells, second-order Lagrangian perturbation theory (\texttt{USE\_2LPT=true}), interpolation tables (\texttt{USE\_INTERPOLATION\_TABLES=true}), inhomogeneous recombinations (\texttt{INHOMO\_RECO=true}), mass-dependent ionizing efficiency (\texttt{USE\_MASS\_DEPENDENT\_ZETA=true}), spin-temperature fluctuations (\texttt{USE\_TS\_FLUCT=true}), redshift-space distortions (\texttt{APPLY\_RSDS=true}), and Ly$\alpha$/CMB heating enabled, compiled in a frozen native library binary (SHA-256 prefix \texttt{3211a6629109da73}). Coeval outputs are extracted on a standardized 32-node redshift grid $z \in \{5.0, 5.9, 6, 7, \dots, 35\}$, recording both volume-averaged neutral fraction $x_{\mathrm{HI}}(z)$ and spherically binned 21-cm brightness-temperature dimensionless power spectra $\Delta^2_{21}(k,z)$ in $\mathrm{mK}^2$.
+
+Under the joint \texttt{ps\_xhi\_fullbox\_v1} data contract, full-box spherical FFT power spectra are first binned onto 60 uniform shells $\texttt{ps\_native}$ up to the $128^3$ corner Nyquist mode ($k \in [0.0232, 2.7628]\,\mathrm{Mpc}^{-1}$) and resampled without extrapolation via piecewise-linear interpolation in $k$ onto 32 logarithmically spaced evaluation centers $\texttt{ps\_full}$ spanning $k \in [0.1, 1.0]\,\mathrm{Mpc}^{-1}$ ($\mathrm{mK}^2$). Each design point stores paired coeval $(x_{\mathrm{HI}}, \Delta^2_{21})$ from identical density and ionization boxes in atomic per-point \texttt{NPZ} archives carrying design index, requested and effective random IC seeds, split metadata, and configuration SHA-256 hashes.
+
+A critical numerical reproducibility finding discovered during cross-validation of CPU and GPU backends impacts all downstream \textsc{BTemu} dataset audits: native \textsc{21cmFAST} partitions GSL pseudo-random number generator streams across OpenMP threads during initial Fourier-mode generation. Consequently, \emph{identical integer \texttt{random\_seed} values generate different initial Fourier density realizations when executed with $\texttt{N\_THREADS}=8$ versus $\texttt{N\_THREADS}=16$}. In paired cross-checks, an unpinned 8-thread CPU replay against a 16-thread history label produced spurious $3\text{--}13\sigma$ single-bin SKA-Low residuals, whereas matching $\texttt{N\_THREADS}=16$ reduced four-IC and point residuals to $0.033\text{--}0.052\sigma$. All canonical \textsc{BTemu} contracts, A3 direct-simulation audits, and multi-IC \texttt{training\_ic1} extensions therefore explicitly pin $\texttt{N\_THREADS}=16$ alongside integer seed and native binary SHA-256.
+
+\subsection{Observational Likelihood Interface}\label{sec:likelihood}
+
+Inference interfaces combine an exact analytical/numerical UV LF likelihood $\ell_{\mathrm{LF}}^{\mathrm{exact}}(\theta)$ (spanning 34 HST \cite{Bouwens2015,Bouwens2017} and JWST \textsc{PRIMER} \cite{Donnan2024} points at $z=6\text{--}10$ with $M_{\mathrm{UV}} > -20$ without emulator approximation) with two reionization observables computed directly from the emulated 32-node neutral-fraction history $\widehat{X}(\theta) \equiv \{\widehat{x}_{\mathrm{HI}}(z_j)\}_{j=1}^{32}$:
+\begin{align}
+\ell_{\tau}[X] &= -\frac{1}{2}\left[\frac{\tau[X] - 0.0544}{\sigma_{\tau}(X)}\right]^2,\nonumber\\
+\sigma_\tau(X) &= \begin{cases} 0.0081, & \tau[X] < 0.0544,\\ 0.0070, & \tau[X] \ge 0.0544, \end{cases}\\
+\ell_x[X] &= -\frac{1}{2}\left[\frac{\max\{0,\, X(5.9) - 0.06\}}{0.05}\right]^2,
+\end{align}
+corresponding respectively to the \textit{Planck} 2018 TT,TE,EE+lowE Thomson scattering optical depth constraint \cite{Planck2018} and the McGreer \textit{et al.} dark-pixel neutral-fraction limit at $z=5.9$ \cite{McGreer2015}. The Thomson optical depth functional $\tau[X]$ is integrated using the executable \texttt{compute\_tau} adapter (\texttt{tau\_from\_history}) over $z \in [5, 35]$ on 31 interpolation nodes matching native \textsc{21cmFAST} Helium-weighting conventions. Defining $\ell_{\mathrm{hist}}[X] \equiv \ell_{\tau}[X] + \ell_x[X]$, the deployed representative-history log-likelihood reads
+\begin{equation}
+\ell_{\mathrm{rep}}(\theta) = \ell_{\mathrm{LF}}^{\mathrm{exact}}(\theta) + \ell_{\mathrm{hist}}[\widehat{X}(\theta)].
+\label{eq:lrep}
+\end{equation}
+
+\section{Neutral-Fraction History Emulator (\texorpdfstring{\textsc{BTemu}-$x_{\mathrm{HI}}$}{BTemu-xHI})}\label{sec:history}
+
+\subsection{Architecture and Ensembling}\label{sec:xhi_arch}
+
+The \textsc{BTemu}-$x_{\mathrm{HI}}$ architecture is governed by the frozen \texttt{architecture\_contract.json} specification: a pre-normalized residual multilayer perceptron (PreNorm ResMLP) mapping ten z-scored physical coordinates to the 32-node vector $x_{\mathrm{HI}}(z) \in (0, 1)^{32}$ via a final sigmoid decoder, without heuristic monotonicity or end-of-reionization clamping so that incomplete reionization histories produced natively by the simulator at $z=5$ remain faithfully represented. The backbone comprises an input linear projection of width $W=256$, four residual blocks each applying LayerNorm, two linear transforms of hidden width $H=512$ with $\mathrm{SiLU}$ activation, and residual contribution scaled by $0.5$, initialized with Xavier uniform weights and zero biases. Standardization statistics are computed strictly from the training split. Networks minimize physical-space mean squared error (MSE) equally weighted across all 32 redshift nodes using \texttt{AdamW} (learning rate $10^{-3}$, weight decay $10^{-4}$, batch size $128$, up to $1{,}000$ epochs with validation-plateau learning-rate decay and early stopping). To suppress initialization variance and smooth predictions, five independent random training seeds ($11, 29, 47, 71, 101$) are averaged arithmetically in physical $x_{\mathrm{HI}}$ space. Each training design point in the scrambled Sobol design (\texttt{random\_ic\_v2}) carries a single independent random IC seed that is withheld from network inputs, causing MSE minimization to target the conditional expectation $\mathbb{E}_{\mathrm{IC}}[x_{\mathrm{HI}} \mid \theta]$.
+
+\subsection{Accuracy Verification and 65,536-to-100,000 Scaling}\label{sec:xhi_acc}
+
+Figure~\ref{fig:xhi_acc} and Table~\ref{tab:xhi_val} quantify trajectory and observable reconstruction across two model generations: the initial 65,536-history baseline (\texttt{20261026}) and the expanded 100,000-history production surrogate (\texttt{random\_ic\_development\_100000\_20261103}), evaluated both on the frozen 512-history development-validation set (exact matched parameter IDs and reference labels verified via SHA-256) and on the full 10,000-history development split.
+
+On the 512-history benchmark, averaging five seeds outperforms every individual member: individual seeds span median trajectory RMSE $0.001276\text{--}0.001524$ ($q_{95} = 0.007786\text{--}0.010080$), whereas the five-seed ensemble lowers median RMSE to $0.001008$ and $q_{95}$ to $0.006815$ (mean $0.002132$, maximum $0.040523$; $q_{95}$ within-history max absolute error $0.028465$). Scaling training coverage by $52.6\%$ from 65,536 to 100,000 unique parameter-IC pairs on those identical 512 validation points reduces every downstream error metric monotonically: $x_{\mathrm{HI}}(5.9)$ RMSE drops by $35.6\%$ ($0.006986 \to 0.004501$, MAE $-22.7\%$), $\tau$ RMSE drops by $23.2\%$ ($8.74\times 10^{-4} \to 6.72\times 10^{-4}$, $q_{95}$ $-27.9\%$), and reionization log-likelihood errors $|\Delta\ell_{\mathrm{hist}}|$ drop by $26.6\%$ at $q_{90}$ ($1.612 \to 1.183$) and $25.2\%$ at $q_{95}$ ($2.734 \to 2.046$). Evaluated over all 10,000 development-validation points of the 100k model, median trajectory RMSE reaches $8.51\times 10^{-4}$ ($q_{95} = 5.56\times 10^{-3}$), $q_{90}$ error in $\tau$ is $3.35\times 10^{-4}$, $q_{90}$ error in $x_{\mathrm{HI}}(5.9)$ is $0.00457$ with only $25/10{,}000$ threshold crossings across $x_{\mathrm{HI}}(5.9)=0.06$, and prior-box $q_{90}(|\Delta\ell_{\mathrm{hist}}|)$ is $1.177$.
+
+\figwide{figures/fig1_history_accuracy.pdf}{Validation of \textsc{BTemu}-$x_{\mathrm{HI}}$ across the frozen 512-history benchmark and 100,000-history expansion. (a) Representative neutral-fraction trajectories at ascending-RMSE ranks 256 (median, $\mathrm{RMSE}=0.00100$) and 487 ($q_{95}$, $\mathrm{RMSE}=0.00690$), comparing simulated truth (solid) with five-seed ensemble predictions (dashed) and five-seed envelope (shading) over $z \in [5,22]$. (b) Signed residuals $(\widehat{x}_{\mathrm{HI}}-x_{\mathrm{HI}})\times 10^3$ compared against the 512-history $q_{90}$ envelope (blue band) and the T7 128-family mean IC scatter $\bar{s}_{\mathrm{IC}}(z)$ (dot-dashed). (c) Empirical trajectory-RMSE cumulative distribution across all 512 histories showing the variance reduction from five individual seeds (thin gray) to their ensemble (thick navy), with 100k 10,000-history development quantiles indicated vertically. (d) Paired percentage error reductions on identical 512 validation histories when scaling from 65,536 to 100,000 training realizations.}{fig:xhi_acc}
+
+\begin{table*}[!tbp]
+\caption{Validation performance of \textsc{BTemu}-$x_{\mathrm{HI}}$. Top: five-seed vs.\ individual-seed trajectory RMSE on the frozen 512-history split (65,536 model). Middle: paired comparison of 65,536 vs.\ 100,000 models on the same 512 validation points. Bottom: full 10,000-history development summary of the 100k model. Superscript $a$ denotes $q_{95}$ (95th percentile); superscript $b$ denotes the maximum trajectory RMSE across the 512 points (mean is $0.002132$).}
+\label{tab:xhi_val}
+\begin{ruledtabular}
+\begin{tabular}{llccc}
+Model / split & Metric & Median / MAE & $q_{90}$ / $q_{95}$ & RMSE / max \\
+\hline
+65k, 5-seed ensemble (512 val) & Trajectory RMSE & 0.001008 & $0.006815^{a}$ & $0.04052^{b}$ \\
+65k, individual seeds (512 val) & Trajectory RMSE & 0.001276--0.001524 & 0.007786--$0.010080^{a}$ & \dots \\
+\hline
+65,536 paired (512 val) & $x_{\mathrm{HI}}(5.9)$ & 0.002289 & $0.005206 / 0.009286$ & 0.006986 \\
+100,000 paired (512 val) & $x_{\mathrm{HI}}(5.9)$ & 0.001769 & $0.004427 / 0.008188$ & 0.004501 \\
+65,536 paired (512 val) & $\tau\ (\times 10^4)$ & 2.637 & $4.415 / 9.190$ & 8.742 \\
+100,000 paired (512 val) & $\tau\ (\times 10^4)$ & 2.106 & $3.684 / 6.627$ & 6.717 \\
+65,536 paired (512 val) & $|\Delta\ell_{\mathrm{hist}}|$ & 0.896 & $1.612 / 2.734$ & 3.494 \\
+100,000 paired (512 val) & $|\Delta\ell_{\mathrm{hist}}|$ & 0.728 & $1.183 / 2.046$ & 3.145 \\
+\hline
+100k dev split (10,000) & Trajectory RMSE & 0.000851 & $0.005564^{a}$ & \dots \\
+100k dev split (10,000) & $x_{\mathrm{HI}}(5.9)$ & 0.001888 & $0.004571 / 0.008630$ & 0.005698 \\
+100k dev split (10,000) & $\tau\ (\times 10^4)$ & \dots & 3.351 ($q_{90}$) & \dots \\
+100k dev split (10,000) & $|\Delta\ell_{\mathrm{hist}}|$ & \dots & 1.177 ($q_{90}$) & \dots \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\subsection{Finite Exact-vs.-Emulator Inference Smoke Check}\label{sec:t6}
+
+As an early finite-sample cross-check (T6), we compared a 32-walker, 200-step direct-\textsc{21cmFAST} smoke chain (steps 100--199, 3,200 correlated rows at fixed $(k_p, m_s)=(10\,h\,\mathrm{Mpc}^{-1}, 2.5)$, $L_X=40.5$, $E_0=500\,\mathrm{eV}$) against steps 2500--4999 of a 5,000-step 65k-emulator chain (80,000 rows). Across the six sampled galaxy parameters ($\eta_\star, t_\star, \alpha_\star, \log_{10} M_{\mathrm{turn}}, \log_{10} f_{\mathrm{esc},10}, \alpha_{\mathrm{esc}}$), standardized finite-sample mean offsets $(\mu_e-\mu_m)/\sigma_m$ remain within $[-0.100, +0.219]$ ($\alpha_{\mathrm{esc}}$ largest) and standard-deviation ratios $s_e/s_m$ span $0.895\text{--}1.068$ with correlation-matrix Frobenius difference $0.669$ (Fig.~\ref{fig:t6}). Because the 200-step exact file is explicitly tagged unconverged (\texttt{SMOKE\_ONLY}), T6 establishes finite-sample consistency rather than asymptotic posterior equivalence, motivating the direct posterior-stratified \textsc{21cmFAST} validations below.
+
+\figcolumn{figures/fig2_t6_exact_vs_emu.pdf}{Finite-chain T6 smoke comparison between a 3,200-row direct-\textsc{21cmFAST} run and an 80,000-row 65,536-model emulator segment across six astrophysical parameters at fixed $(k_p, m_s)=(10\,h\,\mathrm{Mpc}^{-1}, 2.5)$. (a) Mean difference normalized by the exact finite-sample standard deviation ($\max = 0.219$). (b) Sample width ratios ($0.895\text{--}1.068$; shaded bands mark $\pm 0.25\sigma$ and $\pm 10\%$).}{fig:t6}
+
+\section{Random Initial Conditions and Likelihood Target Semantics}\label{sec:ic}
+
+Because \textsc{BTemu}-$x_{\mathrm{HI}}$ trains on single independent random IC realizations without conditioning on the IC seed, its regression target approximates the conditional mean $\bar{X}(\theta) = \mathbb{E}_{\mathrm{IC}}[x_{\mathrm{HI}} \mid \theta]$. Because the likelihood $\mathcal{L}_{\mathrm{hist}}[X] \equiv \exp(\ell_{\mathrm{hist}}[X])$ is nonlinear---especially near the piecewise-quadratic threshold $x_{\mathrm{HI}}(5.9)=0.06$ and in exponentially steep prior-box tails---Jensen's inequality and realization variance imply
+\begin{equation}
+\mathbb{E}_{\mathrm{IC}}\!\left[\mathcal{L}_{\mathrm{hist}}(X)\right]
+\neq \mathcal{L}_{\mathrm{hist}}\!\left(\mathbb{E}_{\mathrm{IC}}[X]\right).
+\label{eq:jensen}
+\end{equation}
+Evaluating the fidelity of \textsc{BTemu} therefore requires distinguishing prior-volume worst-case scatter from likelihood accuracy inside the region supported by observations.
+
+\subsection{T7 Prior-Box Multi-IC Audit}\label{sec:t7}
+
+We evaluated 128 parameter families across the full ten-dimensional design box with eight realizations per family ($128$ fixed references plus $896$ fresh random ICs; Table~\ref{tab:t7_a3}). Define the family eight-IC average history $\bar{X}_8$ and the signed gap between representative-history and IC-marginal log-likelihoods,
+\begin{equation}
+\delta\ell \equiv \ell_{\mathrm{hist}}[\bar{X}_8] - \ln\!\left[\frac{1}{8}\sum_{r=1}^8 \exp\left(\ell_{\mathrm{hist}}[X_r]\right)\right].
+\label{eq:deltal}
+\end{equation}
+Across the full prior box, physical trajectory IC scatter is modest ($q_{50}=2.88\times 10^{-4}$, $q_{90}=0.00313$, $s_{\mathrm{IC}}(\tau)$ $q_{90}=1.35\times 10^{-4}$, $s_{\mathrm{IC}}[x_{\mathrm{HI}}(5.9)]$ $q_{90}=0.00751$, with mean IC scatter peaking at $0.00213$ at $z=5.9$). However, in low-$f_{\mathrm{esc}}$ or late-reionizing prior draws where $\ell_{\mathrm{hist}} \ll -10$, small absolute variations in $x_{\mathrm{HI}}(5.9)$ amplify into large log-likelihood spread: $q_{90}[s_{\mathrm{IC}}(\ell_{\mathrm{hist}})] = 0.948$ ($\max = 2.210$) and $13/128$ families cross the $x_{\mathrm{HI}}(5.9)=0.31$ diagnostic screen across realizations, failing the conservative uniform-prior single-IC screen (\texttt{MULTI\_IC\_AVERAGING\_REQUIRED}). Furthermore, reporting signed quantiles of $\delta\ell$ ($q_{50}=-0.00249$, $q_{90}=1.12\times 10^{-7}$, $q_{95}=6.03\times 10^{-7}$) understates tail magnitude because large positive and negative discrepancies cancel around zero; the completion audit records $q_{90}(|\delta\ell|) = 0.308$ and $\max |\delta\ell| = 1.908$.
+
+\subsection{Reconciliation Inside Observational Posterior Support (A3)}\label{sec:a3}
+
+Does prior-box IC amplification distort Bayesian posteriors dominated by UV LF + $\tau$ + $x_{\mathrm{HI}}(5.9)$ observations? To test this directly, we ran 32 stratified validation points drawn from converged 8D (\texttt{joint8d}) and 6D (\texttt{fixed\_joint}, \texttt{fixed\_lf\_tau}) \textsc{BTemu} posterior chains---explicitly oversampling bulk high-probability regions, low-$f_{\mathrm{esc}}$ tails, and the $x_{\mathrm{HI}}(5.9)=0.06$ kink---totaling 56 direct \textsc{21cmFAST} simulations pinned to \texttt{N\_THREADS=16} (including eight points simulated with four independent ICs each; Table~\ref{tab:t7_a3} and Fig.~\ref{fig:ic_post}).
+
+Inside actual posterior support, likelihood errors collapse by more than an order of magnitude relative to the prior box: $\ell_{\mathrm{reion}}$ achieves $\mathrm{MAE}=0.024$ and $q_{90}=0.056$ ($\max = 0.153$) across 28 \texttt{joint8d} tasks, and $\mathrm{MAE}=0.011$, $q_{90}=0.026$ ($\max = 0.042$) across 20 \texttt{fixed\_joint} tasks. The single $\max |\Delta \ell_{\mathrm{reion}}| = 1.336$ outlier occurs exclusively in the low-$f_{\mathrm{esc}}$ tail of \texttt{fixed\_lf\_tau} where $x_{\mathrm{HI}}(5.9)$ likelihood is inactive (while the active $\ell_{\tau}$ term remains accurate within $\max = 0.036$). Most decisively, across all eight four-IC posterior points---including four points straddling the $x_{\mathrm{HI}}(5.9)=0.06$ threshold---individual IC realizations vary by up to $\pm 0.056$ around $\ell_{\mathrm{IC\text{-}avg}}$, whereas replacing IC marginalization by the four-IC mean history $\ell(\bar{X}_4)$ differs by at most $0.0054$, and the 100k \textsc{BTemu}-$x_{\mathrm{HI}}$ prediction tracks both targets within $0.0001\text{--}0.033$ (Table~\ref{tab:t7_a3}, Fig.~\ref{fig:ic_post}b). This directly confirms that representative-history emulation introduces negligible bias within the observational posterior support while remaining computationally orders of magnitude cheaper than multi-IC MCMC likelihood averaging.
+
+\figwide{figures/fig3_ic_and_posterior_val.pdf}{Reconciling prior-box T7 IC variance with A3 posterior direct-\textsc{21cmFAST} validation. (a) Magnitude of log-likelihood discrepancies ($|\Delta \ell|$ on log scale) across three prior-box diagnostics (shaded upper rows: T7 IC spread, T7 $|\delta\ell|$ mean-history vs.\ IC-average with $q_{90}$ from completion audit, and 100k 512-history validation) compared against A3 stratified posterior runs (\texttt{joint8d}, \texttt{fixed\_joint}, \texttt{fixed\_lf\_tau} active $\ell_\tau$, and 4-IC $|\ell(\bar{X}_4)-\ell_{\mathrm{avg}}|$). The cross marks the inactive low-$f_{\mathrm{esc}}$ $x_{\mathrm{HI}}$ tail not used in \texttt{fixed\_lf\_tau}. (b) Point-by-point offsets across all eight four-IC posterior points comparing individual IC scatter (slate dots/bars), $\ell(\bar{X}_4)$ (navy squares, $\le 0.0054$), and 100k \textsc{BTemu} predictions (amber diamonds, $\le 0.028$ vs.\ $\ell_{\mathrm{IC\text{-}avg}}$).}{fig:ic_post}
+
+\begin{table*}[!tbp]
+\caption{T7 prior-box eight-IC sensitivity (128 families, 1,024 realizations) contrasted with A3 posterior-stratified direct \textsc{21cmFAST} runs (32 unique points, 56 tasks, $\texttt{N\_THREADS=16}$). Note $a$: reported in the T7 completion audit; the released summary JSON lists signed quantiles $q_{50}=-0.002491$, $q_{90}=1.12\times 10^{-7}$, $q_{95}=6.03\times 10^{-7}$.}
+\label{tab:t7_a3}
+\begin{ruledtabular}
+\begin{tabular}{llccc}
+Audit / subset & Quantity & Median / MAE & $q_{90}$ & Max \\
+\hline
+T7 prior (128 families) & Trajectory $s_{\mathrm{IC}}$ RMS & 0.000288 & 0.003133 & 0.005158 \\
+T7 prior (128 families) & $s_{\mathrm{IC}}(\tau)\ (\times 10^4)$ & 0.286 & 1.351 & 2.736 \\
+T7 prior (128 families) & $s_{\mathrm{IC}}[x_{\mathrm{HI}}(5.9)]$ & 0.000125 & 0.007511 & 0.02205 \\
+T7 prior (128 families) & $s_{\mathrm{IC}}(\ell_{\mathrm{hist}})$ & 0.0769 & 0.9481 & 2.210 \\
+T7 prior (128 families) & $|\delta\ell|$ (mean history vs.\ IC avg.) & \dots & $0.3082^{a}$ & 1.908 \\
+\hline
+A3 \texttt{joint8d} (28 tasks) & $|\Delta\ell_{\mathrm{reion}}|$ & 0.024 & 0.056 & 0.153 \\
+A3 \texttt{fixed\_joint} (20 tasks) & $|\Delta\ell_{\mathrm{reion}}|$ & 0.011 & 0.026 & 0.042 \\
+A3 \texttt{fixed\_lf\_tau} (8 tasks) & $|\Delta\ell_{\tau}|$ (active $\tau$ term) & 0.010 & 0.029 & 0.036 \\
+A3 \texttt{fixed\_lf\_tau} (8 tasks) & $|\Delta\ell_{\mathrm{reion}}|$ (unused $x_{\mathrm{HI}}$ tail) & 0.469 & 1.315 & 1.336 \\
+A3 4-IC posterior (8 pts) & $|\ell(\bar{X}_4)-\ell_{\mathrm{IC\text{-}avg}}|$ & \dots & \dots & 0.0054 \\
+A3 4-IC posterior (8 pts) & $|\ell_{\mathrm{BTemu}}-\ell_{\mathrm{IC\text{-}avg}}|$ & \dots & \dots & 0.0274 \\
+A3 4-IC posterior (8 pts) & $|\ell_{\mathrm{BTemu}}-\ell(\bar{X}_4)|$ & \dots & \dots & 0.0328 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\section{Full-Box 21-cm Power-Spectrum Emulation (\texorpdfstring{\textsc{BTemu}-PS}{BTemu-PS})}\label{sec:ps}
+
+Extending \textsc{BTemu} from scalar neutral-fraction curves to the 21-cm brightness-temperature power spectrum $\Delta^2_{21}(k,z)$ over 32 redshifts and 32 $k$-bins requires diagnosing two fundamental data-engineering trade-offs before scaling to 100,000 simulations: (i) how to allocate finite simulation budgets between unique design points and IC replicates per point, and (ii) whether subbox power-spectrum averages can substitute for full-box spherical FFTs. Throughout this section, power-spectrum errors are evaluated as root-mean-square error in $\log_{10}(\Delta^2_{21}/\mathrm{mK}^2 + 0.01)$ (denoted in $\mathrm{dex}$), preventing divide-by-zero blowup when reionization nears completion.
+
+\subsection{Single-IC Coverage vs.\ Multi-IC Replication}\label{sec:ps_ic_budget}
+
+Using an initial $9\times 20$ redshift-wavenumber pilot ($z \in [6.34, 18.21]$, $k \in [0.116, 0.996]\,\mathrm{Mpc}^{-1}$, evaluated against held-out four-IC mean spectra across 108 independent test points), we isolated the impact of training with one IC versus four ICs per parameter point at fixed $N_{\mathrm{train}}=534$, as well as scaling $N_{\mathrm{train}}$ at fixed architecture (Table~\ref{tab:ps_pilot} and Fig.~\ref{fig:ps_scaling}).
+
+At $N_{\mathrm{train}}=534$, single-IC training achieves $0.5808\,\mathrm{dex}$ overall log-RMSE (median fractional error $41.1\%$, $q_{90}=193.7\%$), nearly indistinguishable from four-IC target averaging ($0.5786\,\mathrm{dex}$, median $41.0\%$, $q_{90}=192.9\%$) despite costing one quarter as many simulations. Across the $(z,k)$ plane, emulator RMSE exceeds four-IC intrinsic sample scatter $s_{\mathrm{IC}}$ by factors of $4.89\text{--}65.8\times$ (Fig.~\ref{fig:ps_scaling}a), peaking near mid-reionization $z \sim 8\text{--}10$. Conversely, expanding parameter coverage from $267$ (4-IC) to $534$ (4-IC) to $2,326$ (mixed 1-IC/4-IC) lowers overall RMSE sharply from $0.5965$ to $0.5786$ to $0.3435\,\mathrm{dex}$ (and low-$z$ RMSE from $0.7434 \to 0.7284 \to 0.4450\,\mathrm{dex}$; Fig.~\ref{fig:ps_scaling}b). Broad 10D parameter coverage with one random IC per point thus strictly dominates multi-IC replication under any fixed simulation budget.
+
+\figwide{figures/fig4_ps_pilot_scaling_and_ic.pdf}{Controlled pilot findings guiding the \textsc{BTemu}-PS simulation strategy. (a) Log-RMSE ($\log_{10}[\Delta^2_{21}+0.01]$ in dex, color shading) overlaid with contours of the emulator-to-4-IC-scatter ratio ($\mathrm{RMSE}/s_{\mathrm{IC}}$, spanning $4.9\times\text{--}65.8\times$) over the $9\times 20$ pilot grid at $N_{\mathrm{train}}=534$. (b) Overall (navy) and low-$z$ ($z\le 7.97$, dashed teal) test RMSE vs.\ unique training design points $N_{\mathrm{train}}$, demonstrating parity between 1-IC ($0.581\,\mathrm{dex}$, amber diamond) and 4-IC ($0.579\,\mathrm{dex}$) training at $N=534$ alongside monotonic coverage gains to $N=2{,}326$ ($0.344\,\mathrm{dex}$), plus the full-box $32\times 32$ progression from $N=128$ ($1.129\,\mathrm{dex}$, constant baseline $1.437\,\mathrm{dex}$) to the clean 47-point CHPC 100k MLP benchmark ($0.2627\,\mathrm{dex}$).}{fig:ps_scaling}
+
+\begin{table*}[!tbp]
+\caption{Power-spectrum pilot scaling, estimator bias tests, and clean cluster external benchmarks evaluated in $\log_{10}(\Delta^2_{21}+0.01)$ ($\mathrm{dex}$). Superscript $a$: five-seed MLP evaluation yields median per-point RMSE $0.1484\,\mathrm{dex}$ and $q_{90}$ point RMSE $0.4029\,\mathrm{dex}$, flagged \texttt{production\_accepted=false}.}
+\label{tab:ps_pilot}
+\begin{ruledtabular}
+\begin{tabular}{llcc}
+Experiment / benchmark & Grid ($z \times k$) & Held-out test set & Overall RMSE (dex) \\
+\hline
+Pilot $N=267$ (4-IC training) & $9 \times 20$ (subbox) & 108 (4-IC mean) & 0.5965 \\
+Pilot $N=534$ (1-IC training) & $9 \times 20$ (subbox) & 108 (4-IC mean) & 0.5808 \\
+Pilot $N=534$ (4-IC training) & $9 \times 20$ (subbox) & 108 (4-IC mean) & 0.5786 \\
+Pilot $N=2{,}326$ (mixed 1-IC / 4-IC) & $9 \times 20$ (subbox) & 108 (4-IC mean) & 0.3435 \\
+Subbox model vs.\ full-box truth & $9 \times 20$ & 64 (250\,Mpc 4-IC full box) & 1.0661 \\
+$\hookrightarrow$ after 32-pair median-ratio corr. & $9 \times 20$ & 64 (250\,Mpc 4-IC full box) & 1.0631 \\
+Full-box constant baseline & $32 \times 32$ (full) & 64 (250\,Mpc 4-IC full box) & 1.4366 \\
+Full-box scratch MLP ($N=128$) & $32 \times 32$ (full) & 64 (250\,Mpc 4-IC full box) & 1.1286 \\
+CHPC \texttt{ps\_mlp\_cluster\_v1} ($N=100\mathrm{k}$) & $32 \times 32$ (full) & 47 (clean external) & $0.2627^{a}$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\subsection{Subbox Estimator Bias and Full-Box Contract Production}\label{sec:ps_estimator}
+
+A second architectural hazard arises from evaluating power spectra via 12-subbox averaging rather than the native 250\,Mpc full-box spherical FFT. Direct paired comparisons at $k \in [0.1, 1.0]\,\mathrm{Mpc}^{-1}$ expose strongly parameter-dependent low-$k$ distortion (Fig.~\ref{fig:ps_est}a): while design point \texttt{199} ($k_p=4.33$, $m_s=4.00$) stays within $0.95\text{--}1.05\times$, point \texttt{833} ($k_p=1.62$, $m_s=3.27$) exhibits a monotonic excess reaching $1.480\times$ at $z=7.97, k=0.116\,\mathrm{Mpc}^{-1}$ ($1.508\times$ at $k=0.101\,\mathrm{Mpc}^{-1}$). Consequently, evaluating the 2,326-point subbox-trained emulator directly against 64 independent four-IC 250\,Mpc full-box spectra yields $1.0661\,\mathrm{dex}$ error, and applying an empirical 32-pair median-ratio correction reduces this by merely $0.0030\,\mathrm{dex}$ to $1.0631\,\mathrm{dex}$ (low-$z$, low-$k$ actually shifts slightly from $0.8654$ to $0.8671\,\mathrm{dex}$). Matching training and evaluation estimators natively via full-box spherical FFTs is therefore mandatory.
+
+Training on the full $32\times 32$ contract grid with only $N=128$ initial full-box realizations improves over the constant baseline ($1.4366 \to 1.1286\,\mathrm{dex}$) while visibly underfitting spectral shapes at median-error validation point \texttt{80475} (Fig.~\ref{fig:ps_est}b). We therefore executed full-scale simulation production under \texttt{ps\_xhi\_fullbox\_v1} (\texttt{ps\_xhi32\_pilot\_20261110}): all $100{,}000 / 100{,}000$ single-IC full-box \texttt{NPZ} files have completed generation (with a frozen $95{,}000$ train / $5{,}000$ development export manifest containing 14 verified replacements), alongside 64 four-IC validation boxes and an ongoing second-IC replication sweep (\texttt{training\_ic1}, 15,657+ realizations). On 47 verified disjoint external validation points, a five-seed baseline MLP trained on this 100k dataset (\texttt{ps\_mlp\_cluster\_v1}) reaches $\mathrm{RMSE}_{\log_{10}} = 0.2627\,\mathrm{dex}$ (median point RMSE $0.1484\,\mathrm{dex}$, $q_{90} = 0.4029\,\mathrm{dex}$; marked \texttt{production\_accepted=false} pending higher-capacity architectures), while an intermediate 100k Conv+FiLM cluster run (\texttt{emu\_conv100k.pt}) logged $0.0866\,\mathrm{dex}$ RMSE ($2.9\%$ median bin error, awaiting unified external test-set verification).
+
+\figwide{figures/fig5_ps_estimator_and_fullbox.pdf}{Subbox estimator bias and full-box $32\times 32$ validation baseline. (a) Ratio of 12-subbox to 250\,Mpc full-box spherical-FFT power spectra across $k \in [0.1, 1.0]\,\mathrm{Mpc}^{-1}$ for design points \texttt{833} and \texttt{199} at $z=6.34, 7.10, 7.97$, highlighting the strongly parameter-dependent low-$k$ excess (up to $1.48\times$ at $k=0.116\,\mathrm{Mpc}^{-1}$) that prevents global ratio rescaling of subbox models. (b) Representative $32\times 32$ full-box power spectra ($z=7, 8, 10$) for the median-error validation box (\texttt{id=80475}) comparing true four-IC full-box spectra (solid) against the under-sampled $N=128$ initial baseline (dashed, $1.129\,\mathrm{dex}$ overall), illustrating the target dynamic range addressed by our 100,000-box production dataset.}{fig:ps_est}
+
+\section{Open Validation Gates and Release Criteria}\label{sec:gates}
+
+To uphold strict scientific transparency, several recent GPU-cluster milestones on the joint $\mathrm{PS}+x_{\mathrm{HI}}$ surrogate and GPU-accelerated MCMC sampler remain \emph{blocked} from science release and must not be cited as unbiased performance until specific verification gates pass (Table~\ref{tab:gates}):
+
+\begin{enumerate}
+\item \textbf{Joint $\mathrm{PS}+x_{\mathrm{HI}}$ validation-split decontamination (\texttt{phy-gpus} \texttt{emu\_joint\_l10.pt})}: Six three-seed joint-loss runs ($800$ epochs, $\lambda \in [0.3, 4.0]$ plus stop-gradient and auto-weight ablations) achieved an apparent minimum under $\lambda=1.0$ (\texttt{PS rmse\_log10=0.0582}, median relative error $2.61\%$, $x_{\mathrm{HI}}$ RMSE $= 0.00352$, whereas \texttt{stop\_grad=true} failed on $x_{\mathrm{HI}}$ with RMSE $= 0.47165$). However, audit log \texttt{valchk-488126.log} subsequently uncovered that \emph{54 of the 64 validation boxes overlapped identically with the 100,000-point training pool} (and the audit script aborted due to missing \texttt{scipy}). None of these apparent metrics constitute valid out-of-sample generalization; unbiased evaluation on strictly disjoint multi-IC external simulations and downstream likelihood L2/L3 recovery tests are required prior to release.
+\item \textbf{Multi-ensemble convergence and truth alignment for 6D GPU MCMC (Job \texttt{487488})}: A $1{,}000{,}000$-step GPU MCMC sweep across fixed $(k_p, m_s)$ grids ($990{,}000$ post-burn steps, $12.40\%$ acceptance, $03\mathrm{h}17\mathrm{m}$ wall time) explicitly exited with \texttt{all\_local\_diagnostics\_pass=false}, \texttt{global\_convergence\_established=false}, \texttt{mock\_only=true}, and \texttt{production\_accepted=false}, having used only single-ensemble initialization (precluding multi-chain rank-normalized $\widehat{R}$ checks \cite{Vehtari2021}) and fixed $(L_X, E_0)=(40.5, 500\,\mathrm{eV})$ misaligned with the injected mock truth. Release requires multi-ensemble restarts with split $\widehat{R}$, truth-aligned X-ray settings, and A3-style direct-\textsc{21cmFAST} posterior spot checks.
+\item \textbf{Second-IC (\texttt{training\_ic1}) completion and unified Conv+FiLM audit}: Ongoing generation of IC2 replicates ($15{,}657+$ points currently complete) will establish cosmic-variance error floors at $N=100{,}000$, while the logged CHPC Conv+FiLM run (\texttt{emu\_conv100k.pt}, $0.0866\,\mathrm{dex}$) requires unified audit against the same disjoint external benchmark and pinned \texttt{N\_THREADS=16} contract.
+\end{enumerate}
+
+\begin{table*}[!tbp]
+\caption{Status summary of \textsc{BTemu} components and explicit open validation gates separating release-ready capabilities from blocked prototypes as of November 21, 2026.}
+\label{tab:gates}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{ruledtabular}
+\begin{tabular}{p{3.50cm}p{2.75cm}p{3.90cm}p{2.30cm}p{3.75cm}}
+Component / artifact & Sample / test basis & Key verified or logged metric & Audit status & Required release gate \\
+\hline
+\textsc{BTemu}-$x_{\mathrm{HI}}$ (100k 5-seed) & 512 paired + 10k dev + 56 A3 runs & $q_{50}$ RMSE $8.51\times 10^{-4}$; A3 $\ell_{\mathrm{reion}}$ $q_{90}=0.056$ (8D), $0.026$ (6D) & \textbf{RELEASED} (verified) & Deployed in companion inference (6D/8D history likelihoods) \\
+\texttt{ps\_xhi32\_pilot\_}\allowbreak\texttt{20261110} & 100k 1-IC + 64 4-IC val & SHA-256 contract, \texttt{N\_THREADS=16} & \textbf{DATA READY} & Complete \texttt{training\_ic1} IC2 \\
+CHPC \texttt{ps\_mlp\_cluster\_v1} & 47 clean external pts & $\mathrm{RMSE}=0.2627\,\mathrm{dex}$ (med.\ 0.1484) & \texttt{prod\_acc=false} & Baseline only; upgrade arch. \\
+CHPC \texttt{emu\_conv100k.pt} & CHPC \texttt{SESSION\_BRIEF} & $0.0866\,\mathrm{dex}$ ($2.9\%$ med.\ err.) & Intermediate log & Re-audit on disjoint external 4-IC \\
+\texttt{phy-gpus} \texttt{emu\_joint\_l10.pt} & 64 val (\textbf{54/64 train overlap}) & Logged $0.0582\,\mathrm{dex}$ / $x_{\mathrm{HI}}$ $0.00352$ & \textbf{BLOCKED} & Decontaminate split + L2/L3 test \\
+\texttt{phy-gpus} 6D MCMC (\texttt{487488}) & 1M steps, single ensemble & \texttt{mock\_only}, \texttt{conv=false}, $L_X$ mismatch & \textbf{BLOCKED} & Multi-ensemble $\widehat{R}$ + aligned truth \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\section{Conclusions and Data Availability}\label{sec:conclusions}
+
+We have established the architecture, simulation contracts, IC target semantics, and empirical scaling design of the \textsc{BTemu} emulation framework for broken-power-law small-scale matter spectra in \textsc{21cmFAST}. Five principal methodological conclusions emerge:
+\begin{enumerate}
+\item \emph{Ensembling and coverage in 10D history emulation}: Five-seed physical averaging reduces median trajectory RMSE by $21\text{--}34\%$ over individual seeds, and expanding single-IC scrambled Sobol coverage from 65,536 to 100,000 runs improves $x_{\mathrm{HI}}(5.9)$ RMSE by $35.6\%$, $\tau$ RMSE by $23.2\%$, and prior-box likelihood tails by $\sim 26\%$.
+\item \emph{Thread-pinned GSL reproducibility}: Because native \textsc{21cmFAST} partitions GSL Fourier-mode random streams by OpenMP thread count, exact multi-IC pairing and backend verification strictly require pinning \texttt{N\_THREADS=16} alongside integer random seeds and binary hashes.
+\item \emph{Reconciliation of random-IC likelihood semantics}: Although nonlinear threshold amplification causes large IC scatter in prior-box extremes ($q_{90}[s_{\mathrm{IC}}(\ell_{\mathrm{hist}})] = 0.948$), direct multi-IC and stratified simulations prove that within the observational posterior support \textsc{BTemu}-$x_{\mathrm{HI}}$ achieves $q_{90}(|\Delta\ell_{\mathrm{reion}}|) \le 0.056$ and tracks four-IC marginal likelihoods within $\le 0.033$ ($\ell(\bar{X}_4)$ within $\le 0.0054$).
+\item \emph{Full-box single-IC scaling for 21-cm power spectra}: Single-IC training matches four-IC target averaging ($0.581$ vs.\ $0.579\,\mathrm{dex}$) at one quarter the simulation cost while sample coverage dominates accuracy gains; simultaneously, 12-subbox averaging introduces up to $1.48\times$ parameter-dependent low-$k$ bias that post-hoc median corrections fail to remove ($1.066 \to 1.063\,\mathrm{dex}$), making native full-box FFT training labels essential.
+\item \emph{Strict release gating}: While \textsc{BTemu}-$x_{\mathrm{HI}}$ and the 100,000-box full-box PS dataset are verified, final release of the joint PS+$x_{\mathrm{HI}}$ Conv/ResNet surrogates and GPU MCMC awaits split decontamination (\texttt{54/64} overlap removal), multi-ensemble $\widehat{R}$ convergence checks, and aligned L2/L3 recovery tests.
+\end{enumerate}
+
+Contracts, training configurations, validation JSON/NPZ receipts, and analysis scripts are maintained in the \textsc{BTemu} repository (\url{https://github.com/HainaHuang729/BTemu}). Companion astrophysical inference results obtained with \textsc{BTemu}-$x_{\mathrm{HI}}$ and exact UV LFs are reported separately.
+
+\appendix
+
+\section{Contract Digests and Grid Specifications}\label{app:provenance}
+
+Table~\ref{tab:provenance} records the frozen SHA-256 checksums, coordinate grids, and numerical settings linking \textsc{BTemu}-$x_{\mathrm{HI}}$, the T7/A3 IC audits, and the \texttt{ps\_xhi\_fullbox\_v1} dataset for deterministic reproduction.
+
+\begin{table}[!tbp]
+\caption{Frozen numerical contracts and coordinate specifications.}
+\label{tab:provenance}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{ruledtabular}
+\begin{tabular}{p{2.78cm}p{5.10cm}}
+Contract / grid item & Exact specification \\
+\hline
+Native binary SHA-256 & \texttt{3211a6629109da73...94e5702b2} \\
+Simulation box & $\texttt{BOX\_LEN}=250\,\mathrm{Mpc}$, $\texttt{DIM}=512$, $\texttt{HII\_DIM}=128$ \\
+Threading & \texttt{N\_THREADS=16} (pinned GSL RNG stream) \\
+History redshifts (32) & $\{5.0, 5.9, 6, 7, \dots, 35\}$ \\
+$\tau$ adapter grid (31) & Uniform $z \in [5, 35]$, 31 interpolation nodes \\
+Native PS shells (60) & Uniform $|k| \in [0.0232, 2.7628]\,\mathrm{Mpc}^{-1}$ \\
+Target PS centers (32) & Log-spaced $k \in [0.1000, 1.0000]\,\mathrm{Mpc}^{-1}$ \\
+PS loss / eval floor & $\log_{10}(\Delta^2_{21}/\mathrm{mK}^2 + 0.01)$ \\
+T7 audit acceptance SHA & \texttt{090c4f6fdfb08cee...3c109738} \\
+65k prediction SHA & \texttt{ac53130045034015...3f7b5b0f3} \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\bibliography{btemu_methods}
+
+\end{document}

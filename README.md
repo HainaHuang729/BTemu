@@ -1,4 +1,6 @@
-> 21cmTB 物理稿见 [v0.23 正文与 PDF](paper/physics_manuscript_v023_20261108/README.md)。BTemu 方法稿保持独立。
+> **轨道分离说明（2026-11-21）**：
+> - **轨道 B · BTemu 方法论文（PRD 独立稿）**见 [`paper/btemu_methods_prd/`](paper/btemu_methods_prd/btemu_methods.pdf)（[TeX](paper/btemu_methods_prd/btemu_methods.tex) · [QA 报告](paper/btemu_methods_prd/qa/QA_REPORT.md)）。
+> - **轨道 A · 物理论文（PRD 定稿）**已独立拆分至 [`HainaHuang729/early-galaxies-reionization-bt`](https://github.com/HainaHuang729/early-galaxies-reionization-bt)（对应 Overleaf `65bb0b5b88b6a217ce396530`；原 [v0.23 快照](paper/physics_manuscript_v023_20261108/README.md) 仅作历史存档）。
 
 > 论文材料从 [当前主线](paper/MAINLINE.md) 开始阅读。正文按三个结果组织；按日期的材料和历史页面保留供复现。
 
