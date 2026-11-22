@@ -39,6 +39,7 @@ T5B_NPZ = BASE / "overleaf-btemu/paper/reproduction/paper_materials/tables/t5b_v
 VAL65K_JSON = BASE / "overleaf-btemu/paper/data/btemu_audit/validation_recomputed_20261029.json"
 JOINT_VAL_JSON = BASE / "output/park_figure_examples/joint_sampling_validation.json"
 T7_JSON = BASE / "BTemu/paper/paper_materials/metrics/t7_ic_sensitivity_report.json"
+M100K_JSON = BASE / "BTemu/paper/paper_materials/metrics/100k_comparison_metrics.json"
 A3_JSON = BASE / "output/park_figure_examples/review_blockers_20261121/a3_summary.json"
 T6_JSON = BASE / "overleaf-btemu/paper/data/btemu_audit/t6_recomputed_20261029.json"
 
@@ -143,9 +144,12 @@ def draw_fig1_history_accuracy() -> dict[str, str]:
     ax_c.plot(xs_e, ys_e, color=NAVY, lw=1.75, label="5-seed ensemble (65k)", zorder=4)
     ax_c.axvline(float(np.median(rmses)), color=NAVY, lw=0.85, ls=":", zorder=3)
     ax_c.axvline(float(np.quantile(rmses, 0.95)), color=NAVY, lw=0.85, ls="--", zorder=3)
-    # 100k 10k-dev milestones
-    ax_c.axvline(0.000850668, color=AMBER, lw=1.05, ls=":", label=r"100k dev $q_{50}$ ($8.51\times 10^{-4}$)", zorder=3.5)
-    ax_c.axvline(0.00556364, color=AMBER, lw=1.05, ls="--", label=r"100k dev $q_{95}$ ($5.56\times 10^{-3}$)", zorder=3.5)
+    # 100k 10k-dev milestones from 100k_comparison_metrics.json
+    m100k = json.loads(M100K_JSON.read_text())
+    q50_100k = float(m100k["trajectory_RMSE_median"])
+    q95_100k = float(m100k["trajectory_RMSE_q95"])
+    ax_c.axvline(q50_100k, color=AMBER, lw=1.05, ls=":", label=rf"100k dev $q_{{50}}$ (${q50_100k:.2e}$)", zorder=3.5)
+    ax_c.axvline(q95_100k, color=AMBER, lw=1.05, ls="--", label=rf"100k dev $q_{{95}}$ (${q95_100k:.2e}$)", zorder=3.5)
     ax_c.axhline(0.50, color=GRID_FAINT, lw=0.8, zorder=0.5)
     ax_c.axhline(0.95, color=GRID_FAINT, lw=0.8, zorder=0.5)
 
@@ -214,8 +218,8 @@ def draw_fig1_history_accuracy() -> dict[str, str]:
     )
 
 
-def draw_fig2_ic_and_posterior_val() -> dict[str, str]:
-    """Fig. 2: Reconciling prior-box T7 IC/emulator likelihood tails with A3 stratified posterior direct simulations & 4-IC checks."""
+def draw_fig3_ic_and_posterior_val() -> dict[str, str]:
+    """Fig. 3: Reconciling prior-box T7 IC/emulator likelihood tails with A3 stratified posterior direct simulations & 4-IC checks."""
     t7 = json.loads(T7_JSON.read_text())["family_quantiles"]
     jval = json.loads(JOINT_VAL_JSON.read_text())["validation"]["100000_matched"]["joint_history_logL"]
     a3 = json.loads(A3_JSON.read_text())
@@ -232,6 +236,7 @@ def draw_fig2_ic_and_posterior_val() -> dict[str, str]:
     fq = t7
     rows = [
         ("T7 IC std $s_{\\mathrm{IC}}(\\ell_{\\mathrm{hist}})$", fq["std_logL_joint_history"]["q50"], fq["std_logL_joint_history"]["q90"], fq["std_logL_joint_history"]["max_abs"], AMBER, "Prior box (128 fam.)"),
+        # q90(|delta ell|) = 0.308246 is documented in BTemu/docs/ic_audit_completion.md L29 (T7_JSON only retains signed quantiles)
         ("T7 $|\\delta\\ell|$ mean-hist vs IC-avg", None, 0.308246, fq["delta_logL_mean_history_vs_IC_marginal"]["max_abs"], AMBER, None),
         ("100k prior val $|\\Delta \\ell_{\\mathrm{hist}}|$", jval["mae"], jval["q90_abs"], None, SLATE, None),
         ("A3 joint8d post. ($N=28$)", a3["by_group"]["joint8d"]["lnL_reion"]["mae"], a3["by_group"]["joint8d"]["lnL_reion"]["q90_abs"], a3["by_group"]["joint8d"]["lnL_reion"]["max_abs"], NAVY, "Posterior strata"),
@@ -322,8 +327,8 @@ def draw_fig2_ic_and_posterior_val() -> dict[str, str]:
     )
 
 
-def draw_fig3_t6_exact_vs_emu() -> dict[str, str]:
-    """Fig. 3: Single-column T6 finite exact-vs-emulator 6D smoke comparison."""
+def draw_fig2_t6_exact_vs_emu() -> dict[str, str]:
+    """Fig. 2: Single-column T6 finite exact-vs-emulator 6D smoke comparison."""
     t6 = json.loads(T6_JSON.read_text())
     params = t6["parameters"]
     label_map = {
@@ -462,16 +467,15 @@ def draw_fig4_ps_pilot_scaling_and_ic() -> dict[str, str]:
     # 1-IC vs 4-IC comparison at N=534
     ax_b.scatter([534], [rep["one_ic"]["log_rmse"]], s=48, marker="D", facecolor="white", edgecolor=AMBER, linewidth=1.25, label=f"Pilot $N=534$, 1-IC ({rep['one_ic']['log_rmse']:.3f} vs 4-IC {rep['four_ic']['log_rmse']:.3f})", zorder=5)
 
-    # Full-box 32x32 series: 128 from-scratch + constant baseline -> CHPC 100k clean 47-pt MLP
-    n_fb = [ps32_rep["train"], 100000]
-    rmse_fb = [ps32_rep["model"]["rmse_dex"], 0.2627]
-    ax_b.plot(n_fb, rmse_fb, color=AMBER, lw=1.35, ls=":", marker="s", ms=4.4, label=r"Full-box $32\times 32$ MLP ($128 \to 100\mathrm{k}$ clean 47-pt)", zorder=4)
-    ax_b.scatter([ps32_rep["train"]], [ps32_rep["constant_baseline"]["rmse_dex"]], s=30, marker="x", color=SLATE, linewidth=1.1, label=r"Full-box constant baseline (1.437 dex)", zorder=3)
+    # Full-box 32x32 scratch baseline at N=128 (cluster-prototype extrapolations purged)
+    ax_b.scatter([ps32_rep["train"]], [ps32_rep["model"]["rmse_dex"]], s=40, marker="s", color=AMBER, edgecolor="white", linewidth=0.6, label=rf"Full-box $32\times 32$ MLP ($N={ps32_rep['train']}$, {ps32_rep['model']['rmse_dex']:.3f} dex)", zorder=4)
+    ax_b.scatter([ps32_rep["train"]], [ps32_rep["constant_baseline"]["rmse_dex"]], s=32, marker="x", color=SLATE, linewidth=1.1, label=rf"Full-box constant baseline ({ps32_rep['constant_baseline']['rmse_dex']:.3f} dex)", zorder=3)
 
     ax_b.set_xscale("log")
     format_box_axes(ax_b, minor_x=True, minor_y=False)
-    ax_b.set_xlim(90.0, 1.6e5)
-    ax_b.xaxis.set_major_locator(FixedLocator([1e2, 1e3, 1e4, 1e5]))
+    ax_b.set_xlim(90.0, 3800.0)
+    ax_b.set_xticks([100, 300, 1000, 3000])
+    ax_b.set_xticklabels([r"$10^2$", r"$3\times 10^2$", r"$10^3$", r"$3\times 10^3$"])
     ax_b.xaxis.set_minor_locator(LogLocator(base=10.0, subs=np.arange(2, 10) * 0.1))
     ax_b.xaxis.set_minor_formatter(NullFormatter())
     ax_b.set_ylim(0.15, 1.58)
@@ -575,8 +579,8 @@ def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     results = {
         "fig1_history_accuracy": draw_fig1_history_accuracy(),
-        "fig2_t6_exact_vs_emu": draw_fig3_t6_exact_vs_emu(),
-        "fig3_ic_and_posterior_val": draw_fig2_ic_and_posterior_val(),
+        "fig2_t6_exact_vs_emu": draw_fig2_t6_exact_vs_emu(),
+        "fig3_ic_and_posterior_val": draw_fig3_ic_and_posterior_val(),
         "fig4_ps_pilot_scaling_and_ic": draw_fig4_ps_pilot_scaling_and_ic(),
         "fig5_ps_estimator_and_fullbox": draw_fig5_ps_estimator_and_fullbox(),
     }

@@ -1,5 +1,5 @@
-> **轨道分离说明（2026-11-21）**：
-> - **轨道 B · BTemu 方法论文（PRD 独立稿）**见 [`paper/btemu_methods_prd/`](paper/btemu_methods_prd/btemu_methods.pdf)（[TeX](paper/btemu_methods_prd/btemu_methods.tex) · [QA 报告](paper/btemu_methods_prd/qa/QA_REPORT.md)）。
+> **轨道分离说明（2026-11-22 更新）**：
+> - **轨道 B · `BTemu-xHI` 独立方法论文（PRD 定稿：*Emulating Cosmic Reionization Histories for Nonstandard Small-Scale Matter Power*）**见 [`paper/btemu_methods_prd/`](paper/btemu_methods_prd/btemu_methods.pdf)（[TeX](paper/btemu_methods_prd/btemu_methods.tex) · [QA 报告](paper/btemu_methods_prd/qa/QA_REPORT.md)，11 页 APS/PRD 独立释出稿；涵盖 100k `BTemu-xHI` 替代模型验证、先验 vs.\ 后验 IC 核验与全盒 PS 数据工程及完成态 `ps_xhi_fullbox_v1` 归档）。
 > - **轨道 A · 物理论文（PRD 定稿）**已独立拆分至 [`HainaHuang729/early-galaxies-reionization-bt`](https://github.com/HainaHuang729/early-galaxies-reionization-bt)（对应 Overleaf `65bb0b5b88b6a217ce396530`；原 [v0.23 快照](paper/physics_manuscript_v023_20261108/README.md) 仅作历史存档）。
 
 > 论文材料从 [当前主线](paper/MAINLINE.md) 开始阅读。正文按三个结果组织；按日期的材料和历史页面保留供复现。

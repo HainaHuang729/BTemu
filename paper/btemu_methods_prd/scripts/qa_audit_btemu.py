@@ -17,7 +17,7 @@ FIG_SPECS = [
     ("fig1_history_accuracy", 1, "BTemu-xHI 65k 512-val reconstruction, residuals vs T7 IC scatter, 5-seed CDF, and paired 65k->100k reduction"),
     ("fig2_t6_exact_vs_emu", 2, "Finite-sample T6 exact-vs-emulator 6D smoke comparison"),
     ("fig3_ic_and_posterior_val", 3, "Prior-box T7 scatter/emulator error vs A3 posterior strata and 8 four-IC posterior points"),
-    ("fig4_ps_pilot_scaling_and_ic", 4, "21-cm PS pilot (z,k) log-RMSE vs 4-IC scatter and training-budget scaling (1-IC vs 4-IC vs N_train -> 100k clean 47-pt MLP)"),
+    ("fig4_ps_pilot_scaling_and_ic", 4, "21-cm PS pilot (z,k) log-RMSE vs 4-IC scatter and de-confounded training-budget scaling (1-IC vs 4-IC vs N_train and full-box N=128 baseline)"),
     ("fig5_ps_estimator_and_fullbox", 5, "Subbox-vs-fullbox low-k estimator ratio bias and full-box 32x32 validation baseline spectra"),
 ]
 

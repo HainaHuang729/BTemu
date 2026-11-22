@@ -1,5 +1,7 @@
 # BTemu Standalone Methods Manuscript — Overleaf Upload Bundle
 
+**Title**: *Emulating Cosmic Reionization Histories for Nonstandard Small-Scale Matter Power*
+
 This zip archive builds out-of-the-box as an independent APS / *Physical Review D* (`revtex4-2`) Overleaf project separated from Track A (`overleaf-btemu`).
 
 - **Main LaTeX file**: `main.tex` (copy of `btemu_methods.tex`)
