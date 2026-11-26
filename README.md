@@ -11,7 +11,7 @@ A 10D numerical surrogate of the selected BT-modified 21cmFAST forward model: ph
 **Current status:** exact-data production is active; development models have been trained, but scientific deployment and posterior fidelity have not been accepted.
 
 - [Project progress and measured validation](docs/progress.md)
-- [Progress dashboard](https://hainahuang729.github.io/BTemu/)
+- [Progress dashboard](https://hainahuang729.github.io/21cm-reionization-emulator/)
 - [Scientific contract](contracts/science_contract.json)
 - [Development comparison procedure](docs/archive/development_comparison_20261005.md)
 
