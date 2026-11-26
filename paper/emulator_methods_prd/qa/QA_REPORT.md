@@ -1,4 +1,4 @@
-# BTemu Track B Figure QA Report
+# Reionization Emulator Track B Figure QA Report
 
 - **PyMuPDF (`fitz`) installed locally**: `False` (not installed; PDF typography verified via `audit_pdf_text.py` + Matplotlib display bbox checks + Ghostscript 600/160 dpi PNG visual audit)
 

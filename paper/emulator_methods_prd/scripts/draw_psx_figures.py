@@ -27,7 +27,7 @@ from style_prd import (
 )
 
 BASE = Path("/Users/amadeus/Documents/ChatGPT/论文")
-OUT_DIR = BASE / "output/btemu_methods_manuscript/figures"
+OUT_DIR = BASE / "output/reionization_emulator_manuscript/figures"
 AUDIT_JSON = BASE / "output/vps_progress_20261126/reports/joint_independent_audit_report.json"
 STAGE2_JSON = BASE / "output/vps_progress_20261126/tstar_local_correction_20261120/results/b_validation_pslf_report.json"
 FOURWAY_JSON = BASE / "output/vps_progress_20261126/fourway_diagnostic_figures/report.json"

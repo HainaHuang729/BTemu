@@ -1,4 +1,4 @@
-"""Automated figure QA and provenance manifest generator for BTemu Track B manuscript."""
+"""Automated figure QA and provenance manifest generator for the Reionization Emulator Track B manuscript."""
 from __future__ import annotations
 
 import hashlib
@@ -8,13 +8,13 @@ from pathlib import Path
 import subprocess
 import sys
 
-MANUSCRIPT_DIR = Path("/Users/amadeus/Documents/ChatGPT/论文/output/btemu_methods_manuscript")
+MANUSCRIPT_DIR = Path("/Users/amadeus/Documents/ChatGPT/论文/output/reionization_emulator_manuscript")
 FIG_DIR = MANUSCRIPT_DIR / "figures"
 QA_DIR = MANUSCRIPT_DIR / "qa"
 PDF_AUDIT_SCRIPT = Path("/Users/amadeus/.gemini/config/plugins/codex-skills/skills/nature-figure/scripts/audit_pdf_text.py")
 
 FIG_SPECS = [
-    ("fig1_history_accuracy", 1, "BTemu-xHI 65k 512-val reconstruction, residuals vs T7 IC scatter, 5-seed CDF, and paired 65k->100k reduction"),
+    ("fig1_history_accuracy", 1, "History emulator 65k 512-val reconstruction, residuals vs T7 IC scatter, 5-seed CDF, and paired 65k->100k reduction"),
     ("fig2_t6_exact_vs_emu", 2, "Finite-sample T6 exact-vs-emulator 6D smoke comparison"),
     ("fig3_ic_and_posterior_val", 3, "Prior-box T7 scatter/emulator error vs A3 posterior strata and 8 four-IC posterior points"),
     ("fig4_ps_pilot_scaling_and_ic", 4, "21-cm PS pilot (z,k) log-RMSE vs 4-IC scatter and de-confounded training-budget scaling (1-IC vs 4-IC vs N_train and full-box N=128 baseline)"),
@@ -39,7 +39,7 @@ def main() -> None:
 
     manifest_items = []
     qa_lines = [
-        "# BTemu Track B Figure QA Report",
+        "# Reionization Emulator Track B Figure QA Report",
         "",
         f"- **PyMuPDF (`fitz`) installed locally**: `{pymupdf_available}` (not installed; PDF typography verified via `audit_pdf_text.py` + Matplotlib display bbox checks + Ghostscript 600/160 dpi PNG visual audit)",
         "",

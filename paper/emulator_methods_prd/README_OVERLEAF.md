@@ -1,11 +1,11 @@
-# BTemu Standalone Methods Manuscript — Overleaf Upload Bundle
+# 21-cm Reionization Emulator Standalone Methods Manuscript — Overleaf Upload Bundle
 
 **Title**: *Emulating Cosmic Reionization Histories and 21-cm Power Spectra for Nonstandard Small-Scale Matter Power*
 
-This zip archive builds out-of-the-box as an independent APS / *Physical Review D* (`revtex4-2`) Overleaf project separated from Track A (`overleaf-btemu`).
+This zip archive builds out-of-the-box as an independent APS / *Physical Review D* (`revtex4-2`) Overleaf project separated from Track A (`overleaf-early-galaxies-bt`).
 
-- **Main LaTeX file**: `main.tex` (copy of `btemu_methods.tex`)
-- **Bibliography**: `btemu_methods.bib` (`apsrev4-2`)
+- **Main LaTeX file**: `main.tex` (copy of `emulator_methods.tex`)
+- **Bibliography**: `emulator_methods.bib` (`apsrev4-2`)
 - **Figures (`figures/`)**:
   - `fig1_history_accuracy.pdf`
   - `fig2_t6_exact_vs_emu.pdf`

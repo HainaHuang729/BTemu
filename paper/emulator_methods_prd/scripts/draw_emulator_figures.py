@@ -1,4 +1,4 @@
-"""Publication-grade APS/PRD figure generator for the standalone BTemu methods manuscript."""
+"""Publication-grade APS/PRD figure generator for the standalone 21-cm reionization emulator methods manuscript."""
 from __future__ import annotations
 
 import json
@@ -33,15 +33,15 @@ from style_prd import (
 )
 
 BASE = Path("/Users/amadeus/Documents/ChatGPT/论文")
-OUT_DIR = BASE / "output/btemu_methods_manuscript/figures"
+OUT_DIR = BASE / "output/reionization_emulator_manuscript/figures"
 
-T5B_NPZ = BASE / "overleaf-btemu/paper/reproduction/paper_materials/tables/t5b_validation_predictions.npz"
-VAL65K_JSON = BASE / "overleaf-btemu/paper/data/btemu_audit/validation_recomputed_20261029.json"
+T5B_NPZ = BASE / "overleaf-early-galaxies-bt/paper/reproduction/paper_materials/tables/t5b_validation_predictions.npz"
+VAL65K_JSON = BASE / "overleaf-early-galaxies-bt/paper/data/btemu_audit/validation_recomputed_20261029.json"
 JOINT_VAL_JSON = BASE / "output/park_figure_examples/joint_sampling_validation.json"
-T7_JSON = BASE / "BTemu/paper/paper_materials/metrics/t7_ic_sensitivity_report.json"
-M100K_JSON = BASE / "BTemu/paper/paper_materials/metrics/100k_comparison_metrics.json"
+T7_JSON = BASE / "21cm-reionization-emulator/paper/paper_materials/metrics/t7_ic_sensitivity_report.json"
+M100K_JSON = BASE / "21cm-reionization-emulator/paper/paper_materials/metrics/100k_comparison_metrics.json"
 A3_JSON = BASE / "output/park_figure_examples/review_blockers_20261121/a3_summary.json"
-T6_JSON = BASE / "overleaf-btemu/paper/data/btemu_audit/t6_recomputed_20261029.json"
+T6_JSON = BASE / "overleaf-early-galaxies-bt/paper/data/btemu_audit/t6_recomputed_20261029.json"
 
 PS_RESIDUALS_NPZ = BASE / "output/ps_emu_20261108/residual_metrics.npz"
 PS_REPORT_JSON = BASE / "output/ps_emu_20261108/report.json"
@@ -315,7 +315,7 @@ def draw_fig3_ic_and_posterior_val() -> dict[str, str]:
     leg_b = [
         Line2D([], [], color=SLATE, marker="o", ls="None", ms=3.8, label="4 single ICs"),
         Line2D([], [], color=NAVY, marker="s", ls="None", ms=4.2, label=r"$\ell(\bar{X}_4)$ ($\leq 0.0054$)"),
-        Line2D([], [], color=AMBER, marker="D", ls="None", ms=4.2, label=r"100k BTemu ($\leq 0.028$)"),
+        Line2D([], [], color=AMBER, marker="D", ls="None", ms=4.2, label=r"100k emulator ($\leq 0.028$)"),
     ]
     ax_b.legend(handles=leg_b, loc="upper left", fontsize=7.2, handletextpad=0.30, labelspacing=0.18, borderaxespad=0.30, frameon=False)
 
