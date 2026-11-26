@@ -1,0 +1,273 @@
+%apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (0) allowed
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{17}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{https://doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Mesinger}\ \emph {et~al.}(2011)\citenamefont
+  {Mesinger}, \citenamefont {Furlanetto},\ and\ \citenamefont
+  {Cen}}]{Mesinger2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Mesinger}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Furlanetto}},\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Cen}},\ }\bibfield  {title} {\bibinfo {title} {{21cmFAST}: a fast,
+  seminumerical simulation of the high-redshift 21-cm signal},\ }\href
+  {https://doi.org/10.1111/j.1365-2966.2010.17731.x} {\bibfield  {journal}
+  {\bibinfo  {journal} {Mon. Not. R. Astron. Soc.}\ }\textbf {\bibinfo {volume}
+  {411}},\ \bibinfo {pages} {955} (\bibinfo {year} {2011})},\ \Eprint
+  {https://arxiv.org/abs/1003.3878} {arXiv:1003.3878} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Park}\ \emph {et~al.}(2019)\citenamefont {Park},
+  \citenamefont {Mesinger}, \citenamefont {Greig},\ and\ \citenamefont
+  {Gillet}}]{Park2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Park}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Mesinger}},
+  \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Greig}},\ and\ \bibinfo
+  {author} {\bibfnamefont {N.}~\bibnamefont {Gillet}},\ }\bibfield  {title}
+  {\bibinfo {title} {Inferring the astrophysics of reionization and cosmic dawn
+  from galaxy luminosity functions and the {21-cm} signal},\ }\href
+  {https://doi.org/10.1093/mnras/stz032} {\bibfield  {journal} {\bibinfo
+  {journal} {Mon. Not. R. Astron. Soc.}\ }\textbf {\bibinfo {volume} {484}},\
+  \bibinfo {pages} {933} (\bibinfo {year} {2019})},\ \Eprint
+  {https://arxiv.org/abs/1809.08995} {arXiv:1809.08995 [astro-ph.GA]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Planck Collaboration}}(2020)}]{Planck2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{Planck
+  Collaboration}}},\ }\bibfield  {title} {\bibinfo {title} {Planck 2018
+  results. {VI}. {C}osmological parameters},\ }\href
+  {https://doi.org/10.1051/0004-6361/201833910} {\bibfield  {journal} {\bibinfo
+   {journal} {Astron. Astrophys.}\ }\textbf {\bibinfo {volume} {641}},\
+  \bibinfo {pages} {A6} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/1807.06209} {arXiv:1807.06209} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {McGreer}\ \emph {et~al.}(2015)\citenamefont
+  {McGreer}, \citenamefont {Mesinger},\ and\ \citenamefont
+  {D'Odorico}}]{McGreer2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~D.}\ \bibnamefont
+  {McGreer}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Mesinger}},\
+  and\ \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {D'Odorico}},\
+  }\bibfield  {title} {\bibinfo {title} {Model-independent evidence in favor of
+  an end to reionization by $z\approx6$},\ }\href
+  {https://doi.org/10.1093/mnras/stu2449} {\bibfield  {journal} {\bibinfo
+  {journal} {Mon. Not. R. Astron. Soc.}\ }\textbf {\bibinfo {volume} {447}},\
+  \bibinfo {pages} {499} (\bibinfo {year} {2015})},\ \Eprint
+  {https://arxiv.org/abs/1411.5375} {arXiv:1411.5375} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Donnan}\ \emph {et~al.}(2024)\citenamefont {Donnan},
+  \citenamefont {McLure}, \citenamefont {Dunlop}, \citenamefont {McLeod},
+  \citenamefont {Magee} \emph {et~al.}}]{Donnan2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~T.}\ \bibnamefont
+  {Donnan}}, \bibinfo {author} {\bibfnamefont {R.~J.}\ \bibnamefont {McLure}},
+  \bibinfo {author} {\bibfnamefont {J.~S.}\ \bibnamefont {Dunlop}}, \bibinfo
+  {author} {\bibfnamefont {D.~J.}\ \bibnamefont {McLeod}}, \bibinfo {author}
+  {\bibfnamefont {D.}~\bibnamefont {Magee}}, \emph {et~al.},\ }\bibfield
+  {title} {\bibinfo {title} {{JWST PRIMER}: A new multi-field determination of
+  the evolving galaxy {UV} luminosity function at redshifts $z\simeq9$--15},\
+  }\href {https://doi.org/10.1093/mnras/stae2037} {\bibfield  {journal}
+  {\bibinfo  {journal} {Mon. Not. R. Astron. Soc.}\ }\textbf {\bibinfo {volume}
+  {533}},\ \bibinfo {pages} {3222} (\bibinfo {year} {2024})},\ \Eprint
+  {https://arxiv.org/abs/2403.03171} {arXiv:2403.03171} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{HERA Collaboration}}(2023)}]{HERA2023}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{HERA
+  Collaboration}}},\ }\bibfield  {title} {\bibinfo {title} {Improved
+  constraints on the 21 cm {EoR} power spectrum and the {X}-ray heating of the
+  {IGM} with {HERA} {P}hase {I} observations},\ }\href
+  {https://doi.org/10.3847/1538-4357/acaf50} {\bibfield  {journal} {\bibinfo
+  {journal} {Astrophys. J.}\ }\textbf {\bibinfo {volume} {945}},\ \bibinfo
+  {pages} {124} (\bibinfo {year} {2023})},\ \Eprint
+  {https://arxiv.org/abs/2210.04912} {arXiv:2210.04912} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Parashari}\ and\ \citenamefont
+  {Laha}(2023)}]{Parashari23JWSTPPS}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Parashari}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Laha}},\ }\bibfield  {title} {\bibinfo {title} {Primordial power spectrum in
+  light of {JWST} observations of high redshift galaxies},\ }\href
+  {https://doi.org/10.1093/mnrasl/slad107} {\bibfield  {journal} {\bibinfo
+  {journal} {Mon. Not. R. Astron. Soc. Lett.}\ }\textbf {\bibinfo {volume}
+  {526}},\ \bibinfo {pages} {L63} (\bibinfo {year} {2023})},\ \Eprint
+  {https://arxiv.org/abs/2305.00999} {arXiv:2305.00999} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hirano}\ and\ \citenamefont
+  {Yoshida}(2024)}]{Hira24bluetilt}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Hirano}}\ and\ \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Yoshida}},\ }\bibfield  {title} {\bibinfo {title} {Early structure formation
+  from primordial density fluctuations with a blue, tilted power spectrum:
+  High-redshift galaxies},\ }\href {https://doi.org/10.3847/1538-4357/ad22e0}
+  {\bibfield  {journal} {\bibinfo  {journal} {Astrophys. J.}\ }\textbf
+  {\bibinfo {volume} {963}},\ \bibinfo {pages} {2} (\bibinfo {year} {2024})},\
+  \Eprint {https://arxiv.org/abs/2306.11993} {arXiv:2306.11993} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Mu{\~n}oz}\ and\ \citenamefont
+  {Dvorkin}(2020)}]{MunozDvorkin2020}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~B.}\ \bibnamefont
+  {Mu{\~n}oz}}\ and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Dvorkin}},\ }\bibfield  {title} {\bibinfo {title} {Probing the small-scale
+  matter power spectrum with large-scale 21-cm data},\ }\href
+  {https://doi.org/10.1103/PhysRevD.101.063526} {\bibfield  {journal} {\bibinfo
+   {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {101}},\ \bibinfo
+  {pages} {063526} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/1911.11144} {arXiv:1911.11144} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Murray}\ \emph {et~al.}(2020)\citenamefont {Murray},
+  \citenamefont {Greig}, \citenamefont {Mesinger}, \citenamefont {Mu{\~n}oz},
+  \citenamefont {Qin}, \citenamefont {Park},\ and\ \citenamefont
+  {Watkinson}}]{Murray2020}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~G.}\ \bibnamefont
+  {Murray}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Greig}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Mesinger}}, \bibinfo
+  {author} {\bibfnamefont {J.~B.}\ \bibnamefont {Mu{\~n}oz}}, \bibinfo {author}
+  {\bibfnamefont {Y.}~\bibnamefont {Qin}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Park}},\ and\ \bibinfo {author} {\bibfnamefont {C.~A.}\
+  \bibnamefont {Watkinson}},\ }\bibfield  {title} {\bibinfo {title} {{21cmFAST
+  v3}: A {P}ython-integrated {C} code for generating {3D} realizations of the
+  cosmic 21cm signal},\ }\href {https://doi.org/10.21105/joss.02582} {\bibfield
+   {journal} {\bibinfo  {journal} {J. Open Source Softw.}\ }\textbf {\bibinfo
+  {volume} {5}},\ \bibinfo {pages} {2582} (\bibinfo {year} {2020})},\ \Eprint
+  {https://arxiv.org/abs/2010.15121} {arXiv:2010.15121} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Breitman}\ \emph {et~al.}(2024)\citenamefont
+  {Breitman}, \citenamefont {Mesinger}, \citenamefont {Murray}, \citenamefont
+  {Prelogovi{\'c}}, \citenamefont {Qin},\ and\ \citenamefont
+  {Trotta}}]{Breitman2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Breitman}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Mesinger}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Murray}}, \bibinfo
+  {author} {\bibfnamefont {D.}~\bibnamefont {Prelogovi{\'c}}}, \bibinfo
+  {author} {\bibfnamefont {Y.}~\bibnamefont {Qin}},\ and\ \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Trotta}},\ }\bibfield  {title} {\bibinfo
+  {title} {{21cmEMU}: an emulator of {21cmFAST} summary observables},\ }\href
+  {https://doi.org/10.1093/mnras/stad3849} {\bibfield  {journal} {\bibinfo
+  {journal} {Mon. Not. R. Astron. Soc.}\ }\textbf {\bibinfo {volume} {527}},\
+  \bibinfo {pages} {9833} (\bibinfo {year} {2024})},\ \Eprint
+  {https://arxiv.org/abs/2309.05697} {arXiv:2309.05697} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Breitman}\ \emph {et~al.}(2026)\citenamefont
+  {Breitman}, \citenamefont {Mesinger}, \citenamefont {Murray}, \citenamefont
+  {Nikolic},\ and\ \citenamefont {Trotta}}]{Breitman2026}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Breitman}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Mesinger}},
+  \bibinfo {author} {\bibfnamefont {S.~G.}\ \bibnamefont {Murray}}, \bibinfo
+  {author} {\bibfnamefont {I.}~\bibnamefont {Nikolic}},\ and\ \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Trotta}},\ }\bibfield  {title} {\bibinfo
+  {title} {{21cmEMUv3}: a hybrid diffusion--{LSTM} emulator of {21cmFAST}
+  summary observables},\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+  {journal} {arXiv e-prints}\ } (\bibinfo {year} {2026})},\ \Eprint
+  {https://arxiv.org/abs/2606.00219} {arXiv:2606.00219} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Planck Collaboration}}(2016)}]{Planck2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{Planck
+  Collaboration}}},\ }\bibfield  {title} {\bibinfo {title} {{Planck} 2015
+  results. {XIII}. {C}osmological parameters},\ }\href
+  {https://doi.org/10.1051/0004-6361/201525830} {\bibfield  {journal} {\bibinfo
+   {journal} {Astron. Astrophys.}\ }\textbf {\bibinfo {volume} {594}},\
+  \bibinfo {pages} {A13} (\bibinfo {year} {2016})},\ \Eprint
+  {https://arxiv.org/abs/1502.01589} {arXiv:1502.01589} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Eisenstein}\ and\ \citenamefont
+  {Hu}(1999)}]{Eisenstein1998}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont
+  {Eisenstein}}\ and\ \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+  {Hu}},\ }\bibfield  {title} {\bibinfo {title} {Power spectra for cold dark
+  matter and its variants},\ }\href {https://doi.org/10.1086/306640} {\bibfield
+   {journal} {\bibinfo  {journal} {Astrophys. J.}\ }\textbf {\bibinfo {volume}
+  {511}},\ \bibinfo {pages} {5} (\bibinfo {year} {1999})},\ \Eprint
+  {https://arxiv.org/abs/astro-ph/9710252} {arXiv:astro-ph/9710252}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bouwens}\ \emph {et~al.}(2015)\citenamefont
+  {Bouwens}, \citenamefont {Illingworth}, \citenamefont {Oesch}, \citenamefont
+  {Trenti}, \citenamefont {Labb{\'e}} \emph {et~al.}}]{Bouwens2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~J.}\ \bibnamefont
+  {Bouwens}}, \bibinfo {author} {\bibfnamefont {G.~D.}\ \bibnamefont
+  {Illingworth}}, \bibinfo {author} {\bibfnamefont {P.~A.}\ \bibnamefont
+  {Oesch}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Trenti}},
+  \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Labb{\'e}}}, \emph
+  {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{UV} luminosity functions
+  at redshifts $z\sim4$ to $z\sim10$: 10,000 galaxies from {HST} legacy
+  fields},\ }\href {https://doi.org/10.1088/0004-637X/803/1/34} {\bibfield
+  {journal} {\bibinfo  {journal} {Astrophys. J.}\ }\textbf {\bibinfo {volume}
+  {803}},\ \bibinfo {pages} {34} (\bibinfo {year} {2015})},\ \Eprint
+  {https://arxiv.org/abs/1403.4295} {arXiv:1403.4295} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bouwens}\ \emph {et~al.}(2017)\citenamefont
+  {Bouwens}, \citenamefont {Oesch}, \citenamefont {Illingworth}, \citenamefont
+  {Ellis},\ and\ \citenamefont {Stefanon}}]{Bouwens2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~J.}\ \bibnamefont
+  {Bouwens}}, \bibinfo {author} {\bibfnamefont {P.~A.}\ \bibnamefont {Oesch}},
+  \bibinfo {author} {\bibfnamefont {G.~D.}\ \bibnamefont {Illingworth}},
+  \bibinfo {author} {\bibfnamefont {R.~S.}\ \bibnamefont {Ellis}},\ and\
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Stefanon}},\ }\bibfield
+  {title} {\bibinfo {title} {The $z\sim6$ luminosity function fainter than
+  $-15$ mag from the {Hubble Frontier Fields}: The impact of magnification
+  uncertainties},\ }\href {https://doi.org/10.3847/1538-4357/aa70a4} {\bibfield
+   {journal} {\bibinfo  {journal} {Astrophys. J.}\ }\textbf {\bibinfo {volume}
+  {843}},\ \bibinfo {pages} {129} (\bibinfo {year} {2017})},\ \Eprint
+  {https://arxiv.org/abs/1610.00283} {arXiv:1610.00283} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Vehtari}\ \emph {et~al.}(2021)\citenamefont
+  {Vehtari}, \citenamefont {Gelman}, \citenamefont {Simpson}, \citenamefont
+  {Carpenter},\ and\ \citenamefont {B{\"u}rkner}}]{Vehtari2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Vehtari}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Gelman}},
+  \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Simpson}}, \bibinfo
+  {author} {\bibfnamefont {B.}~\bibnamefont {Carpenter}},\ and\ \bibinfo
+  {author} {\bibfnamefont {P.-C.}\ \bibnamefont {B{\"u}rkner}},\ }\bibfield
+  {title} {\bibinfo {title} {Rank-normalization, folding, and localization: An
+  improved {$\widehat R$} for assessing convergence of {MCMC}},\ }\href
+  {https://doi.org/10.1214/20-BA1221} {\bibfield  {journal} {\bibinfo
+  {journal} {Bayesian Anal.}\ }\textbf {\bibinfo {volume} {16}},\ \bibinfo
+  {pages} {667} (\bibinfo {year} {2021})},\ \Eprint
+  {https://arxiv.org/abs/1903.08008} {arXiv:1903.08008} \BibitemShut {NoStop}%
+\end{thebibliography}%

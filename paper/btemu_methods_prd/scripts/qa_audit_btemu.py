@@ -19,6 +19,9 @@ FIG_SPECS = [
     ("fig3_ic_and_posterior_val", 3, "Prior-box T7 scatter/emulator error vs A3 posterior strata and 8 four-IC posterior points"),
     ("fig4_ps_pilot_scaling_and_ic", 4, "21-cm PS pilot (z,k) log-RMSE vs 4-IC scatter and de-confounded training-budget scaling (1-IC vs 4-IC vs N_train and full-box N=128 baseline)"),
     ("fig5_ps_estimator_and_fullbox", 5, "Subbox-vs-fullbox low-k estimator ratio bias and full-box 32x32 validation baseline spectra"),
+    ("fig6_psx_independent_audit", 6, "PSX-emu v1.0 split-contamination vs 300-pt zero-overlap independent PS+xHI+tau audit and 2-IC noise floor"),
+    ("fig7_tstar_local_correction", 7, "Localized RBF residual patch L2/L3 reductions across Stages 1-3 and t_STAR posterior recovery vs four-way PL diagnostics"),
+    ("fig8_ard_gp_and_threeway_gmm", 8, "Matern-5/2 ARD-GP lightcone/coeval patch residual reductions and three-way 8D Stretch+GMM posterior parameter recovery"),
 ]
 
 
