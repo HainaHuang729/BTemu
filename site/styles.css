@@ -9,3 +9,14 @@
 @media(max-width:400px){.system-navigation a{min-width:0;padding:0 6px;gap:5px;font-size:10px}.resource-grid>div{min-width:0}}
 
 .work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.work-grid article{padding:20px;border:1px solid var(--rule,#c7c9c2);background:#f5f4ed}.work-grid h3{margin-top:0}.work-grid ul{padding-left:20px}.work-grid li{margin:12px 0;line-height:1.65;overflow-wrap:anywhere}@media(max-width:900px){.work-grid{grid-template-columns:1fr}}
+
+
+/* Unified 21cm Portal Strip & Embed Mode */
+.portal-strip{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:8px 20px;background:#162024;color:#e8eceb;font-size:12px;border-bottom:1px solid rgba(255,255,255,.12)}
+.portal-strip-brand{font-weight:700;letter-spacing:.08em;color:#8cc0ca}
+.portal-strip-links{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.portal-strip-links a{color:#d3dde0;text-decoration:none}
+.portal-strip-links a:hover{color:#fff;text-decoration:underline}
+.portal-strip-links span[aria-current="page"]{color:#fff;font-weight:600;border-bottom:2px solid #d6a62e;padding-bottom:2px}
+.portal-strip-open{color:#e6c267;text-decoration:none;font-weight:600}
+html.is-embedded .portal-strip,html.is-embedded .system-header{display:none!important}
